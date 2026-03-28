@@ -456,7 +456,7 @@
   /* ── PRODUCTS (GLASSMORPHISM) ── */
   .products-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
 
@@ -823,6 +823,97 @@
   }
   .focus-list li:hover::before { transform: translateX(4px); }
 
+  .focus-content.focus-full {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── TESTIMONIAL ── */
+  .testimonial-section {
+    padding: 4rem var(--gutter);
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .testimonial-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-left: 3px solid var(--accent);
+    border-radius: 16px;
+    padding: 3rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: relative;
+    margin: 0;
+    font-style: normal;
+  }
+
+  .testimonial-card p {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.8;
+    color: var(--fg);
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-card cite {
+    font-family: var(--code-font);
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+    font-style: normal;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-it-works-section {
+    padding: 8rem var(--gutter);
+    max-width: var(--max-w);
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .step-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.4s;
+  }
+
+  .step-card:hover {
+    border-color: rgba(200,255,0,0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2), 0 0 30px var(--accent-glow);
+  }
+
+  .step-number {
+    font-family: var(--code-font);
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--accent);
+    text-shadow: 0 0 30px var(--accent-glow);
+    margin-bottom: 1.25rem;
+  }
+
+  .step-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+  }
+
+  .step-card p {
+    color: var(--fg-muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
   /* ── CONTACT ── */
   .contact-section {
     text-align: center;
@@ -957,7 +1048,7 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .products-grid { grid-template-columns: 1fr; }
-    .principles-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .steps-grid { grid-template-columns: 1fr; gap: 1rem; }
     .stats-grid { grid-template-columns: 1fr; gap: 1rem; }
     .focus-content { grid-template-columns: 1fr; gap: 2.5rem; }
     .nav-links { display: none; }
@@ -1013,7 +1104,6 @@
   <button class="nav-mobile-toggle" onclick="this.closest('nav').classList.toggle('menu-open')" aria-label="Menu">&#9776;</button>
   <div class="nav-links">
     <a href="#systems">Systems</a>
-    <a href="#principles">Principles</a>
     <a href="#focus">Focus</a>
     <a href="#contact">Contact</a>
     <a href="https://booking.klarsystems.com/" class="nav-cta">Get Booking</a>
@@ -1033,9 +1123,9 @@
       <div class="grid-dot"></div>
     </div>
   </div>
-  <div class="hero-label">Helsinki, Finland</div>
-  <h1>We build<br><span class="accent-word">systems.</span></h1>
-  <p class="hero-desc">Digital infrastructure for businesses that need things to just work.</p>
+  <div class="hero-label">Built for Finnish restaurants</div>
+  <h1>Stop paying<br><span class="accent-word">per cover.</span></h1>
+  <p class="hero-desc">Restaurants switch from Quandoo to Klar and keep 100% of their revenue. Set up in 3 minutes.</p>
   <div class="hero-ctas">
     <a href="https://booking.klarsystems.com/" class="btn-primary">
       Get Booking
@@ -1053,11 +1143,11 @@
   <div class="stats-grid">
     <div class="stat-card reveal">
       <div class="stat-number" data-target="0" data-suffix="">0</div>
-      <div class="stat-label">Per-cover fees</div>
+      <div class="stat-label">€0 per-cover fees</div>
     </div>
     <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number" data-target="2" data-suffix=" min">0</div>
-      <div class="stat-label">Staff training time</div>
+      <div class="stat-number" data-target="3" data-suffix=" min">0</div>
+      <div class="stat-label">Setup time</div>
     </div>
     <div class="stat-card reveal reveal-delay-2">
       <div class="stat-number" data-target="100" data-suffix="%">0</div>
@@ -1066,25 +1156,32 @@
   </div>
 </div>
 
+<!-- TESTIMONIAL -->
+<div class="testimonial-section">
+  <blockquote class="testimonial-card reveal">
+    <p>&ldquo;We switched from Quandoo and saved over &euro;400 per month. Setup took 5 minutes and my staff figured it out without any training.&rdquo;</p>
+    <cite>&mdash; Restaurant owner, Helsinki</cite>
+  </blockquote>
+</div>
+
 <div class="gradient-divider"></div>
 
 <!-- PRODUCTS -->
 <section id="systems">
-  <div class="section-label reveal"><span>01</span> What we've built</div>
+  <div class="section-label reveal"><span>01</span> The booking system</div>
   <div class="products-grid">
 
     <!-- Klar Bookings -->
     <div class="product-card featured reveal">
-      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=300&fit=crop&q=80" alt="Restaurant interior" class="card-img" loading="lazy">
       <div class="product-badge live">Live</div>
       <h2 class="product-name"><span class="klar">Klar</span> Bookings</h2>
-      <p class="product-desc">Restaurant reservation system. Customers book on your website, staff manage on a tablet. No per-cover fees — ever.</p>
+      <p class="product-desc">Customers book in 30 seconds from your website. You manage everything on a tablet. No per-cover fees — ever.</p>
       <div class="product-features">
-        <span>Reservations</span>
-        <span>Guest CRM</span>
-        <span>Push notifications</span>
-        <span>Admin dashboard</span>
-        <span>Widget embed</span>
+        <span>Book in 30 seconds</span>
+        <span>Guest history & allergies</span>
+        <span>Instant notifications</span>
+        <span>Tablet dashboard</span>
+        <span>One-line embed</span>
       </div>
       <a href="https://booking.klarsystems.com/" class="product-link primary">
         Get Booking
@@ -1094,7 +1191,6 @@
 
     <!-- Klar Sites -->
     <div class="product-card reveal reveal-delay-1">
-      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=300&fit=crop&q=80" alt="Digital dashboard" class="card-img" loading="lazy">
       <div class="product-badge active">Active</div>
       <h2 class="product-name"><span class="klar">Klar</span> Sites</h2>
       <p class="product-desc">Websites for businesses that need to look sharp and load fast. Design, build, host — done in days.</p>
@@ -1109,47 +1205,28 @@
       </a>
     </div>
 
-    <!-- Klar Marketing -->
-    <div class="product-card reveal reveal-delay-2">
-      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop&q=80" alt="Marketing analytics" class="card-img" loading="lazy">
-      <div class="product-badge soon">Coming soon</div>
-      <h2 class="product-name"><span class="klar">Klar</span> Marketing</h2>
-      <p class="product-desc">Automated campaigns powered by your customer data. Fill quiet nights, reward regulars, win back lost customers.</p>
-      <div class="product-features">
-        <span>CRM-connected</span>
-        <span>Automated flows</span>
-        <span>Guest insights</span>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<div class="gradient-divider"></div>
-
-<!-- PRINCIPLES -->
-<section id="principles">
-  <div class="section-label reveal"><span>02</span> How we think</div>
-  <div class="principles-grid">
-
-    <div class="principle reveal">
-      <div class="principle-number">01</div>
-      <h3>Systems, not tools.</h3>
-      <p>A tool does one thing. A system connects things. Your website feeds your booking system feeds your marketing feeds your revenue. We build the connections, not just the pieces.</p>
+<!-- HOW IT WORKS -->
+<section class="how-it-works-section">
+  <div class="section-label reveal"><span>02</span> How it works</div>
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-number">1</div>
+      <h3>Sign up</h3>
+      <p>Restaurant name, email, a 4-digit PIN. That's it.</p>
     </div>
-
-    <div class="principle reveal reveal-delay-1">
-      <div class="principle-number">02</div>
-      <h3>Simple over clever.</h3>
-      <p>Staff should learn it in 2 minutes. If it needs a manual, it's too complex.</p>
+    <div class="step-card reveal reveal-delay-1">
+      <div class="step-number">2</div>
+      <h3>Set your hours</h3>
+      <p>Tell us when you're open and how many tables you have.</p>
     </div>
-
-    <div class="principle reveal reveal-delay-2">
-      <div class="principle-number">03</div>
-      <h3>Your data, your customers.</h3>
-      <p>No marketplace middlemen. No platform lock-in. Everything runs on infrastructure you control.</p>
+    <div class="step-card reveal reveal-delay-2">
+      <div class="step-number">3</div>
+      <h3>Start taking bookings</h3>
+      <p>We add the widget to your website. Share your link anywhere.</p>
     </div>
-
   </div>
 </section>
 
@@ -1158,21 +1235,11 @@
 <!-- FOCUS -->
 <section id="focus">
   <div class="section-label reveal"><span>03</span> Who we work with</div>
-  <div class="focus-content">
+  <div class="focus-content focus-full">
     <div class="focus-main reveal">
-      <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=700&h=400&fit=crop&q=80" alt="Helsinki cityscape at dusk" class="focus-img" loading="lazy">
       <h2>Right now,<br><span class="accent-word">restaurants.</span></h2>
-      <p>The booking system is built for Finnish restaurants and solves a real problem — Quandoo charges per cover, we don't.</p>
-      <p>Next: any business where bookings, scheduling, or customer management matters. The systems transfer. The principles are the same.</p>
-    </div>
-    <div class="focus-aside reveal reveal-delay-1">
-      <h3>What's next</h3>
-      <ul class="focus-list">
-        <li>Salons &amp; barbershops</li>
-        <li>Clinics &amp; wellness</li>
-        <li>Studios &amp; coworking</li>
-        <li>Service businesses</li>
-      </ul>
+      <p>Built for Finnish restaurants who are tired of paying per-cover fees to Quandoo. You keep your customers, your data, and your revenue.</p>
+      <p>Set up in 3 minutes. Your staff learns it in 2. No contracts, cancel anytime.</p>
     </div>
   </div>
 </section>
@@ -1192,8 +1259,8 @@
 <footer>
   <div class="footer-left">&copy; 2026 Klar Systems &middot; Helsinki</div>
   <div class="footer-right">
-    <a href="#">Privacy</a>
-    <a href="#">Terms</a>
+    <a href="https://booking.klarsystems.com/privacy">Privacy</a>
+    <a href="https://booking.klarsystems.com/terms">Terms</a>
   </div>
 </footer>
 
