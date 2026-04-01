@@ -3,1388 +3,894 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Klar Systems — Digital infrastructure that just works</title>
-<meta name="description" content="Klar Systems builds digital infrastructure for businesses. Booking systems, websites, marketing automation. Based in Helsinki.">
+<title>Klar Bookings — Stop Renting Customers. Start Owning Them.</title>
+<meta name="description" content="Your booking platform charges you every time a customer sits down — then keeps the data. Klar Bookings gives you a flat-rate system where every guest is yours. Based in Helsinki.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" type="image/png" href="favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --bg: #050508;
-    --bg2: #0a0a10;
-    --fg: #e8e8f0;
-    --fg-muted: #7a7a90;
-    --accent: #c8ff00;
-    --accent-dim: #a3cc00;
-    --accent-glow: rgba(200, 255, 0, 0.15);
-    --accent-glow-strong: rgba(200, 255, 0, 0.3);
-    --surface: rgba(255, 255, 255, 0.03);
-    --surface-border: rgba(255, 255, 255, 0.06);
-    --surface-hover: rgba(255, 255, 255, 0.06);
-    --glass: rgba(255, 255, 255, 0.04);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --code-font: 'JetBrains Mono', monospace;
-    --body-font: 'Space Grotesk', sans-serif;
-    --max-w: 1200px;
-    --gutter: clamp(1.5rem, 5vw, 4rem);
-  }
-
-  html { scroll-behavior: smooth; font-size: 16px; }
-
-  body {
-    font-family: var(--body-font);
-    background: var(--bg);
-    color: var(--fg);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    position: relative;
-  }
-
-  ::selection {
-    background: var(--accent);
-    color: var(--bg);
-  }
-
-  a { color: inherit; text-decoration: none; }
-
-  /* ── ANIMATED MESH BACKGROUND ── */
-  .mesh-bg {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-  }
-
-  .mesh-bg .orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    animation: orbFloat 20s ease-in-out infinite;
-  }
-
-  .mesh-bg .orb:nth-child(1) {
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(200,255,0,0.08), transparent 70%);
-    top: -10%; left: -10%;
-    animation-delay: 0s;
-    animation-duration: 25s;
-  }
-
-  .mesh-bg .orb:nth-child(2) {
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(0,180,255,0.05), transparent 70%);
-    top: 40%; right: -15%;
-    animation-delay: -5s;
-    animation-duration: 30s;
-  }
-
-  .mesh-bg .orb:nth-child(3) {
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(200,255,0,0.06), transparent 70%);
-    bottom: -10%; left: 30%;
-    animation-delay: -10s;
-    animation-duration: 22s;
-  }
-
-  @keyframes orbFloat {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(80px, -60px) scale(1.1); }
-    50% { transform: translate(-40px, 80px) scale(0.9); }
-    75% { transform: translate(60px, 40px) scale(1.05); }
-  }
-
-  /* ── PARTICLE GRID ── */
-  #particleCanvas {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  /* ── CONTENT WRAPPER ── */
-  .content-wrap {
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 1.25rem var(--gutter);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(5, 5, 8, 0.6);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.4s, background 0.4s;
-  }
-  nav.scrolled {
-    border-bottom-color: var(--glass-border);
-    background: rgba(5, 5, 8, 0.85);
-  }
-
-  .nav-logo {
-    font-family: var(--code-font);
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--fg);
-    transition: letter-spacing 0.3s;
-  }
-  .nav-logo:hover { letter-spacing: 0.18em; }
-  .nav-logo span { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
-
-  .nav-links { display: flex; gap: 2.5rem; align-items: center; }
-  .nav-links a {
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    color: var(--fg-muted);
-    transition: color 0.3s, text-shadow 0.3s;
-    text-transform: uppercase;
-  }
-  .nav-links a:hover {
-    color: var(--fg);
-    text-shadow: 0 0 20px rgba(255,255,255,0.1);
-  }
-  .nav-links .nav-cta {
-    color: var(--bg);
-    background: var(--accent);
-    padding: 0.55rem 1.5rem;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.8rem;
-    letter-spacing: 0.04em;
-    transition: all 0.3s;
-    box-shadow: 0 0 20px var(--accent-glow), 0 0 60px rgba(200,255,0,0.05);
-    text-transform: uppercase;
-  }
-  .nav-links .nav-cta:hover {
-    background: #d4ff33;
-    box-shadow: 0 0 30px var(--accent-glow-strong), 0 0 80px rgba(200,255,0,0.1);
-    transform: translateY(-1px);
-  }
-
-  .nav-mobile-toggle {
-    display: none;
-    background: none;
-    border: 1px solid var(--glass-border);
-    color: var(--fg);
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 0.4rem 0.6rem;
-    border-radius: 6px;
-    transition: border-color 0.3s;
-  }
-  .nav-mobile-toggle:hover { border-color: var(--accent); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8rem var(--gutter) 6rem;
-    max-width: var(--max-w);
-    margin: 0 auto;
-    position: relative;
-  }
-
-  /* 3D wireframe grid */
-  .hero-3d-grid {
-    position: absolute;
-    top: 0; right: -5%;
-    width: 65%;
-    height: 100%;
-    perspective: 800px;
-    pointer-events: none;
-    overflow: hidden;
-    mask-image: radial-gradient(ellipse at 60% 50%, black 0%, transparent 70%);
-    -webkit-mask-image: radial-gradient(ellipse at 60% 50%, black 0%, transparent 70%);
-  }
-
-  .grid-plane {
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    transform: rotateX(60deg) rotateZ(-30deg);
-    background-image:
-      linear-gradient(rgba(200,255,0,0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(200,255,0,0.08) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: gridMove 20s linear infinite;
-  }
-
-  .grid-plane::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(200,255,0,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(200,255,0,0.04) 1px, transparent 1px);
-    background-size: 10px 10px;
-  }
-
-  @keyframes gridMove {
-    0% { transform: rotateX(60deg) rotateZ(-30deg) translateZ(0); }
-    100% { transform: rotateX(60deg) rotateZ(-30deg) translateZ(50px); }
-  }
-
-  /* Floating glowing dots on grid */
-  .grid-dots {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0; left: 0;
-  }
-
-  .grid-dot {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: var(--accent);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--accent), 0 0 30px var(--accent-glow);
-    animation: dotPulse 3s ease-in-out infinite;
-  }
-
-  .grid-dot:nth-child(1) { top: 25%; left: 30%; animation-delay: 0s; }
-  .grid-dot:nth-child(2) { top: 45%; left: 55%; animation-delay: 0.8s; }
-  .grid-dot:nth-child(3) { top: 65%; left: 40%; animation-delay: 1.6s; }
-  .grid-dot:nth-child(4) { top: 35%; left: 70%; animation-delay: 2.4s; }
-  .grid-dot:nth-child(5) { top: 55%; left: 25%; animation-delay: 0.4s; }
-  .grid-dot:nth-child(6) { top: 75%; left: 60%; animation-delay: 1.2s; }
-
-  @keyframes dotPulse {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.8); }
-  }
-
-  .hero-label {
-    font-family: var(--code-font);
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
-    text-shadow: 0 0 30px var(--accent-glow);
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .hero-label::before {
-    content: '';
-    display: inline-block;
-    width: 30px;
-    height: 1px;
-    background: var(--accent);
-    box-shadow: 0 0 10px var(--accent);
-  }
-
-  .hero h1 {
-    font-size: clamp(3.5rem, 9vw, 7rem);
-    font-weight: 700;
-    line-height: 1.0;
-    letter-spacing: -0.04em;
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.4s forwards;
-  }
-
-  .hero h1 .accent-word {
-    background: linear-gradient(135deg, var(--accent), #e0ff66);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 30px var(--accent-glow));
-  }
-
-  .hero-desc {
-    font-size: clamp(1.1rem, 2.2vw, 1.35rem);
-    color: var(--fg-muted);
-    max-width: 540px;
-    line-height: 1.7;
-    margin-bottom: 3rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.6s forwards;
-  }
-
-  .hero-ctas {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.8s forwards;
-  }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: var(--code-font);
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--bg);
-    background: var(--accent);
-    padding: 0.85rem 2rem;
-    border-radius: 8px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: all 0.3s;
-    box-shadow: 0 0 30px var(--accent-glow), 0 4px 20px rgba(0,0,0,0.3);
-    position: relative;
-    overflow: hidden;
-  }
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%);
-    transform: translateX(-100%);
-    transition: transform 0.6s;
-  }
-  .btn-primary:hover::before { transform: translateX(100%); }
-  .btn-primary:hover {
-    box-shadow: 0 0 50px var(--accent-glow-strong), 0 8px 30px rgba(0,0,0,0.4);
-    transform: translateY(-2px);
-  }
-
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: var(--code-font);
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--accent);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: gap 0.3s, text-shadow 0.3s;
-  }
-  .btn-secondary:hover {
-    gap: 1rem;
-    text-shadow: 0 0 20px var(--accent-glow);
-  }
-  .btn-secondary svg { transition: transform 0.3s; }
-  .btn-secondary:hover svg { transform: translateX(4px); }
-
-  /* ── SECTION SHARED ── */
-  section {
-    padding: 8rem var(--gutter);
-    max-width: var(--max-w);
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .section-label {
-    font-family: var(--code-font);
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--fg-muted);
-    margin-bottom: 3.5rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--surface-border);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .section-label span {
-    color: var(--accent);
-    text-shadow: 0 0 20px var(--accent-glow);
-  }
-
-  /* ── GRADIENT DIVIDERS ── */
-  .gradient-divider {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 var(--gutter);
-    height: 1px;
-    position: relative;
-  }
-
-  .gradient-divider::after {
-    content: '';
-    display: block;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent) 20%, rgba(200,255,0,0.3) 50%, var(--accent) 80%, transparent);
-    opacity: 0.3;
-  }
-
-  /* ── IMAGE SECTIONS ── */
-  .img-section {
-    width: 100%;
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 var(--gutter);
-    position: relative;
-  }
-
-  .img-banner {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 1px solid var(--glass-border);
-    display: block;
-    opacity: 0.7;
-    transition: opacity 0.5s;
-    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  }
-
-  .img-banner:hover { opacity: 0.9; }
-
-  /* ── PRODUCTS (GLASSMORPHISM) ── */
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .product-card {
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 2.5rem;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-
-  .product-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 16px;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(200,255,0,0), rgba(200,255,0,0));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    transition: background 0.4s;
-    pointer-events: none;
-  }
-
-  .product-card:hover::before {
-    background: linear-gradient(135deg, rgba(200,255,0,0.4), rgba(200,255,0,0.05), rgba(200,255,0,0.2));
-  }
-
-  .product-card:hover {
-    transform: translateY(-8px);
-    background: rgba(255,255,255,0.06);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px var(--accent-glow);
-  }
-
-  .product-card.featured {
-    border-color: rgba(200,255,0,0.2);
-    background: rgba(200,255,0,0.03);
-  }
-
-  .product-card.featured::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    box-shadow: 0 0 20px var(--accent-glow);
-  }
-
-  .product-card .card-img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--glass-border);
-    opacity: 0.8;
-    transition: opacity 0.3s;
-  }
-
-  .product-card:hover .card-img { opacity: 1; }
-
-  .product-badge {
-    font-family: var(--code-font);
-    font-size: 0.65rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    padding: 0.35rem 0.8rem;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 1.25rem;
-  }
-  .product-badge.live {
-    background: rgba(200, 255, 0, 0.12);
-    color: var(--accent);
-    box-shadow: 0 0 15px rgba(200,255,0,0.08);
-    border: 1px solid rgba(200,255,0,0.15);
-  }
-  .product-badge.active {
-    background: rgba(138, 135, 128, 0.12);
-    color: var(--fg-muted);
-    border: 1px solid rgba(138,135,128,0.15);
-  }
-  .product-badge.soon {
-    background: rgba(138, 135, 128, 0.08);
-    color: var(--fg-muted);
-    border: 1px solid rgba(138,135,128,0.1);
-    font-style: italic;
-  }
-
-  .product-name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.75rem;
-    transition: letter-spacing 0.3s;
-  }
-  .product-card:hover .product-name { letter-spacing: 0.02em; }
-  .product-name .klar { color: var(--fg-muted); font-weight: 400; }
-
-  .product-desc {
-    color: var(--fg-muted);
-    font-size: 0.92rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-  }
-
-  .product-features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-  }
-  .product-features span {
-    font-family: var(--code-font);
-    font-size: 0.68rem;
-    letter-spacing: 0.06em;
-    padding: 0.35rem 0.75rem;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.04);
-    color: var(--fg-muted);
-    border: 1px solid rgba(255,255,255,0.06);
-    transition: all 0.3s;
-  }
-  .product-features span:hover {
-    background: rgba(200,255,0,0.08);
-    border-color: rgba(200,255,0,0.2);
-    color: var(--accent);
-  }
-
-  .product-link {
-    font-family: var(--code-font);
-    font-size: 0.8rem;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: gap 0.3s, text-shadow 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-  .product-link:hover { gap: 0.9rem; }
-  .product-link.primary {
-    color: var(--accent);
-    text-shadow: 0 0 20px var(--accent-glow);
-  }
-  .product-link.primary:hover { text-shadow: 0 0 30px var(--accent-glow-strong); }
-  .product-link.secondary { color: var(--fg-muted); }
-  .product-link.secondary:hover { color: var(--fg); }
-
-  /* ── STATS SECTION ── */
-  .stats-section {
-    padding: 6rem var(--gutter);
-    max-width: var(--max-w);
-    margin: 0 auto;
-  }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .stat-card {
-    text-align: center;
-    padding: 3rem 2rem;
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s;
-  }
-
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 200px; height: 200px;
-    background: radial-gradient(circle, var(--accent-glow), transparent 70%);
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.4s;
-  }
-
-  .stat-card:hover::before { opacity: 1; }
-
-  .stat-card:hover {
-    border-color: rgba(200,255,0,0.2);
-    transform: translateY(-4px);
-  }
-
-  .stat-number {
-    font-family: var(--code-font);
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-    font-weight: 700;
-    color: var(--accent);
-    text-shadow: 0 0 40px var(--accent-glow);
-    margin-bottom: 0.75rem;
-    position: relative;
-    display: inline-block;
-  }
-
-  .stat-label {
-    font-size: 0.95rem;
-    color: var(--fg-muted);
-    letter-spacing: 0.02em;
-  }
-
-  /* ── PRINCIPLES ── */
-  .principles-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .principle {
-    padding: 2.5rem;
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    background: var(--glass);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    transition: all 0.4s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .principle::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 2px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-    opacity: 0;
-    transition: opacity 0.4s;
-  }
-
-  .principle:hover::before { opacity: 1; }
-
-  .principle:hover {
-    border-color: rgba(200,255,0,0.15);
-    transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2), 0 0 30px var(--accent-glow);
-  }
-
-  .principle-number {
-    font-family: var(--code-font);
-    font-size: 0.72rem;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.12em;
-    text-shadow: 0 0 15px var(--accent-glow);
-  }
-
-  .principle h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.85rem;
-    transition: letter-spacing 0.3s;
-  }
-  .principle:hover h3 { letter-spacing: 0.02em; }
-
-  .principle p {
-    color: var(--fg-muted);
-    font-size: 0.9rem;
-    line-height: 1.75;
-  }
-
-  /* ── FOCUS ── */
-  .focus-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-
-  .focus-main h2 {
-    font-size: clamp(2rem, 4.5vw, 3rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-  }
-
-  .focus-main h2 .accent-word {
-    background: linear-gradient(135deg, var(--accent), #e0ff66);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .focus-main p {
-    color: var(--fg-muted);
-    font-size: 0.95rem;
-    line-height: 1.8;
-    margin-bottom: 1.25rem;
-  }
-
-  .focus-img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 1px solid var(--glass-border);
-    margin-bottom: 2rem;
-    opacity: 0.8;
-    transition: opacity 0.4s;
-  }
-  .focus-img:hover { opacity: 1; }
-
-  .focus-aside {
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 2.5rem;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    transition: border-color 0.4s;
-  }
-  .focus-aside:hover { border-color: rgba(200,255,0,0.15); }
-
-  .focus-aside h3 {
-    font-family: var(--code-font);
-    font-size: 0.75rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    text-shadow: 0 0 15px var(--accent-glow);
-  }
-
-  .focus-list { list-style: none; }
-
-  .focus-list li {
-    padding: 0.85rem 0;
-    border-bottom: 1px solid var(--surface-border);
-    color: var(--fg-muted);
-    font-size: 0.92rem;
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    transition: color 0.3s, padding-left 0.3s;
-  }
-  .focus-list li:last-child { border-bottom: none; }
-  .focus-list li::before {
-    content: '>';
-    color: var(--accent);
-    font-family: var(--code-font);
-    font-size: 0.85rem;
-    text-shadow: 0 0 10px var(--accent-glow);
-    transition: transform 0.3s;
-  }
-  .focus-list li:hover {
-    color: var(--fg);
-    padding-left: 0.5rem;
-  }
-  .focus-list li:hover::before { transform: translateX(4px); }
-
-  .focus-content.focus-full {
-    grid-template-columns: 1fr;
-  }
-
-  /* ── TESTIMONIAL ── */
-  .testimonial-section {
-    padding: 4rem var(--gutter);
-    max-width: var(--max-w);
-    margin: 0 auto;
-  }
-
-  .testimonial-card {
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-left: 3px solid var(--accent);
-    border-radius: 16px;
-    padding: 3rem;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    position: relative;
-    margin: 0;
-    font-style: normal;
-  }
-
-  .testimonial-card p {
-    font-size: clamp(1.05rem, 2vw, 1.25rem);
-    line-height: 1.8;
-    color: var(--fg);
-    margin-bottom: 1.5rem;
-  }
-
-  .testimonial-card cite {
-    font-family: var(--code-font);
-    font-size: 0.82rem;
-    color: var(--fg-muted);
-    font-style: normal;
-    letter-spacing: 0.04em;
-  }
-
-  /* ── HOW IT WORKS ── */
-  .how-it-works-section {
-    padding: 8rem var(--gutter);
-    max-width: var(--max-w);
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .step-card {
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    padding: 2.5rem;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    transition: all 0.4s;
-  }
-
-  .step-card:hover {
-    border-color: rgba(200,255,0,0.15);
-    transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2), 0 0 30px var(--accent-glow);
-  }
-
-  .step-number {
-    font-family: var(--code-font);
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    font-weight: 700;
-    color: var(--accent);
-    text-shadow: 0 0 30px var(--accent-glow);
-    margin-bottom: 1.25rem;
-  }
-
-  .step-card h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.75rem;
-  }
-
-  .step-card p {
-    color: var(--fg-muted);
-    font-size: 0.92rem;
-    line-height: 1.7;
-  }
-
-  /* ── CONTACT ── */
-  .contact-section {
-    text-align: center;
-    padding: 10rem var(--gutter);
-    position: relative;
-  }
-
-  .contact-section::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(200,255,0,0.04), transparent 70%);
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-  }
-
-  .contact-section h2 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    margin-bottom: 1.5rem;
-    line-height: 1.05;
-  }
-
-  .contact-section h2 .accent-word {
-    background: linear-gradient(135deg, var(--accent), #e0ff66);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 30px var(--accent-glow));
-  }
-
-  .contact-section p {
-    color: var(--fg-muted);
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .contact-email {
-    font-family: var(--code-font);
-    font-size: 0.95rem;
-    color: var(--accent);
-    display: inline-block;
-    margin-top: 2rem;
-    padding: 0.85rem 2.5rem;
-    border: 1px solid rgba(200,255,0,0.3);
-    border-radius: 8px;
-    transition: all 0.4s;
-    position: relative;
-    overflow: hidden;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    box-shadow: 0 0 20px rgba(200,255,0,0.05);
-  }
-  .contact-email::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    z-index: -1;
-  }
-  .contact-email:hover::before { transform: scaleX(1); }
-  .contact-email:hover {
-    color: var(--bg);
-    border-color: var(--accent);
-    box-shadow: 0 0 40px var(--accent-glow-strong);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--surface-border);
-    padding: 2.5rem var(--gutter);
-    max-width: var(--max-w);
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .footer-left {
-    font-family: var(--code-font);
-    font-size: 0.72rem;
-    color: var(--fg-muted);
-    letter-spacing: 0.06em;
-  }
-
-  .footer-right {
-    display: flex;
-    gap: 2rem;
-  }
-  .footer-right a {
-    font-size: 0.8rem;
-    color: var(--fg-muted);
-    transition: color 0.3s;
-    letter-spacing: 0.04em;
-  }
-  .footer-right a:hover { color: var(--accent); }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    .products-grid { grid-template-columns: 1fr; }
-    .steps-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .stats-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .focus-content { grid-template-columns: 1fr; gap: 2.5rem; }
-    .nav-links { display: none; }
-    .nav-mobile-toggle { display: block; }
-    nav.menu-open .nav-links {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 100%;
-      left: 0; right: 0;
-      background: rgba(5, 5, 8, 0.95);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      padding: 1.5rem var(--gutter) 2rem;
-      border-bottom: 1px solid var(--glass-border);
-      gap: 1.25rem;
-    }
-    nav.menu-open .nav-links .nav-cta {
-      text-align: center;
-      display: block;
-    }
-    .hero-3d-grid { opacity: 0.4; width: 100%; right: -20%; }
-  }
-
-  @media (max-width: 600px) {
-    .hero h1 { font-size: 2.8rem; }
-    .product-card { padding: 1.75rem; }
-    section { padding: 5rem var(--gutter); }
-    .stat-card { padding: 2rem 1.5rem; }
-    .contact-section { padding: 6rem var(--gutter); }
-    .img-banner { height: 200px; }
-  }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #f2ede4;
+  --card-bg: #faf8f4;
+  --accent: #c8ff00;
+  --accent-soft: #e0f870;
+  --accent-muted: #f0fbb0;
+  --heading: #1a1a1a;
+  --body: #4a4a46;
+  --muted: #8a8880;
+  --subtle: #b5b0a6;
+  --border: #e8e3d9;
+  --border-strong: #d4cfc5;
+  --dark-bg: #1a1a1a;
+  --dark-card: #262624;
+  --dark-border: #3a3a36;
+  --dark-muted: #6a6a64;
+  --text-on-accent: #3a5a00;
+  --max-w: 1100px;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--accent); color: var(--heading); }
+
+a { color: inherit; text-decoration: none; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--heading); }
+h1 { font-weight: 700; letter-spacing: -0.03em; }
+h2 { font-weight: 600; letter-spacing: -0.02em; }
+h3 { font-weight: 600; letter-spacing: -0.02em; }
+
+.label {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-on-accent);
+  background: var(--accent-muted);
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--heading);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: filter 0.2s, transform 0.15s;
+}
+.btn-primary:hover { filter: brightness(0.95); transform: translateY(-1px); }
+
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--heading);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border-strong);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.btn-secondary:hover { border-color: var(--heading); transform: translateY(-1px); }
+
+.btn-dark {
+  display: inline-block;
+  background: var(--dark-bg);
+  color: var(--card-bg);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: filter 0.2s, transform 0.15s;
+}
+.btn-dark:hover { filter: brightness(1.3); transform: translateY(-1px); }
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1rem var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(242, 237, 228, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, background 0.3s;
+}
+nav.scrolled {
+  border-bottom-color: var(--border);
+  background: rgba(242, 237, 228, 0.95);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+.nav-logo-img { height: 24px; width: auto; }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.nav-link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--body);
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--heading); }
+
+.nav-cta {
+  background: var(--accent);
+  color: var(--heading);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: filter 0.2s;
+}
+.nav-cta:hover { filter: brightness(0.95); }
+
+/* ── HERO ── */
+.hero {
+  padding: 160px 0 96px;
+  text-align: center;
+}
+.hero .label { margin-bottom: 24px; }
+.hero h1 {
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  line-height: 1.1;
+  max-width: 800px;
+  margin: 0 auto 24px;
+}
+.hero p {
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  max-width: 620px;
+  margin: 0 auto 40px;
+  color: var(--body);
+  line-height: 1.7;
+}
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── PAIN SECTION ── */
+.pain {
+  padding: 96px 0;
+  text-align: center;
+}
+.pain .label { color: var(--body); background: var(--border); }
+.pain h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  line-height: 1.2;
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+.pain-copy {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: left;
+}
+.pain-copy p {
+  margin-bottom: 24px;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+.pain-copy p:last-child { margin-bottom: 0; }
+.pain-copy strong {
+  color: var(--heading);
+  font-weight: 500;
+}
+
+/* ── SOLUTION SECTION ── */
+.solution {
+  padding: 96px 0;
+  text-align: center;
+}
+.solution h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  line-height: 1.2;
+  max-width: 700px;
+  margin: 0 auto 12px;
+}
+.solution .price-msg {
+  font-size: 1.15rem;
+  color: var(--text-on-accent);
+  background: var(--accent-muted);
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-bottom: 48px;
+  font-weight: 500;
+}
+
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  text-align: left;
+}
+.feature-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 32px;
+}
+.feature-card .icon-wrap {
+  width: 48px;
+  height: 48px;
+  background: var(--accent-muted);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.feature-card .icon-wrap svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--text-on-accent);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.feature-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+}
+.feature-card p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--body);
+}
+
+/* ── CALCULATOR SECTION ── */
+.calculator-section {
+  padding: 96px 0;
+  text-align: center;
+}
+.calculator-section h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  line-height: 1.2;
+  max-width: 700px;
+  margin: 0 auto 48px;
+}
+
+.calc-wrap {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 48px;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.calc-input-group {
+  margin-bottom: 32px;
+}
+.calc-input-group label {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--heading);
+  margin-bottom: 12px;
+}
+
+.slider-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.slider-wrap input[type="range"] {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  outline: none;
+}
+.slider-wrap input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  background: var(--accent);
+  border: 2px solid var(--text-on-accent);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.slider-wrap input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  background: var(--accent);
+  border: 2px solid var(--text-on-accent);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.slider-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  color: var(--heading);
+  min-width: 48px;
+  text-align: right;
+}
+
+.fee-options {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.fee-btn {
+  padding: 10px 20px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 6px;
+  background: transparent;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--body);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.fee-btn:hover { border-color: var(--heading); }
+.fee-btn.active {
+  background: var(--heading);
+  color: var(--card-bg);
+  border-color: var(--heading);
+}
+
+.calc-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 32px 0;
+}
+
+.calc-results {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.calc-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 1rem;
+}
+.calc-result-row .label-text { color: var(--muted); }
+.calc-result-row .value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--heading);
+}
+
+.calc-savings-row {
+  background: var(--accent-muted);
+  margin: 0 -24px;
+  padding: 20px 24px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.calc-savings-row .label-text {
+  font-weight: 500;
+  color: var(--text-on-accent);
+}
+.calc-savings-row .value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text-on-accent);
+}
+
+.calc-monthly-note {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.calc-edge-case {
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-style: italic;
+  display: none;
+}
+
+.calc-cta {
+  margin-top: 40px;
+}
+
+/* ── GUARANTEE (DARK SECTION) ── */
+.guarantee {
+  background: var(--dark-bg);
+  padding: 96px 0;
+  text-align: center;
+}
+.guarantee h2 {
+  color: var(--card-bg);
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  line-height: 1.25;
+  max-width: 650px;
+  margin: 0 auto 24px;
+}
+.guarantee p {
+  color: var(--dark-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ── SOCIAL PROOF ── */
+.social-proof {
+  background: var(--dark-bg);
+  padding: 0 0 96px;
+  text-align: center;
+}
+.social-proof blockquote {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  color: var(--card-bg);
+  letter-spacing: -0.02em;
+  max-width: 600px;
+  margin: 0 auto 16px;
+  line-height: 1.35;
+}
+.social-proof blockquote::before { content: "\201C"; }
+.social-proof blockquote::after { content: "\201D"; }
+.social-proof cite {
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dark-muted);
+}
+
+/* ── FOUNDING PARTNERS ── */
+.founding {
+  padding: 96px 0;
+  text-align: center;
+}
+.founding h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.founding > .container > p {
+  font-size: 1.05rem;
+  max-width: 580px;
+  margin: 0 auto 48px;
+  line-height: 1.7;
+}
+.founding-counter {
+  margin-bottom: 40px;
+}
+.founding-counter .number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 8vw, 5rem);
+  color: var(--text-on-accent);
+  line-height: 1;
+  -webkit-text-stroke: 0;
+}
+.founding-counter .number-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* ── FOUNDING BONUSES ── */
+.founding-bonuses {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 580px;
+  margin: 0 auto 48px;
+  text-align: left;
+}
+.bonus-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+}
+.bonus-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.bonus-header h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+.bonus-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+.bonus-tag.accent {
+  background: var(--accent-muted);
+  color: var(--text-on-accent);
+}
+.bonus-tag.neutral {
+  background: var(--border);
+  color: var(--body);
+}
+.bonus-card p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--body);
+  margin: 0;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 48px 0;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.footer-left {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.footer-left a { color: var(--body); transition: color 0.2s; }
+.footer-left a:hover { color: var(--heading); }
+.footer-right {
+  display: flex;
+  gap: 24px;
+  font-size: 0.9rem;
+}
+.footer-right a {
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.footer-right a:hover { color: var(--heading); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hero { padding: 130px 0 64px; }
+  .pain, .solution, .calculator-section, .founding { padding: 64px 0; }
+  .guarantee, .social-proof { padding: 64px 0; }
+  .social-proof { padding-top: 0; }
+
+  .calc-wrap { padding: 32px 24px; }
+  .calc-savings-row { margin: 0 -12px; padding: 16px 12px; }
+
+  .nav-right .nav-link { display: none; }
+  .nav-cta { font-size: 0.85rem; padding: 8px 16px; }
+
+  .feature-cards { grid-template-columns: 1fr; }
+
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
 </style>
 </head>
 <body>
 
-<!-- ANIMATED MESH BACKGROUND -->
-<div class="mesh-bg">
-  <div class="orb"></div>
-  <div class="orb"></div>
-  <div class="orb"></div>
-</div>
-
-<!-- PARTICLE CANVAS -->
-<canvas id="particleCanvas"></canvas>
-
-<!-- CONTENT -->
-<div class="content-wrap">
-
-<!-- NAV -->
-<nav id="nav">
-  <a href="#" class="nav-logo"><img src="logo.png" alt="Klar Systems" height="36" style="display:block;"></a>
-  <button class="nav-mobile-toggle" onclick="this.closest('nav').classList.toggle('menu-open')" aria-label="Menu">&#9776;</button>
-  <div class="nav-links">
-    <a href="#systems">Systems</a>
-    <a href="#focus">Focus</a>
-    <a href="#contact">Contact</a>
-    <a href="https://booking.klarsystems.com/" class="nav-cta">Get Booking</a>
+<!-- ── NAV ── -->
+<nav>
+  <a href="/" class="nav-left">
+    <img src="/public/logos/klar-logo-black.svg" alt="Klar" class="nav-logo-img">
+  </a>
+  <div class="nav-right">
+    <a href="#solution" class="nav-link">Bookings</a>
+    <a href="#contact" class="nav-link">Contact</a>
+    <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="nav-cta">Book a Free Call</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-3d-grid">
-    <div class="grid-plane"></div>
-    <div class="grid-dots">
-      <div class="grid-dot"></div>
-      <div class="grid-dot"></div>
-      <div class="grid-dot"></div>
-      <div class="grid-dot"></div>
-      <div class="grid-dot"></div>
-      <div class="grid-dot"></div>
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="container">
+    <span class="label">Klar Bookings</span>
+    <h1>Stop Renting Customers. Start Owning Them.</h1>
+    <p>Your booking platform charges you every time a customer sits down &mdash; then keeps the customer data. Klar Bookings gives you a flat-rate system where every guest is yours, every channel is free, and every booking costs you nothing extra.</p>
+    <div class="hero-ctas">
+      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Book Your Free Cost Review</a>
+      <a href="#calculator" class="btn-secondary">See what you'd save &#8595;</a>
     </div>
   </div>
-  <div class="hero-label">Built for Finnish restaurants</div>
-  <h1>Stop paying<br><span class="accent-word">per cover.</span></h1>
-  <p class="hero-desc">Restaurants switch from Quandoo to Klar and keep 100% of their revenue. Set up in 3 minutes.</p>
-  <div class="hero-ctas">
-    <a href="https://booking.klarsystems.com/" class="btn-primary">
-      Get Booking
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
-    <a href="#systems" class="btn-secondary">
-      See our systems
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
-  </div>
-</div>
+</section>
 
-<!-- STATS -->
-<div class="stats-section">
-  <div class="stats-grid">
-    <div class="stat-card reveal">
-      <div class="stat-number" data-target="0" data-suffix="">0</div>
-      <div class="stat-label">€0 per-cover fees</div>
-    </div>
-    <div class="stat-card reveal reveal-delay-1">
-      <div class="stat-number" data-target="3" data-suffix=" min">0</div>
-      <div class="stat-label">Setup time</div>
-    </div>
-    <div class="stat-card reveal reveal-delay-2">
-      <div class="stat-number" data-target="100" data-suffix="%">0</div>
-      <div class="stat-label">Your data, always</div>
+<!-- ── PAIN ── -->
+<section class="pain">
+  <div class="container">
+    <span class="label">The Problem</span>
+    <h2>Your booking system is selling your customers back to you. Every month.</h2>
+    <div class="pain-copy">
+      <p>A regular who books through Quandoo every Friday? You pay &euro;2&ndash;&euro;3 every single week for a customer who already knows and loves your restaurant. That's &euro;100+ per year for one loyal guest. Multiply that across all your regulars.</p>
+      <p>200 bookings a month on Quandoo Premium? &euro;99 + &euro;400 in commission = &euro;499/month. 500 bookings? &euro;99 + &euro;1,000 = &euro;1,099/month. That's over &euro;13,000 a year. You're being punished for being successful.</p>
+      <p>And the guest data &mdash; visit history, preferences, contact details? That lives on Quandoo's servers. Not yours. They use it to promote other restaurants &mdash; your competitors &mdash; to your own customers. You're building someone else's business with every booking.</p>
+      <p>Most of your Quandoo bookings aren't people browsing quandoo.fi looking for dinner. They're people who Googled your restaurant by name and happened to book through Quandoo's widget. You're paying commission on customers who were already coming to you.</p>
+      <p>Want a floor plan? Upgrade to Premium. Want a waitlist? Premium. Analytics? Premium. CRM tags to remember your regulars? Premium. Even basic business intelligence costs you &euro;99/month before a single booking is made.</p>
     </div>
   </div>
-</div>
+</section>
 
-<!-- TESTIMONIAL -->
-<div class="testimonial-section">
-  <blockquote class="testimonial-card reveal">
-    <p>&ldquo;We switched from Quandoo and saved over &euro;400 per month. Setup took 5 minutes and my staff figured it out without any training.&rdquo;</p>
-    <cite>&mdash; Restaurant owner, Helsinki</cite>
-  </blockquote>
-</div>
+<!-- ── SOLUTION ── -->
+<section class="solution" id="solution">
+  <div class="container">
+    <span class="label">The Fix</span>
+    <h2>Own your customers. Show up everywhere. Pay zero per booking.</h2>
+    <div class="price-msg">&euro;199/month. Flat. Every booking through your website, Google, Instagram, Facebook &mdash; zero additional cost. Your 1st booking costs the same as your 500th.</div>
 
-<div class="gradient-divider"></div>
-
-<!-- PRODUCTS -->
-<section id="systems">
-  <div class="section-label reveal"><span>01</span> The booking system</div>
-  <div class="products-grid">
-
-    <!-- Klar Bookings -->
-    <div class="product-card featured reveal">
-      <div class="product-badge live">Live</div>
-      <h2 class="product-name"><span class="klar">Klar</span> Bookings</h2>
-      <p class="product-desc">Customers book in 30 seconds from your website. You manage everything on a tablet. No per-cover fees — ever.</p>
-      <div class="product-features">
-        <span>Book in 30 seconds</span>
-        <span>Guest history & allergies</span>
-        <span>Instant notifications</span>
-        <span>Tablet dashboard</span>
-        <span>One-line embed</span>
+    <div class="feature-cards">
+      <div class="feature-card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M9 4v6"/><path d="M15 4v6"/></svg>
+        </div>
+        <h3>Reservations</h3>
+        <p>Online booking widget for your website. Centralized dashboard, real-time notifications, table management, dining duration settings, guest notes and special requests.</p>
       </div>
-      <a href="https://booking.klarsystems.com/" class="product-link primary">
-        Get Booking
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-    </div>
 
-    <!-- Klar Sites -->
-    <div class="product-card reveal reveal-delay-1">
-      <div class="product-badge active">Active</div>
-      <h2 class="product-name"><span class="klar">Klar</span> Sites</h2>
-      <p class="product-desc">Websites for businesses that need to look sharp and load fast. Design, build, host — done in days.</p>
-      <div class="product-features">
-        <span>Custom design</span>
-        <span>Fast hosting</span>
-        <span>SEO ready</span>
+      <div class="feature-card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Guest CRM &mdash; Your Data, Not Theirs</h3>
+        <p>Full guest database with visit history, tags, preferences, allergies, celebrations. See who hasn't come back in a while. Your data lives on your account &mdash; not on a marketplace you don't control.</p>
       </div>
-      <a href="#contact" class="product-link secondary">
-        Get in touch
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-    </div>
 
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="how-it-works-section">
-  <div class="section-label reveal"><span>02</span> How it works</div>
-  <div class="steps-grid">
-    <div class="step-card reveal">
-      <div class="step-number">1</div>
-      <h3>Sign up</h3>
-      <p>Restaurant name, email, a 4-digit PIN. That's it.</p>
-    </div>
-    <div class="step-card reveal reveal-delay-1">
-      <div class="step-number">2</div>
-      <h3>Set your hours</h3>
-      <p>Tell us when you're open and how many tables you have.</p>
-    </div>
-    <div class="step-card reveal reveal-delay-2">
-      <div class="step-number">3</div>
-      <h3>Start taking bookings</h3>
-      <p>We add the widget to your website. Share your link anywhere.</p>
+      <div class="feature-card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>Done-For-You Everything</h3>
+        <p>Live in 48 hours. We migrate you from Quandoo, install the widget, set up Google Business booking, connect social media reservations, and run both systems in parallel. Zero downtime, zero work on your end.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="gradient-divider"></div>
+<!-- ── CALCULATOR ── -->
+<section class="calculator-section" id="calculator">
+  <div class="container">
+    <span class="label">The Math</span>
+    <h2>See what per-cover fees are actually costing you.</h2>
 
-<!-- FOCUS -->
-<section id="focus">
-  <div class="section-label reveal"><span>03</span> Who we work with</div>
-  <div class="focus-content focus-full">
-    <div class="focus-main reveal">
-      <h2>Right now,<br><span class="accent-word">restaurants.</span></h2>
-      <p>Built for Finnish restaurants who are tired of paying per-cover fees to Quandoo. You keep your customers, your data, and your revenue.</p>
-      <p>Set up in 3 minutes. Your staff learns it in 2. No contracts, cancel anytime.</p>
+    <div class="calc-wrap">
+      <div class="calc-input-group">
+        <label>Monthly bookings</label>
+        <div class="slider-wrap">
+          <input type="range" id="bookingsSlider" min="50" max="1000" value="300" step="10">
+          <span class="slider-value" id="bookingsValue">300</span>
+        </div>
+      </div>
+
+      <div class="calc-input-group">
+        <label>Per-booking fee</label>
+        <div class="fee-options">
+          <button class="fee-btn" data-fee="1.50">&euro;1.50</button>
+          <button class="fee-btn active" data-fee="2.00">&euro;2.00</button>
+          <button class="fee-btn" data-fee="2.50">&euro;2.50</button>
+          <button class="fee-btn" data-fee="3.00">&euro;3.00</button>
+        </div>
+      </div>
+
+      <div class="calc-divider"></div>
+
+      <div class="calc-results">
+        <div class="calc-result-row">
+          <span class="label-text">Your current annual cost</span>
+          <span class="value" id="currentCost">&euro;8,388</span>
+        </div>
+        <div class="calc-result-row">
+          <span class="label-text">With Klar</span>
+          <span class="value">&euro;2,388/year</span>
+        </div>
+        <div class="calc-savings-row" id="savingsRow">
+          <span class="label-text">You save</span>
+          <span class="value" id="savingsValue">&euro;6,000/year</span>
+        </div>
+        <div class="calc-monthly-note" id="monthlyNote">That's &euro;500 back in your pocket every month.</div>
+        <div class="calc-edge-case" id="edgeCase">At this volume, Klar costs about the same &mdash; but you'll never pay more as you grow.</div>
+      </div>
+
+      <div class="calc-cta">
+        <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Book a 15-min call &mdash; we'll pull up your actual numbers together</a>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="gradient-divider"></div>
-
-<!-- CONTACT -->
-<section id="contact" class="contact-section">
-  <div class="reveal">
-    <h2>Let's build<br><span class="accent-word">something.</span></h2>
-    <p>Klar Systems &middot; Helsinki, Finland</p>
-    <a href="mailto:guidance@klarsystems.com" class="contact-email">guidance@klarsystems.com</a>
+<!-- ── GUARANTEE ── -->
+<section class="guarantee">
+  <div class="container">
+    <h2>The &ldquo;More Savings or It's Free&rdquo; Guarantee</h2>
+    <p>If you don't save more money in your first month with Klar than you did with your old system, your second month is free. No questions, no hassle, no forms.</p>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-left">&copy; 2026 Klar Systems &middot; Helsinki</div>
-  <div class="footer-right">
-    <a href="https://booking.klarsystems.com/privacy">Privacy</a>
-    <a href="https://booking.klarsystems.com/terms">Terms</a>
+<!-- ── SOCIAL PROOF ── -->
+<section class="social-proof">
+  <div class="container">
+    <blockquote>Finally, a system that just works.</blockquote>
+    <cite>Restaurant owner, Helsinki</cite>
+  </div>
+</section>
+
+<!-- ── FOUNDING PARTNERS ── -->
+<section class="founding" id="founding">
+  <div class="container">
+    <span class="label">Founding 5</span>
+    <h2>Limited Partner Program</h2>
+    <p>We're building Klar alongside the restaurants that use it. The first 5 founding partners get &euro;199/month locked forever &mdash; even when the standard price goes to &euro;299 or higher. You shape the roadmap. You get hands-on setup for every channel. You get priority support directly from the founding team.</p>
+
+    <div class="founding-bonuses">
+      <div class="bonus-card">
+        <div class="bonus-header">
+          <h3>Done-For-You Migration</h3>
+          <span class="bonus-tag accent">Value &euro;350</span>
+        </div>
+        <p>We move you from Quandoo in 48 hours. Widget installed, both systems running in parallel. Zero downtime.</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-header">
+          <h3>Done-For-You Discovery Setup</h3>
+          <span class="bonus-tag accent">Value &euro;299</span>
+        </div>
+        <p>We set you up everywhere customers actually find you. Google Business Profile optimized with direct booking, plus reservation links on your Instagram and Facebook. Customers book straight from search and social &mdash; zero commission.</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-header">
+          <h3>The &lsquo;5x Customer&rsquo; Playbook</h3>
+          <span class="bonus-tag neutral">Coming Soon</span>
+        </div>
+        <p>How to use your guest CRM to re-engage lapsed guests, run birthday campaigns, and fill mid-week tables without discounting.</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-header">
+          <h3>Priority Founding Partner Support</h3>
+        </div>
+        <p>Direct line to the founding team. Same-day response. Your feedback shapes what we build next.</p>
+      </div>
+    </div>
+
+    <div class="founding-counter">
+      <div class="number">4</div>
+      <div class="number-label">spots remaining</div>
+    </div>
+    <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Claim Your Founding Spot</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer id="contact">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        Klar Systems Oy &middot; Helsinki<br>
+        <a href="mailto:lomberg@klarsystems.com">lomberg@klarsystems.com</a>
+      </div>
+      <div class="footer-right">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <span style="color: var(--subtle)">&copy; 2026</span>
+      </div>
+    </div>
   </div>
 </footer>
 
-</div><!-- /content-wrap -->
-
 <script>
-  // ── Nav scroll ──
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
+// ── NAV SCROLL ──
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ── CALCULATOR ──
+const slider = document.getElementById('bookingsSlider');
+const bookingsVal = document.getElementById('bookingsValue');
+const currentCostEl = document.getElementById('currentCost');
+const savingsValueEl = document.getElementById('savingsValue');
+const savingsRow = document.getElementById('savingsRow');
+const monthlyNote = document.getElementById('monthlyNote');
+const edgeCase = document.getElementById('edgeCase');
+const feeBtns = document.querySelectorAll('.fee-btn');
+
+let perBookingFee = 2.00;
+
+function formatEuro(n) {
+  return '\u20AC' + Math.round(n).toLocaleString('en-US');
+}
+
+function updateCalc() {
+  const bookings = parseInt(slider.value);
+  bookingsVal.textContent = bookings;
+
+  const currentMonthly = 99 + (bookings * perBookingFee);
+  const currentAnnual = currentMonthly * 12;
+  const klarAnnual = 199 * 12;
+  const annualSavings = currentAnnual - klarAnnual;
+  const monthlySavings = annualSavings / 12;
+
+  currentCostEl.textContent = formatEuro(currentAnnual);
+
+  if (annualSavings > 0) {
+    savingsRow.style.display = '';
+    savingsValueEl.textContent = formatEuro(annualSavings) + '/year';
+    monthlyNote.style.display = '';
+    monthlyNote.textContent = 'That\u2019s ' + formatEuro(monthlySavings) + ' back in your pocket every month.';
+    edgeCase.style.display = 'none';
+  } else {
+    savingsRow.style.display = 'none';
+    monthlyNote.style.display = 'none';
+    edgeCase.style.display = 'block';
+  }
+}
+
+slider.addEventListener('input', updateCalc);
+
+feeBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    feeBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    perBookingFee = parseFloat(btn.dataset.fee);
+    updateCalc();
   });
+});
 
-  // ── Reveal on scroll ──
-  const reveals = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-  reveals.forEach(el => revealObserver.observe(el));
-
-  // ── Stats counter animation ──
-  const statNumbers = document.querySelectorAll('.stat-number');
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.dataset.target);
-        const suffix = el.dataset.suffix || '';
-        const duration = 2000;
-        const start = performance.now();
-
-        function animate(now) {
-          const elapsed = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const current = Math.round(eased * target);
-          el.textContent = current + suffix;
-          if (progress < 1) requestAnimationFrame(animate);
-        }
-
-        requestAnimationFrame(animate);
-        counterObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  statNumbers.forEach(el => counterObserver.observe(el));
-
-  // ── Particle dot grid ──
-  const canvas = document.getElementById('particleCanvas');
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  let mouse = { x: -1000, y: -1000 };
-
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    initParticles();
-  }
-
-  function initParticles() {
-    particles = [];
-    const spacing = 80;
-    const cols = Math.ceil(canvas.width / spacing) + 1;
-    const rows = Math.ceil(canvas.height / spacing) + 1;
-
-    for (let i = 0; i < cols; i++) {
-      for (let j = 0; j < rows; j++) {
-        particles.push({
-          baseX: i * spacing,
-          baseY: j * spacing,
-          x: i * spacing,
-          y: j * spacing,
-          size: 1,
-          baseSize: 1,
-        });
-      }
-    }
-  }
-
-  function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach(p => {
-      const dx = mouse.x - p.baseX;
-      const dy = mouse.y - p.baseY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      const maxDist = 150;
-
-      if (dist < maxDist) {
-        const force = (maxDist - dist) / maxDist;
-        p.x = p.baseX - dx * force * 0.3;
-        p.y = p.baseY - dy * force * 0.3;
-        p.size = p.baseSize + force * 2.5;
-      } else {
-        p.x += (p.baseX - p.x) * 0.08;
-        p.y += (p.baseY - p.y) * 0.08;
-        p.size += (p.baseSize - p.size) * 0.08;
-      }
-
-      const alpha = dist < maxDist ? 0.15 + ((maxDist - dist) / maxDist) * 0.5 : 0.08;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(200, 255, 0, ${alpha})`;
-      ctx.fill();
-    });
-
-    requestAnimationFrame(animateParticles);
-  }
-
-  window.addEventListener('mousemove', e => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
-
-  window.addEventListener('resize', resizeCanvas);
-  resizeCanvas();
-  animateParticles();
+updateCalc();
 </script>
 
 </body>
