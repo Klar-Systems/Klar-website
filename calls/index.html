@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klar Calls — Your AI Receptionist. As an Add-On.</title>
+<meta name="description" content="WhatsApp AI that answers customers 24/7, takes bookings, follows up with guests, and recovers missed calls. Plugs straight into your Klar system. From &euro;99/month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #f2ede4;
+  --card-bg: #faf8f4;
+  --accent: #c8ff00;
+  --accent-soft: #e0f870;
+  --accent-muted: #f0fbb0;
+  --heading: #1a1a1a;
+  --body: #4a4a46;
+  --muted: #8a8880;
+  --subtle: #b5b0a6;
+  --border: #e8e3d9;
+  --border-strong: #d4cfc5;
+  --dark-bg: #1a1a1a;
+  --dark-card: #262624;
+  --dark-border: #3a3a36;
+  --dark-muted: #6a6a64;
+  --text-on-accent: #3a5a00;
+  --max-w: 1100px;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--accent); color: var(--heading); }
+
+a { color: inherit; text-decoration: none; }
+
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--heading); }
+h1 { font-weight: 700; letter-spacing: -0.03em; }
+h2 { font-weight: 600; letter-spacing: -0.02em; }
+h3 { font-weight: 600; letter-spacing: -0.02em; }
+
+.label {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-on-accent);
+  background: var(--accent-muted);
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--heading);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: filter 0.2s, transform 0.15s;
+}
+.btn-primary:hover { filter: brightness(0.95); transform: translateY(-1px); }
+
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--heading);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border-strong);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.btn-secondary:hover { border-color: var(--heading); transform: translateY(-1px); }
+
+.btn-dark {
+  display: inline-block;
+  background: var(--dark-bg);
+  color: var(--card-bg);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: filter 0.2s, transform 0.15s;
+}
+.btn-dark:hover { filter: brightness(1.3); transform: translateY(-1px); }
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1rem var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(242, 237, 228, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, background 0.3s;
+}
+nav.scrolled {
+  border-bottom-color: var(--border);
+  background: rgba(242, 237, 228, 0.95);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+.nav-logo-img { height: 24px; width: auto; }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.nav-link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--body);
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--heading); }
+.nav-link.active { color: var(--heading); font-weight: 500; }
+
+.nav-cta {
+  background: var(--accent);
+  color: var(--heading);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: filter 0.2s;
+}
+.nav-cta:hover { filter: brightness(0.95); }
+
+/* ── HERO ── */
+.hero {
+  padding: 160px 0 96px;
+  text-align: center;
+}
+.hero .label { margin-bottom: 24px; }
+.hero h1 {
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  line-height: 1.1;
+  max-width: 800px;
+  margin: 0 auto 24px;
+}
+.hero p {
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  max-width: 640px;
+  margin: 0 auto 40px;
+  color: var(--body);
+  line-height: 1.7;
+}
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── COMPARISON SECTION ── */
+.compare {
+  padding: 96px 0;
+}
+.compare > .container > .label { display: block; text-align: center; }
+.compare h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  line-height: 1.2;
+  max-width: 700px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.compare-col {
+  border-radius: 10px;
+  padding: 36px;
+}
+
+.compare-col.them {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+}
+
+.compare-col.us {
+  background: var(--heading);
+  border: 1px solid var(--dark-border);
+}
+
+.compare-col-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+.compare-col.them .compare-col-label {
+  background: var(--border);
+  color: var(--body);
+}
+.compare-col.us .compare-col-label {
+  background: rgba(200, 255, 0, 0.15);
+  color: var(--accent);
+}
+
+.compare-price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.compare-col.them .compare-price { color: var(--heading); }
+.compare-col.us .compare-price { color: var(--accent); }
+
+.compare-price-note {
+  font-size: 0.9rem;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+.compare-col.them .compare-price-note { color: var(--muted); }
+.compare-col.us .compare-price-note { color: var(--dark-muted); }
+
+.compare-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.compare-list li {
+  padding: 11px 0;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.55;
+}
+.compare-col.them .compare-list li {
+  color: var(--body);
+  border-bottom: 1px solid var(--border);
+}
+.compare-col.us .compare-list li {
+  color: rgba(250, 248, 244, 0.85);
+  border-bottom: 1px solid var(--dark-border);
+}
+.compare-list li:last-child { border-bottom: none; }
+.compare-list .ico {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  margin-top: 3px;
+}
+.compare-col.them .compare-list .ico { color: var(--subtle); }
+.compare-col.us .compare-list .ico { color: var(--accent); }
+
+/* ── FEATURES SECTION ── */
+.features {
+  padding: 96px 0;
+  text-align: center;
+}
+.features h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  line-height: 1.2;
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  text-align: left;
+}
+
+.feat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px;
+}
+.feat-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--accent-muted);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+}
+.feat-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+.feat-card p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--body);
+}
+
+/* ── BOTTOM LINE (DARK SECTION) ── */
+.bottom-line {
+  background: var(--dark-bg);
+  padding: 96px 0;
+  text-align: center;
+}
+.bottom-line h2 {
+  color: var(--card-bg);
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  line-height: 1.3;
+  max-width: 720px;
+  margin: 0 auto 24px;
+}
+.bottom-line p {
+  color: var(--dark-muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+.bottom-line p strong {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ── HOW IT WORKS ── */
+.how-it-works {
+  padding: 96px 0;
+  text-align: center;
+}
+.how-it-works h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  line-height: 1.2;
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  text-align: left;
+}
+
+.step {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 32px;
+}
+.step-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--text-on-accent);
+  margin-bottom: 12px;
+}
+.step h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+.step p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--body);
+}
+
+/* ── ADDON PRICING ── */
+.addon-pricing {
+  padding: 96px 0;
+  text-align: center;
+}
+.addon-pricing h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.addon-pricing .price-msg {
+  font-size: 1.15rem;
+  color: var(--text-on-accent);
+  background: var(--accent-muted);
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+.addon-pricing > .container > p {
+  font-size: 1.05rem;
+  max-width: 560px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 48px 0;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.footer-left {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.footer-left a { color: var(--body); transition: color 0.2s; }
+.footer-left a:hover { color: var(--heading); }
+.footer-right {
+  display: flex;
+  gap: 24px;
+  font-size: 0.9rem;
+}
+.footer-right a {
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.footer-right a:hover { color: var(--heading); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hero { padding: 130px 0 64px; }
+  .compare, .features, .how-it-works, .addon-pricing { padding: 64px 0; }
+  .bottom-line { padding: 64px 0; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .nav-right .nav-link { display: none; }
+  .nav-cta { font-size: 0.85rem; padding: 8px 16px; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .features-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="/" class="nav-left">
+    <img src="/public/logos/klar-logo-black.svg" alt="Klar" class="nav-logo-img">
+  </a>
+  <div class="nav-right">
+    <a href="/#solution" class="nav-link">Bookings</a>
+    <a href="/calls" class="nav-link active">Calls</a>
+    <a href="/#contact" class="nav-link">Contact</a>
+    <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="nav-cta">Book a Free Call</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="container">
+    <span class="label">Klar Calls &mdash; Add-On</span>
+    <h1>Your AI Receptionist. On Top of Your Klar System.</h1>
+    <p>A WhatsApp AI agent that answers customers 24/7, takes bookings directly into Klar Bookings, follows up with past guests, and recovers missed calls. One system, one provider, a fraction of what standalone tools charge.</p>
+    <div class="hero-ctas">
+      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Add Klar Calls to My System</a>
+      <a href="#compare" class="btn-secondary">See the comparison &#8595;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPARISON ── -->
+<section class="compare" id="compare">
+  <div class="container">
+    <span class="label">The Math</span>
+    <h2>Standalone WhatsApp tools charge &euro;199&ndash;999/month. Just for messaging.</h2>
+
+    <div class="compare-grid">
+
+      <div class="compare-col them">
+        <div class="compare-col-label">Standalone automation tools</div>
+        <div class="compare-price">&euro;199&ndash;999/mo</div>
+        <div class="compare-price-note">Just the messaging layer. Everything else is your problem.</div>
+        <ul class="compare-list">
+          <li><span class="ico">&times;</span> No website included &mdash; bring your own</li>
+          <li><span class="ico">&times;</span> No booking system &mdash; integrate it yourself</li>
+          <li><span class="ico">&times;</span> No Google Business setup</li>
+          <li><span class="ico">&times;</span> Custom integration work for every client</li>
+          <li><span class="ico">&times;</span> Data scattered across separate tools and vendors</li>
+          <li><span class="ico">&times;</span> You coordinate between providers</li>
+          <li><span class="ico">&times;</span> They sell software. You figure out the outcome.</li>
+        </ul>
+      </div>
+
+      <div class="compare-col us">
+        <div class="compare-col-label">Klar Calls add-on</div>
+        <div class="compare-price">&euro;99/mo</div>
+        <div class="compare-price-note">On top of your existing Klar subscription. Everything connected.</div>
+        <ul class="compare-list">
+          <li><span class="ico">&#10003;</span> Plugs into your Klar website &mdash; already live</li>
+          <li><span class="ico">&#10003;</span> Connected to Klar Bookings from day one</li>
+          <li><span class="ico">&#10003;</span> Google Business profile already set up by us</li>
+          <li><span class="ico">&#10003;</span> Zero integration &mdash; it&rsquo;s all one system</li>
+          <li><span class="ico">&#10003;</span> Guest data, bookings &amp; messages in one place</li>
+          <li><span class="ico">&#10003;</span> One provider handles everything</li>
+          <li><span class="ico">&#10003;</span> We sell the outcome: more customers, automatically</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT THE AI DOES ── -->
+<section class="features">
+  <div class="container">
+    <span class="label">What It Does</span>
+    <h2>It handles your customers. You handle the kitchen.</h2>
+
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon">&#128172;</div>
+        <h3>Answers 24/7</h3>
+        <p>Customers ask about your menu, hours, parking, availability. The AI answers instantly &mdash; in their language.</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">&#128197;</div>
+        <h3>Takes Bookings</h3>
+        <p>Guests book a table directly through WhatsApp. The reservation goes straight into Klar Bookings. No copy-paste.</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">&#128222;</div>
+        <h3>Recovers Missed Calls</h3>
+        <p>Someone called but nobody picked up? The AI follows up on WhatsApp automatically and captures the booking.</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">&#128257;</div>
+        <h3>Follows Up With Guests</h3>
+        <p>Past guests get a friendly nudge to come back. Automatic, personal, connected to their visit history.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BOTTOM LINE ── -->
+<section class="bottom-line">
+  <div class="container">
+    <h2>WhatsApp automation without a booking system is like hiring a receptionist for a building that doesn't exist.</h2>
+    <p>We give you the building, the front desk, and the receptionist &mdash; all connected, all managed, for <strong>less than what others charge for the receptionist alone.</strong></p>
+    <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Book a Free Call</a>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how-it-works">
+  <div class="container">
+    <span class="label">Setup</span>
+    <h2>Works from day one. Zero effort on your end.</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>You say yes</h3>
+        <p>Tell us to turn it on. That's your only job. We handle the WhatsApp Business setup, AI configuration, and connection to your Klar system.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>We connect everything</h3>
+        <p>Your menu, hours, booking rules, and guest history are already in Klar. The AI reads from the same source your staff does.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Customers start messaging</h3>
+        <p>Your WhatsApp number goes on your website, Google profile, and social media. The AI handles the rest &mdash; you see bookings appear in your dashboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING CTA ── -->
+<section class="addon-pricing">
+  <div class="container">
+    <span class="label">Pricing</span>
+    <h2>One add-on. One price. No surprises.</h2>
+    <div class="price-msg">&euro;99/month on top of your Klar subscription</div>
+    <p>No per-message fees. No integration costs. No setup charges. The AI receptionist works inside your existing Klar system &mdash; because it was built to.</p>
+    <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Add Klar Calls</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        Klar Systems Oy &middot; Helsinki<br>
+        <a href="mailto:lomberg@klarsystems.com">lomberg@klarsystems.com</a>
+      </div>
+      <div class="footer-right">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <span style="color: var(--subtle)">&copy; 2026</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── NAV SCROLL ──
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+</script>
+
+</body>
+</html>
