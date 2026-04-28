@@ -966,10 +966,10 @@ footer {
   <div class="container">
     <div class="capture-card">
       <h2>Not ready to call yet?</h2>
-      <p>Leave your email and we'll send you a free visibility review of your restaurant's online presence. No spam, no sales pitch. Just an honest look at where you stand and what you're missing.</p>
+      <p>Leave your email and we'll take a look at your restaurant's online presence — what's working, what's missing, and what you could do next. No spam, no pitch.</p>
       <form class="capture-form" id="captureForm" novalidate>
         <input type="email" id="captureEmail" placeholder="your@email.com" required autocomplete="email">
-        <button type="submit" class="btn-primary" id="captureSubmit">Get My Free Review</button>
+        <button type="submit" class="btn-primary" id="captureSubmit">Get Started</button>
       </form>
       <div class="capture-message" id="captureMessage" role="status" aria-live="polite"></div>
       <div class="capture-note">Free. No commitment. We'll reply personally within 24 hours.</div>
@@ -1045,7 +1045,7 @@ window.addEventListener('scroll', () => {
     showMessage('', null);
 
     try {
-      const res = await fetch('https://n8n.klarsystems.com/webhook/klar-visibility-review', {
+      const res = await fetch('https://n8n.klarsystems.com/webhook/Nott-ready-tocall', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
