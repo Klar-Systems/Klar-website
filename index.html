@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" type="image/png" href="favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Manrope:wght@700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -689,6 +689,535 @@ footer {
 
   .footer-inner { flex-direction: column; align-items: flex-start; }
 }
+
+/* DESIGN.md refresh: sage canvas, heavy ink headlines, lime pill CTAs */
+:root {
+  --bg: #e8ebe6;
+  --card-bg: #ffffff;
+  --accent: #9fe870;
+  --accent-soft: #cdffad;
+  --accent-muted: #e2f6d5;
+  --heading: #0e0f0c;
+  --body: #454745;
+  --muted: #686b68;
+  --subtle: #868685;
+  --border: #d8ddd5;
+  --border-strong: #0e0f0c;
+  --dark-bg: #0e0f0c;
+  --dark-card: #182018;
+  --dark-border: rgba(232, 235, 230, 0.18);
+  --dark-muted: #b8c0b6;
+  --text-on-accent: #163300;
+  --max-w: 1200px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4,
+.proof-stat-num,
+.value-compare-heading,
+.testimonial blockquote,
+.step-num,
+.guarantee-card h3 {
+  font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-weight: 800;
+}
+
+h2, h3, h4 {
+  font-weight: 800;
+}
+
+.label {
+  border-radius: 9999px;
+  background: var(--accent-muted);
+  color: var(--text-on-accent);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 6px 14px;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-dark,
+.nav-cta {
+  border-radius: 24px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary,
+.nav-cta {
+  background: var(--accent);
+  color: var(--heading);
+}
+
+.btn-primary:hover,
+.nav-cta:hover {
+  background: var(--accent-soft);
+  filter: none;
+}
+
+.btn-secondary {
+  background: var(--card-bg);
+  border-color: var(--heading);
+}
+
+.btn-dark {
+  background: var(--heading);
+  color: var(--card-bg);
+}
+
+nav {
+  top: 14px;
+  left: 50%;
+  right: auto;
+  width: min(calc(100% - 28px), 1180px);
+  transform: translateX(-50%);
+  padding: 12px 14px 12px 20px;
+  border: 1px solid rgba(14, 15, 12, 0.08);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 18px 50px rgba(14, 15, 12, 0.08);
+}
+
+nav.scrolled {
+  border-bottom-color: rgba(14, 15, 12, 0.14);
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.nav-logo-img {
+  height: 26px;
+}
+
+.nav-link {
+  color: var(--heading);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.nav-cta {
+  padding: 10px 22px;
+}
+
+.section {
+  background: var(--card-bg);
+  padding: 96px 0;
+}
+
+.section h2 {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 0.98;
+  max-width: 780px;
+}
+
+.section-lead,
+.hero p {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.hero {
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  padding: 132px 0 72px;
+  text-align: left;
+  background:
+    radial-gradient(circle at 78% 22%, rgba(159, 232, 112, 0.42), transparent 28%),
+    var(--bg);
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.78fr);
+  gap: clamp(32px, 6vw, 72px);
+  align-items: center;
+}
+
+.hero-copy {
+  max-width: 720px;
+}
+
+.hero .label {
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-size: clamp(3.2rem, 7.8vw, 6.8rem);
+  line-height: 0.88;
+  max-width: 760px;
+  margin: 0 0 28px;
+}
+
+.hero p {
+  max-width: 640px;
+  margin: 0 0 34px;
+  color: var(--body);
+}
+
+.hero-ctas {
+  justify-content: flex-start;
+}
+
+.hero-proof {
+  color: var(--body);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.launch-card {
+  background: var(--card-bg);
+  color: var(--heading);
+  border: 1px solid var(--heading);
+  border-radius: 24px;
+  padding: clamp(24px, 4vw, 34px);
+  box-shadow: 0 24px 70px rgba(14, 15, 12, 0.12);
+}
+
+.launch-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.launch-card-kicker,
+.launch-card-status {
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.launch-card-kicker {
+  color: var(--muted);
+}
+
+.launch-card-status {
+  background: var(--accent-muted);
+  color: var(--text-on-accent);
+  border-radius: 9999px;
+  padding: 6px 10px;
+  white-space: nowrap;
+}
+
+.launch-card-main {
+  margin-bottom: 26px;
+}
+
+.launch-card-main strong {
+  display: block;
+  font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+  font-size: clamp(2.35rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 0.9;
+}
+
+.launch-card-main span {
+  display: block;
+  margin-top: 10px;
+  color: var(--body);
+  font-size: 1rem;
+}
+
+.launch-list {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+}
+
+.launch-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+  color: var(--body);
+}
+
+.launch-list b {
+  color: var(--heading);
+  font-weight: 800;
+  text-align: right;
+}
+
+.proof-bar {
+  background: var(--dark-bg);
+  padding: 34px 0;
+}
+
+.proof-bar-inner {
+  justify-content: space-between;
+}
+
+.proof-stat-num {
+  color: var(--accent);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+}
+
+.proof-stat-label {
+  color: var(--dark-muted);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.dark-section,
+.guarantee {
+  background: var(--dark-bg);
+}
+
+.dark-section h2,
+.guarantee h2,
+.founding-strip h2 {
+  color: var(--accent);
+}
+
+.dark-section .label,
+.guarantee .label,
+.founding-strip .label {
+  background: var(--dark-card);
+  color: var(--accent);
+}
+
+.dark-section p,
+.guarantee-card p,
+.founding-strip p {
+  color: var(--dark-muted);
+}
+
+.feature-cards {
+  gap: 24px;
+}
+
+.feature-card,
+.testimonial,
+.bookings-highlight,
+.capture-card,
+.guarantee-card {
+  border-radius: 24px;
+  padding: clamp(24px, 3vw, 34px);
+}
+
+.feature-card,
+.testimonial,
+.bookings-highlight {
+  background: var(--bg);
+  border: 0;
+}
+
+.feature-card:nth-child(2),
+.feature-card:nth-child(5),
+.bookings-highlight,
+.urgency-banner {
+  background: var(--accent-muted);
+}
+
+.feature-card h3,
+.bookings-highlight h3 {
+  font-size: 1.25rem;
+}
+
+.value-compare {
+  background: var(--bg);
+  border-radius: 24px;
+  padding: clamp(24px, 4vw, 36px);
+}
+
+.value-item.klar {
+  margin-top: 10px;
+  padding: 18px 0;
+  border-bottom-color: var(--heading);
+}
+
+.testimonial blockquote {
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  line-height: 1.15;
+}
+
+.bookings-highlight {
+  border: 0;
+}
+
+.comparison-wrap {
+  background: var(--bg);
+  border-radius: 24px;
+  padding: clamp(20px, 3vw, 32px);
+}
+
+.comparison-table th {
+  background: var(--card-bg);
+  color: var(--heading);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.comparison-table td,
+.comparison-table th {
+  border-bottom-color: rgba(14, 15, 12, 0.12);
+}
+
+.urgency-banner {
+  border: 0;
+  border-radius: 24px;
+  color: var(--text-on-accent);
+}
+
+.steps {
+  gap: 24px;
+}
+
+.step {
+  background: var(--bg);
+  border-radius: 24px;
+  padding: 28px 20px;
+}
+
+.step-num {
+  color: var(--heading);
+}
+
+.guarantee-card {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+}
+
+.guarantee-card h3 {
+  color: var(--card-bg);
+}
+
+.capture-section {
+  background: var(--bg);
+}
+
+.capture-card {
+  background: var(--card-bg);
+  border: 1px solid var(--heading);
+}
+
+.capture-form input {
+  background: var(--card-bg);
+  border-color: var(--heading);
+  border-radius: 12px;
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 48px;
+}
+
+.founding {
+  background: var(--bg);
+}
+
+.founding-strip {
+  background: var(--dark-bg);
+  border-radius: 24px;
+}
+
+footer {
+  background: var(--dark-bg);
+  border-top: 0;
+  color: var(--dark-muted);
+}
+
+.footer-left,
+.footer-right a,
+.footer-left a {
+  color: var(--dark-muted);
+}
+
+.footer-left a:hover,
+.footer-right a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  nav {
+    top: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 122px 0 56px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 16vw, 5rem);
+  }
+
+  .launch-card {
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section h2 {
+    font-size: clamp(2rem, 11vw, 3rem);
+  }
+
+  .proof-bar-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  nav {
+    border-radius: 24px;
+    align-items: flex-start;
+  }
+
+  .nav-right {
+    gap: 10px;
+  }
+
+  .nav-cta {
+    min-height: 42px;
+    padding: 8px 14px;
+  }
+
+  .hero-ctas a {
+    width: 100%;
+  }
+
+  .launch-card-header,
+  .launch-list li {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .launch-list b {
+    text-align: left;
+  }
+}
 </style>
 </head>
 <body>
@@ -696,7 +1225,7 @@ footer {
 <!-- ── NAV ── -->
 <nav>
   <a href="/" class="nav-left">
-    <img src="/public/logos/klar-logo.png" alt="Klar" class="nav-logo-img">
+    <img src="public/logos/klar-logo-black.svg" alt="Klar" class="nav-logo-img">
   </a>
   <div class="nav-right">
     <a href="#system" class="nav-link">The System</a>
@@ -710,14 +1239,34 @@ footer {
 <!-- ── HERO ── -->
 <section class="hero">
   <div class="container">
-    <span class="label">The Klar Restaurant System</span>
-    <h1>Be the restaurant customers find first. Live in 7 days.</h1>
-    <p>Custom website, reservation system, Google visibility, and ongoing support. One partner replaces your web agency, booking platform, and SEO consultant. No per-cover fees. No contracts. We build it, you fill tables.</p>
-    <div class="hero-ctas">
-      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Book a Free Call</a>
-      <a href="#system" class="btn-secondary">See what's included &#8595;</a>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="label">The Klar Restaurant System</span>
+        <h1>Be the restaurant customers find first. Live in 7 days.</h1>
+        <p>Custom website, reservation system, Google visibility, and ongoing support. One partner replaces your web agency, booking platform, and SEO consultant. No per-cover fees. No contracts. We build it, you fill tables.</p>
+        <div class="hero-ctas">
+          <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Book a Free Call</a>
+          <a href="#system" class="btn-secondary">See what's included &#8595;</a>
+        </div>
+        <div class="hero-proof">We build your restaurant's site before you pay. See it, then decide.</div>
+      </div>
+      <div class="launch-card" aria-label="Klar system preview">
+        <div class="launch-card-header">
+          <span class="launch-card-kicker">Launch plan</span>
+          <span class="launch-card-status">Ready in 7 days</span>
+        </div>
+        <div class="launch-card-main">
+          <strong>&euro;0</strong>
+          <span>per-cover fees on every booking</span>
+        </div>
+        <ul class="launch-list">
+          <li><span>Custom site</span><b>Included</b></li>
+          <li><span>Google visibility</span><b>Set up</b></li>
+          <li><span>Guest data</span><b>Yours</b></li>
+          <li><span>Updates</span><b>Same day</b></li>
+        </ul>
+      </div>
     </div>
-    <div class="hero-proof">We build your restaurant's site before you pay. See it, then decide.</div>
   </div>
 </section>
 
@@ -1063,5 +1612,6 @@ window.addEventListener('scroll', () => {
 })();
 </script>
 
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

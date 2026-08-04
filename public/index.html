@@ -3,8 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Klar — The Restaurant System</title>
-<meta name="description" content="Be the restaurant customers find first. Custom website, reservation system, Google visibility, and ongoing support. One partner replaces your web agency, booking platform, and SEO consultant. Live in 7 days.">
+<title>Klar | Restaurant websites, bookings and ordering with 0% commission</title>
+<meta name="description" content="Your own website, bookings and online ordering for your restaurant, with 0% commission on your sales. Delivery apps take up to 30% and booking platforms charge per cover. Klar takes neither. Live in 7 days, from €249 a month.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Klar">
+<meta property="og:title" content="Stop renting your own customers">
+<meta property="og:description" content="Your own website, bookings and online ordering, at 0% commission. Delivery apps take up to 30%. Booking platforms charge per cover. Klar takes neither. Live in 7 days, from EUR 249 a month.">
+<meta property="og:url" content="https://klarsystems.com/">
+<meta property="og:image" content="https://klarsystems.com/media/hero-poster.jpg">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="canonical" href="https://klarsystems.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" type="image/png" href="favicon.png">
@@ -19,27 +29,27 @@
   --accent-soft: #e0f870;
   --accent-muted: #f0fbb0;
   --heading: #1a1a1a;
-  --body: #4a4a46;
-  --muted: #8a8880;
-  --subtle: #b5b0a6;
+  --body: #3d3d39;
+  --muted: #6b6960;
+  --subtle: #706e66;
   --border: #e8e3d9;
   --border-strong: #d4cfc5;
   --dark-bg: #1a1a1a;
   --dark-card: #262624;
   --dark-border: #3a3a36;
-  --dark-muted: #6a6a64;
+  --dark-muted: #9a978e;
   --text-on-accent: #3a5a00;
   --max-w: 1100px;
   --gutter: clamp(1.25rem, 5vw, 3rem);
 }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 17px; }
 
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--bg);
   color: var(--body);
-  line-height: 1.65;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -60,7 +70,7 @@ h4 { font-weight: 600; letter-spacing: -0.02em; }
 .label {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 400;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--text-on-accent);
@@ -151,7 +161,7 @@ nav.scrolled {
 }
 .nav-link {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   color: var(--body);
   transition: color 0.2s;
 }
@@ -162,7 +172,7 @@ nav.scrolled {
   color: var(--heading);
   font-family: 'DM Sans', sans-serif;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   padding: 10px 20px;
   border-radius: 6px;
   transition: filter 0.2s;
@@ -189,23 +199,67 @@ nav.scrolled {
 
 /* ── HERO ── */
 .hero {
-  padding: 160px 0 96px;
+  position: relative;
+  isolation: isolate;
+  padding: 190px 0 120px;
   text-align: center;
+  background: #101010;
+  overflow: hidden;
 }
-.hero .label { margin-bottom: 24px; }
+/* Motion layer. Shows the video when public/media/hero.mp4 exists,
+   and a slow living gradient when it does not. */
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(60% 55% at 18% 22%, rgba(200,255,0,0.18), transparent 62%),
+    radial-gradient(55% 50% at 82% 72%, rgba(120,190,255,0.14), transparent 60%),
+    linear-gradient(140deg, #141414 0%, #1c1c1a 45%, #101010 100%);
+  background-size: 160% 160%, 160% 160%, 100% 100%;
+  animation: heroDrift 26s ease-in-out infinite alternate;
+}
+@keyframes heroDrift {
+  0%   { background-position: 0% 0%,   100% 100%, 0 0; }
+  100% { background-position: 40% 30%, 60% 60%,   0 0; }
+}
+.hero-media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.1s ease;
+}
+.hero-media video.is-ready { opacity: 1; }
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(10,10,10,0.62) 0%, rgba(10,10,10,0.42) 45%, rgba(10,10,10,0.80) 100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-media { animation: none; }
+  .hero-media video { display: none; }
+}
+.hero .label { margin-bottom: 24px; background: rgba(200,255,0,0.16); color: var(--accent); }
 .hero h1 {
-  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
-  line-height: 1.1;
-  max-width: 820px;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height: 1.06;
+  max-width: 900px;
   margin: 0 auto 24px;
+  color: #ffffff;
+  text-wrap: balance;
 }
 .hero p {
-  font-size: clamp(1.05rem, 2vw, 1.2rem);
-  max-width: 620px;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  max-width: 640px;
   margin: 0 auto 40px;
-  color: var(--body);
+  color: #e8e5dc;
   line-height: 1.7;
 }
+.hero p strong { color: #ffffff; }
 .hero-ctas {
   display: flex;
   gap: 16px;
@@ -215,10 +269,10 @@ nav.scrolled {
 .hero-proof {
   margin-top: 32px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
+  font-size: 0.98rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: #bdb9ae;
 }
 
 /* ── PROOF BAR ── */
@@ -248,7 +302,7 @@ nav.scrolled {
 }
 .proof-stat-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--dark-muted);
@@ -287,62 +341,10 @@ nav.scrolled {
   text-align: left;
   margin-top: 40px;
 }
-.feature-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 28px;
-  transition: transform 0.2s, border-color 0.2s;
-}
-.feature-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--border-strong);
-}
-.feature-card.full-width { grid-column: 1 / -1; }
-.feature-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-}
-.feature-card p {
-  font-size: 0.95rem;
-  line-height: 1.65;
-  color: var(--body);
-}
 
 /* ── VALUE COMPARISON ── */
 .value-compare {
   margin-top: 56px;
-}
-.value-compare-heading {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  font-size: 1.35rem;
-  color: var(--heading);
-  letter-spacing: -0.02em;
-  margin-bottom: 6px;
-}
-.value-compare-sub {
-  font-size: 0.95rem;
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-.value-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border);
-}
-.value-label {
-  font-size: 0.95rem;
-  color: var(--body);
-}
-.value-cost {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  color: var(--muted);
-  white-space: nowrap;
 }
 .value-item.total {
   border-bottom: 2px solid var(--border-strong);
@@ -363,25 +365,6 @@ nav.scrolled {
   padding: 36px;
   margin-top: 48px;
 }
-.testimonial blockquote {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: var(--heading);
-  letter-spacing: -0.02em;
-  line-height: 1.45;
-  margin-bottom: 16px;
-}
-.testimonial blockquote::before { content: "\201C"; }
-.testimonial blockquote::after { content: "\201D"; }
-.testimonial cite {
-  font-family: 'JetBrains Mono', monospace;
-  font-style: normal;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
 
 /* ── BOOKINGS HIGHLIGHT ── */
 .bookings-highlight {
@@ -391,53 +374,11 @@ nav.scrolled {
   padding: 32px;
   margin-top: 40px;
 }
-.bookings-highlight h3 {
-  font-size: 1.15rem;
-  margin-bottom: 10px;
-}
-.bookings-highlight p {
-  font-size: 0.98rem;
-  color: var(--body);
-  line-height: 1.7;
-}
 
 /* ── COMPARISON TABLE ── */
 .comparison-wrap {
   margin-top: 56px;
 }
-.comparison-wrap h3 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  font-size: 1.35rem;
-  color: var(--heading);
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-}
-.comparison-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-.comparison-table th {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  text-align: left;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border);
-}
-.comparison-table td {
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--border);
-  color: var(--body);
-}
-.comparison-table tr td:last-child {
-  color: var(--heading);
-  font-weight: 500;
-}
-.comparison-table tr:last-child td { border-bottom: none; }
 
 /* ── URGENCY BANNER ── */
 .urgency-banner {
@@ -477,7 +418,7 @@ nav.scrolled {
   margin-bottom: 8px;
 }
 .step p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--muted);
   line-height: 1.55;
 }
@@ -519,9 +460,9 @@ nav.scrolled {
   letter-spacing: -0.02em;
 }
 .guarantee-card p {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--dark-muted);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 /* ── EMAIL CAPTURE ── */
@@ -547,7 +488,7 @@ nav.scrolled {
   font-size: 1rem;
   max-width: 520px;
   margin: 0 auto 28px;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 .capture-form {
   display: flex;
@@ -564,7 +505,7 @@ nav.scrolled {
   border: 1.5px solid var(--border-strong);
   border-radius: 6px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   background: var(--bg);
   color: var(--heading);
   outline: none;
@@ -575,16 +516,16 @@ nav.scrolled {
 .capture-form button {
   flex: 0 0 auto;
   padding: 14px 24px;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 .capture-note {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--muted);
   margin-top: 16px;
 }
 .capture-message {
   margin-top: 16px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   min-height: 1.2em;
 }
 .capture-message.success { color: var(--text-on-accent); font-weight: 500; }
@@ -622,7 +563,7 @@ nav.scrolled {
   display: block;
   margin-top: 20px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
+  font-size: 0.88rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent);
@@ -648,7 +589,7 @@ footer {
   gap: 24px;
 }
 .footer-left {
-  font-size: 0.9rem;
+  font-size: 0.98rem;
   color: var(--muted);
 }
 .footer-left a { color: var(--body); transition: color 0.2s; }
@@ -656,7 +597,7 @@ footer {
 .footer-right {
   display: flex;
   gap: 24px;
-  font-size: 0.9rem;
+  font-size: 0.98rem;
 }
 .footer-right a {
   color: var(--muted);
@@ -675,19 +616,486 @@ footer {
 
   .nav-right { gap: 16px; }
   .nav-right .nav-link { display: none; }
-  .nav-cta { font-size: 0.85rem; padding: 8px 16px; }
-
-  .feature-cards { grid-template-columns: 1fr; }
+  .nav-cta { font-size: 0.92rem; padding: 8px 16px; }
   .steps { grid-template-columns: 1fr 1fr; }
   .guarantee-stack { grid-template-columns: 1fr; }
 
   .capture-card { padding: 32px 24px; }
   .capture-form button { width: 100%; }
 
-  .comparison-table th,
-  .comparison-table td { padding: 10px 10px; font-size: 0.88rem; }
-
   .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+
+/* ── CALCULATOR ── */
+.calc-section { background: var(--dark-bg); color: #d8d5cc; padding: clamp(3.5rem, 8vw, 6rem) 0; }
+.calc-section h2 { color: #faf8f4; }
+.calc-section .label { background: rgba(200,255,0,0.14); color: var(--accent); }
+.calc-lead { color: #b8b4aa; max-width: 62ch; margin-bottom: 2.5rem; }
+
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+@media (max-width: 860px) { .calc-grid { grid-template-columns: 1fr; } }
+
+.calc-panel {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: 12px;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+.calc-panel h3 { color: #faf8f4; font-size: 1.05rem; margin-bottom: 0.35rem; }
+.calc-panel-sub { font-size: 0.98rem; color: var(--dark-muted); margin-bottom: 1.5rem; }
+
+.calc-field label { font-size: 1rem; color: #d2cec4; }
+.calc-panel input[type=range] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 4px; border-radius: 2px;
+  background: var(--dark-border); outline: none; cursor: pointer;
+}
+.calc-panel input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent); cursor: pointer; border: none;
+}
+.calc-panel input[type=range]::-moz-range-thumb {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent); cursor: pointer; border: none;
+}
+.calc-field-note { font-size: 0.95rem; color: var(--dark-muted); margin-top: 0.5rem; line-height: 1.55; }
+
+.calc-q { margin-bottom: 2.25rem; }
+.calc-q > label {
+  display: block;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: #e4e1d8;
+  margin-bottom: 0.5rem;
+}
+.calc-q-val {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.calc-detail {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--dark-border);
+}
+.calc-detail-title { font-size: 1rem; color: var(--dark-muted); margin-bottom: 0.9rem; line-height: 1.55; }
+.calc-detail-title strong { color: #d2cec4; font-weight: 500; }
+.calc-detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 0.7rem; }
+.calc-detail-item {
+  background: var(--dark-bg);
+  border: 1px solid var(--dark-border);
+  border-radius: 8px;
+  padding: 0.7rem 0.85rem;
+  transition: border-color 0.15s;
+}
+.calc-detail-item:focus-within { border-color: var(--accent); }
+.calc-detail-label {
+  display: block;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dark-muted);
+  margin-bottom: 0.3rem;
+  line-height: 1.35;
+}
+.calc-detail-input { display: flex; align-items: baseline; gap: 0.15rem; }
+.calc-detail-input .sym {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--accent);
+  opacity: 0.75;
+}
+.calc-detail-input input {
+  width: 100%;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+.calc-detail-input input:focus { outline: none; }
+/* Kill the spinner arrows, they look like a form, not a price */
+.calc-detail-input input::-webkit-outer-spin-button,
+.calc-detail-input input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.calc-detail-input input[type=number] { -moz-appearance: textfield; appearance: textfield; }
+
+.calc-line-val.is-plus { color: var(--accent); }
+.calc-line-val.is-minus { color: #b8b4aa; }
+.calc-line-label em { font-style: normal; text-decoration: underline; text-underline-offset: 3px; }
+
+.calc-line { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--dark-border); font-size: 1.02rem; }
+.calc-line:last-of-type { border-bottom: none; }
+.calc-line-label { color: #b8b4aa; }
+.calc-line-val { font-family: 'JetBrains Mono', monospace; color: #e4e1d8; white-space: nowrap; }
+.calc-line.is-total { border-top: 1px solid var(--dark-border); border-bottom: none; margin-top: 0.4rem; padding-top: 1rem; }
+.calc-line.is-total .calc-line-label { color: #faf8f4; font-weight: 500; }
+.calc-line.is-total .calc-line-val { color: #ff8a7a; font-size: 1.5rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+.calc-line.is-total.is-good .calc-line-val { color: var(--accent); }
+.calc-sub-year { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--dark-muted); margin-top: 0.3rem; }
+
+.calc-verdict {
+  margin-top: 1.5rem;
+  background: var(--accent);
+  color: var(--heading);
+  border-radius: 12px;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+}
+.calc-verdict-big {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--heading);
+}
+.calc-verdict-sub { margin-top: 0.6rem; font-size: 1rem; color: #2e4a00; max-width: 60ch; }
+.calc-verdict-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.75rem; }
+@media (max-width: 700px) { .calc-verdict-row { grid-template-columns: 1fr; gap: 0.85rem; } }
+.calc-vstat { border-top: 2px solid rgba(0,0,0,0.18); padding-top: 0.75rem; }
+.calc-vstat-num { display: block; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em; color: var(--heading); }
+.calc-vstat-label { display: block; font-size: 0.95rem; color: #2e4a00; margin-top: 0.15rem; line-height: 1.45; }
+.calc-cta { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.calc-disclaimer { margin-top: 1.5rem; font-size: 0.92rem; color: var(--dark-muted); line-height: 1.6; max-width: 70ch; }
+.calc-disclaimer a { color: #b8b4aa; text-decoration: underline; }
+
+/* ── PRICING ── */
+.pricing-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--border-strong);
+  border-radius: 12px;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  margin-top: 2.5rem;
+}
+.pricing-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+.pricing-price { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: -0.03em; color: var(--heading); }
+.pricing-price span { font-size: 1rem; font-weight: 400; color: var(--muted); font-family: 'DM Sans', sans-serif; letter-spacing: 0; }
+.pricing-row { display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--border); font-size: 1.05rem; }
+.pricing-row:last-child { border-bottom: none; }
+.pricing-row-label { color: var(--body); }
+.pricing-row-val { font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--heading); text-align: right; white-space: nowrap; }
+.pricing-note { margin-top: 1.25rem; font-size: 0.98rem; color: var(--muted); line-height: 1.6; }
+
+/* ── FAQ / HONESTY ── */
+.faq-item { border-top: 1px solid var(--border); padding: 1.25rem 0; }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.faq-q { font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: var(--heading); margin-bottom: 0.4rem; }
+.faq-a { font-size: 1.05rem; color: var(--body); }
+
+.calc-tier-note {
+  font-size: 0.92rem;
+  color: var(--dark-muted);
+  line-height: 1.55;
+  padding: 0.15rem 0 0.5rem;
+}
+
+/* ── PROBLEM KICKER ── */
+.problem-kicker {
+  margin-top: 2rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  max-width: 20ch;
+}
+
+/* ── INCLUDED STRIP ── */
+.included-strip {
+  margin-top: 2.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+}
+.included-head {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--heading);
+  margin-bottom: 1.15rem;
+}
+.included-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem 2rem; }
+@media (max-width: 720px) { .included-list { grid-template-columns: 1fr; } }
+.included-list li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--body);
+}
+.included-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.55em;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ── NAV, company level ── */
+.nav-left { gap: 10px; }
+.nav-wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--heading);
+  padding-left: 10px;
+  border-left: 1px solid var(--border-strong);
+  line-height: 1;
+}
+nav { padding: 0.85rem var(--gutter); }
+.nav-right { gap: 28px; }
+.nav-link { position: relative; padding: 4px 0; font-weight: 500; }
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%; bottom: 0;
+  height: 1.5px;
+  background: var(--heading);
+  transition: right 0.22s ease;
+}
+.nav-link:hover::after { right: 0; }
+.nav-cta { font-weight: 500; padding: 11px 22px; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px; height: 44px;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0 11px;
+}
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--heading);
+  border-radius: 2px;
+  transition: transform 0.22s ease, opacity 0.18s ease;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 860px) {
+  .nav-toggle { display: flex; }
+  .nav-right {
+    position: fixed;
+    top: 68px; left: 0; right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px var(--gutter) 20px;
+    background: rgba(242, 237, 228, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .nav-right.is-open { opacity: 1; transform: none; pointer-events: auto; }
+  .nav-right .nav-link {
+    display: block;
+    padding: 15px 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-right .nav-link::after { display: none; }
+  .nav-cta { margin-top: 16px; text-align: center; }
+}
+
+/* ── FOOTER ── */
+.footer-left { display: flex; align-items: flex-start; gap: 14px; }
+.footer-logo { height: 22px; width: auto; margin-top: 2px; }
+.footer-company { line-height: 1.6; }
+.footer-right { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
+.footer-right a { transition: color 0.2s; }
+.footer-right a:hover { color: var(--heading); text-decoration: underline; }
+.footer-copy { color: var(--subtle); }
+
+/* ── DARK-HERO BUTTON FIX ── */
+.hero .btn-secondary { color: #ffffff; border-color: rgba(255,255,255,0.45); }
+.hero .btn-secondary:hover { border-color: #ffffff; background: rgba(255,255,255,0.07); }
+
+/* ── PROBLEM, as figures not paragraphs ── */
+.problem-section { padding: 104px 0; }
+.problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin: 3rem 0 0; }
+@media (max-width: 820px) { .problem-grid { grid-template-columns: 1fr; gap: 2rem; } }
+.problem-item { border-top: 2px solid var(--accent); padding-top: 1.25rem; }
+.problem-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.8rem, 7vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+}
+.problem-what { margin-top: 0.6rem; font-size: 1.15rem; color: #faf8f4; font-weight: 500; }
+.problem-who { margin-top: 0.5rem; font-size: 1rem; line-height: 1.6; color: #b8b4aa; }
+.problem-who strong { color: #faf8f4; }
+.problem-kicker {
+  margin-top: 3.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.7rem, 4.5vw, 2.8rem);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  max-width: none;
+}
+.problem-cta { margin-top: 2rem; }
+
+/* ── WHAT WE PROVIDE, lines not squares ── */
+.provide-list { list-style: none; margin: 2.5rem 0 0; border-top: 1px solid var(--border); }
+.provide-list li {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+@media (max-width: 760px) {
+  .provide-list li { grid-template-columns: 1fr; gap: 0.4rem; }
+}
+.provide-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  color: var(--heading);
+  position: relative;
+  padding-left: 1.5rem;
+}
+.provide-title::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.62em;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.provide-desc { font-size: 1.08rem; line-height: 1.65; color: var(--body); }
+
+/* ── PLAN VERDICT ── */
+.plan-verdict {
+  margin-top: 1.75rem;
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  padding: clamp(1.4rem, 3.5vw, 1.9rem);
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: baseline;
+  gap: 0.6rem 1.5rem;
+}
+@media (max-width: 720px) { .plan-verdict { grid-template-columns: 1fr; gap: 0.3rem; } }
+.plan-verdict-label { grid-column: 1 / -1; font-size: 1rem; color: var(--dark-muted); }
+.plan-verdict-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.plan-verdict-price { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.4rem; color: #faf8f4; }
+.plan-verdict-why { font-size: 1rem; color: var(--dark-muted); }
+
+/* ── STEPS, alive ── */
+.step { position: relative; }
+.step-icon { font-size: 2.2rem; line-height: 1; margin-bottom: 0.75rem; }
+.step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-on-accent);
+  background: var(--accent-muted);
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 0.6rem;
+  width: auto;
+  height: auto;
+}
+.step h4 { font-size: 1.2rem; margin-bottom: 0.35rem; }
+.step p { font-size: 1.02rem; line-height: 1.6; color: var(--body); }
+
+/* ── COME AND MEET ── */
+.meet-section { background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 88px 0; }
+.meet-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+@media (max-width: 860px) { .meet-inner { grid-template-columns: 1fr; } }
+.meet-copy h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); line-height: 1.15; margin-bottom: 16px; }
+.meet-copy p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 28px; }
+.meet-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.meet-facts { display: grid; gap: 1.1rem; }
+.meet-fact { display: grid; gap: 2px; border-left: 3px solid var(--accent); padding-left: 1rem; }
+.meet-fact-k { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.meet-fact-v { font-size: 1.05rem; line-height: 1.55; color: var(--heading); }
+
+/* ── HERO FOOD MOTES ── */
+.hero-mote {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+  filter: saturate(0.85);
+}
+
+.faq-block { margin-top: 2.5rem; }
+
+.founding-list { list-style: none; margin: 1.25rem 0; display: grid; gap: 0.6rem; text-align: left; max-width: 560px; }
+.founding-list li { position: relative; padding-left: 1.7rem; font-size: 1.05rem; line-height: 1.6; }
+.founding-list li::before {
+  content: "";
+  position: absolute; left: 0; top: 0.6em;
+  width: 9px; height: 9px; border-radius: 50%; background: var(--accent);
+}
+.founding-after { margin-bottom: 1.5rem; }
+
+/* ── FINAL LAYOUT POLISH ── */
+.founding-list { margin-inline: auto; }
+.founding-strip h2 { max-width: 100%; }
+.founding-strip .founding-list li { color: #d2cec4; }
+
+/* steps: the icon and label want breathing room, and 4-up is too tight on a tablet */
+@media (max-width: 980px) and (min-width: 601px) {
+  .steps { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
+}
+.step { padding-top: 4px; }
+
+/* keep long section headings from running the full width on big screens */
+.dark-section h2, .section h2 { max-width: 18ch; }
+.problem-section h2 { max-width: 22ch; }
+.meet-copy h2 { max-width: 16ch; }
+
+/* the included list reads better as a single column when it gets narrow */
+@media (max-width: 640px) { .included-list { gap: 0.85rem; } }
+
+/* calculator panels equal height so the two columns line up */
+@media (min-width: 861px) {
+  .calc-grid { align-items: stretch; }
+  .calc-panel { height: 100%; }
 }
 </style>
 </head>
@@ -695,29 +1103,39 @@ footer {
 
 <!-- ── NAV ── -->
 <nav>
-  <a href="/" class="nav-left">
-    <img src="/public/logos/klar-logo.png" alt="Klar" class="nav-logo-img">
+  <a href="/" class="nav-left" aria-label="Klar, home">
+    <img src="/logos/klar-logo-black.svg" alt="Klar" class="nav-logo-img">
   </a>
-  <div class="nav-right">
-    <a href="#system" class="nav-link">The System</a>
-    <a href="#bookings" class="nav-link">Bookings</a>
-    <a href="https://klarsystems.com/calls" class="nav-link">Calls</a>
+  <div class="nav-right" id="navRight">
+    <a href="#system" class="nav-link">What we provide</a>
+    <a href="#calculator" class="nav-link">Cost calculator</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
     <a href="#contact" class="nav-link">Contact</a>
-    <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="nav-cta">Book a Free Call</a>
+    <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="nav-cta">Book a free call</a>
   </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navRight">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ── HERO ── -->
 <section class="hero">
+  <div class="hero-media">
+    <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="/media/hero-poster.jpg">
+      <source src="/media/hero.webm" type="video/webm">
+      <source src="/media/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-scrim"></div>
   <div class="container">
     <span class="label">The Klar Restaurant System</span>
-    <h1>Be the restaurant customers find first. Live in 7 days.</h1>
-    <p>Custom website, reservation system, Google visibility, and ongoing support. One partner replaces your web agency, booking platform, and SEO consultant. No per-cover fees. No contracts. We build it, you fill tables.</p>
+    <h1>Stop renting your own customers.</h1>
+    <p>Delivery apps take up to 30% of every order. Booking platforms charge you &euro;2&ndash;4 every time a guest sits down, and they keep your guest list. Klar gives you your own website, your own ordering and your own bookings, and takes <strong>0% of your sales. Ever.</strong></p>
     <div class="hero-ctas">
-      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Book a Free Call</a>
-      <a href="#system" class="btn-secondary">See what's included &#8595;</a>
+      <a href="#calculator" class="btn-primary">See what the platforms cost you &#8595;</a>
+      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-secondary">Book a free call</a>
     </div>
-    <div class="hero-proof">We build your restaurant's site before you pay. See it, then decide.</div>
+    <div class="hero-proof">Live in 7 days &middot; From &euro;249 a month + VAT &middot; No commission</div>
   </div>
 </section>
 
@@ -730,185 +1148,301 @@ footer {
         <span class="proof-stat-label">Days to go live</span>
       </div>
       <div class="proof-stat">
-        <span class="proof-stat-num">&euro;0</span>
-        <span class="proof-stat-label">Per-cover fees</span>
+        <span class="proof-stat-num">0%</span>
+        <span class="proof-stat-label">Commission on your sales</span>
       </div>
       <div class="proof-stat">
-        <span class="proof-stat-num">2 min</span>
-        <span class="proof-stat-label">Staff training</span>
+        <span class="proof-stat-num">&euro;0</span>
+        <span class="proof-stat-label">Per-cover, per-order fees</span>
       </div>
       <div class="proof-stat">
         <span class="proof-stat-num">100%</span>
-        <span class="proof-stat-label">Your data, always</span>
+        <span class="proof-stat-label">Your guest list, always</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ── PAIN 1: VISIBILITY ── -->
-<section class="dark-section">
+<!-- ── THE PROBLEM ── -->
+<section class="dark-section problem-section">
   <div class="container">
-    <span class="label">The Visibility Problem</span>
-    <h2>Your food is excellent. But online, nobody knows that yet.</h2>
-    <p>90% of diners search for a restaurant online before they visit. 75% judge your credibility by your website alone. That judgment happens in under a second.</p>
-    <p><strong>No website?</strong> You don't exist for the majority of potential customers. <strong>An outdated one?</strong> 94% of first impressions are design-related. They'll choose the competitor whose site looks like a place worth visiting. Not the best restaurant. The most visible one.</p>
-    <p>And it's not just Google anymore. Diners are discovering restaurants through ChatGPT, Perplexity, and AI search. <strong>If your restaurant isn't structured for how people search today, you're losing customers you'll never even know about.</strong></p>
+    <span class="label">The Problem</span>
+    <h2>Three companies stand between you and your own customers.</h2>
+
+    <div class="problem-grid">
+      <div class="problem-item">
+        <div class="problem-num">30%</div>
+        <div class="problem-what">of every delivery order</div>
+        <div class="problem-who">Wolt, Foodora and the rest. On a &euro;30 order that is <strong>&euro;9 gone</strong> before you pay for the food.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">&euro;2&ndash;4</div>
+        <div class="problem-what">every time a guest sits down</div>
+        <div class="problem-who">Your booking platform. A regular who comes every Friday costs you <strong>up to &euro;200 a year</strong>.</div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">0</div>
+        <div class="problem-what">of those guests are yours</div>
+        <div class="problem-who">The names and numbers sit on their servers, and get used to advertise <strong>the restaurant next door</strong>.</div>
+      </div>
+    </div>
+
+    <p class="problem-kicker">You built the reputation.<br>They rent it back to you.</p>
+    <a href="#calculator" class="btn-primary problem-cta">Show me what it costs me &#8595;</a>
   </div>
 </section>
 
-<!-- ── SOLUTION 1: THE SYSTEM ── -->
+<!-- ── WHAT WE PROVIDE ── -->
 <section class="section" id="system">
   <div class="container">
-    <span class="label">The Klar Restaurant System</span>
-    <h2>Everything you need to get found, look professional, and fill tables.</h2>
-    <p class="section-lead">One partner replaces your web agency, SEO consultant, Google Business manager, and hosting provider. Zero homework on your end. We handle everything.</p>
+    <span class="label">What we provide</span>
+    <h2>Everything your restaurant runs on, from one place.</h2>
+    <p class="section-lead">One partner, one monthly price, and we set all of it up for you.</p>
 
-    <div class="feature-cards">
-      <div class="feature-card">
-        <h3>Custom Website</h3>
-        <p>Designed around your restaurant's brand. Not a template. Your menu, hours, location, and story. Mobile-first. Live in 7 days, not 6 weeks.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Google Business Profile</h3>
-        <p>Fully set up and optimized. You appear in &ldquo;near me&rdquo; searches and Google Maps. This is where 70%+ of restaurant discovery happens.</p>
-      </div>
-      <div class="feature-card">
-        <h3>SEO &amp; AI Search</h3>
-        <p>Structured data and keyword optimization so customers find you on Google, ChatGPT, and Perplexity. Ready for how people search today.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Same-Day Updates</h3>
-        <p>New menu? Changed hours? Seasonal special? Message us. It's live the same day. No tickets, no waiting.</p>
-      </div>
-      <div class="feature-card full-width">
-        <h3>Monthly Performance Report</h3>
-        <p>A plain-language report every month: how many people found you, what they clicked, where new customers came from. No jargon. Only what matters for your bottom line.</p>
-      </div>
-    </div>
+    <ul class="provide-list">
+      <li>
+        <span class="provide-title">Your website</span>
+        <span class="provide-desc">Built for your restaurant, not a template. Found on Google and by the AI assistants people now ask for dinner. Menu or hours change, you message us, it is live the same day.</span>
+      </li>
+      <li>
+        <span class="provide-title">Bookings</span>
+        <span class="provide-desc">On your own site, in your own design. Confirmations, reminders that stop no-shows, waitlist, floor plan, one screen for the whole team.</span>
+      </li>
+      <li>
+        <span class="provide-title">Ordering</span>
+        <span class="provide-desc">Your menu, your site, 0% commission. Eat in or take away, paid at the restaurant. Orders land on a screen with an alert for the kitchen.</span>
+      </li>
+      <li>
+        <span class="provide-title">Your guest list</span>
+        <span class="provide-desc">Every booking and order builds your own CRM. Visit history, allergies, birthdays. Download it any time. Leave and you take it with you.</span>
+      </li>
+    </ul>
 
-    <div class="value-compare">
-      <div class="value-compare-heading">What this replaces</div>
-      <div class="value-compare-sub">If you bought each of these separately:</div>
-      <div class="value-item">
-        <span class="value-label">Agency website build</span>
-        <span class="value-cost">&euro;2,000 &ndash; &euro;5,000 one-time</span>
-      </div>
-      <div class="value-item">
-        <span class="value-label">SEO consultant (local)</span>
-        <span class="value-cost">&euro;300 &ndash; &euro;1,000/mo</span>
-      </div>
-      <div class="value-item">
-        <span class="value-label">Google Business setup &amp; management</span>
-        <span class="value-cost">&euro;100 &ndash; &euro;400/mo</span>
-      </div>
-      <div class="value-item">
-        <span class="value-label">Hosting + domain + SSL</span>
-        <span class="value-cost">&euro;10 &ndash; &euro;25/mo</span>
-      </div>
-      <div class="value-item">
-        <span class="value-label">Booking system (with per-cover fees)</span>
-        <span class="value-cost">&euro;130 &ndash; &euro;700/mo</span>
-      </div>
-      <div class="value-item total">
-        <span class="value-label">Total if bought separately</span>
-        <span class="value-cost">&euro;6,500 &ndash; &euro;30,500/year</span>
-      </div>
-      <div class="value-item klar">
-        <span class="value-label">The Klar Restaurant System</span>
-        <span class="value-cost">One flat monthly rate</span>
-      </div>
-    </div>
-
-    <div class="testimonial">
-      <blockquote>We used to worry about our online presence. Now we just send a message when something changes and it's handled the same day. We focus on the kitchen.</blockquote>
-      <cite>Restaurant owner &middot; Helsinki</cite>
-    </div>
-  </div>
-</section>
-
-<div class="container"><div class="divider"></div></div>
-
-<!-- ── PAIN 2: BOOKING FEES ── -->
-<section class="dark-section">
-  <div class="container">
-    <span class="label">The Booking Fee Problem</span>
-    <h2>Your booking system charges you every time a customer sits down.</h2>
-    <p>A regular who books through Quandoo every Friday? You pay &euro;2&ndash;4 per visit for a customer who already knows and loves your restaurant. That's up to &euro;200 a year for one loyal guest. Multiply that across all your regulars.</p>
-    <p>And the guest data &mdash; visit history, preferences, contact details? <strong>That lives on Quandoo's servers, not yours.</strong> They use it to promote other restaurants to your own customers. You're building someone else's business with every booking.</p>
-    <p>Most Quandoo bookings aren't people browsing quandoo.fi for dinner. They're people who Googled your restaurant by name and happened to book through Quandoo's widget. <strong>You're paying a commission on your own reputation.</strong></p>
-  </div>
-</section>
-
-<!-- ── SOLUTION 2: KLAR BOOKINGS ── -->
-<section class="section" id="bookings">
-  <div class="container">
-    <span class="label">Klar Bookings</span>
-    <h2>Zero per-cover fees. Your guests, your data. Included in The System.</h2>
-    <p class="section-lead">If your restaurant takes reservations, your Klar website comes with a built-in booking system. Your 1st reservation costs the same as your 500th: nothing extra.</p>
-
-    <div class="bookings-highlight">
-      <h3>What's included</h3>
-      <p>Reservation widget on your website. Centralized dashboard for staff. Real-time push notifications. Guest CRM that remembers visit history, allergies, preferences, and birthdays. Your customer data stays on your account. If you ever leave, you take it with you.</p>
-    </div>
-
-    <div class="feature-cards">
-      <div class="feature-card">
-        <h3>Your guests, your data</h3>
-        <p>Quandoo keeps guest data on their servers and uses it to promote your competitors. With Klar, every guest profile belongs to you. Always.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Done-for-you migration</h3>
-        <p>We move you from Quandoo. Widget installed, Google Business booking connected, both systems running in parallel. Zero downtime.</p>
-      </div>
-    </div>
-
-    <div class="comparison-wrap">
-      <h3>Klar vs. Quandoo</h3>
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Quandoo</th>
-            <th>Klar</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Per-cover fee</td>
-            <td>&euro;2 &ndash; &euro;4 per booking</td>
-            <td>&euro;0</td>
-          </tr>
-          <tr>
-            <td>Own your guest data</td>
-            <td>No</td>
-            <td>Yes</td>
-          </tr>
-          <tr>
-            <td>Custom website</td>
-            <td>Not included</td>
-            <td>Included</td>
-          </tr>
-          <tr>
-            <td>Contract</td>
-            <td>Annual, 3-month notice</td>
-            <td>Cancel anytime</td>
-          </tr>
-          <tr>
-            <td>Status</td>
-            <td>Shutting down Sept 2026</td>
-            <td>Growing</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="included-strip">
+      <div class="included-head">Also included</div>
+      <ul class="included-list">
+        <li>Google Business Profile, set up and looked after</li>
+        <li>Hosting, security and every technical update</li>
+        <li>Same-day content changes, as often as you like</li>
+        <li>Your existing domain connected for you</li>
+        <li>Review requests after every visit and order</li>
+        <li>A plain monthly report: bookings, orders, where people came from</li>
+      </ul>
     </div>
 
     <div class="urgency-banner">
-      <strong>Quandoo is shutting down in Finland in September 2026.</strong> Every restaurant on Quandoo needs a replacement before then. We handle the full migration. The earlier you switch, the less disruption you face.
+      <strong>On Quandoo?</strong> They close on 30 September 2026. After that no new reservation can be made through them. We move you across with both systems running side by side, so nothing is lost. <a href="https://www.quandoo.fi/en/important-update" target="_blank" rel="noopener">Read Quandoo's notice</a>.
+    </div>
+  </div>
+</section>
+
+<!-- ── CALCULATOR ── -->
+<section class="calc-section" id="calculator">
+  <div class="container">
+    <span class="label">The Numbers</span>
+    <h2>What are the platforms taking from you?</h2>
+    <p class="calc-lead">Put your own numbers in. We will show you what you are paying now, what you would pay us, and which plan you land on.</p>
+
+    <div class="calc-grid">
+
+      <div class="calc-panel">
+        <h3>Two questions about your month</h3>
+        <div class="calc-panel-sub">Rough numbers are fine.</div>
+
+        <div class="calc-q">
+          <label for="cOrders">Orders a month through Wolt or Foodora</label>
+          <div class="calc-q-val" id="cOrdersVal">200 orders</div>
+          <input type="range" id="cOrders" min="0" max="800" step="10" value="200">
+        </div>
+
+        <div class="calc-q">
+          <label for="cCovers">Guests a month who book a table</label>
+          <div class="calc-q-val" id="cCoversVal">250 guests</div>
+          <input type="range" id="cCovers" min="0" max="1200" step="10" value="250">
+          <div class="calc-field-note">Set to zero if you take no bookings.</div>
+        </div>
+
+        <div class="calc-q" style="margin-bottom:0">
+          <label for="cShare">Out of every 10 delivery orders, how many are regulars?</label>
+          <div class="calc-q-val" id="cShareVal">3 out of 10</div>
+          <input type="range" id="cShare" min="0" max="10" step="1" value="3">
+          <div class="calc-field-note">Keep Wolt for new customers. This is about your regulars.</div>
+        </div>
+
+        <div class="calc-detail">
+          <div class="calc-detail-title"><strong>Change these to match your restaurant.</strong></div>
+          <div class="calc-detail-grid">
+            <div class="calc-detail-item">
+              <label class="calc-detail-label" for="cAov">Average order</label>
+              <div class="calc-detail-input">
+                <span class="sym">&euro;</span>
+                <input type="number" id="cAov" value="30" min="5" max="200" step="1" inputmode="decimal">
+              </div>
+            </div>
+            <div class="calc-detail-item">
+              <label class="calc-detail-label" for="cComm">Commission you pay</label>
+              <div class="calc-detail-input">
+                <input type="number" id="cComm" value="30" min="0" max="40" step="1" inputmode="decimal">
+                <span class="sym">%</span>
+              </div>
+            </div>
+            <div class="calc-detail-item">
+              <label class="calc-detail-label" for="cPerCover">Fee per booked guest</label>
+              <div class="calc-detail-input">
+                <span class="sym">&euro;</span>
+                <input type="number" id="cPerCover" value="3" min="0" max="10" step="0.5" inputmode="decimal">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-panel">
+        <h3>What you pay the platforms now</h3>
+        
+
+        <div class="calc-line">
+          <span class="calc-line-label" id="oCommLabel">Wolt / Foodora commission</span>
+          <span class="calc-line-val" id="oComm">&euro;1,800</span>
+        </div>
+        <div class="calc-line">
+          <span class="calc-line-label" id="oCoverLabel">Booking service fees</span>
+          <span class="calc-line-val" id="oCover">&euro;750</span>
+        </div>
+        <div class="calc-line is-total">
+          <span class="calc-line-label">Every month</span>
+          <span class="calc-line-val" id="oTotal">&euro;2,550</span>
+        </div>
+        <div class="calc-sub-year" id="oYear">&euro;30,600 a year</div>
+
+        <h3 style="margin-top:2.25rem">What changes if you move to Klar</h3>
+        
+
+        <div class="calc-line">
+          <span class="calc-line-label">Booking fees stop <em>completely</em></span>
+          <span class="calc-line-val is-plus" id="oBookRecov">+ &euro;750</span>
+        </div>
+        <div class="calc-line">
+          <span class="calc-line-label" id="oRecovLabel">Commission on the orders that now come to you direct</span>
+          <span class="calc-line-val is-plus" id="oRecov">+ &euro;540</span>
+        </div>
+        <div class="calc-line">
+          <span class="calc-line-label" id="oKlarLabel">What Klar costs you, Klar 750</span>
+          <span class="calc-line-val is-minus" id="oKlar">&minus; &euro;399</span>
+        </div>
+        <div class="calc-tier-note" id="oTierNote">60 direct orders + 250 booked guests = 310 a month, which is the Klar 750 plan.</div>
+        <div class="calc-line is-total is-good">
+          <span class="calc-line-label">You are better off by</span>
+          <span class="calc-line-val" id="oNet">&euro;891</span>
+        </div>
+        <div class="calc-sub-year" id="oNetYear">&euro;10,692 a year</div>
+      </div>
     </div>
 
-    <div class="testimonial">
-      <blockquote>The whole system was running in days. Staff picked it up without any training. We stopped paying per-cover fees immediately.</blockquote>
-      <cite>Restaurant owner &middot; Helsinki</cite>
+    <div class="plan-verdict" id="planVerdict">
+      <div class="plan-verdict-label">Based on your numbers, you are on</div>
+      <div class="plan-verdict-name" id="planName">Klar 750</div>
+      <div class="plan-verdict-price" id="planPrice">&euro;399 a month + VAT</div>
+      <div class="plan-verdict-why" id="planWhy">310 orders and booked guests a month</div>
+    </div>
+
+    <div class="calc-verdict">
+      <div class="calc-verdict-big" id="vBig">Your whole setup costs less than 27 days of what the platforms take from you.</div>
+      <div class="calc-verdict-sub" id="vSub">Website, online ordering, booking system, guest CRM, Google setup and the ongoing work, all inside one setup fee of &euro;1,900&ndash;&euro;2,600. Then &euro;399 a month on Klar 750 plus VAT, and 0% of your sales for as long as you're with us.</div>
+
+      <div class="calc-verdict-row">
+        <div class="calc-vstat">
+          <span class="calc-vstat-num" id="vPayback">2.5 months</span>
+          <span class="calc-vstat-label">until the setup fee has paid for itself</span>
+        </div>
+        <div class="calc-vstat">
+          <span class="calc-vstat-num" id="vOrders">45 orders</span>
+          <span class="calc-vstat-label">a month through your own site covers the entire subscription</span>
+        </div>
+        <div class="calc-vstat">
+          <span class="calc-vstat-num" id="vMultiple">&euro;3.23</span>
+          <span class="calc-vstat-label">kept for every &euro;1 you pay Klar</span>
+        </div>
+      </div>
+
+      <div class="calc-cta">
+        <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-dark">Book a free call, we'll run this on your real invoices</a>
+      </div>
+    </div>
+
+    <p class="calc-disclaimer">Figures are calculated live from the numbers you entered, and the defaults are only a starting point. We don't publish claims about what any platform charges you, because that's in your contract, not ours. Setup is quoted between &euro;1,900 and &euro;2,600 depending on scope; this uses the &euro;2,250 midpoint. Klar Complete starts at &euro;249 a month. Every price here is shown without VAT.</p>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="section" id="pricing">
+  <div class="container">
+    <span class="label">Pricing</span>
+    <h2>One setup fee. One monthly price. Never a cut of your sales.</h2>
+    <p class="section-lead">You should be able to see what this costs before you talk to anyone. So here it is.</p>
+
+    <div class="pricing-card">
+      <div class="pricing-head">
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.15rem;color:var(--heading)">Klar Complete</div>
+          <div style="font-size:0.9rem;color:var(--muted);margin-top:2px">Website &middot; Ordering &middot; Bookings &middot; Guest CRM &middot; SEO</div>
+        </div>
+        <div class="pricing-price">From &euro;249<span>/month + VAT</span></div>
+      </div>
+
+      <div class="pricing-row">
+        <span class="pricing-row-label">One-time setup, <strong>your website is inside this</strong></span>
+        <span class="pricing-row-val">&euro;1,900 &ndash; &euro;2,600 + VAT</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label">Commission on your sales</span>
+        <span class="pricing-row-val">0%</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label">Fee per order, per cover, per booking</span>
+        <span class="pricing-row-val">&euro;0</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label"><strong>Klar 300</strong>, up to 300 orders and booked guests a month</span>
+        <span class="pricing-row-val">&euro;249/month + VAT</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label"><strong>Klar 750</strong>, 301 to 750 a month</span>
+        <span class="pricing-row-val">&euro;399/month + VAT</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label"><strong>Klar 1500</strong>, 751 to 1,500 a month</span>
+        <span class="pricing-row-val">&euro;599/month + VAT</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label">Bookings only, if that's all you need</span>
+        <span class="pricing-row-val">From &euro;149/month + VAT</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label">Ordering only, if that's all you need</span>
+        <span class="pricing-row-val">From &euro;199/month + VAT</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label">Priced separately: Google and Meta ad management, ad spend, extra locations, custom integrations</span>
+        <span class="pricing-row-val">Quoted</span>
+      </div>
+
+      <p class="pricing-note">Your price follows how busy you actually are: the orders that come through your own site, plus the guests who turn up on a Klar booking. Cancellations and no-shows do not count. If you outgrow your plan we tell you, and you move up from the following month, never backdated. We will never switch off your ordering or your bookings because you had a good month, and you will never get a bill you were not expecting. All prices on this page are shown without VAT, which is added to your invoice.</p>
+    </div>
+
+    <div class="faq-block">
+      <div class="faq-item">
+        <div class="faq-q">Do you take a percentage of my sales?</div>
+        <div class="faq-a">No. Not a percentage, not a fee per order, not a fee per cover, not now and not once you're big. That's the entire point of the company.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I have to leave Wolt and Foodora?</div>
+        <div class="faq-a">No, and we'd tell you not to. They're good at bringing you people who've never heard of you. They're expensive for the customer who already orders from you every Thursday. Keep the first, move the second.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Who owns my customer data?</div>
+        <div class="faq-a">You do. Guests, order history, contact details, it's yours, it's exportable, and if you ever leave you take it with you. Your domain and your content are yours too.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -917,27 +1451,31 @@ footer {
 <section class="section">
   <div class="container">
     <span class="label">How it works</span>
-    <h2>You run the restaurant. We handle the rest.</h2>
+    <h2>You cook. We do the rest.</h2>
     <div class="steps">
       <div class="step">
-        <div class="step-num">1</div>
-        <h4>You say yes</h4>
-        <p>No forms, no homework. We come to you.</p>
+        <div class="step-icon" aria-hidden="true">&#9749;</div>
+        <div class="step-num">Day 1</div>
+        <h4>We come to you</h4>
+        <p>A coffee and 30 minutes. No forms, no homework.</p>
       </div>
       <div class="step">
-        <div class="step-num">2</div>
-        <h4>We build everything</h4>
-        <p>Website, Google, bookings, SEO. 5 working days.</p>
+        <div class="step-icon" aria-hidden="true">&#128296;</div>
+        <div class="step-num">Days 2 to 6</div>
+        <h4>We build it all</h4>
+        <p>Site, bookings, ordering, Google. You carry on cooking.</p>
       </div>
       <div class="step">
-        <div class="step-num">3</div>
-        <h4>You go live</h4>
-        <p>Staff gets a 2-minute walkthrough. Done.</p>
+        <div class="step-icon" aria-hidden="true">&#127860;</div>
+        <div class="step-num">Day 7</div>
+        <h4>You are live</h4>
+        <p>Two minutes to show the staff. That is the whole training.</p>
       </div>
       <div class="step">
-        <div class="step-num">4</div>
-        <h4>We never disappear</h4>
-        <p>Monthly reports. Same-day updates. Always.</p>
+        <div class="step-icon" aria-hidden="true">&#128200;</div>
+        <div class="step-num">Every month after</div>
+        <h4>We stay</h4>
+        <p>Same-day changes, a plain report, a person who answers.</p>
       </div>
     </div>
   </div>
@@ -951,11 +1489,46 @@ footer {
     <div class="guarantee-stack">
       <div class="guarantee-card">
         <h3>7-Day Delivery Guarantee</h3>
-        <p>Your website goes live within 7 days of signing. If we miss that deadline, your first month is free. No questions, no forms. Content updates like menu changes, photos, and hours are always included in your plan.</p>
+        <p>Your site goes live within 7 days of signing. Miss that deadline and your first month is free, no questions, no forms, no claim to file. Menu changes, photos and opening hours are always included in your plan, however often you send them.</p>
       </div>
       <div class="guarantee-card">
-        <h3>60-Day Results Guarantee</h3>
-        <p>If you don't see measurable new traffic within 60 days of going live, your next month is on us. We don't get paid to build websites. We get paid to bring you customers.</p>
+        <h3>0% of your sales. In writing.</h3>
+        <p>No commission, no per-order fee, no per-cover fee, not at 50 orders a month and not at 5,000. If your price ever changes it's because you moved up a usage band, we told you first, and it took effect the following month. You will not get a surprise invoice from us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COME AND MEET ── -->
+<section class="meet-section" id="contact">
+  <div class="container">
+    <div class="meet-inner">
+      <div class="meet-copy">
+        <span class="label">Getting started</span>
+        <h2>In Helsinki? We will come to you.</h2>
+        <p>No demo call, no screen share, no slide deck. We sit down in your restaurant, look at what you have, and tell you straight whether we can help. If we cannot, we will say so.</p>
+        <div class="meet-ctas">
+          <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Book a free visit</a>
+          <a href="mailto:guidance@klarsystems.com" class="btn-secondary">Email us instead</a>
+        </div>
+      </div>
+      <div class="meet-facts">
+        <div class="meet-fact">
+          <span class="meet-fact-k">Where</span>
+          <span class="meet-fact-v">Your restaurant, anywhere in the Helsinki region. Further afield we start on a call.</span>
+        </div>
+        <div class="meet-fact">
+          <span class="meet-fact-k">How long</span>
+          <span class="meet-fact-v">About 30 minutes.</span>
+        </div>
+        <div class="meet-fact">
+          <span class="meet-fact-k">What it costs</span>
+          <span class="meet-fact-v">Nothing, and there is nothing to sign on the day.</span>
+        </div>
+        <div class="meet-fact">
+          <span class="meet-fact-k">Paying, when you do start</span>
+          <span class="meet-fact-v">By invoice. Half of the setup before we start, half before you go live, then the monthly on a normal invoice.</span>
+        </div>
       </div>
     </div>
   </div>
@@ -966,7 +1539,7 @@ footer {
   <div class="container">
     <div class="capture-card">
       <h2>Not ready to call yet?</h2>
-      <p>Leave your email and we'll take a look at your restaurant's online presence — what's working, what's missing, and what you could do next. No spam, no pitch.</p>
+      <p>Leave your email and we'll take a look at your restaurant's online presence, what's working, what's missing, and what you could do next. No spam, no pitch.</p>
       <form class="capture-form" id="captureForm" novalidate>
         <input type="email" id="captureEmail" placeholder="your@email.com" required autocomplete="email">
         <button type="submit" class="btn-primary" id="captureSubmit">Get Started</button>
@@ -978,14 +1551,21 @@ footer {
 </section>
 
 <!-- ── FOUNDING PARTNERS ── -->
-<section class="founding" id="contact">
+<section class="founding" id="founding">
   <div class="container">
     <div class="founding-strip">
       <span class="label">Founding Partner Program</span>
       <h2>Now accepting founding partners.</h2>
-      <p>We're building The Klar Restaurant System alongside the first 20 restaurants that use it. Founding partners get the lowest rate we'll ever offer, locked permanently. Hands-on setup for every channel. Priority support from the founding team. Your feedback shapes what we build next. Once 20 spots fill, the price increases for everyone after.</p>
-      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Book a Free Call</a>
-      <span class="founding-badge">Limited to 20 founding partners &middot; Program just opened</span>
+      <p>We are building this alongside the first 10 restaurants that use it.</p>
+      <ul class="founding-list">
+        <li>Today's prices, locked. If we put them up later, yours stay where they are.</li>
+        <li>We set every part of it up with you, in person.</li>
+        <li>You get the founding team on the phone, not a support queue.</li>
+        <li>What you tell us shapes what we build next.</li>
+      </ul>
+      <p class="founding-after">Once the 10 are taken, the price goes up for everyone after.</p>
+      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Book a free call</a>
+      <span class="founding-badge">Limited to 10 founding partners &middot; Program just opened</span>
     </div>
   </div>
 </section>
@@ -995,19 +1575,239 @@ footer {
   <div class="container">
     <div class="footer-inner">
       <div class="footer-left">
-        Klar Systems Oy &middot; Helsinki<br>
-        <a href="mailto:lomberg@klarsystems.com">lomberg@klarsystems.com</a>
+        <img src="/logos/klar-logo-black.svg" alt="Klar" class="footer-logo">
+        <div class="footer-company">
+          Klar &middot; Helsinki, Finland<br>
+          <a href="mailto:guidance@klarsystems.com">guidance@klarsystems.com</a>
+        </div>
       </div>
       <div class="footer-right">
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-        <span style="color: var(--subtle)">&copy; 2026</span>
+        <a href="/#system">What we provide</a>
+        <a href="/#calculator">Cost calculator</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <span class="footer-copy">&copy; 2026 Klar</span>
       </div>
     </div>
   </div>
 </footer>
 
 <script>
+// ── HERO FOOD MOTES ──
+// A little life in the hero. Move the mouse and the kitchen drifts past.
+(function () {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  const mm = window.matchMedia;
+  if (mm && mm('(prefers-reduced-motion: reduce)').matches) return;
+  if (mm && mm('(hover: none)').matches) return;
+
+  const FOOD = ['\u{1F355}', '\u{1F35C}', '\u{1F363}', '\u{1F354}', '\u{1F950}', '\u{1F373}',
+                '\u{1F957}', '\u{1F35D}', '\u{1F368}', '\u{1F376}', '☕', '\u{1F958}'];
+  const MAX = 14;
+  let alive = 0, lastAt = 0, lastX = 0, lastY = 0;
+
+  function spawn(x, y) {
+    if (alive >= MAX) return;
+    alive++;
+    const el = document.createElement('span');
+    el.className = 'hero-mote';
+    el.textContent = FOOD[(Math.random() * FOOD.length) | 0];
+    el.style.fontSize = (16 + Math.random() * 20) + 'px';
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
+    el.style.opacity = '0';
+    hero.appendChild(el);
+
+    const driftX = (Math.random() - 0.5) * 150;
+    const driftY = -70 - Math.random() * 130;
+    const spin = (Math.random() - 0.5) * 220;
+    const life = 2200 + Math.random() * 1400;
+    const peak = 0.5 + Math.random() * 0.3;
+
+    const anim = el.animate([
+      { transform: 'translate(-50%, -50%) translate(0,0) rotate(0deg) scale(0.5)', opacity: 0 },
+      { transform: 'translate(-50%, -50%) translate(' + driftX * 0.35 + 'px,' + driftY * 0.3 + 'px) rotate(' + spin * 0.3 + 'deg) scale(1)', opacity: peak, offset: 0.25 },
+      { transform: 'translate(-50%, -50%) translate(' + driftX + 'px,' + driftY + 'px) rotate(' + spin + 'deg) scale(0.85)', opacity: 0 }
+    ], { duration: life, easing: 'cubic-bezier(0.25,0.6,0.3,1)' });
+
+    anim.onfinish = () => { el.remove(); alive--; };
+  }
+
+  hero.addEventListener('pointermove', function (e) {
+    if (e.pointerType && e.pointerType !== 'mouse') return;
+    const now = e.timeStamp;
+    if (now - lastAt < 110) return;
+    if (Math.hypot(e.clientX - lastX, e.clientY - lastY) < 26) return;
+    lastAt = now; lastX = e.clientX; lastY = e.clientY;
+    const r = hero.getBoundingClientRect();
+    spawn(e.clientX - r.left, e.clientY - r.top);
+  });
+})();
+
+// ── MOBILE NAV ──
+(function () {
+  const btn = document.getElementById('navToggle');
+  const menu = document.getElementById('navRight');
+  if (!btn || !menu) return;
+  const close = () => { menu.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); };
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.addEventListener('click', e => { if (e.target.tagName === 'A') close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+
+// ── HERO VIDEO ──
+// The gradient behind is the default. If a hero video is actually present and
+// can play, fade it in over the top; otherwise nothing changes and nobody
+// sees a broken box.
+(function () {
+  const v = document.getElementById('heroVideo');
+  if (!v) return;
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduce && reduce.matches) { v.remove(); return; }
+  v.addEventListener('canplay', () => v.classList.add('is-ready'), { once: true });
+  v.addEventListener('error', () => v.remove());
+  // No source resolved at all (files not uploaded yet) leaves networkState NO_SOURCE
+  setTimeout(() => {
+    if (v.networkState === 3 || v.readyState === 0) v.remove();
+  }, 2500);
+})();
+
+// ── COMMISSION CALCULATOR ──
+(function () {
+  // Klar plans are priced on monthly activity: completed direct orders plus
+  // guests who arrived on a Klar booking. Quoting the €249 floor at every
+  // volume would promise a price we would not actually invoice.
+  const TIERS = [
+    { upTo: 300,  price: 249, name: 'Klar 300' },
+    { upTo: 750,  price: 399, name: 'Klar 750' },
+    { upTo: 1500, price: 599, name: 'Klar 1500' }
+  ];
+  const tierFor = units => TIERS.find(t => units <= t.upTo) ||
+    { upTo: Infinity, price: null, name: 'Klar Custom' };
+
+  const SETUP_MID = 2250;
+  const verdictSub = tier => 'Website, online ordering, booking system, guest CRM, Google setup and the ongoing work, all inside one setup fee of €1,900–€2,600. Then €' +
+    tier.price + ' a month on ' + tier.name + ' plus VAT, and 0% of your sales for as long as you\'re with us.';
+
+  const ids = ['cOrders', 'cCovers', 'cShare', 'cAov', 'cComm', 'cPerCover'];
+  const el = {};
+  ids.forEach(id => { el[id] = document.getElementById(id); });
+  if (ids.some(id => !el[id])) return;
+
+  const out = id => document.getElementById(id);
+
+  function eur(n) {
+    return '€' + Math.round(n).toLocaleString('en-US');
+  }
+  // Keep the typed-in boxes inside sane bounds without fighting the user mid-type
+  function bounded(input, fallback) {
+    const v = parseFloat(input.value);
+    if (isNaN(v)) return fallback;
+    return Math.min(Math.max(v, +input.min), +input.max);
+  }
+
+  function recalc() {
+    const orders   = +el.cOrders.value;
+    const covers   = +el.cCovers.value;
+    const outOf10  = +el.cShare.value;
+    const aov      = bounded(el.cAov, 30);
+    const comm     = bounded(el.cComm, 30) / 100;
+    const perCover = bounded(el.cPerCover, 3);
+    const share    = outOf10 / 10;
+
+    // Echo the two big questions back in plain words
+    out('cOrdersVal').textContent = orders + (orders === 1 ? ' order' : ' orders');
+    out('cCoversVal').textContent = covers + (covers === 1 ? ' guest' : ' guests');
+    out('cShareVal').textContent  = outOf10 + ' out of 10';
+
+    // What you pay the platforms now
+    const commissionCost = orders * aov * comm;
+    const coverCost      = covers * perCover;
+    const bleed          = commissionCost + coverCost;
+
+    out('oCommLabel').textContent  = 'Wolt / Foodora commission, ' + Math.round(comm * 100) + '% of ' + orders + ' orders';
+    out('oComm').textContent       = eur(commissionCost);
+    out('oCoverLabel').textContent = 'Booking service fees, ' + covers + ' guests';
+    out('oCover').textContent      = eur(coverCost);
+    out('oTotal').textContent      = eur(bleed);
+    out('oYear').textContent       = eur(bleed * 12) + ' a year';
+
+    // What changes with Klar
+    const ordersMoved     = Math.round(orders * share);
+    const commissionSaved = ordersMoved * aov * comm;
+    const bookingSaved    = coverCost;
+    const recovered       = commissionSaved + bookingSaved;
+
+    // Your plan follows how much you actually use it
+    const units = ordersMoved + covers;
+    const tier  = tierFor(units);
+    const KLAR_MONTHLY = tier.price;
+    const isCustom = KLAR_MONTHLY === null;
+    const net = isCustom ? 0 : recovered - KLAR_MONTHLY;
+
+    out('oRecovLabel').textContent = 'Commission on the ' + ordersMoved + ' orders that now come to you direct';
+    out('oRecov').textContent      = '+ ' + eur(commissionSaved);
+    out('oBookRecov').textContent  = '+ ' + eur(bookingSaved);
+    out('oKlarLabel').textContent  = 'What Klar costs you, ' + tier.name;
+    out('oTierNote').textContent   = isCustom
+      ? 'Over 1,500 orders and guests a month, so we would quote you properly rather than guess.'
+      : ordersMoved + ' direct orders + ' + covers + ' booked guests = ' + units +
+        ' a month, which is the ' + tier.name + ' plan.';
+    out('oKlar').textContent       = isCustom ? 'Quoted' : '− ' + eur(KLAR_MONTHLY);
+    out('planName').textContent    = tier.name;
+    out('planPrice').textContent   = isCustom ? 'Quoted for you' : eur(KLAR_MONTHLY) + ' a month + VAT';
+    out('planWhy').textContent     = units + ' orders and booked guests a month';
+    out('oNet').textContent        = isCustom ? ',' : (net < 0 ? '− ' : '') + eur(Math.abs(net));
+    out('oNetYear').textContent    = isCustom
+      ? 'Book a call and we will do this with you'
+      : (net < 0 ? '− ' : '') + eur(Math.abs(net * 12)) + ' a year';
+
+    // The verdict
+    const daysOfBleed  = bleed > 0 ? SETUP_MID / bleed * 30 : 0;
+    const payback      = net > 0 ? SETUP_MID / net : 0;
+    const perOrder     = aov * comm;
+    const ordersToPlan = perOrder > 0 ? Math.ceil(KLAR_MONTHLY / perOrder) : 0;
+    const multiple     = recovered / KLAR_MONTHLY;
+
+    // Only claim a win when the setup fee actually pays for itself inside the
+    // first year and a half. Below that, say so plainly instead of printing an
+    // absurd number like "750 months" and hoping nobody reads it.
+    const worthIt = !isCustom && net > 0 && payback > 0 && payback <= 18;
+
+    if (isCustom) {
+      out('vBig').textContent = 'You are bigger than our standard plans. Let us price this properly.';
+      out('vSub').textContent = 'Above 1,500 orders and booked guests a month we quote individually instead of pushing you into a band that does not fit. Everything else on this page still holds: no commission, no fee per order, no fee per cover.';
+    } else if (worthIt && daysOfBleed < 60) {
+      out('vBig').textContent = 'Your whole setup costs less than ' +
+        Math.ceil(daysOfBleed) + ' days of what the platforms take from you.';
+      out('vSub').textContent = verdictSub(tier);
+    } else if (worthIt) {
+      out('vBig').textContent = 'Your whole setup costs about ' +
+        (daysOfBleed / 30).toFixed(1) + ' months of what the platforms take from you.';
+      out('vSub').textContent = verdictSub(tier);
+    } else {
+      out('vBig').textContent = 'At these numbers, the platforms are not what is holding you back.';
+      out('vSub').textContent = 'We would rather say that than dress up a calculator result. On these figures Klar would not pay for itself quickly, and we are not going to pretend otherwise. What you most likely need first is a proper website and to be found, so let us talk about that instead.';
+    }
+
+    out('vPayback').textContent = worthIt
+      ? (payback < 1 ? 'Under a month' : payback.toFixed(1) + ' months')
+      : ',';
+    out('vOrders').textContent  = ordersToPlan > 0 ? ordersToPlan + ' orders' : ',';
+    out('vMultiple').textContent = worthIt ? '€' + multiple.toFixed(2) : ',';
+  }
+
+  ids.forEach(id => {
+    el[id].addEventListener('input', recalc);
+  });
+  recalc();
+})();
+
 // ── NAV SCROLL ──
 const nav = document.querySelector('nav');
 window.addEventListener('scroll', () => {
@@ -1054,7 +1854,7 @@ window.addEventListener('scroll', () => {
       form.reset();
       showMessage("Thanks! We'll be in touch within 24 hours.", 'success');
     } catch (err) {
-      showMessage('Something went wrong. Email us at lomberg@klarsystems.com instead.', 'error');
+      showMessage('Something went wrong. Email us at guidance@klarsystems.com instead.', 'error');
     } finally {
       button.disabled = false;
       button.textContent = originalLabel;
