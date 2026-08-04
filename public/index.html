@@ -19,27 +19,27 @@
   --accent-soft: #e0f870;
   --accent-muted: #f0fbb0;
   --heading: #1a1a1a;
-  --body: #4a4a46;
-  --muted: #8a8880;
-  --subtle: #b5b0a6;
+  --body: #3d3d39;
+  --muted: #6b6960;
+  --subtle: #706e66;
   --border: #e8e3d9;
   --border-strong: #d4cfc5;
   --dark-bg: #1a1a1a;
   --dark-card: #262624;
   --dark-border: #3a3a36;
-  --dark-muted: #6a6a64;
+  --dark-muted: #9a978e;
   --text-on-accent: #3a5a00;
   --max-w: 1100px;
   --gutter: clamp(1.25rem, 5vw, 3rem);
 }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 17px; }
 
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--bg);
   color: var(--body);
-  line-height: 1.65;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -60,7 +60,7 @@ h4 { font-weight: 600; letter-spacing: -0.02em; }
 .label {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 400;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--text-on-accent);
@@ -151,7 +151,7 @@ nav.scrolled {
 }
 .nav-link {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   color: var(--body);
   transition: color 0.2s;
 }
@@ -162,7 +162,7 @@ nav.scrolled {
   color: var(--heading);
   font-family: 'DM Sans', sans-serif;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   padding: 10px 20px;
   border-radius: 6px;
   transition: filter 0.2s;
@@ -215,7 +215,7 @@ nav.scrolled {
 .hero-proof {
   margin-top: 32px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78rem;
+  font-size: 0.98rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
@@ -248,7 +248,7 @@ nav.scrolled {
 }
 .proof-stat-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--dark-muted);
@@ -304,8 +304,8 @@ nav.scrolled {
   margin-bottom: 10px;
 }
 .feature-card p {
-  font-size: 0.95rem;
-  line-height: 1.65;
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: var(--body);
 }
 
@@ -322,7 +322,7 @@ nav.scrolled {
   margin-bottom: 6px;
 }
 .value-compare-sub {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--muted);
   margin-bottom: 20px;
 }
@@ -335,12 +335,12 @@ nav.scrolled {
   border-bottom: 1px solid var(--border);
 }
 .value-label {
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   color: var(--body);
 }
 .value-cost {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--muted);
   white-space: nowrap;
 }
@@ -377,7 +377,7 @@ nav.scrolled {
 .testimonial cite {
   font-family: 'JetBrains Mono', monospace;
   font-style: normal;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
@@ -396,7 +396,7 @@ nav.scrolled {
   margin-bottom: 10px;
 }
 .bookings-highlight p {
-  font-size: 0.98rem;
+  font-size: 1.08rem;
   color: var(--body);
   line-height: 1.7;
 }
@@ -416,11 +416,11 @@ nav.scrolled {
 .comparison-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.95rem;
+  font-size: 1.02rem;
 }
 .comparison-table th {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--muted);
@@ -477,7 +477,7 @@ nav.scrolled {
   margin-bottom: 8px;
 }
 .step p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--muted);
   line-height: 1.55;
 }
@@ -519,9 +519,9 @@ nav.scrolled {
   letter-spacing: -0.02em;
 }
 .guarantee-card p {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   color: var(--dark-muted);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 /* ── EMAIL CAPTURE ── */
@@ -547,7 +547,7 @@ nav.scrolled {
   font-size: 1rem;
   max-width: 520px;
   margin: 0 auto 28px;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 .capture-form {
   display: flex;
@@ -564,7 +564,7 @@ nav.scrolled {
   border: 1.5px solid var(--border-strong);
   border-radius: 6px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   background: var(--bg);
   color: var(--heading);
   outline: none;
@@ -575,16 +575,16 @@ nav.scrolled {
 .capture-form button {
   flex: 0 0 auto;
   padding: 14px 24px;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 .capture-note {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--muted);
   margin-top: 16px;
 }
 .capture-message {
   margin-top: 16px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   min-height: 1.2em;
 }
 .capture-message.success { color: var(--text-on-accent); font-weight: 500; }
@@ -622,7 +622,7 @@ nav.scrolled {
   display: block;
   margin-top: 20px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
+  font-size: 0.88rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--accent);
@@ -648,7 +648,7 @@ footer {
   gap: 24px;
 }
 .footer-left {
-  font-size: 0.9rem;
+  font-size: 0.98rem;
   color: var(--muted);
 }
 .footer-left a { color: var(--body); transition: color 0.2s; }
@@ -656,7 +656,7 @@ footer {
 .footer-right {
   display: flex;
   gap: 24px;
-  font-size: 0.9rem;
+  font-size: 0.98rem;
 }
 .footer-right a {
   color: var(--muted);
@@ -675,7 +675,7 @@ footer {
 
   .nav-right { gap: 16px; }
   .nav-right .nav-link { display: none; }
-  .nav-cta { font-size: 0.85rem; padding: 8px 16px; }
+  .nav-cta { font-size: 0.92rem; padding: 8px 16px; }
 
   .feature-cards { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr 1fr; }
@@ -694,7 +694,7 @@ footer {
 .calc-section { background: var(--dark-bg); color: #d8d5cc; padding: clamp(3.5rem, 8vw, 6rem) 0; }
 .calc-section h2 { color: #faf8f4; }
 .calc-section .label { background: rgba(200,255,0,0.14); color: var(--accent); }
-.calc-lead { color: #a8a49a; max-width: 62ch; margin-bottom: 2.5rem; }
+.calc-lead { color: #b8b4aa; max-width: 62ch; margin-bottom: 2.5rem; }
 
 .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
 @media (max-width: 860px) { .calc-grid { grid-template-columns: 1fr; } }
@@ -706,14 +706,14 @@ footer {
   padding: clamp(1.25rem, 3vw, 1.75rem);
 }
 .calc-panel h3 { color: #faf8f4; font-size: 1.05rem; margin-bottom: 0.35rem; }
-.calc-panel-sub { font-size: 0.85rem; color: var(--dark-muted); margin-bottom: 1.5rem; }
+.calc-panel-sub { font-size: 0.98rem; color: var(--dark-muted); margin-bottom: 1.5rem; }
 
 .calc-field { margin-bottom: 1.15rem; }
 .calc-field-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.4rem; }
-.calc-field label { font-size: 0.9rem; color: #c4c0b6; }
+.calc-field label { font-size: 1rem; color: #d2cec4; }
 .calc-field-val {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--accent);
   font-weight: 400;
   white-space: nowrap;
@@ -732,7 +732,7 @@ footer {
   width: 20px; height: 20px; border-radius: 50%;
   background: var(--accent); cursor: pointer; border: none;
 }
-.calc-field-note { font-size: 0.82rem; color: var(--dark-muted); margin-top: 0.5rem; line-height: 1.55; }
+.calc-field-note { font-size: 0.95rem; color: var(--dark-muted); margin-top: 0.5rem; line-height: 1.55; }
 
 .calc-q { margin-bottom: 2.25rem; }
 .calc-q > label {
@@ -755,8 +755,8 @@ footer {
   padding-top: 1.5rem;
   border-top: 1px solid var(--dark-border);
 }
-.calc-detail-title { font-size: 0.9rem; color: var(--dark-muted); margin-bottom: 0.9rem; line-height: 1.55; }
-.calc-detail-title strong { color: #c4c0b6; font-weight: 500; }
+.calc-detail-title { font-size: 1rem; color: var(--dark-muted); margin-bottom: 0.9rem; line-height: 1.55; }
+.calc-detail-title strong { color: #d2cec4; font-weight: 500; }
 .calc-detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 0.7rem; }
 .calc-detail-item {
   background: var(--dark-bg);
@@ -768,7 +768,7 @@ footer {
 .calc-detail-item:focus-within { border-color: var(--accent); }
 .calc-detail-label {
   display: block;
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--dark-muted);
@@ -802,18 +802,18 @@ footer {
 .calc-detail-input input[type=number] { -moz-appearance: textfield; appearance: textfield; }
 
 .calc-line-val.is-plus { color: var(--accent); }
-.calc-line-val.is-minus { color: #a8a49a; }
+.calc-line-val.is-minus { color: #b8b4aa; }
 .calc-line-label em { font-style: normal; text-decoration: underline; text-underline-offset: 3px; }
 
-.calc-line { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--dark-border); font-size: 0.92rem; }
+.calc-line { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--dark-border); font-size: 1.02rem; }
 .calc-line:last-of-type { border-bottom: none; }
-.calc-line-label { color: #a8a49a; }
+.calc-line-label { color: #b8b4aa; }
 .calc-line-val { font-family: 'JetBrains Mono', monospace; color: #e4e1d8; white-space: nowrap; }
 .calc-line.is-total { border-top: 1px solid var(--dark-border); border-bottom: none; margin-top: 0.4rem; padding-top: 1rem; }
 .calc-line.is-total .calc-line-label { color: #faf8f4; font-weight: 500; }
 .calc-line.is-total .calc-line-val { color: #ff8a7a; font-size: 1.5rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
 .calc-line.is-total.is-good .calc-line-val { color: var(--accent); }
-.calc-sub-year { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--dark-muted); margin-top: 0.3rem; }
+.calc-sub-year { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--dark-muted); margin-top: 0.3rem; }
 
 .calc-verdict {
   margin-top: 1.5rem;
@@ -835,10 +835,10 @@ footer {
 @media (max-width: 700px) { .calc-verdict-row { grid-template-columns: 1fr; gap: 0.85rem; } }
 .calc-vstat { border-top: 2px solid rgba(0,0,0,0.18); padding-top: 0.75rem; }
 .calc-vstat-num { display: block; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em; color: var(--heading); }
-.calc-vstat-label { display: block; font-size: 0.82rem; color: #2e4a00; margin-top: 0.15rem; line-height: 1.45; }
+.calc-vstat-label { display: block; font-size: 0.95rem; color: #2e4a00; margin-top: 0.15rem; line-height: 1.45; }
 .calc-cta { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
-.calc-disclaimer { margin-top: 1.5rem; font-size: 0.8rem; color: var(--dark-muted); line-height: 1.6; max-width: 70ch; }
-.calc-disclaimer a { color: #a8a49a; text-decoration: underline; }
+.calc-disclaimer { margin-top: 1.5rem; font-size: 0.92rem; color: var(--dark-muted); line-height: 1.6; max-width: 70ch; }
+.calc-disclaimer a { color: #b8b4aa; text-decoration: underline; }
 
 /* ── PRICING ── */
 .pricing-card {
@@ -851,17 +851,24 @@ footer {
 .pricing-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
 .pricing-price { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: -0.03em; color: var(--heading); }
 .pricing-price span { font-size: 1rem; font-weight: 400; color: var(--muted); font-family: 'DM Sans', sans-serif; letter-spacing: 0; }
-.pricing-row { display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+.pricing-row { display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--border); font-size: 1.05rem; }
 .pricing-row:last-child { border-bottom: none; }
 .pricing-row-label { color: var(--body); }
-.pricing-row-val { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--heading); text-align: right; white-space: nowrap; }
-.pricing-note { margin-top: 1.25rem; font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+.pricing-row-val { font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--heading); text-align: right; white-space: nowrap; }
+.pricing-note { margin-top: 1.25rem; font-size: 0.98rem; color: var(--muted); line-height: 1.6; }
 
 /* ── FAQ / HONESTY ── */
 .faq-item { border-top: 1px solid var(--border); padding: 1.25rem 0; }
 .faq-item:last-child { border-bottom: 1px solid var(--border); }
 .faq-q { font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: var(--heading); margin-bottom: 0.4rem; }
-.faq-a { font-size: 0.95rem; color: var(--body); }
+.faq-a { font-size: 1.05rem; color: var(--body); }
+
+.calc-tier-note {
+  font-size: 0.92rem;
+  color: var(--dark-muted);
+  line-height: 1.55;
+  padding: 0.15rem 0 0.5rem;
+}
 </style>
 </head>
 <body>
@@ -1224,9 +1231,10 @@ footer {
           <span class="calc-line-val is-plus" id="oRecov">+ &euro;540</span>
         </div>
         <div class="calc-line">
-          <span class="calc-line-label">What Klar costs you</span>
-          <span class="calc-line-val is-minus" id="oKlar">&minus; &euro;249</span>
+          <span class="calc-line-label" id="oKlarLabel">What Klar costs you &mdash; Klar 750</span>
+          <span class="calc-line-val is-minus" id="oKlar">&minus; &euro;399</span>
         </div>
+        <div class="calc-tier-note" id="oTierNote">60 direct orders + 250 booked guests = 310 a month, which is the Klar 750 plan.</div>
         <div class="calc-line is-total is-good">
           <span class="calc-line-label">You are better off by</span>
           <span class="calc-line-val" id="oNet">&euro;1,041</span>
@@ -1324,6 +1332,18 @@ footer {
         <span class="pricing-row-val">&euro;0</span>
       </div>
       <div class="pricing-row">
+        <span class="pricing-row-label"><strong>Klar 300</strong> &mdash; up to 300 orders and booked guests a month</span>
+        <span class="pricing-row-val">&euro;249/month</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label"><strong>Klar 750</strong> &mdash; 301 to 750 a month</span>
+        <span class="pricing-row-val">&euro;399/month</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label"><strong>Klar 1500</strong> &mdash; 751 to 1,500 a month</span>
+        <span class="pricing-row-val">&euro;599/month</span>
+      </div>
+      <div class="pricing-row">
         <span class="pricing-row-label">Bookings only, if that's all you need</span>
         <span class="pricing-row-val">From &euro;149/month</span>
       </div>
@@ -1340,7 +1360,7 @@ footer {
         <span class="pricing-row-val">Quoted</span>
       </div>
 
-      <p class="pricing-note">Your monthly price follows how much you actually use the system &mdash; completed orders plus guests who arrived on a Klar booking. Grow past your band and we move you up at the next billing cycle, after we've told you. We never switch off your ordering or your bookings because you had a good month, and we never send you a bill you weren't expecting.</p>
+      <p class="pricing-note">Your price follows how busy you actually are &mdash; we count the orders that come through your own site plus the guests who turn up on a Klar booking. Cancellations and no-shows don't count. If you outgrow your band we tell you, and you move up from the following month &mdash; never backdated. We will never switch off your ordering or your bookings because you had a good month, and you will never get a bill you weren't expecting. Above 1,500 a month, or if you have more than one restaurant, we quote you properly instead of guessing.</p>
     </div>
 
     <div style="margin-top:2.5rem">
@@ -1465,9 +1485,20 @@ footer {
 <script>
 // ── COMMISSION CALCULATOR ──
 (function () {
-  const KLAR_MONTHLY = 249;
+  // Klar plans are priced on monthly activity: completed direct orders plus
+  // guests who arrived on a Klar booking. Quoting the €249 floor at every
+  // volume would promise a price we would not actually invoice.
+  const TIERS = [
+    { upTo: 300,  price: 249, name: 'Klar 300' },
+    { upTo: 750,  price: 399, name: 'Klar 750' },
+    { upTo: 1500, price: 599, name: 'Klar 1500' }
+  ];
+  const tierFor = units => TIERS.find(t => units <= t.upTo) ||
+    { upTo: Infinity, price: null, name: 'Klar Custom' };
+
   const SETUP_MID = 2250;
-  const VERDICT_SUB = 'Website, online ordering, booking system, guest CRM, Google setup and the ongoing work — all inside one setup fee of €1,900–€2,600. Then €249 a month, and 0% of your sales for as long as you\'re with us.';
+  const verdictSub = tier => 'Website, online ordering, booking system, guest CRM, Google setup and the ongoing work — all inside one setup fee of €1,900–€2,600. Then €' +
+    tier.price + ' a month on ' + tier.name + ', and 0% of your sales for as long as you\'re with us.';
 
   const ids = ['cOrders', 'cCovers', 'cShare', 'cAov', 'cComm', 'cPerCover'];
   const el = {};
@@ -1517,14 +1548,27 @@ footer {
     const commissionSaved = ordersMoved * aov * comm;
     const bookingSaved    = coverCost;
     const recovered       = commissionSaved + bookingSaved;
-    const net             = recovered - KLAR_MONTHLY;
+
+    // Your plan follows how much you actually use it
+    const units = ordersMoved + covers;
+    const tier  = tierFor(units);
+    const KLAR_MONTHLY = tier.price;
+    const isCustom = KLAR_MONTHLY === null;
+    const net = isCustom ? 0 : recovered - KLAR_MONTHLY;
 
     out('oRecovLabel').textContent = 'Commission on the ' + ordersMoved + ' orders that now come to you direct';
     out('oRecov').textContent      = '+ ' + eur(commissionSaved);
     out('oBookRecov').textContent  = '+ ' + eur(bookingSaved);
-    out('oKlar').textContent       = '− ' + eur(KLAR_MONTHLY);
-    out('oNet').textContent        = (net < 0 ? '− ' : '') + eur(Math.abs(net));
-    out('oNetYear').textContent    = (net < 0 ? '− ' : '') + eur(Math.abs(net * 12)) + ' a year';
+    out('oKlarLabel').textContent  = 'What Klar costs you — ' + tier.name;
+    out('oTierNote').textContent   = isCustom
+      ? 'Over 1,500 orders and guests a month, so we would quote you properly rather than guess.'
+      : ordersMoved + ' direct orders + ' + covers + ' booked guests = ' + units +
+        ' a month, which is the ' + tier.name + ' plan.';
+    out('oKlar').textContent       = isCustom ? 'Quoted' : '− ' + eur(KLAR_MONTHLY);
+    out('oNet').textContent        = isCustom ? '—' : (net < 0 ? '− ' : '') + eur(Math.abs(net));
+    out('oNetYear').textContent    = isCustom
+      ? 'Book a call and we will do this with you'
+      : (net < 0 ? '− ' : '') + eur(Math.abs(net * 12)) + ' a year';
 
     // The verdict
     const daysOfBleed  = bleed > 0 ? SETUP_MID / bleed * 30 : 0;
@@ -1536,16 +1580,19 @@ footer {
     // Only claim a win when the setup fee actually pays for itself inside the
     // first year and a half. Below that, say so plainly instead of printing an
     // absurd number like "750 months" and hoping nobody reads it.
-    const worthIt = net > 0 && payback > 0 && payback <= 18;
+    const worthIt = !isCustom && net > 0 && payback > 0 && payback <= 18;
 
-    if (worthIt && daysOfBleed < 60) {
+    if (isCustom) {
+      out('vBig').textContent = 'You are bigger than our standard plans. Let us price this properly.';
+      out('vSub').textContent = 'Above 1,500 orders and booked guests a month we quote individually instead of pushing you into a band that does not fit. Everything else on this page still holds: no commission, no fee per order, no fee per cover.';
+    } else if (worthIt && daysOfBleed < 60) {
       out('vBig').textContent = 'Everything gets built for less than ' +
         Math.ceil(daysOfBleed) + ' days of what the platforms take from you.';
-      out('vSub').textContent = VERDICT_SUB;
+      out('vSub').textContent = verdictSub(tier);
     } else if (worthIt) {
       out('vBig').textContent = 'Everything gets built for about ' +
         (daysOfBleed / 30).toFixed(1) + ' months of what the platforms take from you.';
-      out('vSub').textContent = VERDICT_SUB;
+      out('vSub').textContent = verdictSub(tier);
     } else {
       out('vBig').textContent = 'At these numbers, the platforms are not what is holding you back.';
       out('vSub').textContent = 'We would rather say that than dress up a calculator result. On these figures Klar would not pay for itself quickly, and we are not going to pretend otherwise. What you most likely need first is a proper website and to be found — so let us talk about that instead.';
