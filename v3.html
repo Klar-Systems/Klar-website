@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klar — The Restaurant System</title>
+<meta name="description" content="Be the restaurant customers find first. One partner for your website, reservations, and Google visibility. Zero per-cover fees. Live in 7 days.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" defer></script>
+<style>
+/* ==========================================================================
+   Klar — built to the Wise-Inspired design system (DESIGN.md)
+   Structure is design-led: oversized 900-weight display type, one idea per
+   band, alternating sage / white / ink surfaces, a single lime CTA accent,
+   24px radius everywhere, surface-contrast elevation. No shadows-as-depth.
+   ========================================================================== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #9fe870;
+  --primary-active: #cdffad;
+  --primary-neutral: #c5edab;
+  --primary-pale: #e2f6d5;
+  --ink: #0e0f0c;
+  --ink-deep: #163300;
+  --body: #454745;
+  --mute: #868685;
+  --canvas: #ffffff;
+  --canvas-soft: #e8ebe6;
+  --on-dark: #b8c0b6;
+  --positive-deep: #054d28;
+  --warning: #ffd11a;
+  --warning-content: #4a3b1c;
+  --negative-deep: #a72027;
+
+  --f-display: 'Manrope', 'Inter', system-ui, sans-serif;
+  --f-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --xs: 4px; --sm: 8px; --md: 12px; --lg: 16px; --xl: 24px; --xl2: 32px; --xl3: 48px; --xl4: 80px;
+  --r-md: 12px; --r-lg: 16px; --r-xl: 24px; --r-pill: 9999px;
+
+  --max-w: 1200px;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--f-body);
+  background: var(--canvas-soft);
+  color: var(--body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+::selection { background: var(--primary); color: var(--ink); }
+
+.wrap { max-width: var(--max-w); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+
+/* ── DISPLAY TYPE — the brand's voice, weight 800/900 at true scale ── */
+h1, h2, h3, h4 { font-family: var(--f-display); color: var(--ink); font-weight: 800; letter-spacing: -0.01em; line-height: 1; }
+.d-mega { font-size: clamp(3.25rem, 9vw, 7rem);   line-height: 0.9; }
+.d-xl   { font-size: clamp(2.75rem, 6vw, 4.75rem); line-height: 0.92; }
+.d-lg   { font-size: clamp(2.25rem, 4.5vw, 3.5rem); line-height: 0.95; }
+.d-md   { font-size: clamp(1.75rem, 3vw, 2.5rem);  line-height: 1; }
+.d-sm   { font-size: clamp(1.35rem, 2.2vw, 1.75rem); line-height: 1.1; }
+.lead   { font-family: var(--f-body); font-size: clamp(1.1rem, 1.6vw, 1.375rem); font-weight: 400; line-height: 1.5; color: var(--body); letter-spacing: 0; }
+
+.eyebrow {
+  display: inline-block; font-family: var(--f-body);
+  font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.02em;
+  color: var(--ink-deep); background: var(--primary-pale);
+  padding: 6px 14px; border-radius: var(--r-pill); margin-bottom: var(--xl);
+}
+.eyebrow.on-dark { background: rgba(159,232,112,0.14); color: var(--primary); }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--sm);
+  font-family: var(--f-body); font-size: 1rem; font-weight: 600; line-height: 1;
+  padding: 16px 26px; border-radius: var(--r-pill); border: none; cursor: pointer;
+  min-height: 52px; transition: background-color .18s, transform .15s, border-color .18s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--primary); color: var(--ink); }
+.btn-primary:hover { background: var(--primary-active); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+.btn-ghost:hover { background: var(--ink); color: var(--canvas); }
+.btn-ghost.on-dark { color: var(--canvas); border-color: rgba(232,235,230,0.4); }
+.btn-ghost.on-dark:hover { background: var(--canvas); color: var(--ink); }
+.btn:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+
+/* ── NAV ── */
+.nav { position: sticky; top: 0; z-index: 50; background: rgba(232,235,230,0.82); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid transparent; transition: border-color .2s, background .2s; }
+.nav.scrolled { border-bottom-color: rgba(14,15,12,0.08); background: rgba(232,235,230,0.94); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--xl); padding: 16px 0; }
+.nav-logo { height: 26px; width: auto; }
+.nav-links { display: flex; align-items: center; gap: var(--xl); }
+.nav-link { font-size: 0.9375rem; font-weight: 600; color: var(--ink); }
+.nav-link:hover { color: var(--ink-deep); }
+.nav-cta { min-height: 44px; padding: 12px 20px; font-size: 0.9375rem; }
+
+/* ── BAND SYSTEM — surface contrast is the elevation ── */
+.band { padding: clamp(var(--xl3), 9vw, 120px) 0; }
+.band--sage  { background: var(--canvas-soft); }
+.band--white { background: var(--canvas); }
+.band--ink   { background: var(--ink); }
+.band--ink h1, .band--ink h2, .band--ink h3, .band--ink h4 { color: var(--canvas); }
+.band--ink .lead { color: var(--on-dark); }
+.band--ink .accent { color: var(--primary); }
+
+/* ── HERO ── */
+.hero { padding-top: clamp(var(--xl2), 6vw, 72px); padding-bottom: clamp(var(--xl3), 8vw, 96px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.82fr); gap: clamp(var(--xl2), 5vw, 72px); align-items: center; }
+.hero h1 { margin-bottom: var(--xl); max-width: 12ch; }
+.hero .lead { max-width: 46ch; margin-bottom: var(--xl2); }
+.hero-ctas { display: flex; gap: var(--md); flex-wrap: wrap; margin-bottom: var(--xl2); }
+.hero-trust { display: flex; align-items: center; gap: var(--md); font-size: 0.9375rem; font-weight: 500; color: var(--body); }
+.hero-trust .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); flex: none; }
+
+/* ── SIGNATURE CARD: live fee calculator (the currency-converter analog) ── */
+.calc { background: var(--canvas); border: 1.5px solid var(--ink); border-radius: var(--r-xl); padding: clamp(var(--xl), 3vw, 32px); }
+.calc-top { display: flex; justify-content: space-between; align-items: center; gap: var(--lg); margin-bottom: var(--xl); }
+.calc-label { font-size: 0.8125rem; font-weight: 700; color: var(--mute); text-transform: uppercase; letter-spacing: 0.06em; }
+.badge { display: inline-flex; align-items: center; font-size: 0.8125rem; font-weight: 600; padding: 5px 12px; border-radius: var(--r-pill); }
+.badge-positive { background: var(--primary-pale); color: var(--positive-deep); }
+.calc-q { font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin-bottom: var(--md); display: flex; justify-content: space-between; align-items: baseline; }
+.calc-q b { font-family: var(--f-display); font-weight: 800; font-size: 1.25rem; }
+input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: var(--r-pill); background: var(--canvas-soft); outline: none; margin-bottom: var(--xl); }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 26px; height: 26px; border-radius: 50%; background: var(--primary); border: 3px solid var(--ink); cursor: pointer; }
+input[type=range]::-moz-range-thumb { width: 26px; height: 26px; border-radius: 50%; background: var(--primary); border: 3px solid var(--ink); cursor: pointer; }
+.calc-rows { display: grid; gap: var(--md); }
+.calc-row { display: flex; justify-content: space-between; align-items: center; padding: 16px 18px; border-radius: var(--r-lg); }
+.calc-row.them { background: var(--canvas-soft); }
+.calc-row.us { background: var(--primary-pale); }
+.calc-row .who { font-size: 0.9375rem; font-weight: 600; color: var(--ink); }
+.calc-row .who span { display: block; font-weight: 400; font-size: 0.8125rem; color: var(--mute); }
+.calc-row .amt { font-family: var(--f-display); font-weight: 800; font-size: clamp(1.35rem, 2.5vw, 1.875rem); color: var(--ink); }
+.calc-row.us .amt { color: var(--ink-deep); }
+.calc-foot { margin-top: var(--lg); font-size: 0.8125rem; color: var(--mute); text-align: center; }
+
+/* ── STAT STRIP ── */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--xl); }
+.stat .n { font-family: var(--f-display); font-weight: 800; font-size: clamp(2.25rem, 4.5vw, 3.5rem); color: var(--primary); line-height: 1; }
+.stat .l { margin-top: var(--sm); font-size: 0.9375rem; font-weight: 500; color: var(--on-dark); }
+
+/* ── EDITORIAL STATEMENT ── */
+.statement { max-width: 20ch; margin-bottom: var(--xl2); }
+.statement .accent-line { color: var(--mute); }
+.figures { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--xl2); margin-top: var(--xl3); }
+.figure .n { font-family: var(--f-display); font-weight: 800; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--ink); line-height: 1; }
+.figure p { margin-top: var(--md); font-size: 1rem; color: var(--body); max-width: 30ch; }
+
+/* ── SECTION HEAD ── */
+.head { max-width: 60ch; margin-bottom: var(--xl3); }
+.head h2 { margin-bottom: var(--lg); }
+.head .lead { max-width: 52ch; }
+
+/* ── FEATURE MOSAIC ── */
+.mosaic { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--lg); }
+.tile { border-radius: var(--r-xl); padding: clamp(var(--xl), 2.5vw, var(--xl2)); display: flex; flex-direction: column; }
+.tile h3 { margin-bottom: var(--md); }
+.tile p { color: inherit; opacity: 0.86; font-size: 0.98rem; }
+.tile--sage  { background: var(--canvas-soft); color: var(--ink); grid-column: span 3; }
+.tile--green { background: var(--primary-pale); color: var(--ink); grid-column: span 3; }
+.tile--ink   { background: var(--ink); grid-column: span 4; }
+.tile--ink h3 { color: var(--primary); } .tile--ink p { color: var(--on-dark); opacity: 1; }
+.tile--wide-green { background: var(--primary); color: var(--ink); grid-column: span 2; justify-content: flex-end; }
+.tile--wide-green h3 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+
+/* ── REPLACES LIST ── */
+.replaces { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(var(--xl2), 5vw, 72px); align-items: center; margin-top: var(--xl4); }
+.replaces-list { display: grid; gap: 2px; }
+.rep { display: flex; justify-content: space-between; align-items: baseline; gap: var(--lg); padding: 16px 0; border-bottom: 1px solid rgba(14,15,12,0.1); }
+.rep .k { font-size: 1rem; color: var(--body); }
+.rep .v { font-size: 0.9375rem; color: var(--mute); white-space: nowrap; }
+.rep.total { border-bottom: 2px solid var(--ink); }
+.rep.total .k { font-weight: 700; color: var(--ink); } .rep.total .v { font-weight: 700; color: var(--ink); }
+.replaces-card { background: var(--ink); border-radius: var(--r-xl); padding: clamp(var(--xl2), 4vw, var(--xl3)); }
+.replaces-card .big { font-family: var(--f-display); font-weight: 800; font-size: clamp(2rem, 4vw, 3rem); color: var(--primary); line-height: 1; margin-bottom: var(--md); }
+.replaces-card p { color: var(--on-dark); }
+
+/* ── COMPARISON ── */
+.compare { border-radius: var(--r-xl); overflow: hidden; background: var(--canvas-soft); margin-top: var(--xl3); }
+.compare table { width: 100%; border-collapse: collapse; }
+.compare th, .compare td { text-align: left; padding: 18px clamp(var(--lg), 2.5vw, var(--xl)); }
+.compare thead th { font-size: 0.8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--mute); }
+.compare thead th:last-child { color: var(--ink-deep); }
+.compare tbody tr { border-top: 1px solid rgba(14,15,12,0.1); }
+.compare td { font-size: 0.9375rem; color: var(--body); }
+.compare td:first-child { font-weight: 600; color: var(--ink); }
+.compare td.win { color: var(--positive-deep); font-weight: 700; }
+.compare .col-klar { background: rgba(159,232,112,0.16); }
+
+/* ── STEPS ── */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--lg); margin-top: var(--xl3); }
+.step { background: var(--canvas); border-radius: var(--r-xl); padding: var(--xl); }
+.band--sage .step { background: var(--canvas); }
+.step .n { font-family: var(--f-display); font-weight: 800; font-size: 1.5rem; color: var(--primary); background: var(--ink); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: var(--lg); }
+.step h4 { font-size: 1.125rem; margin-bottom: var(--sm); }
+.step p { font-size: 0.9375rem; color: var(--mute); }
+
+/* ── GUARANTEE ── */
+.guarantees { display: grid; grid-template-columns: 1fr 1fr; gap: var(--lg); margin-top: var(--xl3); }
+.gcard { background: rgba(232,235,230,0.06); border: 1px solid rgba(232,235,230,0.16); border-radius: var(--r-xl); padding: clamp(var(--xl), 3vw, var(--xl2)); }
+.gcard h3 { color: var(--canvas); margin-bottom: var(--md); }
+.gcard p { color: var(--on-dark); }
+
+/* ── WARNING NOTE ── */
+.note { background: var(--warning); color: var(--warning-content); border-radius: var(--r-xl); padding: var(--xl) var(--xl2); margin-top: var(--xl3); font-size: 1.0625rem; font-weight: 500; }
+.note strong { font-weight: 700; }
+
+/* ── CLOSING CTA + CAPTURE ── */
+.close-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(var(--xl2), 5vw, 72px); align-items: center; }
+.capture { background: var(--canvas); border-radius: var(--r-xl); padding: clamp(var(--xl2), 4vw, var(--xl3)); }
+.capture h3 { margin-bottom: var(--sm); }
+.capture > p { color: var(--body); margin-bottom: var(--xl); }
+.capture-form { display: flex; gap: var(--sm); flex-wrap: wrap; }
+.capture-form input { flex: 1 1 220px; min-width: 0; padding: 15px 18px; border: 1.5px solid var(--ink); border-radius: var(--r-md); font-family: var(--f-body); font-size: 1rem; min-height: 52px; background: var(--canvas); color: var(--ink); outline: none; }
+.capture-form input:focus { box-shadow: 0 0 0 3px var(--primary-pale); }
+.capture-form input::placeholder { color: var(--mute); }
+.capture-note { margin-top: var(--md); font-size: 0.8125rem; color: var(--mute); }
+.capture-msg { margin-top: var(--md); font-size: 0.9375rem; min-height: 1.3em; font-weight: 600; }
+.capture-msg.success { color: var(--positive-deep); }
+.capture-msg.error { color: var(--negative-deep); }
+.close-pitch .eyebrow { margin-bottom: var(--lg); }
+.close-pitch h2 { margin-bottom: var(--lg); }
+.close-pitch .badge-founding { display: inline-block; margin-top: var(--xl); font-size: 0.8125rem; font-weight: 700; color: var(--primary); }
+
+/* ── FOOTER ── */
+.footer { background: var(--ink); color: var(--on-dark); padding: var(--xl3) 0; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--xl); }
+.footer a { color: var(--on-dark); } .footer a:hover { color: var(--primary); }
+.footer-left { font-size: 0.9375rem; }
+.footer-left a { color: var(--canvas-soft); }
+.footer-right { display: flex; gap: var(--xl); font-size: 0.9375rem; }
+
+/* ── SCI-FI PARTICLE HERO ── */
+.scifi-hero { min-height: 92vh; display: flex; flex-direction: column; justify-content: flex-end; padding-top: 0; padding-bottom: clamp(var(--xl3), 7vw, 96px); }
+.scifi-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; }
+.scifi-scrim { position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(120% 80% at 50% 30%, transparent 40%, rgba(14,15,12,0.55) 100%),
+              linear-gradient(to bottom, transparent 45%, rgba(14,15,12,0.85) 100%); }
+.scifi-copy { position: relative; z-index: 2; }
+.scifi-copy h1 { color: var(--canvas); max-width: 14ch; margin-bottom: var(--xl); }
+.scifi-copy .lead { max-width: 46ch; margin-bottom: var(--xl2); }
+.scifi-copy .hero-ctas { margin-bottom: var(--xl2); }
+
+/* ── MOTION LAYER ── */
+.band { position: relative; overflow: hidden; }
+.band > .wrap { position: relative; z-index: 2; }
+.fx { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; z-index: 0; }
+#cloud3d { left: 38%; }
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none; }
+  .fx { display: none !important; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 940px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .calc { max-width: 520px; }
+  .stats { grid-template-columns: 1fr 1fr; gap: var(--xl2); }
+  .figures { grid-template-columns: 1fr; gap: var(--xl2); }
+  .mosaic { grid-template-columns: 1fr; }
+  .tile { grid-column: 1 / -1 !important; }
+  .replaces { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .guarantees { grid-template-columns: 1fr; }
+  .close-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .nav-links .nav-link { display: none; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .compare { overflow-x: auto; }
+  .compare table { min-width: 460px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="/" aria-label="Klar home"><img src="public/logos/klar-logo-black.svg" alt="Klar" class="nav-logo"></a>
+    <nav class="nav-links">
+      <a href="#system" class="nav-link">The System</a>
+      <a href="#bookings" class="nav-link">Bookings</a>
+      <a href="https://klarsystems.com/calls" class="nav-link">Calls</a>
+      <a href="#founding" class="nav-link">Founding partners</a>
+      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn btn-primary nav-cta">Book a free call</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── HERO (sci-fi particle) ── -->
+<section class="band band--ink scifi-hero">
+  <canvas id="pcanvas" class="scifi-canvas" aria-hidden="true"></canvas>
+  <div class="scifi-scrim"></div>
+  <div class="wrap scifi-copy">
+    <span class="eyebrow on-dark">The Klar Restaurant System</span>
+    <h1 class="d-xl">Be the restaurant they find first.</h1>
+    <p class="lead">Website, reservations, and Google visibility from one partner. No per-cover fees. No contracts. We build it before you pay — you just fill tables.</p>
+    <div class="hero-ctas">
+      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn btn-primary">Book a free call</a>
+      <a href="#system" class="btn btn-ghost on-dark">See the system</a>
+    </div>
+    <div class="hero-trust" style="color:var(--on-dark);"><span class="dot"></span> Live in 7 days, or your first month is free.</div>
+  </div>
+</section>
+
+<!-- ── STAT STRIP ── -->
+<section class="band band--ink" style="padding: clamp(40px,6vw,64px) 0;">
+  <div class="wrap stats">
+    <div class="stat"><div class="n">7</div><div class="l">Days to go live</div></div>
+    <div class="stat"><div class="n">€0</div><div class="l">Per-cover fees, ever</div></div>
+    <div class="stat"><div class="n">2 min</div><div class="l">To train your staff</div></div>
+    <div class="stat"><div class="n">100%</div><div class="l">Your guest data, always</div></div>
+  </div>
+</section>
+
+<!-- ── EDITORIAL STATEMENT: visibility ── -->
+<section class="band band--white">
+  <div class="wrap">
+    <h2 class="d-xl statement">Your food is excellent.<br><span class="accent-line">Online, nobody knows yet.</span></h2>
+    <p class="lead" style="max-width:44ch;">Diners decide before they ever walk in — on Google, on Maps, and now inside ChatGPT and Perplexity. The best restaurant doesn't win. The most visible one does.</p>
+    <div class="figures">
+      <div class="figure"><div class="n">90%</div><p>of diners look you up online before deciding to visit.</p></div>
+      <div class="figure"><div class="n">75%</div><p>judge your credibility on your website alone — in under a second.</p></div>
+      <div class="figure"><div class="n">94%</div><p>of that first impression is down to design. An outdated site sends them next door.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── THE SYSTEM ── -->
+<section class="band band--sage" id="system">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">The Klar Restaurant System</span>
+      <h2 class="d-lg">One partner. Everything that gets you found and fills tables.</h2>
+      <p class="lead">It replaces your web agency, SEO consultant, Google Business manager, and hosting — with zero homework on your end.</p>
+    </div>
+
+    <div class="mosaic">
+      <div class="tile tile--sage" style="background:var(--canvas);">
+        <h3 class="d-sm">Custom website</h3>
+        <p>Designed around your brand, not a template. Menu, hours, location, story. Mobile-first. Live in 7 days, not 6 weeks.</p>
+      </div>
+      <div class="tile tile--green">
+        <h3 class="d-sm">Google &amp; Maps</h3>
+        <p>Your Business Profile fully set up and optimised — so you show up in the “near me” searches where 70%+ of discovery happens.</p>
+      </div>
+      <div class="tile tile--ink">
+        <h3 class="d-sm">SEO &amp; AI search</h3>
+        <p>Structured data and keywords so customers find you on Google, ChatGPT, and Perplexity. Built for how people search today, not five years ago.</p>
+      </div>
+      <div class="tile tile--wide-green">
+        <h3>Same-day updates</h3>
+        <p style="color:var(--ink-deep);opacity:1;margin-top:var(--md);">New menu, new hours, a special? Message us. It's live the same day.</p>
+      </div>
+      <div class="tile tile--sage" style="grid-column: span 6; background:var(--canvas);">
+        <h3 class="d-sm">Monthly performance report</h3>
+        <p style="max-width:64ch;">A plain-language report every month: how many people found you, what they clicked, where new customers came from. No jargon — only what moves your bottom line.</p>
+      </div>
+    </div>
+
+    <!-- what it replaces -->
+    <div class="replaces">
+      <div>
+        <h3 class="d-md" style="margin-bottom:var(--xl);">Bought separately, this is a second rent cheque.</h3>
+        <div class="replaces-list">
+          <div class="rep"><span class="k">Agency website build</span><span class="v">€2,000 – €5,000 one-time</span></div>
+          <div class="rep"><span class="k">Local SEO consultant</span><span class="v">€300 – €1,000/mo</span></div>
+          <div class="rep"><span class="k">Google Business management</span><span class="v">€100 – €400/mo</span></div>
+          <div class="rep"><span class="k">Hosting, domain &amp; SSL</span><span class="v">€10 – €25/mo</span></div>
+          <div class="rep"><span class="k">Booking system + per-cover fees</span><span class="v">€130 – €700/mo</span></div>
+          <div class="rep total"><span class="k">Total, if bought à la carte</span><span class="v">€6,500 – €30,500/yr</span></div>
+        </div>
+      </div>
+      <div class="replaces-card">
+        <div class="big">One flat rate.</div>
+        <p>The whole system — website, bookings, visibility, and a real person who answers — for a single monthly price. Cancel anytime.</p>
+        <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn btn-primary" style="margin-top:var(--xl);">See your number</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DARK STATEMENT: booking fees ── -->
+<section class="band band--ink">
+  <canvas class="fx" id="cloud3d" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <span class="eyebrow on-dark">The booking-fee problem</span>
+    <h2 class="d-xl" style="max-width:18ch;">You're paying a commission <span class="accent">on your own reputation.</span></h2>
+    <p class="lead" style="margin-top:var(--xl); max-width:60ch;">Most Quandoo bookings aren't strangers browsing for dinner — they're people who Googled <em>your</em> restaurant by name and happened to click the widget. You pay €2–4 every time a regular sits down. That's up to €200 a year for one loyal guest.</p>
+    <p class="lead" style="margin-top:var(--lg); max-width:60ch;">And the guest data — visits, preferences, contact details — <span class="accent">lives on their servers, not yours.</span> They use it to market other restaurants to your own customers.</p>
+  </div>
+</section>
+
+<!-- ── KLAR BOOKINGS ── -->
+<section class="band band--white" id="bookings">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Klar Bookings</span>
+      <h2 class="d-lg">Zero per-cover fees. Your guests, your data.</h2>
+      <p class="lead">If you take reservations, your Klar site comes with booking built in. Your 1st reservation costs the same as your 500th: nothing extra.</p>
+    </div>
+
+    <div class="mosaic">
+      <div class="tile tile--green" style="grid-column: span 3;">
+        <h3 class="d-sm">What's included</h3>
+        <p>Reservation widget on your site, a staff dashboard, real-time notifications, and a guest CRM that remembers visit history, allergies, and birthdays.</p>
+      </div>
+      <div class="tile tile--sage" style="grid-column: span 3; background:var(--canvas-soft);">
+        <h3 class="d-sm">Done-for-you migration</h3>
+        <p>We move you off Quandoo — widget installed, Google booking reconnected, both running in parallel. Zero downtime, nothing for you to do.</p>
+      </div>
+    </div>
+
+    <div class="compare">
+      <table>
+        <thead><tr><th></th><th>Quandoo</th><th class="col-klar">Klar</th></tr></thead>
+        <tbody>
+          <tr><td>Per-cover fee</td><td>€2 – €4 per booking</td><td class="col-klar win">€0</td></tr>
+          <tr><td>Own your guest data</td><td>No</td><td class="col-klar win">Yes</td></tr>
+          <tr><td>Custom website</td><td>Not included</td><td class="col-klar win">Included</td></tr>
+          <tr><td>Contract</td><td>Annual, 3-month notice</td><td class="col-klar win">Cancel anytime</td></tr>
+          <tr><td>Status in Finland</td><td>Shutting down Sept 2026</td><td class="col-klar win">Growing</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <strong>Quandoo is shutting down in Finland in September 2026.</strong> Every restaurant on it needs a replacement before then — we handle the full migration. The earlier you switch, the less disruption you face.
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="band band--sage">
+  <div class="wrap">
+    <div class="head" style="margin-bottom:0;">
+      <span class="eyebrow">How it works</span>
+      <h2 class="d-lg">You run the restaurant. We handle the rest.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h4>You say yes</h4><p>No forms, no homework. We come to you.</p></div>
+      <div class="step"><div class="n">2</div><h4>We build everything</h4><p>Website, Google, bookings, SEO — in 5 working days.</p></div>
+      <div class="step"><div class="n">3</div><h4>You go live</h4><p>Your staff get a 2-minute walkthrough. Done.</p></div>
+      <div class="step"><div class="n">4</div><h4>We never disappear</h4><p>Monthly reports and same-day updates. Always.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GUARANTEE ── -->
+<section class="band band--ink">
+  <canvas class="fx" id="flowbg" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="head" style="margin-bottom:0;">
+      <span class="eyebrow on-dark">The guarantee</span>
+      <h2 class="d-lg">We carry the risk. Not you.</h2>
+    </div>
+    <div class="guarantees">
+      <div class="gcard">
+        <h3 class="d-sm">7-day delivery</h3>
+        <p>Your website goes live within 7 days of signing. Miss the deadline and your first month is free — no questions, no forms. Menu changes, photos, and hours are always included.</p>
+      </div>
+      <div class="gcard">
+        <h3 class="d-sm">60-day results</h3>
+        <p>No measurable new traffic within 60 days of going live? Your next month is on us. We don't get paid to build websites — we get paid to bring you customers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CLOSING: FOUNDING + CAPTURE ── -->
+<section class="band band--sage" id="founding">
+  <div class="wrap close-grid">
+    <div class="close-pitch">
+      <span class="eyebrow">Founding partner program</span>
+      <h2 class="d-lg">We're building this with the first 20 restaurants.</h2>
+      <p class="lead">Founding partners lock in the lowest rate we'll ever offer — permanently. Hands-on setup for every channel, priority support from the founding team, and a direct say in what we build next. Once 20 spots fill, the price goes up for everyone after.</p>
+      <div class="hero-ctas" style="margin-top:var(--xl2); margin-bottom:0;">
+        <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn btn-primary">Book a free call</a>
+        <a href="#system" class="btn btn-ghost">See the system</a>
+      </div>
+      <span class="badge-founding">Limited to 20 founding partners · Program just opened</span>
+    </div>
+
+    <div class="capture">
+      <h3 class="d-sm">Not ready to call yet?</h3>
+      <p>Leave your email and we'll review your restaurant's online presence — what's working, what's missing, what to do next. No spam, no pitch.</p>
+      <form class="capture-form" id="captureForm" novalidate>
+        <input type="email" id="captureEmail" placeholder="your@email.com" required autocomplete="email">
+        <button type="submit" class="btn btn-primary" id="captureSubmit">Get my review</button>
+      </form>
+      <div class="capture-msg" id="captureMessage" role="status" aria-live="polite"></div>
+      <div class="capture-note">Free. No commitment. We reply personally within 24 hours.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="footer-left">Klar Systems Oy · Helsinki<br><a href="mailto:lomberg@klarsystems.com">lomberg@klarsystems.com</a></div>
+    <div class="footer-right">
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <span style="color:var(--mute)">© 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// nav shadow on scroll
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20));
+
+// 1. SCI-FI PARTICLE FIGURE — hero (assemble → dissolve → morph → reform, loops; mouse-reactive)
+(function () {
+  const c = document.getElementById('pcanvas'); if (!c) return;
+  const ctx = c.getContext('2d');
+  let w, h, dpr;
+  const mouse = { x: -9999, y: -9999, on: false };
+
+  function size() {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    const r = c.getBoundingClientRect(); w = r.width; h = r.height;
+    c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  // sample filled pixels from an offscreen draw callback → array of {x,y} in display space,
+  // scaled to `targetH` and centred at (cx, cy)
+  function sample(drawFn, gap, targetH, cx, cy) {
+    const S = 420, oc = document.createElement('canvas'); oc.width = S; oc.height = S;
+    const o = oc.getContext('2d'); drawFn(o, S);
+    const d = o.getImageData(0, 0, S, S).data, raw = [];
+    let minX = S, minY = S, maxX = 0, maxY = 0;
+    for (let y = 0; y < S; y += gap) for (let x = 0; x < S; x += gap) {
+      if (d[(y * S + x) * 4 + 3] > 128) {
+        raw.push([x, y]);
+        if (x < minX) minX = x; if (x > maxX) maxX = x;
+        if (y < minY) minY = y; if (y > maxY) maxY = y;
+      }
+    }
+    const bw = maxX - minX || 1, bh = maxY - minY || 1, scale = targetH / bh;
+    return raw.map(([x, y]) => ({
+      x: cx + (x - (minX + bw / 2)) * scale,
+      y: cy + (y - (minY + bh / 2)) * scale
+    }));
+  }
+
+  // target A — a human figure (classic "person" silhouette: head + shoulders)
+  function drawPerson(o, S) {
+    o.fillStyle = '#fff';
+    o.beginPath(); o.arc(S / 2, S * 0.34, S * 0.15, 0, 7); o.fill();   // head
+    o.beginPath();                                                     // shoulders/torso
+    o.moveTo(S * 0.22, S * 0.92);
+    o.quadraticCurveTo(S * 0.22, S * 0.56, S * 0.5, S * 0.56);
+    o.quadraticCurveTo(S * 0.78, S * 0.56, S * 0.78, S * 0.92);
+    o.closePath(); o.fill();
+  }
+  // target B — the wordmark
+  function drawWord(o, S) {
+    o.fillStyle = '#fff';
+    o.textAlign = 'center'; o.textBaseline = 'middle';
+    o.font = '800 ' + Math.floor(S * 0.42) + "px 'Manrope', system-ui, sans-serif";
+    o.fillText('Klar', S / 2, S / 2);
+  }
+
+  let particles = [], targetsA = [], targetsB = [], phase = 0, timer = 0;
+  // phases: 0 form-person, 1 hold, 2 form-word, 3 hold  (dissolve happens during transitions via spring)
+  const PHASE_MS = [2600, 1400, 2600, 1400];
+
+  function build() {
+    size();
+    const figH = Math.min(h * 0.6, 360);
+    const cx = w * (w > 760 ? 0.5 : 0.5), cy = h * 0.42;
+    const gap = w < 620 ? 6 : 5;
+    targetsA = sample(drawPerson, gap, figH, cx, cy);
+    targetsB = sample(drawWord, gap, figH * 0.72, cx, cy);
+    const N = Math.min(2600, Math.max(targetsA.length, targetsB.length));
+    particles = Array.from({ length: N }, (_, i) => {
+      const t = (phase < 2 ? targetsA : targetsB);
+      const tp = t[i % t.length];
+      return {
+        x: Math.random() * w, y: Math.random() * h,
+        vx: 0, vy: 0,
+        tx: tp.x, ty: tp.y,
+        r: Math.random() * 1.6 + 0.9,
+        hue: Math.random() < 0.2 ? 1 : 0 // 1 = brighter lime
+      };
+    });
+    assign();
+  }
+
+  function assign() {
+    const t = (phase === 0 || phase === 1) ? targetsA : targetsB;
+    for (let i = 0; i < particles.length; i++) {
+      const tp = t[i % t.length];
+      particles[i].tx = tp.x; particles[i].ty = tp.y;
+    }
+  }
+
+  let last = 0;
+  function frame(ts) {
+    if (reduceMotion) { drawStatic(); return; }
+    const dt = last ? Math.min(48, ts - last) : 16; last = ts;
+    timer += dt;
+    if (timer > PHASE_MS[phase]) {
+      timer = 0; phase = (phase + 1) % 4;
+      if (phase === 0 || phase === 2) assign();
+    }
+    // spring strength: loose during the "forming" phases (dissolve-then-gather), tight while holding
+    const forming = (phase === 0 || phase === 2);
+    const k = forming ? 0.012 : 0.05, fr = forming ? 0.90 : 0.82;
+
+    ctx.clearRect(0, 0, w, h);
+    ctx.globalCompositeOperation = 'lighter';
+    for (const p of particles) {
+      p.vx += (p.tx - p.x) * k; p.vy += (p.ty - p.y) * k;
+      if (mouse.on) {
+        const dx = p.x - mouse.x, dy = p.y - mouse.y, d2 = dx * dx + dy * dy;
+        if (d2 < 13000) { const f = (13000 - d2) / 13000 * 3.2, inv = 1 / (Math.sqrt(d2) + 0.01); p.vx += dx * inv * f; p.vy += dy * inv * f; }
+      }
+      p.vx *= fr; p.vy *= fr; p.x += p.vx; p.y += p.vy;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 7);
+      ctx.fillStyle = p.hue ? 'rgba(205,255,173,0.9)' : 'rgba(159,232,112,0.62)';
+      ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+    requestAnimationFrame(frame);
+  }
+
+  function drawStatic() { // reduced-motion: draw the figure once, no animation
+    ctx.clearRect(0, 0, w, h);
+    ctx.globalCompositeOperation = 'lighter';
+    for (const tp of targetsA) { ctx.beginPath(); ctx.arc(tp.x, tp.y, 1.4, 0, 7); ctx.fillStyle = 'rgba(159,232,112,0.7)'; ctx.fill(); }
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  addEventListener('mousemove', e => { const r = c.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; mouse.on = mouse.y >= 0 && mouse.y <= h; });
+  addEventListener('mouseleave', () => mouse.on = false);
+  addEventListener('resize', build);
+
+  // wait for the display font so "Klar" samples correctly
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
+    build();
+    requestAnimationFrame(frame);
+  });
+})();
+
+// 2. SCROLL REVEALS
+(function () {
+  const els = document.querySelectorAll('.head, .figure, .tile, .step, .gcard, .compare, .note, .replaces-card, .capture, .stat');
+  els.forEach(el => el.classList.add('reveal'));
+  if (reduceMotion) { els.forEach(el => el.classList.add('in')); return; }
+  const seen = new Map();
+  const io = new IntersectionObserver((ents) => {
+    ents.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  els.forEach(el => {
+    const p = el.parentElement, i = seen.get(p) || 0; seen.set(p, i + 1);
+    el.style.transitionDelay = (i * 70) + 'ms'; io.observe(el);
+  });
+})();
+
+// 3. LIVE 3D DOT-CLOUD — reputation band
+addEventListener('load', function () {
+  if (reduceMotion || !window.THREE) return;
+  const c = document.getElementById('cloud3d'); if (!c) return;
+  const scene = new THREE.Scene();
+  const cam = new THREE.PerspectiveCamera(60, 1, 0.1, 100); cam.position.z = 3.4;
+  const renderer = new THREE.WebGLRenderer({ canvas: c, alpha: true, antialias: true });
+  const N = 900, pos = new Float32Array(N * 3), R = 1.5;
+  for (let i = 0; i < N; i++) {
+    const t = Math.acos(2 * Math.random() - 1), p = 2 * Math.PI * Math.random();
+    pos[i * 3] = R * Math.sin(t) * Math.cos(p);
+    pos[i * 3 + 1] = R * Math.sin(t) * Math.sin(p);
+    pos[i * 3 + 2] = R * Math.cos(t);
+  }
+  const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  const pts = new THREE.Points(geo, new THREE.PointsMaterial({ color: 0x9fe870, size: 0.035, transparent: true, opacity: 0.85 }));
+  scene.add(pts);
+  function resize() {
+    const r = c.getBoundingClientRect();
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); renderer.setSize(r.width, r.height, false);
+    cam.aspect = r.width / r.height; cam.updateProjectionMatrix();
+  }
+  resize(); addEventListener('resize', resize);
+  (function loop() { pts.rotation.y += 0.0016; pts.rotation.x += 0.0006; renderer.render(scene, cam); requestAnimationFrame(loop); })();
+});
+
+// 4. VIDEO-STYLE FLOWING WAVES — guarantee band
+(function () {
+  if (reduceMotion) return;
+  const c = document.getElementById('flowbg'); if (!c) return;
+  const ctx = c.getContext('2d'); let w, h, dpr, t = 0;
+  function size() {
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    const r = c.getBoundingClientRect(); w = r.width; h = r.height;
+    c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  size(); addEventListener('resize', size);
+  const layers = [{ a: .05, amp: .10, sp: .6, off: 0 }, { a: .06, amp: .14, sp: .9, off: 1.5 }, { a: .04, amp: .08, sp: .4, off: 3 }];
+  function frame() {
+    ctx.clearRect(0, 0, w, h);
+    for (const L of layers) {
+      ctx.beginPath(); ctx.moveTo(0, h);
+      for (let x = 0; x <= w; x += 12) {
+        const y = h * .55 + Math.sin(x / w * 6 + t * L.sp + L.off) * h * L.amp + Math.cos(x / w * 3 + t * L.sp * .7) * h * L.amp * .5;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(w, h); ctx.closePath();
+      ctx.fillStyle = 'rgba(159,232,112,' + L.a + ')'; ctx.fill();
+    }
+    t += 0.006; requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+// live fee calculator
+(function () {
+  const range = document.getElementById('resRange');
+  if (!range) return; // calculator not present in this variant
+  const out = document.getElementById('resOut');
+  const them = document.getElementById('themAmt');
+  const FEE = 3; // ~€3 per booking
+  const fmt = n => '€' + n.toLocaleString('en-US');
+  function update() {
+    const perMonth = +range.value;
+    out.textContent = perMonth;
+    const yearly = perMonth * FEE * 12;
+    them.innerHTML = fmt(yearly) + '<small style="font-weight:600;font-size:0.6em;color:var(--mute)">/yr</small>';
+  }
+  range.addEventListener('input', update);
+  update();
+})();
+
+// email capture
+(function () {
+  const form = document.getElementById('captureForm');
+  const input = document.getElementById('captureEmail');
+  const button = document.getElementById('captureSubmit');
+  const message = document.getElementById('captureMessage');
+  const show = (t, k) => { message.textContent = t; message.classList.remove('success','error'); if (k) message.classList.add(k); };
+  const valid = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = input.value.trim();
+    if (!valid(email)) { show('Please enter a valid email address.', 'error'); input.focus(); return; }
+    button.disabled = true;
+    const label = button.textContent;
+    button.textContent = 'Sending…';
+    show('', null);
+    try {
+      const res = await fetch('https://n8n.klarsystems.com/webhook/Nott-ready-tocall', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error('failed');
+      form.reset();
+      show("Thanks! We'll be in touch within 24 hours.", 'success');
+    } catch (err) {
+      show('Something went wrong. Email us at lomberg@klarsystems.com instead.', 'error');
+    } finally {
+      button.disabled = false; button.textContent = label;
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
