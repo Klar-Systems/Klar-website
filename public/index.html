@@ -689,6 +689,108 @@ footer {
 
   .footer-inner { flex-direction: column; align-items: flex-start; }
 }
+
+/* ── CALCULATOR ── */
+.calc-section { background: var(--dark-bg); color: #d8d5cc; padding: clamp(3.5rem, 8vw, 6rem) 0; }
+.calc-section h2 { color: #faf8f4; }
+.calc-section .label { background: rgba(200,255,0,0.14); color: var(--accent); }
+.calc-lead { color: #a8a49a; max-width: 62ch; margin-bottom: 2.5rem; }
+
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+@media (max-width: 860px) { .calc-grid { grid-template-columns: 1fr; } }
+
+.calc-panel {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: 12px;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+.calc-panel h3 { color: #faf8f4; font-size: 1.05rem; margin-bottom: 0.35rem; }
+.calc-panel-sub { font-size: 0.85rem; color: var(--dark-muted); margin-bottom: 1.5rem; }
+
+.calc-field { margin-bottom: 1.15rem; }
+.calc-field-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.4rem; }
+.calc-field label { font-size: 0.9rem; color: #c4c0b6; }
+.calc-field-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  color: var(--accent);
+  font-weight: 400;
+  white-space: nowrap;
+}
+.calc-field input[type=range] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 4px; border-radius: 2px;
+  background: var(--dark-border); outline: none; cursor: pointer;
+}
+.calc-field input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent); cursor: pointer; border: none;
+}
+.calc-field input[type=range]::-moz-range-thumb {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--accent); cursor: pointer; border: none;
+}
+.calc-field-note { font-size: 0.78rem; color: var(--dark-muted); margin-top: 0.35rem; line-height: 1.5; }
+
+.calc-line { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--dark-border); font-size: 0.92rem; }
+.calc-line:last-of-type { border-bottom: none; }
+.calc-line-label { color: #a8a49a; }
+.calc-line-val { font-family: 'JetBrains Mono', monospace; color: #e4e1d8; white-space: nowrap; }
+.calc-line.is-total { border-top: 1px solid var(--dark-border); border-bottom: none; margin-top: 0.4rem; padding-top: 1rem; }
+.calc-line.is-total .calc-line-label { color: #faf8f4; font-weight: 500; }
+.calc-line.is-total .calc-line-val { color: #ff8a7a; font-size: 1.5rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+.calc-line.is-total.is-good .calc-line-val { color: var(--accent); }
+.calc-sub-year { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--dark-muted); margin-top: 0.3rem; }
+
+.calc-verdict {
+  margin-top: 1.5rem;
+  background: var(--accent);
+  color: var(--heading);
+  border-radius: 12px;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+}
+.calc-verdict-big {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--heading);
+}
+.calc-verdict-sub { margin-top: 0.6rem; font-size: 1rem; color: #2e4a00; max-width: 60ch; }
+.calc-verdict-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.75rem; }
+@media (max-width: 700px) { .calc-verdict-row { grid-template-columns: 1fr; gap: 0.85rem; } }
+.calc-vstat { border-top: 2px solid rgba(0,0,0,0.18); padding-top: 0.75rem; }
+.calc-vstat-num { display: block; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em; color: var(--heading); }
+.calc-vstat-label { display: block; font-size: 0.82rem; color: #2e4a00; margin-top: 0.15rem; line-height: 1.45; }
+.calc-cta { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.calc-disclaimer { margin-top: 1.5rem; font-size: 0.8rem; color: var(--dark-muted); line-height: 1.6; max-width: 70ch; }
+.calc-disclaimer a { color: #a8a49a; text-decoration: underline; }
+
+/* ── PRICING ── */
+.pricing-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--border-strong);
+  border-radius: 12px;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  margin-top: 2.5rem;
+}
+.pricing-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+.pricing-price { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(1.75rem, 5vw, 2.5rem); letter-spacing: -0.03em; color: var(--heading); }
+.pricing-price span { font-size: 1rem; font-weight: 400; color: var(--muted); font-family: 'DM Sans', sans-serif; letter-spacing: 0; }
+.pricing-row { display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+.pricing-row:last-child { border-bottom: none; }
+.pricing-row-label { color: var(--body); }
+.pricing-row-val { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--heading); text-align: right; white-space: nowrap; }
+.pricing-note { margin-top: 1.25rem; font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+/* ── FAQ / HONESTY ── */
+.faq-item { border-top: 1px solid var(--border); padding: 1.25rem 0; }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.faq-q { font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: var(--heading); margin-bottom: 0.4rem; }
+.faq-a { font-size: 0.95rem; color: var(--body); }
 </style>
 </head>
 <body>
@@ -700,8 +802,9 @@ footer {
   </a>
   <div class="nav-right">
     <a href="#system" class="nav-link">The System</a>
+    <a href="#ordering" class="nav-link">Ordering</a>
     <a href="#bookings" class="nav-link">Bookings</a>
-    <a href="https://klarsystems.com/calls" class="nav-link">Calls</a>
+    <a href="#calculator" class="nav-link">Calculator</a>
     <a href="#contact" class="nav-link">Contact</a>
     <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="nav-cta">Book a Free Call</a>
   </div>
@@ -711,13 +814,13 @@ footer {
 <section class="hero">
   <div class="container">
     <span class="label">The Klar Restaurant System</span>
-    <h1>Be the restaurant customers find first. Live in 7 days.</h1>
-    <p>Custom website, reservation system, Google visibility, and ongoing support. One partner replaces your web agency, booking platform, and SEO consultant. No per-cover fees. No contracts. We build it, you fill tables.</p>
+    <h1>Stop renting your own customers.</h1>
+    <p>Delivery apps take up to 30% of every order. Booking platforms charge you €2&ndash;4 every time a guest sits down &mdash; and keep the guest data. Klar gives you your own website, your own ordering, and your own bookings, and takes <strong>0% of your sales. Ever.</strong> Live in 7 days.</p>
     <div class="hero-ctas">
-      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Book a Free Call</a>
-      <a href="#system" class="btn-secondary">See what's included &#8595;</a>
+      <a href="#calculator" class="btn-primary">See what the platforms cost you &#8595;</a>
+      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-secondary">Book a Free Call</a>
     </div>
-    <div class="hero-proof">We build your restaurant's site before you pay. See it, then decide.</div>
+    <div class="hero-proof">One setup fee, one monthly price, no commission. Your website is included in it.</div>
   </div>
 </section>
 
@@ -730,12 +833,12 @@ footer {
         <span class="proof-stat-label">Days to go live</span>
       </div>
       <div class="proof-stat">
-        <span class="proof-stat-num">&euro;0</span>
-        <span class="proof-stat-label">Per-cover fees</span>
+        <span class="proof-stat-num">0%</span>
+        <span class="proof-stat-label">Commission on your sales</span>
       </div>
       <div class="proof-stat">
-        <span class="proof-stat-num">2 min</span>
-        <span class="proof-stat-label">Staff training</span>
+        <span class="proof-stat-num">&euro;0</span>
+        <span class="proof-stat-label">Per-cover, per-order fees</span>
       </div>
       <div class="proof-stat">
         <span class="proof-stat-num">100%</span>
@@ -773,8 +876,8 @@ footer {
         <p>Fully set up and optimized. You appear in &ldquo;near me&rdquo; searches and Google Maps. This is where 70%+ of restaurant discovery happens.</p>
       </div>
       <div class="feature-card">
-        <h3>SEO &amp; AI Search</h3>
-        <p>Structured data and keyword optimization so customers find you on Google, ChatGPT, and Perplexity. Ready for how people search today.</p>
+        <h3>SEO &amp; AI Search &mdash; done for you</h3>
+        <p>We do the work, by hand, on your site: the structure and tagging that gets you surfaced by Google and by the AI assistants people now ask for dinner recommendations. Nothing for you to learn or log into.</p>
       </div>
       <div class="feature-card">
         <h3>Same-Day Updates</h3>
@@ -815,13 +918,59 @@ footer {
       </div>
       <div class="value-item klar">
         <span class="value-label">The Klar Restaurant System</span>
-        <span class="value-cost">One flat monthly rate</span>
+        <span class="value-cost">&euro;1,900&ndash;2,600 setup, then from &euro;249/mo</span>
       </div>
     </div>
 
-    <div class="testimonial">
-      <blockquote>We used to worry about our online presence. Now we just send a message when something changes and it's handled the same day. We focus on the kitchen.</blockquote>
-      <cite>Restaurant owner &middot; Helsinki</cite>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- ── PAIN 3: COMMISSION ── -->
+<section class="dark-section">
+  <div class="container">
+    <span class="label">The Commission Problem</span>
+    <h2>You built the reputation. The delivery app charges you to use it.</h2>
+    <p>On a &euro;30 order at 30% commission, roughly <strong>&euro;9 leaves your till before you've paid for the food.</strong> Two hundred orders a month is &euro;1,800 &mdash; &euro;21,600 a year, gone, from customers who mostly already knew your name before they opened the app.</p>
+    <p>The regulars are the painful part. Someone who orders from you every week isn't discovering you on Wolt. They're using Wolt as a remote control. <strong>You pay a finder's fee on a customer nobody had to find.</strong></p>
+    <p>And that customer isn't yours. Their name, their order history, their phone number &mdash; all of it sits on the platform's servers, and it gets used to show them the restaurant next door.</p>
+  </div>
+</section>
+
+<!-- ── SOLUTION 3: KLAR ORDERING ── -->
+<section class="section" id="ordering">
+  <div class="container">
+    <span class="label">Klar Ordering</span>
+    <h2>Your menu, on your own site, at 0% commission.</h2>
+    <p class="section-lead">Guests order straight from your website &mdash; eat in or take away &mdash; and pay at the restaurant. No middleman, no commission, no cut of your sales. The order lands on your screen and the customer lands in your database.</p>
+
+    <div class="bookings-highlight">
+      <h3>Keep Wolt. Just stop paying it for your regulars.</h3>
+      <p>We're not asking you to leave the delivery apps &mdash; that's where new customers find you, and that's worth paying for. The goal is different: every guest who was always going to order from you again should be ordering through a channel you own. Discovery on their platform, repeat business on yours.</p>
+    </div>
+
+    <div class="feature-cards">
+      <div class="feature-card">
+        <h3>Eat in or take away</h3>
+        <p>Guests choose at checkout. Takeaway-only spot? Then it's pickup, and no one is asked a pointless question. No delivery &mdash; we don't run couriers, and we won't pretend otherwise.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Built into your site</h3>
+        <p>Not a marketplace page with someone else's logo on it. Your menu, your design, your domain. The guest never leaves your restaurant.</p>
+      </div>
+      <div class="feature-card">
+        <h3>The kitchen hears it</h3>
+        <p>New orders arrive on a live screen with an audible alert and a ready-time estimate for the guest. Nobody has to watch a tablet.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Every order asks for the review</h3>
+        <p>When the order is done, the guest is asked how it went &mdash; and happy guests get routed straight to your Google review page.</p>
+      </div>
+    </div>
+
+    <div class="urgency-banner">
+      <strong>Guests pay at the restaurant.</strong> No card details pass through us, so there's no payment surcharge stacked on top and nothing extra for you to administer.
     </div>
   </div>
 </section>
@@ -848,7 +997,7 @@ footer {
 
     <div class="bookings-highlight">
       <h3>What's included</h3>
-      <p>Reservation widget on your website. Centralized dashboard for staff. Real-time push notifications. Guest CRM that remembers visit history, allergies, preferences, and birthdays. Your customer data stays on your account. If you ever leave, you take it with you.</p>
+      <p>Booking built into your own site, in your own design &mdash; not a third-party box bolted on. One dashboard for the whole team, with staff logins and permissions. Automatic confirmations, and reminders the day before and hours before, which is what stops no-shows. Waitlist for when you're full. Floor plan and automatic table assignment. Guest CRM that remembers visit history, allergies, preferences and birthdays &mdash; and can import the guest list you already have. Post-visit review requests that send happy guests to your Google page. Your data stays yours, exportable, and if you ever leave you take it with you.</p>
     </div>
 
     <div class="feature-cards">
@@ -889,26 +1038,245 @@ footer {
             <td>Included</td>
           </tr>
           <tr>
+            <td>Commission on your sales</td>
+            <td>Per-cover fee on every booking</td>
+            <td>0%</td>
+          </tr>
+          <tr>
             <td>Contract</td>
-            <td>Annual, 3-month notice</td>
-            <td>Cancel anytime</td>
+            <td>Annual + 3-month notice &mdash; <em>and</em> &euro;2&ndash;4 every time a guest sits down</td>
+            <td>12 months &mdash; and &euro;0 per cover, ever</td>
           </tr>
           <tr>
             <td>Status</td>
-            <td>Shutting down Sept 2026</td>
-            <td>Growing</td>
+            <td>Closing 30 September 2026</td>
+            <td>Taking bookings in 7 days</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <div class="urgency-banner">
-      <strong>Quandoo is shutting down in Finland in September 2026.</strong> Every restaurant on Quandoo needs a replacement before then. We handle the full migration. The earlier you switch, the less disruption you face.
+      <strong>Quandoo closes on 30 September 2026.</strong> That's Quandoo's own announcement, not our sales pitch &mdash; after that date no new reservation can be made through them, from 1 October you can't manage existing ones, and on 31 December the platform goes offline for good. If you take bookings through Quandoo, you need somewhere else to take them before the end of September. We move you across &mdash; both systems running in parallel, no downtime, no lost reservations. <a href="https://www.quandoo.fi/en/important-update" target="_blank" rel="noopener" style="text-decoration:underline">Read Quandoo's notice</a>.
+    </div>
+  </div>
+</section>
+
+<!-- ── CALCULATOR ── -->
+<section class="calc-section" id="calculator">
+  <div class="container">
+    <span class="label">The Numbers</span>
+    <h2>What are the platforms taking from you?</h2>
+    <p class="calc-lead">Put in your real numbers. Not ours &mdash; yours. Everything below is calculated from what you type, and you can check every line of it.</p>
+
+    <div class="calc-grid">
+
+      <div class="calc-panel">
+        <h3>Your restaurant</h3>
+        <div class="calc-panel-sub">Drag to match your month.</div>
+
+        <div class="calc-field">
+          <div class="calc-field-top">
+            <label for="cOrders">Delivery-app orders per month</label>
+            <span class="calc-field-val" id="cOrdersVal">200</span>
+          </div>
+          <input type="range" id="cOrders" min="0" max="800" step="10" value="200">
+        </div>
+
+        <div class="calc-field">
+          <div class="calc-field-top">
+            <label for="cAov">Average order value</label>
+            <span class="calc-field-val" id="cAovVal">&euro;30</span>
+          </div>
+          <input type="range" id="cAov" min="10" max="80" step="1" value="30">
+        </div>
+
+        <div class="calc-field">
+          <div class="calc-field-top">
+            <label for="cComm">Commission you pay them</label>
+            <span class="calc-field-val" id="cCommVal">30%</span>
+          </div>
+          <input type="range" id="cComm" min="0" max="35" step="1" value="30">
+          <div class="calc-field-note">Finnish delivery commissions generally run 14&ndash;30% depending on your contract. Put in what you actually pay.</div>
+        </div>
+
+        <div class="calc-field">
+          <div class="calc-field-top">
+            <label for="cCovers">Booked covers per month</label>
+            <span class="calc-field-val" id="cCoversVal">250</span>
+          </div>
+          <input type="range" id="cCovers" min="0" max="1200" step="10" value="250">
+          <div class="calc-field-note">Set this to 0 if you don't use a paid booking platform.</div>
+        </div>
+
+        <div class="calc-field">
+          <div class="calc-field-top">
+            <label for="cPerCover">Fee per cover</label>
+            <span class="calc-field-val" id="cPerCoverVal">&euro;3</span>
+          </div>
+          <input type="range" id="cPerCover" min="0" max="6" step="0.5" value="3">
+        </div>
+
+        <div class="calc-field">
+          <div class="calc-field-top">
+            <label for="cBase">Booking platform monthly fee</label>
+            <span class="calc-field-val" id="cBaseVal">&euro;130</span>
+          </div>
+          <input type="range" id="cBase" min="0" max="700" step="10" value="130">
+        </div>
+
+        <div class="calc-field" style="margin-bottom:0">
+          <div class="calc-field-top">
+            <label for="cShare">Repeat orders you move to your own channel</label>
+            <span class="calc-field-val" id="cShareVal">30%</span>
+          </div>
+          <input type="range" id="cShare" min="0" max="60" step="5" value="30">
+          <div class="calc-field-note">You keep the delivery apps for discovery. This is only the regulars who'd have come back anyway. We default to a conservative 30%.</div>
+        </div>
+      </div>
+
+      <div class="calc-panel">
+        <h3>What it costs you today</h3>
+        <div class="calc-panel-sub">Every line is your number, multiplied out.</div>
+
+        <div class="calc-line">
+          <span class="calc-line-label" id="oCommLabel">Delivery commission</span>
+          <span class="calc-line-val" id="oComm">&euro;1,800</span>
+        </div>
+        <div class="calc-line">
+          <span class="calc-line-label" id="oCoverLabel">Per-cover booking fees</span>
+          <span class="calc-line-val" id="oCover">&euro;750</span>
+        </div>
+        <div class="calc-line">
+          <span class="calc-line-label">Booking platform fee</span>
+          <span class="calc-line-val" id="oBase">&euro;130</span>
+        </div>
+        <div class="calc-line is-total">
+          <span class="calc-line-label">Leaving your business</span>
+          <span class="calc-line-val" id="oTotal">&euro;2,680</span>
+        </div>
+        <div class="calc-sub-year" id="oYear">&euro;32,160 a year</div>
+
+        <h3 style="margin-top:2rem">What you keep with Klar</h3>
+        <div class="calc-panel-sub">Delivery apps kept. Regulars moved across.</div>
+
+        <div class="calc-line">
+          <span class="calc-line-label" id="oRecovLabel">Commission you stop paying</span>
+          <span class="calc-line-val" id="oRecov">&euro;540</span>
+        </div>
+        <div class="calc-line">
+          <span class="calc-line-label">Booking fees you stop paying</span>
+          <span class="calc-line-val" id="oBookRecov">&euro;880</span>
+        </div>
+        <div class="calc-line">
+          <span class="calc-line-label">Klar Complete</span>
+          <span class="calc-line-val" id="oKlar">&minus; &euro;249</span>
+        </div>
+        <div class="calc-line is-total is-good">
+          <span class="calc-line-label">Staying in your pocket</span>
+          <span class="calc-line-val" id="oNet">&euro;1,171</span>
+        </div>
+        <div class="calc-sub-year" id="oNetYear">&euro;14,052 a year</div>
+      </div>
     </div>
 
-    <div class="testimonial">
-      <blockquote>The whole system was running in days. Staff picked it up without any training. We stopped paying per-cover fees immediately.</blockquote>
-      <cite>Restaurant owner &middot; Helsinki</cite>
+    <div class="calc-verdict">
+      <div class="calc-verdict-big" id="vBig">Your entire build costs less than 26 days of what the platforms take.</div>
+      <div class="calc-verdict-sub" id="vSub">Website, online ordering, booking system, guest CRM, Google setup and the ongoing work &mdash; all inside one setup fee of &euro;1,900&ndash;&euro;2,600. Then &euro;249 a month, and 0% of your sales for as long as you're with us.</div>
+
+      <div class="calc-verdict-row">
+        <div class="calc-vstat">
+          <span class="calc-vstat-num" id="vPayback">1.9 months</span>
+          <span class="calc-vstat-label">until the setup fee has paid for itself</span>
+        </div>
+        <div class="calc-vstat">
+          <span class="calc-vstat-num" id="vOrders">28 orders</span>
+          <span class="calc-vstat-label">a month through your own site covers the entire subscription</span>
+        </div>
+        <div class="calc-vstat">
+          <span class="calc-vstat-num" id="vMultiple">&euro;5.70</span>
+          <span class="calc-vstat-label">kept for every &euro;1 you pay Klar</span>
+        </div>
+      </div>
+
+      <div class="calc-cta">
+        <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-dark">Book a free call &mdash; we'll run this on your real invoices</a>
+      </div>
+    </div>
+
+    <p class="calc-disclaimer">Figures are calculated live from the numbers you entered, and the defaults are only a starting point &mdash; we don't publish claims about what any platform charges you, because that's in your contract, not ours. Setup is quoted between &euro;1,900 and &euro;2,600 depending on scope; this uses the &euro;2,250 midpoint. Klar Complete starts at &euro;249/month on a 12-month agreement.</p>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="section" id="pricing">
+  <div class="container">
+    <span class="label">Pricing</span>
+    <h2>One setup fee. One monthly price. Never a cut of your sales.</h2>
+    <p class="section-lead">You should be able to see what this costs before you talk to anyone. So here it is.</p>
+
+    <div class="pricing-card">
+      <div class="pricing-head">
+        <div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.15rem;color:var(--heading)">Klar Complete</div>
+          <div style="font-size:0.9rem;color:var(--muted);margin-top:2px">Website &middot; Ordering &middot; Bookings &middot; Guest CRM &middot; SEO</div>
+        </div>
+        <div class="pricing-price">From &euro;249<span>/month</span></div>
+      </div>
+
+      <div class="pricing-row">
+        <span class="pricing-row-label">One-time setup &mdash; <strong>your website is inside this</strong></span>
+        <span class="pricing-row-val">&euro;1,900 &ndash; &euro;2,600</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label">Commission on your sales</span>
+        <span class="pricing-row-val">0%</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label">Fee per order, per cover, per booking</span>
+        <span class="pricing-row-val">&euro;0</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label">Bookings only, if that's all you need</span>
+        <span class="pricing-row-val">From &euro;149/month</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label">Ordering only, if that's all you need</span>
+        <span class="pricing-row-val">From &euro;199/month</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label">Agreement</span>
+        <span class="pricing-row-val">12 months</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label">Priced separately &mdash; Google/Meta ad management, ad spend, extra locations, custom integrations</span>
+        <span class="pricing-row-val">Quoted</span>
+      </div>
+
+      <p class="pricing-note">Your monthly price follows how much you actually use the system &mdash; completed orders plus guests who arrived on a Klar booking. Grow past your band and we move you up at the next billing cycle, after we've told you. We never switch off your ordering or your bookings because you had a good month, and we never send you a bill you weren't expecting.</p>
+    </div>
+
+    <div style="margin-top:2.5rem">
+      <div class="faq-item">
+        <div class="faq-q">Is there a contract?</div>
+        <div class="faq-a">Yes &mdash; 12 months. That's what lets us build your whole system up front and charge &euro;249 a month for it instead of &euro;900.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I want out?</div>
+        <div class="faq-a">You can stop using it whenever you like, but the 12-month commitment stands. And if something real changes &mdash; you sell the place, you close, life happens &mdash; you talk to us. We're people in Helsinki, not a cancellation form.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you take a percentage of my sales?</div>
+        <div class="faq-a">No. Not a percentage, not a fee per order, not a fee per cover, not now and not once you're big. That's the entire point of the company.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I have to leave Wolt and Foodora?</div>
+        <div class="faq-a">No, and we'd tell you not to. They're good at bringing you people who've never heard of you. They're expensive for the customer who already orders from you every Thursday. Keep the first, move the second.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Who owns my customer data?</div>
+        <div class="faq-a">You do. Guests, order history, contact details &mdash; it's yours, it's exportable, and if you ever leave you take it with you. Your domain and your content are yours too.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -927,7 +1295,7 @@ footer {
       <div class="step">
         <div class="step-num">2</div>
         <h4>We build everything</h4>
-        <p>Website, Google, bookings, SEO. 5 working days.</p>
+        <p>Website, Google, bookings, ordering, SEO. Inside 7 days.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
@@ -951,11 +1319,11 @@ footer {
     <div class="guarantee-stack">
       <div class="guarantee-card">
         <h3>7-Day Delivery Guarantee</h3>
-        <p>Your website goes live within 7 days of signing. If we miss that deadline, your first month is free. No questions, no forms. Content updates like menu changes, photos, and hours are always included in your plan.</p>
+        <p>Your site goes live within 7 days of signing. Miss that deadline and your first month is free &mdash; no questions, no forms, no claim to file. Menu changes, photos and opening hours are always included in your plan, however often you send them.</p>
       </div>
       <div class="guarantee-card">
-        <h3>60-Day Results Guarantee</h3>
-        <p>If you don't see measurable new traffic within 60 days of going live, your next month is on us. We don't get paid to build websites. We get paid to bring you customers.</p>
+        <h3>0% of your sales. In writing.</h3>
+        <p>No commission, no per-order fee, no per-cover fee &mdash; not at 50 orders a month and not at 5,000. If your price ever changes it's because you moved up a usage band, we told you first, and it took effect the following month. You will not get a surprise invoice from us.</p>
       </div>
     </div>
   </div>
@@ -1008,6 +1376,102 @@ footer {
 </footer>
 
 <script>
+// ── COMMISSION CALCULATOR ──
+(function () {
+  const KLAR_MONTHLY = 249;
+  const SETUP_MID = 2250;
+  const VERDICT_SUB = 'Website, online ordering, booking system, guest CRM, Google setup and the ongoing work — all inside one setup fee of €1,900–€2,600. Then €249 a month, and 0% of your sales for as long as you\'re with us.';
+
+  const ids = ['cOrders', 'cAov', 'cComm', 'cCovers', 'cPerCover', 'cBase', 'cShare'];
+  const el = {};
+  ids.forEach(id => { el[id] = document.getElementById(id); });
+  if (ids.some(id => !el[id])) return;
+
+  const out = id => document.getElementById(id);
+
+  function eur(n) {
+    return '€' + Math.round(n).toLocaleString('en-US');
+  }
+
+  function recalc() {
+    const orders   = +el.cOrders.value;
+    const aov      = +el.cAov.value;
+    const comm     = +el.cComm.value / 100;
+    const covers   = +el.cCovers.value;
+    const perCover = +el.cPerCover.value;
+    const base     = +el.cBase.value;
+    const share    = +el.cShare.value / 100;
+
+    // Echo the inputs back
+    out('cOrdersVal').textContent   = orders;
+    out('cAovVal').textContent      = eur(aov);
+    out('cCommVal').textContent     = Math.round(comm * 100) + '%';
+    out('cCoversVal').textContent   = covers;
+    out('cPerCoverVal').textContent = '€' + perCover.toFixed(perCover % 1 ? 1 : 0);
+    out('cBaseVal').textContent     = eur(base);
+    out('cShareVal').textContent    = Math.round(share * 100) + '%';
+
+    // What it costs today
+    const commissionCost = orders * aov * comm;
+    const coverCost      = covers * perCover;
+    const bleed          = commissionCost + coverCost + base;
+
+    out('oCommLabel').textContent = 'Delivery commission — ' + orders + ' × ' + eur(aov) + ' × ' + Math.round(comm * 100) + '%';
+    out('oComm').textContent      = eur(commissionCost);
+    out('oCoverLabel').textContent = 'Per-cover booking fees — ' + covers + ' × €' + perCover.toFixed(perCover % 1 ? 1 : 0);
+    out('oCover').textContent     = eur(coverCost);
+    out('oBase').textContent      = eur(base);
+    out('oTotal').textContent     = eur(bleed);
+    out('oYear').textContent      = eur(bleed * 12) + ' a year';
+
+    // What you keep with Klar
+    const ordersMoved       = Math.round(orders * share);
+    const commissionSaved   = ordersMoved * aov * comm;
+    const bookingSaved      = coverCost + base;
+    const recovered         = commissionSaved + bookingSaved;
+    const net               = recovered - KLAR_MONTHLY;
+
+    out('oRecovLabel').textContent = 'Commission you stop paying — ' + ordersMoved + ' orders moved across';
+    out('oRecov').textContent      = eur(commissionSaved);
+    out('oBookRecov').textContent  = eur(bookingSaved);
+    out('oKlar').textContent       = '− ' + eur(KLAR_MONTHLY);
+    out('oNet').textContent        = (net < 0 ? '− ' : '') + eur(Math.abs(net));
+    out('oNetYear').textContent    = (net < 0 ? '− ' : '') + eur(Math.abs(net * 12)) + ' a year';
+
+    // The verdict
+    const daysOfBleed  = bleed > 0 ? SETUP_MID / bleed * 30 : 0;
+    const payback      = net > 0 ? SETUP_MID / net : 0;
+    const perOrder     = aov * comm;
+    const ordersToPlan = perOrder > 0 ? Math.ceil(KLAR_MONTHLY / perOrder) : 0;
+    const multiple     = recovered / KLAR_MONTHLY;
+
+    if (net <= 0) {
+      // Honest answer: at this volume the platform fees aren't the problem.
+      out('vBig').textContent = 'At these volumes the platforms are not what is holding you back.';
+      out('vSub').textContent = 'We would rather tell you that than sell you a calculator result. What you probably need first is the website and the visibility — talk to us about that, not about commission.';
+    } else if (daysOfBleed < 60) {
+      out('vBig').textContent = 'Your entire build costs less than ' +
+        Math.ceil(daysOfBleed) + ' days of what the platforms take.';
+      out('vSub').textContent = VERDICT_SUB;
+    } else {
+      out('vBig').textContent = 'Your entire build costs about ' +
+        (daysOfBleed / 30).toFixed(1) + ' months of what the platforms take.';
+      out('vSub').textContent = VERDICT_SUB;
+    }
+
+    out('vPayback').textContent = payback > 0
+      ? (payback < 1 ? 'Under a month' : payback.toFixed(1) + ' months')
+      : '—';
+    out('vOrders').textContent  = ordersToPlan > 0 ? ordersToPlan + ' orders' : '—';
+    out('vMultiple').textContent = multiple > 0 ? '€' + multiple.toFixed(2) : '—';
+  }
+
+  ids.forEach(id => {
+    el[id].addEventListener('input', recalc);
+  });
+  recalc();
+})();
+
 // ── NAV SCROLL ──
 const nav = document.querySelector('nav');
 window.addEventListener('scroll', () => {
