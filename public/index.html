@@ -750,27 +750,56 @@ footer {
   color: var(--accent);
   margin-bottom: 0.75rem;
 }
-.calc-assume {
+.calc-detail {
   margin-top: 2rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--dark-border);
-  font-size: 0.92rem;
-  line-height: 2.1;
-  color: #a8a49a;
 }
-.calc-assume strong { color: #d8d5cc; font-weight: 500; }
-.calc-inline {
-  width: 4.25rem;
+.calc-detail-title { font-size: 0.9rem; color: var(--dark-muted); margin-bottom: 0.9rem; line-height: 1.55; }
+.calc-detail-title strong { color: #c4c0b6; font-weight: 500; }
+.calc-detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 0.7rem; }
+.calc-detail-item {
   background: var(--dark-bg);
   border: 1px solid var(--dark-border);
-  border-radius: 5px;
-  color: var(--accent);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.95rem;
-  padding: 4px 6px;
-  text-align: center;
+  border-radius: 8px;
+  padding: 0.7rem 0.85rem;
+  transition: border-color 0.15s;
 }
-.calc-inline:focus { outline: none; border-color: var(--accent); }
+.calc-detail-item:focus-within { border-color: var(--accent); }
+.calc-detail-label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dark-muted);
+  margin-bottom: 0.3rem;
+  line-height: 1.35;
+}
+.calc-detail-input { display: flex; align-items: baseline; gap: 0.15rem; }
+.calc-detail-input .sym {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--accent);
+  opacity: 0.75;
+}
+.calc-detail-input input {
+  width: 100%;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+.calc-detail-input input:focus { outline: none; }
+/* Kill the spinner arrows — they look like a form, not a price */
+.calc-detail-input input::-webkit-outer-spin-button,
+.calc-detail-input input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.calc-detail-input input[type=number] { -moz-appearance: textfield; appearance: textfield; }
 
 .calc-line-val.is-plus { color: var(--accent); }
 .calc-line-val.is-minus { color: #a8a49a; }
@@ -1133,16 +1162,36 @@ footer {
         <div class="calc-q" style="margin-bottom:0">
           <label for="cShare">Out of every 10 delivery orders, how many are regulars who'd happily order straight from you?</label>
           <div class="calc-q-val" id="cShareVal">3 out of 10</div>
-          <input type="range" id="cShare" min="0" max="6" step="1" value="3">
-          <div class="calc-field-note">You keep Wolt for the people who've never heard of you. This is only the regulars. We start you low on purpose.</div>
+          <input type="range" id="cShare" min="0" max="10" step="1" value="3">
+          <div class="calc-field-note">You keep Wolt for the people who've never heard of you. This is only your regulars &mdash; and we start you low on purpose.</div>
         </div>
 
-        <p class="calc-assume">
-          Working from an average order of &euro;<input type="number" class="calc-inline" id="cAov" value="30" min="5" max="200" step="1">,
-          a commission of <input type="number" class="calc-inline" id="cComm" value="30" min="0" max="40" step="1">%,
-          and &euro;<input type="number" class="calc-inline" id="cPerCover" value="3" min="0" max="10" step="0.5"> per booked guest.
-          <strong>Not your numbers? Type your own in.</strong>
-        </p>
+        <div class="calc-detail">
+          <div class="calc-detail-title">These are our starting figures. <strong>Yours are better &mdash; type them in.</strong></div>
+          <div class="calc-detail-grid">
+            <div class="calc-detail-item">
+              <label class="calc-detail-label" for="cAov">Average order</label>
+              <div class="calc-detail-input">
+                <span class="sym">&euro;</span>
+                <input type="number" id="cAov" value="30" min="5" max="200" step="1" inputmode="decimal">
+              </div>
+            </div>
+            <div class="calc-detail-item">
+              <label class="calc-detail-label" for="cComm">Commission you pay</label>
+              <div class="calc-detail-input">
+                <input type="number" id="cComm" value="30" min="0" max="40" step="1" inputmode="decimal">
+                <span class="sym">%</span>
+              </div>
+            </div>
+            <div class="calc-detail-item">
+              <label class="calc-detail-label" for="cPerCover">Fee per booked guest</label>
+              <div class="calc-detail-input">
+                <span class="sym">&euro;</span>
+                <input type="number" id="cPerCover" value="3" min="0" max="10" step="0.5" inputmode="decimal">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="calc-panel">
