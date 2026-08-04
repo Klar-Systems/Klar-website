@@ -227,7 +227,7 @@ nav.scrolled {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(10,10,10,0.72) 0%, rgba(10,10,10,0.58) 45%, rgba(10,10,10,0.86) 100%);
+  background: linear-gradient(180deg, rgba(10,10,10,0.62) 0%, rgba(10,10,10,0.42) 45%, rgba(10,10,10,0.80) 100%);
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-media { animation: none; }
@@ -966,22 +966,113 @@ footer {
   line-height: 1.65;
   color: var(--muted);
 }
+
+/* ── NAV, company level ── */
+.nav-left { gap: 10px; }
+.nav-wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--heading);
+  padding-left: 10px;
+  border-left: 1px solid var(--border-strong);
+  line-height: 1;
+}
+nav { padding: 0.85rem var(--gutter); }
+.nav-right { gap: 28px; }
+.nav-link { position: relative; padding: 4px 0; font-weight: 500; }
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%; bottom: 0;
+  height: 1.5px;
+  background: var(--heading);
+  transition: right 0.22s ease;
+}
+.nav-link:hover::after { right: 0; }
+.nav-cta { font-weight: 500; padding: 11px 22px; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px; height: 44px;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0 11px;
+}
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--heading);
+  border-radius: 2px;
+  transition: transform 0.22s ease, opacity 0.18s ease;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 860px) {
+  .nav-toggle { display: flex; }
+  .nav-right {
+    position: fixed;
+    top: 68px; left: 0; right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px var(--gutter) 20px;
+    background: rgba(242, 237, 228, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .nav-right.is-open { opacity: 1; transform: none; pointer-events: auto; }
+  .nav-right .nav-link {
+    display: block;
+    padding: 15px 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-right .nav-link::after { display: none; }
+  .nav-cta { margin-top: 16px; text-align: center; }
+}
+
+/* ── FOOTER ── */
+.footer-left { display: flex; align-items: flex-start; gap: 14px; }
+.footer-logo { height: 22px; width: auto; margin-top: 2px; }
+.footer-company { line-height: 1.6; }
+.footer-right { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
+.footer-right a { transition: color 0.2s; }
+.footer-right a:hover { color: var(--heading); text-decoration: underline; }
+.footer-copy { color: var(--subtle); }
 </style>
 </head>
 <body>
 
 <!-- ── NAV ── -->
 <nav>
-  <a href="/" class="nav-left">
-    <img src="/logos/klar-logo-black.svg" alt="Klar" class="nav-logo-img">
+  <a href="/" class="nav-left" aria-label="Klar Systems, home">
+    <img src="/logos/klar-logo-black.svg" alt="Klar Systems" class="nav-logo-img">
+    <span class="nav-wordmark">Systems</span>
   </a>
-  <div class="nav-right">
-    <a href="#system" class="nav-link">What's in it</a>
-    <a href="#calculator" class="nav-link">Calculator</a>
+  <div class="nav-right" id="navRight">
+    <a href="#system" class="nav-link">What we provide</a>
+    <a href="#calculator" class="nav-link">Cost calculator</a>
     <a href="#pricing" class="nav-link">Pricing</a>
     <a href="#contact" class="nav-link">Contact</a>
-    <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="nav-cta">Book a Free Call</a>
+    <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="nav-cta">Book a free call</a>
   </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navRight">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ── HERO ── -->
@@ -1071,13 +1162,12 @@ footer {
       <div class="included-head">Also included, without you asking</div>
       <ul class="included-list">
         <li>Google Business Profile set up and looked after, so you show up in "near me" and on Maps</li>
-        <li>Hosting, security certificate and every technical update</li>
+        <li>Hosting, security certificate and every technical update, and we connect the domain you already have</li>
         <li>Same-day content changes, as often as you want them</li>
         <li>A plain-language report each month: bookings, orders, where people came from</li>
         <li>Reviews: guests are asked how it went, and happy ones are pointed at your Google page</li>
         <li>Quiet week coming? We can write to the regulars who have not been in, in their own language</li>
       </ul>
-      <div class="included-note">Your domain name stays in your name and you pay for it directly, usually around &euro;15 a year. We set it up and connect it. We would rather you owned it than us.</div>
     </div>
 
     <div class="urgency-banner">
@@ -1363,19 +1453,39 @@ footer {
   <div class="container">
     <div class="footer-inner">
       <div class="footer-left">
-        Klar Systems Oy &middot; Helsinki<br>
-        <a href="mailto:lomberg@klarsystems.com">lomberg@klarsystems.com</a>
+        <img src="/logos/klar-logo-black.svg" alt="Klar Systems" class="footer-logo">
+        <div class="footer-company">
+          Klar Systems Oy, Helsinki, Finland<br>
+          <a href="mailto:lomberg@klarsystems.com">lomberg@klarsystems.com</a>
+        </div>
       </div>
       <div class="footer-right">
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-        <span style="color: var(--subtle)">&copy; 2026</span>
+        <a href="/#system">What we provide</a>
+        <a href="/#calculator">Cost calculator</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <span class="footer-copy">&copy; 2026 Klar Systems Oy</span>
       </div>
     </div>
   </div>
 </footer>
 
 <script>
+// ── MOBILE NAV ──
+(function () {
+  const btn = document.getElementById('navToggle');
+  const menu = document.getElementById('navRight');
+  if (!btn || !menu) return;
+  const close = () => { menu.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); };
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.addEventListener('click', e => { if (e.target.tagName === 'A') close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+
 // ── HERO VIDEO ──
 // The gradient behind is the default. If a hero video is actually present and
 // can play, fade it in over the top; otherwise nothing changes and nobody
