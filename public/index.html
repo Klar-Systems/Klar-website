@@ -1053,6 +1053,139 @@ nav { padding: 0.85rem var(--gutter); }
 .footer-right a { transition: color 0.2s; }
 .footer-right a:hover { color: var(--heading); text-decoration: underline; }
 .footer-copy { color: var(--subtle); }
+
+/* ── DARK-HERO BUTTON FIX ── */
+.hero .btn-secondary { color: #ffffff; border-color: rgba(255,255,255,0.45); }
+.hero .btn-secondary:hover { border-color: #ffffff; background: rgba(255,255,255,0.07); }
+
+/* ── PROBLEM, as figures not paragraphs ── */
+.problem-section { padding: 104px 0; }
+.problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin: 3rem 0 0; }
+@media (max-width: 820px) { .problem-grid { grid-template-columns: 1fr; gap: 2rem; } }
+.problem-item { border-top: 2px solid var(--accent); padding-top: 1.25rem; }
+.problem-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.8rem, 7vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+}
+.problem-what { margin-top: 0.6rem; font-size: 1.15rem; color: #faf8f4; font-weight: 500; }
+.problem-who { margin-top: 0.5rem; font-size: 1rem; line-height: 1.6; color: #b8b4aa; }
+.problem-who strong { color: #faf8f4; }
+.problem-kicker {
+  margin-top: 3.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.7rem, 4.5vw, 2.8rem);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  max-width: none;
+}
+.problem-cta { margin-top: 2rem; }
+
+/* ── WHAT WE PROVIDE, lines not squares ── */
+.provide-list { list-style: none; margin: 2.5rem 0 0; border-top: 1px solid var(--border); }
+.provide-list li {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+@media (max-width: 760px) {
+  .provide-list li { grid-template-columns: 1fr; gap: 0.4rem; }
+}
+.provide-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  color: var(--heading);
+  position: relative;
+  padding-left: 1.5rem;
+}
+.provide-title::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.62em;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.provide-desc { font-size: 1.08rem; line-height: 1.65; color: var(--body); }
+
+/* ── PLAN VERDICT ── */
+.plan-verdict {
+  margin-top: 1.75rem;
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  padding: clamp(1.4rem, 3.5vw, 1.9rem);
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: baseline;
+  gap: 0.6rem 1.5rem;
+}
+@media (max-width: 720px) { .plan-verdict { grid-template-columns: 1fr; gap: 0.3rem; } }
+.plan-verdict-label { grid-column: 1 / -1; font-size: 1rem; color: var(--dark-muted); }
+.plan-verdict-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.plan-verdict-price { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.4rem; color: #faf8f4; }
+.plan-verdict-why { font-size: 1rem; color: var(--dark-muted); }
+
+/* ── STEPS, alive ── */
+.step { position: relative; }
+.step-icon { font-size: 2.2rem; line-height: 1; margin-bottom: 0.75rem; }
+.step-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-on-accent);
+  background: var(--accent-muted);
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 0.6rem;
+  width: auto;
+  height: auto;
+}
+.step h4 { font-size: 1.2rem; margin-bottom: 0.35rem; }
+.step p { font-size: 1.02rem; line-height: 1.6; color: var(--body); }
+
+/* ── COME AND MEET ── */
+.meet-section { background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 88px 0; }
+.meet-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+@media (max-width: 860px) { .meet-inner { grid-template-columns: 1fr; } }
+.meet-copy h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); line-height: 1.15; margin-bottom: 16px; }
+.meet-copy p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 28px; }
+.meet-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.meet-facts { display: grid; gap: 1.1rem; }
+.meet-fact { display: grid; gap: 2px; border-left: 3px solid var(--accent); padding-left: 1rem; }
+.meet-fact-k { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.meet-fact-v { font-size: 1.05rem; line-height: 1.55; color: var(--heading); }
+
+/* ── HERO FOOD MOTES ── */
+.hero-mote {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+  filter: saturate(0.85);
+}
 </style>
 </head>
 <body>
@@ -1121,57 +1254,74 @@ nav { padding: 0.85rem var(--gutter); }
 </div>
 
 <!-- ── THE PROBLEM ── -->
-<section class="dark-section">
+<section class="dark-section problem-section">
   <div class="container">
     <span class="label">The Problem</span>
     <h2>Three companies stand between you and your own customers.</h2>
-    <p>The <strong>delivery app</strong> takes up to 30% of every order. On a &euro;30 order that is &euro;9 gone before you have paid for the food, and most of those orders are regulars who already knew your name.</p>
-    <p>The <strong>booking platform</strong> charges you &euro;2&ndash;4 every time a guest sits down. A regular who books every Friday costs you up to &euro;200 a year, for a customer you already had.</p>
-    <p>And the <strong>guest list</strong> that all of this creates, the names, the numbers, the order history, sits on their servers. They use it to put the restaurant down the street in front of the people who eat at yours.</p>
-    <p class="problem-kicker">You built the reputation. They rent it back to you.</p>
-  </div>
-</section>
 
-<!-- ── THE SYSTEM ── -->
-<section class="section" id="system">
-  <div class="container">
-    <span class="label">The Klar Restaurant System</span>
-    <h2>Everything your restaurant runs on, in one place.</h2>
-    <p class="section-lead">One partner, one monthly price, nothing for you to learn or log into. Here is what is in it.</p>
-
-    <div class="feature-cards">
-      <div class="feature-card">
-        <h3>Your website</h3>
-        <p>Built around your restaurant, not a template. Menu, hours, story, photos. Written and structured so Google and the AI assistants people now ask for dinner recommendations actually surface you. Change a price or a special, message us, it is live the same day.</p>
+    <div class="problem-grid">
+      <div class="problem-item">
+        <div class="problem-num">30%</div>
+        <div class="problem-what">of every delivery order</div>
+        <div class="problem-who">Wolt, Foodora and the rest. On a &euro;30 order that is <strong>&euro;9 gone</strong> before you pay for the food.</div>
       </div>
-      <div class="feature-card">
-        <h3>Bookings</h3>
-        <p>Built into your own site, in your own design. Confirmations, reminders the day before and hours before so guests turn up, waitlist when you are full, floor plan and table assignment, and one dashboard for the whole team.</p>
+      <div class="problem-item">
+        <div class="problem-num">&euro;2&ndash;4</div>
+        <div class="problem-what">every time a guest sits down</div>
+        <div class="problem-who">Your booking platform. A regular who comes every Friday costs you <strong>up to &euro;200 a year</strong>.</div>
       </div>
-      <div class="feature-card">
-        <h3>Ordering</h3>
-        <p>Your menu on your own site. Guests choose eat in or take away and pay at the restaurant, so you keep the whole ticket. Orders land on a screen with an alert for the kitchen. No delivery, we do not run couriers.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Your guest list</h3>
-        <p>Every booking and order builds your own customer list. Visit history, allergies, preferences, birthdays. You can download the lot to a spreadsheet whenever you like, and if you ever leave you take it with you.</p>
+      <div class="problem-item">
+        <div class="problem-num">0</div>
+        <div class="problem-what">of those guests are yours</div>
+        <div class="problem-who">The names and numbers sit on their servers, and get used to advertise <strong>the restaurant next door</strong>.</div>
       </div>
     </div>
 
+    <p class="problem-kicker">You built the reputation.<br>They rent it back to you.</p>
+    <a href="#calculator" class="btn-primary problem-cta">Show me what it costs me &#8595;</a>
+  </div>
+</section>
+
+<!-- ── WHAT WE PROVIDE ── -->
+<section class="section" id="system">
+  <div class="container">
+    <span class="label">What we provide</span>
+    <h2>Everything your restaurant runs on, from one place.</h2>
+    <p class="section-lead">One partner, one monthly price, and we set all of it up for you.</p>
+
+    <ul class="provide-list">
+      <li>
+        <span class="provide-title">Your website</span>
+        <span class="provide-desc">Built for your restaurant, not a template. Found on Google and by the AI assistants people now ask for dinner. Menu or hours change, you message us, it is live the same day.</span>
+      </li>
+      <li>
+        <span class="provide-title">Bookings</span>
+        <span class="provide-desc">On your own site, in your own design. Confirmations, reminders that stop no-shows, waitlist, floor plan, one screen for the whole team.</span>
+      </li>
+      <li>
+        <span class="provide-title">Ordering</span>
+        <span class="provide-desc">Your menu, your site, 0% commission. Eat in or take away, paid at the restaurant. Orders land on a screen with an alert for the kitchen.</span>
+      </li>
+      <li>
+        <span class="provide-title">Your guest list</span>
+        <span class="provide-desc">Every booking and order builds your own CRM. Visit history, allergies, birthdays. Download it any time. Leave and you take it with you.</span>
+      </li>
+    </ul>
+
     <div class="included-strip">
-      <div class="included-head">Also included, without you asking</div>
+      <div class="included-head">Also included</div>
       <ul class="included-list">
-        <li>Google Business Profile set up and looked after, so you show up in "near me" and on Maps</li>
-        <li>Hosting, security certificate and every technical update, and we connect the domain you already have</li>
-        <li>Same-day content changes, as often as you want them</li>
-        <li>A plain-language report each month: bookings, orders, where people came from</li>
-        <li>Reviews: guests are asked how it went, and happy ones are pointed at your Google page</li>
-        <li>Quiet week coming? We can write to the regulars who have not been in, in their own language</li>
+        <li>Google Business Profile, set up and looked after</li>
+        <li>Hosting, security and every technical update</li>
+        <li>Same-day content changes, as often as you like</li>
+        <li>Your existing domain connected for you</li>
+        <li>Review requests after every visit and order</li>
+        <li>A plain monthly report: bookings, orders, where people came from</li>
       </ul>
     </div>
 
     <div class="urgency-banner">
-      <strong>On Quandoo?</strong> Quandoo closes on 30 September 2026. After that date no new reservation can be made through them, and on 31 December the platform goes offline for good. We move you across with both systems running in parallel, so nothing is lost. <a href="https://www.quandoo.fi/en/important-update" target="_blank" rel="noopener" style="text-decoration:underline">Read Quandoo's notice</a>.
+      <strong>On Quandoo?</strong> They close on 30 September 2026. After that no new reservation can be made through them. We move you across with both systems running side by side, so nothing is lost. <a href="https://www.quandoo.fi/en/important-update" target="_blank" rel="noopener">Read Quandoo's notice</a>.
     </div>
   </div>
 </section>
@@ -1181,36 +1331,36 @@ nav { padding: 0.85rem var(--gutter); }
   <div class="container">
     <span class="label">The Numbers</span>
     <h2>What are the platforms taking from you?</h2>
-    <p class="calc-lead">Put in your real numbers. Not ours, yours. Everything below is calculated from what you type, and you can check every line of it.</p>
+    <p class="calc-lead">Put your own numbers in. We will show you what you are paying now, what you would pay us, and which plan you land on.</p>
 
     <div class="calc-grid">
 
       <div class="calc-panel">
         <h3>Two questions about your month</h3>
-        <div class="calc-panel-sub">Slide them to roughly match. Rough is fine.</div>
+        <div class="calc-panel-sub">Rough numbers are fine.</div>
 
         <div class="calc-q">
-          <label for="cOrders">How many orders a month come through Wolt or Foodora?</label>
+          <label for="cOrders">Orders a month through Wolt or Foodora</label>
           <div class="calc-q-val" id="cOrdersVal">200 orders</div>
           <input type="range" id="cOrders" min="0" max="800" step="10" value="200">
         </div>
 
         <div class="calc-q">
-          <label for="cCovers">How many guests a month book a table with you?</label>
+          <label for="cCovers">Guests a month who book a table</label>
           <div class="calc-q-val" id="cCoversVal">250 guests</div>
           <input type="range" id="cCovers" min="0" max="1200" step="10" value="250">
-          <div class="calc-field-note">Slide to zero if you don't pay for a booking service.</div>
+          <div class="calc-field-note">Set to zero if you take no bookings.</div>
         </div>
 
         <div class="calc-q" style="margin-bottom:0">
-          <label for="cShare">Out of every 10 delivery orders, how many are regulars who'd happily order straight from you?</label>
+          <label for="cShare">Out of every 10 delivery orders, how many are regulars?</label>
           <div class="calc-q-val" id="cShareVal">3 out of 10</div>
           <input type="range" id="cShare" min="0" max="10" step="1" value="3">
-          <div class="calc-field-note">You keep Wolt for the people who've never heard of you. This is only your regulars, and we start you low on purpose.</div>
+          <div class="calc-field-note">Keep Wolt for new customers. This is about your regulars.</div>
         </div>
 
         <div class="calc-detail">
-          <div class="calc-detail-title">These are our starting figures. <strong>Yours are better, type them in.</strong></div>
+          <div class="calc-detail-title"><strong>Change these to match your restaurant.</strong></div>
           <div class="calc-detail-grid">
             <div class="calc-detail-item">
               <label class="calc-detail-label" for="cAov">Average order</label>
@@ -1239,7 +1389,7 @@ nav { padding: 0.85rem var(--gutter); }
 
       <div class="calc-panel">
         <h3>What you pay the platforms now</h3>
-        <div class="calc-panel-sub">Your numbers, multiplied out.</div>
+        
 
         <div class="calc-line">
           <span class="calc-line-label" id="oCommLabel">Wolt / Foodora commission</span>
@@ -1256,7 +1406,7 @@ nav { padding: 0.85rem var(--gutter); }
         <div class="calc-sub-year" id="oYear">&euro;30,600 a year</div>
 
         <h3 style="margin-top:2.25rem">What changes if you move to Klar</h3>
-        <div class="calc-panel-sub">You keep the delivery apps. The regulars come to you.</div>
+        
 
         <div class="calc-line">
           <span class="calc-line-label">Booking fees stop <em>completely</em></span>
@@ -1277,6 +1427,13 @@ nav { padding: 0.85rem var(--gutter); }
         </div>
         <div class="calc-sub-year" id="oNetYear">&euro;10,692 a year</div>
       </div>
+    </div>
+
+    <div class="plan-verdict" id="planVerdict">
+      <div class="plan-verdict-label">Based on your numbers, you are on</div>
+      <div class="plan-verdict-name" id="planName">Klar 750</div>
+      <div class="plan-verdict-price" id="planPrice">&euro;399 a month</div>
+      <div class="plan-verdict-why" id="planWhy">310 orders and booked guests a month</div>
     </div>
 
     <div class="calc-verdict">
@@ -1375,27 +1532,31 @@ nav { padding: 0.85rem var(--gutter); }
 <section class="section">
   <div class="container">
     <span class="label">How it works</span>
-    <h2>You run the restaurant. We handle the rest.</h2>
+    <h2>You cook. We do the rest.</h2>
     <div class="steps">
       <div class="step">
-        <div class="step-num">1</div>
-        <h4>You say yes</h4>
-        <p>No forms, no homework. We come to you.</p>
+        <div class="step-icon" aria-hidden="true">&#9749;</div>
+        <div class="step-num">Day 1</div>
+        <h4>We come to you</h4>
+        <p>A coffee and 30 minutes. No forms, no homework.</p>
       </div>
       <div class="step">
-        <div class="step-num">2</div>
-        <h4>We build everything</h4>
-        <p>Website, Google, bookings, ordering, SEO. Inside 7 days.</p>
+        <div class="step-icon" aria-hidden="true">&#128296;</div>
+        <div class="step-num">Days 2 to 6</div>
+        <h4>We build it all</h4>
+        <p>Site, bookings, ordering, Google. You carry on cooking.</p>
       </div>
       <div class="step">
-        <div class="step-num">3</div>
-        <h4>You go live</h4>
-        <p>Staff gets a 2-minute walkthrough. Done.</p>
+        <div class="step-icon" aria-hidden="true">&#127860;</div>
+        <div class="step-num">Day 7</div>
+        <h4>You are live</h4>
+        <p>Two minutes to show the staff. That is the whole training.</p>
       </div>
       <div class="step">
-        <div class="step-num">4</div>
-        <h4>We never disappear</h4>
-        <p>Monthly reports. Same-day updates. Always.</p>
+        <div class="step-icon" aria-hidden="true">&#128200;</div>
+        <div class="step-num">Every month after</div>
+        <h4>We stay</h4>
+        <p>Same-day changes, a plain report, a person who answers.</p>
       </div>
     </div>
   </div>
@@ -1414,6 +1575,41 @@ nav { padding: 0.85rem var(--gutter); }
       <div class="guarantee-card">
         <h3>0% of your sales. In writing.</h3>
         <p>No commission, no per-order fee, no per-cover fee, not at 50 orders a month and not at 5,000. If your price ever changes it's because you moved up a usage band, we told you first, and it took effect the following month. You will not get a surprise invoice from us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COME AND MEET ── -->
+<section class="meet-section">
+  <div class="container">
+    <div class="meet-inner">
+      <div class="meet-copy">
+        <span class="label">Getting started</span>
+        <h2>In Helsinki? We will come to you.</h2>
+        <p>No demo call, no screen share, no slide deck. We sit down in your restaurant, look at what you have, and tell you straight whether we can help. If we cannot, we will say so.</p>
+        <div class="meet-ctas">
+          <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Book a free visit</a>
+          <a href="mailto:guidance@klarsystems.com" class="btn-secondary">Email us instead</a>
+        </div>
+      </div>
+      <div class="meet-facts">
+        <div class="meet-fact">
+          <span class="meet-fact-k">Where</span>
+          <span class="meet-fact-v">Your restaurant, anywhere in the Helsinki region. Further afield we start on a call.</span>
+        </div>
+        <div class="meet-fact">
+          <span class="meet-fact-k">How long</span>
+          <span class="meet-fact-v">About 30 minutes.</span>
+        </div>
+        <div class="meet-fact">
+          <span class="meet-fact-k">What it costs</span>
+          <span class="meet-fact-v">Nothing, and there is nothing to sign on the day.</span>
+        </div>
+        <div class="meet-fact">
+          <span class="meet-fact-k">Paying, when you do start</span>
+          <span class="meet-fact-v">By invoice. Half of the setup before we start, half before you go live, then the monthly on a normal invoice.</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1456,7 +1652,7 @@ nav { padding: 0.85rem var(--gutter); }
         <img src="/logos/klar-logo-black.svg" alt="Klar Systems" class="footer-logo">
         <div class="footer-company">
           Klar Systems Oy, Helsinki, Finland<br>
-          <a href="mailto:lomberg@klarsystems.com">lomberg@klarsystems.com</a>
+          <a href="mailto:guidance@klarsystems.com">guidance@klarsystems.com</a>
         </div>
       </div>
       <div class="footer-right">
@@ -1472,6 +1668,58 @@ nav { padding: 0.85rem var(--gutter); }
 </footer>
 
 <script>
+// ── HERO FOOD MOTES ──
+// A little life in the hero. Move the mouse and the kitchen drifts past.
+(function () {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  const mm = window.matchMedia;
+  if (mm && mm('(prefers-reduced-motion: reduce)').matches) return;
+  if (mm && mm('(hover: none)').matches) return;
+
+  const FOOD = ['\u{1F355}', '\u{1F35C}', '\u{1F363}', '\u{1F354}', '\u{1F950}', '\u{1F373}',
+                '\u{1F957}', '\u{1F35D}', '\u{1F368}', '\u{1F376}', '☕', '\u{1F958}'];
+  const MAX = 14;
+  let alive = 0, lastAt = 0, lastX = 0, lastY = 0;
+
+  function spawn(x, y) {
+    if (alive >= MAX) return;
+    alive++;
+    const el = document.createElement('span');
+    el.className = 'hero-mote';
+    el.textContent = FOOD[(Math.random() * FOOD.length) | 0];
+    el.style.fontSize = (16 + Math.random() * 20) + 'px';
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
+    el.style.opacity = '0';
+    hero.appendChild(el);
+
+    const driftX = (Math.random() - 0.5) * 150;
+    const driftY = -70 - Math.random() * 130;
+    const spin = (Math.random() - 0.5) * 220;
+    const life = 2200 + Math.random() * 1400;
+    const peak = 0.5 + Math.random() * 0.3;
+
+    const anim = el.animate([
+      { transform: 'translate(-50%, -50%) translate(0,0) rotate(0deg) scale(0.5)', opacity: 0 },
+      { transform: 'translate(-50%, -50%) translate(' + driftX * 0.35 + 'px,' + driftY * 0.3 + 'px) rotate(' + spin * 0.3 + 'deg) scale(1)', opacity: peak, offset: 0.25 },
+      { transform: 'translate(-50%, -50%) translate(' + driftX + 'px,' + driftY + 'px) rotate(' + spin + 'deg) scale(0.85)', opacity: 0 }
+    ], { duration: life, easing: 'cubic-bezier(0.25,0.6,0.3,1)' });
+
+    anim.onfinish = () => { el.remove(); alive--; };
+  }
+
+  hero.addEventListener('pointermove', function (e) {
+    if (e.pointerType && e.pointerType !== 'mouse') return;
+    const now = e.timeStamp;
+    if (now - lastAt < 110) return;
+    if (Math.hypot(e.clientX - lastX, e.clientY - lastY) < 26) return;
+    lastAt = now; lastX = e.clientX; lastY = e.clientY;
+    const r = hero.getBoundingClientRect();
+    spawn(e.clientX - r.left, e.clientY - r.top);
+  });
+})();
+
 // ── MOBILE NAV ──
 (function () {
   const btn = document.getElementById('navToggle');
@@ -1585,6 +1833,9 @@ nav { padding: 0.85rem var(--gutter); }
       : ordersMoved + ' direct orders + ' + covers + ' booked guests = ' + units +
         ' a month, which is the ' + tier.name + ' plan.';
     out('oKlar').textContent       = isCustom ? 'Quoted' : '− ' + eur(KLAR_MONTHLY);
+    out('planName').textContent    = tier.name;
+    out('planPrice').textContent   = isCustom ? 'Quoted for you' : eur(KLAR_MONTHLY) + ' a month';
+    out('planWhy').textContent     = units + ' orders and booked guests a month';
     out('oNet').textContent        = isCustom ? ',' : (net < 0 ? '− ' : '') + eur(Math.abs(net));
     out('oNetYear').textContent    = isCustom
       ? 'Book a call and we will do this with you'
@@ -1677,7 +1928,7 @@ window.addEventListener('scroll', () => {
       form.reset();
       showMessage("Thanks! We'll be in touch within 24 hours.", 'success');
     } catch (err) {
-      showMessage('Something went wrong. Email us at lomberg@klarsystems.com instead.', 'error');
+      showMessage('Something went wrong. Email us at guidance@klarsystems.com instead.', 'error');
     } finally {
       button.disabled = false;
       button.textContent = originalLabel;
