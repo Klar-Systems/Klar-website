@@ -810,7 +810,7 @@ footer {
   transform: translateY(12px) scale(0.98); transition: transform 0.25s ease;
 }
 .fpop-backdrop.is-open .fpop { transform: none; }
-.fpop .label { color: var(--accent); }
+.fpop .label { background: var(--dark-card); color: var(--dark-muted); }
 .fpop h2 {
   font-family: 'Space Grotesk', sans-serif; font-weight: 700;
   font-size: clamp(1.5rem, 4.5vw, 1.9rem); letter-spacing: -0.02em;
@@ -838,6 +838,31 @@ footer {
 }
 .fpop-close:hover { color: #faf8f4; background: var(--dark-card); }
 @media (max-width: 520px) { .fpop { padding: 34px 22px 28px; } }
+
+/* Closed, it shrinks into the corner rather than disappearing */
+.fpop-tab {
+  position: fixed; z-index: 190;
+  right: 18px; bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+  background: var(--dark-bg);
+  border: 1px solid var(--dark-border);
+  border-radius: 999px;
+  padding: 11px 18px;
+  color: #faf8f4;
+  font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(10,10,10,0.28);
+}
+.fpop-tab[hidden] { display: none; }
+.fpop-tab:hover { border-color: var(--accent); }
+.fpop-tab strong { color: var(--accent); font-weight: 600; }
+.fpop-tab-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--accent); flex: none;
+}
+@media (max-width: 520px) {
+  .fpop-tab { right: 12px; bottom: 12px; padding: 10px 15px; font-size: 0.88rem; }
+}
 @media (prefers-reduced-motion: reduce) {
   .fpop-backdrop, .fpop { transition: none; }
   .fpop { transform: none; }
@@ -1711,6 +1736,10 @@ nav { padding: 0.85rem var(--gutter); }
     </div>
   </div>
 </div>
+<button class="fpop-tab" id="fpopTab" type="button" hidden aria-label="Open the founding partner offer">
+  <span class="fpop-tab-dot" aria-hidden="true"></span>
+  <span>Founding partners &middot; <strong>&euro;200/mo</strong></span>
+</button>
 
 <!-- ── FOOTER ── -->
 <footer>
@@ -2006,66 +2035,80 @@ window.addEventListener('scroll', () => {
 })();
 
 // ── FOUNDING POPUP ──
-// Shows once per browser session: after 15 seconds, or as soon as they have
-// read a third of the page, whichever happens first. Someone who has already
-// scrolled down to the founding section does not need to be told about it.
+// Opens once per browser session, after 15 seconds or once a third of the page
+// has been read, whichever comes first. Closing it does not throw the offer
+// away: it shrinks to a tab in the corner that reopens the same card. Focus is
+// moved with preventScroll, otherwise closing it yanks the page down to wherever
+// this markup happens to sit.
 (function () {
   const pop   = document.getElementById('fpop');
   const close = document.getElementById('fpopClose');
   const more  = document.getElementById('fpopMore');
-  if (!pop || !close) return;
+  const tab   = document.getElementById('fpopTab');
+  if (!pop || !close || !tab) return;
 
   const SEEN = 'klar-founding-popup';
-  try { if (sessionStorage.getItem(SEEN)) return; } catch (e) { /* private mode */ }
+  let seen = false;
+  try { seen = !!sessionStorage.getItem(SEEN); } catch (e) { /* private mode */ }
 
-  let opened = false, lastFocus = null;
+  let lastFocus = null;
+
+  function focusSafely(node) {
+    if (node && node.focus) { try { node.focus({ preventScroll: true }); } catch (e) { node.focus(); } }
+  }
 
   function open() {
-    if (opened) return;
-    opened = true;
     cleanup();
     try { sessionStorage.setItem(SEEN, '1'); } catch (e) {}
     lastFocus = document.activeElement;
+    tab.hidden = true;
     pop.hidden = false;
     // let the browser paint the hidden state first, so the fade actually runs
     requestAnimationFrame(() => pop.classList.add('is-open'));
-    close.focus();
+    focusSafely(close);
     document.addEventListener('keydown', onKey);
   }
 
-  function dismiss() {
+  function shrink() {
     pop.classList.remove('is-open');
     document.removeEventListener('keydown', onKey);
     setTimeout(() => { pop.hidden = true; }, 250);
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
+    tab.hidden = false;
+    focusSafely(lastFocus === close ? tab : lastFocus);
   }
 
   function onKey(e) {
-    if (e.key === 'Escape') dismiss();
+    if (e.key === 'Escape') shrink();
     if (e.key !== 'Tab') return;
     // keep tabbing inside the dialog while it is open
     const items = pop.querySelectorAll('button, a[href]');
     if (!items.length) return;
     const first = items[0], last = items[items.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); focusSafely(last); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); focusSafely(first); }
   }
 
   function onScroll() {
-    const seen = window.scrollY + window.innerHeight;
-    if (seen > document.body.scrollHeight / 3) open();
+    if (window.scrollY + window.innerHeight > document.body.scrollHeight / 3) open();
   }
   function cleanup() {
     clearTimeout(timer);
     window.removeEventListener('scroll', onScroll);
   }
 
-  close.addEventListener('click', dismiss);
-  pop.addEventListener('click', e => { if (e.target === pop) dismiss(); });
-  if (more) more.addEventListener('click', dismiss);
+  close.addEventListener('click', shrink);
+  pop.addEventListener('click', e => { if (e.target === pop) shrink(); });
+  if (more) more.addEventListener('click', shrink);
+  tab.addEventListener('click', open);
 
-  const timer = setTimeout(open, 15000);
-  window.addEventListener('scroll', onScroll, { passive: true });
+  let timer = null;
+  if (seen) {
+    // already had the card this session, so go straight to the corner
+    tab.hidden = false;
+  } else {
+    timer = setTimeout(open, 15000);
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
 })();
 </script>
 
