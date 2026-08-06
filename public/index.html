@@ -785,6 +785,63 @@ footer {
 .pricing-row-label { color: var(--body); }
 .pricing-row-val { font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--heading); text-align: right; white-space: nowrap; }
 .pricing-row-setup { display: inline-block; margin-top: 0.15rem; font-size: 0.85rem; color: var(--muted); white-space: normal; }
+.pricing-row-val a { color: var(--heading); text-decoration: underline; text-underline-offset: 3px; }
+.pricing-row-val a:hover { color: var(--text-on-accent); }
+
+/* ── FOUNDING POPUP ── */
+.fpop-backdrop {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(10,10,10,0.62);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.25rem;
+  opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+}
+.fpop-backdrop[hidden] { display: none; }
+.fpop-backdrop.is-open { opacity: 1; pointer-events: auto; }
+.fpop {
+  position: relative;
+  background: var(--dark-bg);
+  border: 1px solid var(--dark-border);
+  border-radius: 14px;
+  padding: 40px 36px 34px;
+  max-width: 480px; width: 100%;
+  max-height: calc(100vh - 2.5rem); overflow-y: auto;
+  text-align: center;
+  transform: translateY(12px) scale(0.98); transition: transform 0.25s ease;
+}
+.fpop-backdrop.is-open .fpop { transform: none; }
+.fpop .label { color: var(--accent); }
+.fpop h2 {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: clamp(1.5rem, 4.5vw, 1.9rem); letter-spacing: -0.02em;
+  color: #faf8f4; margin: 0.5rem 0 0.6rem;
+}
+.fpop-lead { color: var(--dark-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 1.25rem; }
+.fpop-deal { list-style: none; display: grid; gap: 0.55rem; text-align: left; margin: 0 0 1.5rem; }
+.fpop-deal li {
+  position: relative; padding-left: 1.6rem;
+  color: #d2cec4; font-size: 1rem; line-height: 1.5;
+}
+.fpop-deal li::before {
+  content: ''; position: absolute; left: 0; top: 0.5rem;
+  width: 9px; height: 9px; border-radius: 50%; background: var(--accent);
+}
+.fpop-deal strong { color: #faf8f4; }
+.fpop-actions { display: grid; gap: 0.6rem; }
+.fpop-secondary { color: var(--dark-muted); font-size: 0.95rem; text-decoration: underline; text-underline-offset: 3px; }
+.fpop-secondary:hover { color: #faf8f4; }
+.fpop-close {
+  position: absolute; top: 10px; right: 12px;
+  background: none; border: 0; cursor: pointer;
+  color: var(--dark-muted); font-size: 1.6rem; line-height: 1;
+  width: 36px; height: 36px; border-radius: 8px;
+}
+.fpop-close:hover { color: #faf8f4; background: var(--dark-card); }
+@media (max-width: 520px) { .fpop { padding: 34px 22px 28px; } }
+@media (prefers-reduced-motion: reduce) {
+  .fpop-backdrop, .fpop { transition: none; }
+  .fpop { transform: none; }
+}
 .pricing-note { margin-top: 1.25rem; font-size: 0.98rem; color: var(--muted); line-height: 1.6; }
 
 /* ── FAQ / HONESTY ── */
@@ -1113,6 +1170,7 @@ nav { padding: 0.85rem var(--gutter); }
     <a href="#system" class="nav-link">What we provide</a>
     <a href="#calculator" class="nav-link">Cost calculator</a>
     <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="#founding" class="nav-link">Founding partners</a>
     <a href="#contact" class="nav-link">Contact</a>
     <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="nav-cta">Book a free call</a>
   </div>
@@ -1420,6 +1478,10 @@ nav { padding: 0.85rem var(--gutter); }
         <span class="pricing-row-val">&euro;599/month + VAT</span>
       </div>
       <div class="pricing-row">
+        <span class="pricing-row-label"><strong>Founding partners</strong>, the first 10 on the full package pay &euro;200 a month whatever their volume, and 40% off the setup</span>
+        <span class="pricing-row-val"><a href="#founding">10 places</a></span>
+      </div>
+      <div class="pricing-row">
         <span class="pricing-row-label">Priced separately: Google and Meta ad management, ad spend, custom integrations</span>
         <span class="pricing-row-val">Quoted</span>
       </div>
@@ -1428,8 +1490,8 @@ nav { padding: 0.85rem var(--gutter); }
         <span class="pricing-row-val">Yours to keep</span>
       </div>
       <div class="pricing-row">
-        <span class="pricing-row-label"><strong>More than one restaurant under one brand?</strong> Franchises and groups are quoted as a group, not per site</span>
-        <span class="pricing-row-val">Talk to us</span>
+        <span class="pricing-row-label"><strong>Franchise</strong>, priced across the group rather than per restaurant</span>
+        <span class="pricing-row-val"><a href="#contact">Contact us</a></span>
       </div>
 
       <p class="pricing-note">Your price follows how busy you actually are: the orders that come through your own site, plus the guests who turn up on a Klar booking. Cancellations and no-shows do not count. If you outgrow your plan we tell you, and you move up from the following month, never backdated. We will never switch off your ordering or your bookings because you had a good month, and you will never get a bill you were not expecting. All prices on this page are shown without VAT, which is added to your invoice.</p>
@@ -1470,23 +1532,23 @@ nav { padding: 0.85rem var(--gutter); }
       </div>
 
       <div class="pricing-row">
-        <span class="pricing-row-label">How big the site actually is: how many pages, and how much of the writing and the photography we produce for you rather than reuse what you already have</span>
-        <span class="pricing-row-val">Scope of the site</span>
+        <span class="pricing-row-label">How many pages, and how much of the writing and photography we make rather than reuse</span>
+        <span class="pricing-row-val">The site</span>
       </div>
       <div class="pricing-row">
-        <span class="pricing-row-label">Your menu: how many items, how many languages, how often it changes, and whether there are allergens, sizes and options behind each dish</span>
+        <span class="pricing-row-label">How many dishes, in how many languages, and what sits behind each one: sizes, options, allergens</span>
         <span class="pricing-row-val">Your menu</span>
       </div>
       <div class="pricing-row">
-        <span class="pricing-row-label">What you actually run: dine-in, takeaway, delivery, set menus, private events, more than one sitting or more than one kitchen</span>
+        <span class="pricing-row-label">What you run: dine-in, takeaway, delivery, set menus, events, more than one sitting</span>
         <span class="pricing-row-val">How you serve</span>
       </div>
       <div class="pricing-row">
-        <span class="pricing-row-label">What has to be carried across and connected: your old website, your domain, your POS, a booking system you are leaving, your Google profile</span>
+        <span class="pricing-row-label">What we carry across: your old site, your domain, your POS, the booking system you are leaving</span>
         <span class="pricing-row-val">Moving you over</span>
       </div>
 
-      <p class="pricing-note">We do not decide this before we have spoken to you, and we do not decide it alone. On the free call we go through the four things above with you, and then you get one number in writing, inside that range, with what it covers written next to it. That number is what you pay. It does not move afterwards unless you ask us for something that was not in it, and if that happens we tell you the price before we build it, not on the invoice. <strong>Founding partners take 40% off whatever that number lands at</strong> &mdash; quoted &euro;2,250, a founding partner pays &euro;1,350.</p>
+      <p class="pricing-note">We go through those four with you on the free call, then you get one number in writing with what it covers next to it. That is what you pay. It only moves if you ask for something new, and we price that before we build it, not on the invoice. <strong>Founding partners take 40% off it</strong>: quoted &euro;2,250, you pay &euro;1,350.</p>
     </div>
 
     <div class="faq-block">
@@ -1631,6 +1693,25 @@ nav { padding: 0.85rem var(--gutter); }
   </div>
 </section>
 
+<!-- ── FOUNDING POPUP ── -->
+<div class="fpop-backdrop" id="fpop" role="dialog" aria-modal="true" aria-labelledby="fpopTitle" hidden>
+  <div class="fpop">
+    <button class="fpop-close" id="fpopClose" type="button" aria-label="Close">&times;</button>
+    <span class="label">First 10 founding partners</span>
+    <h2 id="fpopTitle">Take the founding deal.</h2>
+    <p class="fpop-lead">We are building Klar alongside the first 10 restaurants that take the whole system. Places are still open.</p>
+    <ul class="fpop-deal">
+      <li><strong>&euro;200 a month + VAT, locked.</strong> Whatever your volume, and it never rises.</li>
+      <li><strong>40% off your setup fee.</strong> Quoted &euro;2,250, you pay &euro;1,350.</li>
+      <li><strong>The full package.</strong> Website, ordering and bookings together.</li>
+    </ul>
+    <div class="fpop-actions">
+      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Book a free call</a>
+      <a href="#founding" class="fpop-secondary" id="fpopMore">See what a founding place includes</a>
+    </div>
+  </div>
+</div>
+
 <!-- ── FOOTER ── -->
 <footer>
   <div class="container">
@@ -1646,6 +1727,7 @@ nav { padding: 0.85rem var(--gutter); }
         <a href="/#system">What we provide</a>
         <a href="/#calculator">Cost calculator</a>
         <a href="/#pricing">Pricing</a>
+        <a href="/#founding">Founding partners</a>
         <a href="/privacy/">Privacy</a>
         <a href="/terms/">Terms</a>
         <span class="footer-copy">&copy; 2026 Klar</span>
@@ -1921,6 +2003,69 @@ window.addEventListener('scroll', () => {
       button.textContent = originalLabel;
     }
   });
+})();
+
+// ── FOUNDING POPUP ──
+// Shows once per browser session: after 15 seconds, or as soon as they have
+// read a third of the page, whichever happens first. Someone who has already
+// scrolled down to the founding section does not need to be told about it.
+(function () {
+  const pop   = document.getElementById('fpop');
+  const close = document.getElementById('fpopClose');
+  const more  = document.getElementById('fpopMore');
+  if (!pop || !close) return;
+
+  const SEEN = 'klar-founding-popup';
+  try { if (sessionStorage.getItem(SEEN)) return; } catch (e) { /* private mode */ }
+
+  let opened = false, lastFocus = null;
+
+  function open() {
+    if (opened) return;
+    opened = true;
+    cleanup();
+    try { sessionStorage.setItem(SEEN, '1'); } catch (e) {}
+    lastFocus = document.activeElement;
+    pop.hidden = false;
+    // let the browser paint the hidden state first, so the fade actually runs
+    requestAnimationFrame(() => pop.classList.add('is-open'));
+    close.focus();
+    document.addEventListener('keydown', onKey);
+  }
+
+  function dismiss() {
+    pop.classList.remove('is-open');
+    document.removeEventListener('keydown', onKey);
+    setTimeout(() => { pop.hidden = true; }, 250);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  function onKey(e) {
+    if (e.key === 'Escape') dismiss();
+    if (e.key !== 'Tab') return;
+    // keep tabbing inside the dialog while it is open
+    const items = pop.querySelectorAll('button, a[href]');
+    if (!items.length) return;
+    const first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+
+  function onScroll() {
+    const seen = window.scrollY + window.innerHeight;
+    if (seen > document.body.scrollHeight / 3) open();
+  }
+  function cleanup() {
+    clearTimeout(timer);
+    window.removeEventListener('scroll', onScroll);
+  }
+
+  close.addEventListener('click', dismiss);
+  pop.addEventListener('click', e => { if (e.target === pop) dismiss(); });
+  if (more) more.addEventListener('click', dismiss);
+
+  const timer = setTimeout(open, 15000);
+  window.addEventListener('scroll', onScroll, { passive: true });
 })();
 </script>
 
