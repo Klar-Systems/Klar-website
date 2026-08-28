@@ -64,13 +64,13 @@ calls nobody answers.)
 ### Description — English (641 chars, limit 750)
 
 ```
-Klar builds and runs the digital side of independent restaurants in Finland: your own website, your own online ordering and your own table reservations, on one flat monthly fee and no commission on your sales. Delivery apps take a cut of every order and booking platforms charge per cover. Klar takes neither, and your guest data stays yours. We design and build the site, set up ordering and bookings, keep the restaurant findable on Google and in AI search, and look after it every month. Most restaurants are live in seven days. If you ever leave, you keep the website, the domain and your data. Based in Helsinki, serving all of Finland.
+Klar is the independent restaurant's own system: online ordering, table reservations, a guest list the restaurant owns, and the website it all runs on, together on one flat monthly fee. The price does not move with sales. No commission, nothing per order, nothing per cover. Delivery apps take a cut of every order and booking platforms charge for every guest who sits down, and both keep the customer data. With Klar the orders, the bookings and the guest details belong to the restaurant. We set the system up, keep the restaurant findable on Google and in AI search, and look after it every month. Most restaurants are live in seven days.
 ```
 
-### Description — Finnish (675 chars, limit 750)
+### Description — Finnish (702 chars, limit 750)
 
 ```
-Klar rakentaa ja pyörittää itsenäisten ravintoloiden digipuolen Suomessa: oman verkkosivun, oman verkkotilauksen ja oman pöytävarausjärjestelmän, yhdellä kiinteällä kuukausihinnalla ja ilman komissiota myynnistäsi. Ruokalähettisovellukset ottavat osuuden jokaisesta tilauksesta ja varausalustat veloittavat per asiakas. Klar ei ota kumpaakaan, ja asiakastietosi pysyvät sinun. Suunnittelemme ja rakennamme sivuston, otamme käyttöön tilaukset ja varaukset, pidämme ravintolan löydettävänä Googlessa ja tekoälyhauissa, ja huolehdimme siitä joka kuukausi. Useimmat ravintolat ovat pystyssä seitsemässä päivässä. Jos joskus lähdet, saat pitää sivuston, verkkotunnuksen ja datasi.
+Klar on itsenäisen ravintolan oma järjestelmä: verkkotilaukset, pöytävaraukset, oma asiakasrekisteri ja verkkosivu, jolla kaikki toimii, saman kiinteän kuukausimaksun sisällä. Hinta ei liiku myynnin mukana. Ei komissiota, ei maksua tilausta kohden eikä asiakasta kohden. Ruokalähettisovellukset ottavat osuuden jokaisesta tilauksesta ja varausalustat veloittavat jokaisesta pöytään istuvasta vieraasta, ja molemmat pitävät asiakastiedot itsellään. Klarissa tilaukset, varaukset ja vieraiden tiedot kuuluvat ravintolalle. Otamme järjestelmän käyttöön, pidämme ravintolan löydettävänä Googlessa ja tekoälyhauissa ja huolehdimme siitä joka kuukausi. Useimmat ravintolat ovat pystyssä seitsemässä päivässä.
 ```
 
 Neither version carries a price or a URL: Google's description guidelines refuse
@@ -115,8 +115,8 @@ An empty profile ranks worse than a filled one. Two things take five minutes:
 
 **Post (What's new):** "Restaurants in Helsinki pay up to 30% of an order to a
 delivery app and a fee per cover to a booking platform. Klar replaces both with
-your own website, your own ordering and your own bookings at 0% commission, live
-in seven days." → button *Book*, pointing at the Calendly link.
+your own ordering, your own reservations and a guest list you keep, on one flat
+monthly fee. Live in seven days." → button *Book*, pointing at the Calendly link.
 
 **Q&A, asked and answered by the owner account:**
 - *"Do you take a commission on orders?"* → "No. Klar is a flat monthly fee. 0%
