@@ -31,11 +31,18 @@ and was left alone.
 
 **Name:** `Klar` (or the registered name, per §1)
 
-**Primary category:** `Website designer`
-**Additional categories:** `Software company`, `Marketing agency`,
-`Internet marketing service`
+**Primary category:** `Software company`
+**Additional categories:** `Internet marketing service`, `Marketing agency`
 Type these into Google's category search and pick the closest match it offers —
 the list is fixed and it does not accept free text.
+
+**Not `Website designer`.** It was the first recommendation here and it was
+wrong: the website is one line item of several, not what Klar is. `VISION.md` §2
+puts it plainly — "the website gets us in the door, the recurring system is the
+business." A primary category of Website designer files Klar next to web
+agencies, competing on page design, and buries ordering, reservations and guest
+CRM. It is available as a *secondary* if the website work should still be
+findable; that is a positioning call, not a correctness one.
 
 **Service area:** Helsinki, Espoo, Vantaa — then add `Finland` as the outer ring.
 
@@ -74,12 +81,17 @@ URLs and treat price and offer language as promotional. Prices go in Services
 
 | Service | Description | Price shown |
 |---|---|---|
-| Restaurant website | Your own website, designed and built for the restaurant, hosted and managed. Kept findable on Google and in AI search. | From €49/month + VAT, €1,490 setup |
+| Klar Complete | Website, ordering, bookings, guest CRM and SEO together. 0% commission, no per-order or per-cover fee. | From €249/month + VAT, €1,900–€2,600 setup |
 | Online ordering | Take orders on your own site at 0% commission. Your website is included. | From €199/month + VAT |
 | Table reservations | Your own booking system, on your own site. No per-cover fee. Your website is included. | From €149/month + VAT |
-| Klar Complete | Website, ordering, bookings, guest CRM and SEO together. 0% commission, no per-order or per-cover fee. | From €249/month + VAT, €1,900–€2,600 setup |
+| Guest CRM | Every order and booking builds a guest list the restaurant owns, not the platform. | Included in Klar Complete |
 | Restaurant SEO and AI search | Technical SEO and structured data so the restaurant is found on Google, and answered correctly by AI assistants. | Included in every plan |
+| Restaurant website | Your own website, hosted and managed. Included in every other plan; available on its own. | From €49/month + VAT, €1,490 setup |
 | Google and Meta ad management | Campaign setup and management. Ad spend billed separately. | Quoted |
+
+Google shows services in the order they are added, so the order above is the
+order to add them. The website sits sixth deliberately — it is included in every
+other plan rather than being the thing on sale.
 
 Every figure above is the live price on `klarsystems.com/#pricing` as of
 2026-08-28. If the page changes, this table changes with it, or the profile
