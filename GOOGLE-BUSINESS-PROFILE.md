@@ -61,21 +61,32 @@ calls nobody answers.)
 **Attributes to switch on:** *Online appointments*, *Online estimates*,
 *Identifies as small business*.
 
-### Description — English (641 chars, limit 750)
+### Description — English (498 chars, limit 750)
 
 ```
-Klar is the independent restaurant's own system: online ordering, table reservations, a guest list the restaurant owns, and the website it all runs on, together on one flat monthly fee. The price does not move with sales. No commission, nothing per order, nothing per cover. Delivery apps take a cut of every order and booking platforms charge for every guest who sits down, and both keep the customer data. With Klar the orders, the bookings and the guest details belong to the restaurant. We set the system up, keep the restaurant findable on Google and in AI search, and look after it every month. Most restaurants are live in seven days.
+Klar is the independent restaurant's own system: online ordering, table reservations, a guest list the restaurant owns, and the website it all runs on — together, on one flat monthly fee. The price does not move with sales. No commission, nothing per order, nothing per cover. Every order, booking and guest detail belongs to the restaurant, not to a platform. We build the system, claim and maintain the restaurant's Google and Apple profiles, and run the whole thing so the owner doesn't have to.
 ```
 
-### Description — Finnish (702 chars, limit 750)
+### Description — Finnish (511 chars, limit 750)
 
 ```
-Klar on itsenäisen ravintolan oma järjestelmä: verkkotilaukset, pöytävaraukset, oma asiakasrekisteri ja verkkosivu, jolla kaikki toimii, saman kiinteän kuukausimaksun sisällä. Hinta ei liiku myynnin mukana. Ei komissiota, ei maksua tilausta kohden eikä asiakasta kohden. Ruokalähettisovellukset ottavat osuuden jokaisesta tilauksesta ja varausalustat veloittavat jokaisesta pöytään istuvasta vieraasta, ja molemmat pitävät asiakastiedot itsellään. Klarissa tilaukset, varaukset ja vieraiden tiedot kuuluvat ravintolalle. Otamme järjestelmän käyttöön, pidämme ravintolan löydettävänä Googlessa ja tekoälyhauissa ja huolehdimme siitä joka kuukausi. Useimmat ravintolat ovat pystyssä seitsemässä päivässä.
+Klar on itsenäisen ravintolan oma järjestelmä: verkkotilaukset, pöytävaraukset, oma asiakasrekisteri ja verkkosivu, jolla kaikki toimii — yhdessä, saman kiinteän kuukausimaksun sisällä. Hinta ei liiku myynnin mukana. Ei komissiota, ei maksua tilausta kohden eikä asiakasta kohden. Jokainen tilaus, varaus ja vieraan tieto kuuluu ravintolalle, ei alustalle. Me rakennamme järjestelmän, rekisteröimme ja ylläpidämme ravintolan Google- ja Apple-profiilit ja pyöritämme kokonaisuuden niin, ettei omistajan tarvitse.
 ```
 
 Neither version carries a price or a URL: Google's description guidelines refuse
 URLs and treat price and offer language as promotional. Prices go in Services
 (§3), where they are allowed.
+
+**One claim in this copy is a promise, not a record.** "Claim and maintain the
+restaurant's Google and Apple profiles" is the operator's wording and it ships
+as written. Google is already sold — `MONEY-MODEL.md` §2 bills "Google Business
+profile setup" in every tier. **Apple is not.** `mobal-competitor-read-2026-08-26.md`
+§6 rules Apple Business Connect **"DEFER, not take"**, and `WOLT-DISPLACEMENT.md`
+§5b calls that shape "not a task" at this volume. Nothing in the repo records an
+Apple profile claimed for any tenant. Claiming one by hand is free and takes
+minutes — the ruling was against building the *sync*, not against doing it — so
+the sentence is deliverable. It just becomes a per-tenant delivery obligation
+from the moment it is published.
 
 ### Services — name, then the description Google shows
 
@@ -86,6 +97,7 @@ URLs and treat price and offer language as promotional. Prices go in Services
 | Table reservations | Your own booking system, on your own site. No per-cover fee. Your website is included. | From €149/month + VAT |
 | Guest CRM | Every order and booking builds a guest list the restaurant owns, not the platform. | Included in Klar Complete |
 | Restaurant SEO and AI search | Technical SEO and structured data so the restaurant is found on Google, and answered correctly by AI assistants. | Included in every plan |
+| Google and Apple business profiles | We claim and verify the restaurant's Google Business Profile and Apple Business Connect listing, and keep the hours, menu link and photos accurate. | Included |
 | Restaurant website | Your own website, hosted and managed. Included in every other plan; available on its own. | From €49/month + VAT, €1,490 setup |
 | Google and Meta ad management | Campaign setup and management. Ad spend billed separately. | Quoted |
 
