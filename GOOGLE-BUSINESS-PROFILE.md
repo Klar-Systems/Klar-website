@@ -90,24 +90,70 @@ from the moment it is published.
 
 ### Services — name, then the description Google shows
 
-| Service | Description | Price shown |
-|---|---|---|
-| Klar Complete | Website, ordering, bookings, guest CRM and SEO together. 0% commission, no per-order or per-cover fee. | From €249/month + VAT, €1,900–€2,600 setup |
-| Online ordering | Take orders on your own site at 0% commission. Your website is included. | From €199/month + VAT |
-| Table reservations | Your own booking system, on your own site. No per-cover fee. Your website is included. | From €149/month + VAT |
-| Guest CRM | Every order and booking builds a guest list the restaurant owns, not the platform. | Included in Klar Complete |
-| Restaurant SEO and AI search | Technical SEO and structured data so the restaurant is found on Google, and answered correctly by AI assistants. | Included in every plan |
-| Google and Apple business profiles | We claim and verify the restaurant's Google Business Profile and Apple Business Connect listing, and keep the hours, menu link and photos accurate. | Included |
-| Restaurant website | Your own website, hosted and managed. Included in every other plan; available on its own. | From €49/month + VAT, €1,490 setup |
-| Google and Meta ad management | Campaign setup and management. Ad spend billed separately. | Quoted |
+Eight services, in the order to add them. Google renders them in insertion
+order. Each one is a **name** (limit 120 chars), a **description** (limit 300)
+and a **price** — set the price type to *From* where it says From, and leave the
+price blank where it says Included or Quoted. Every description below is
+measured and inside the limit.
 
-Google shows services in the order they are added, so the order above is the
-order to add them. The website sits sixth deliberately — it is included in every
-other plan rather than being the thing on sale.
+**1. Klar Complete** — From €249/month
+
+```
+Everything together: your own website, online ordering, table reservations, guest CRM and SEO, on one flat monthly fee. 0% commission on your sales, nothing per order, nothing per cover. One-time setup €1,900–€2,600.
+```
+
+**2. Online ordering** — From €199/month
+
+```
+Take orders on your own site instead of a delivery app. 0% commission and €0 per order. Your website is included. The order, and the customer behind it, stays yours. One-time setup €1,900–€2,600.
+```
+
+**3. Table reservations** — From €149/month
+
+```
+Your own booking system on your own site. No fee per cover and no fee per booking. Your website is included. Every guest who books goes onto a list you own. One-time setup €1,900–€2,600.
+```
+
+**4. Restaurant website** — From €49/month
+
+```
+Your own website, built for the restaurant, hosted and managed. Included in every other plan and available on its own. One-time setup €1,490.
+```
+
+**5. Guest CRM** — Included
+
+```
+Every order and reservation builds a guest list the restaurant owns: names, contact details, history. Not the platform's list. Yours to keep if you ever leave.
+```
+
+**6. Restaurant SEO and AI search** — Included
+
+```
+Technical SEO and structured data so the restaurant is found on Google and answered correctly by AI assistants. Maintained every month, not set once and forgotten.
+```
+
+**7. Google and Apple business profiles** — Included
+
+```
+We claim and verify the restaurant's Google Business Profile and Apple Business Connect listing, then keep the hours, menu link and photos accurate.
+```
+
+**8. Google and Meta ad management** — Quoted
+
+```
+Campaign setup and ongoing management on Google and Meta. Ad spend is billed separately.
+```
+
+**Deliberately not services.** The volume tiers (Klar 300 / 750 / 1500 at €249 /
+€399 / €599) belong on the pricing page, not here — Google's services list is
+for discovery, and a bracket nobody searches for buries the four that they do.
+The founding-partner offer is time-limited and belongs in a **Post**, which
+expires, rather than in a service that does not.
 
 Every figure above is the live price on `klarsystems.com/#pricing` as of
-2026-08-28. If the page changes, this table changes with it, or the profile
-becomes a second source of truth that contradicts the site.
+2026-08-28, VAT excluded there and here. If the page changes, this list changes
+with it, or the profile becomes a second source of truth that contradicts the
+site.
 
 ### Photos — already on the server, correct dimensions
 
