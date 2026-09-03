@@ -1,0 +1,14 @@
+# Klar
+
+Klar builds and runs the digital side of independent restaurants in Finland: your own website, your own online ordering and your own table bookings, with the guest list staying yours. Delivery apps take up to 30% of an order and booking platforms charge a fee per cover; Klar charges one flat monthly fee and 0% commission on sales. Based in Helsinki, serving Finland. Sites go live within 7 days, and hosting, same-day content changes, Google Business Profile care and a monthly report are included. Website and SEO on its own is EUR 50/month, bookings EUR 149/month, ordering EUR 199/month, and Klar Complete (website, ordering, bookings, guest CRM and SEO together) starts at EUR 249/month. All prices exclude VAT, and a one-time setup fee is quoted separately.
+
+## Pages
+
+- [Klar - restaurant websites, bookings and ordering](https://klarsystems.com/): What Klar provides, a calculator comparing what the platforms cost you against Klar pricing, the full plan pricing, and the founding partner program.
+- [Klar Calls](https://klarsystems.com/calls/): The WhatsApp AI receptionist add-on that answers customers 24/7, takes bookings and recovers missed calls, from EUR 99/month on top of a Klar system.
+- [Privacy](https://klarsystems.com/privacy/): What Klar collects on klarsystems.com, why it is used, how long it is kept, and your rights under the GDPR.
+- [Terms of use](https://klarsystems.com/terms/): The terms covering use of this website, the cost calculator, and the indicative pricing shown on it.
+
+## Contact
+
+Email: guidance@klarsystems.com

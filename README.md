@@ -10,6 +10,8 @@ Plain static HTML/CSS (no build step) — files are served as-is.
 - `calls/` — call / booking landing page
 - `public/`, `logo.png`, `favicon.png` — assets
 
+When a page under `public/` changes, update its `<lastmod>` in `public/sitemap.xml` in the same commit.
+
 ## What this repo does *not* own
 
 **https://booking.klarsystems.com is not served from here.** Its landing page and every
