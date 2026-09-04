@@ -5,7 +5,6 @@ Klar builds and runs the digital side of independent restaurants in Finland: you
 ## Pages
 
 - [Klar - restaurant websites, bookings and ordering](https://klarsystems.com/): What Klar provides, a calculator comparing what the platforms cost you against Klar pricing, the full plan pricing, and the founding partner program.
-- [Klar Calls](https://klarsystems.com/calls/): The WhatsApp AI receptionist add-on that answers customers 24/7, takes bookings and recovers missed calls, from EUR 99/month on top of a Klar system.
 - [Privacy](https://klarsystems.com/privacy/): What Klar collects on klarsystems.com, why it is used, how long it is kept, and your rights under the GDPR.
 - [Terms of use](https://klarsystems.com/terms/): The terms covering use of this website, the cost calculator, and the indicative pricing shown on it.
 
