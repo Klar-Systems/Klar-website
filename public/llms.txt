@@ -5,6 +5,11 @@ Klar builds and runs the digital side of independent restaurants in Finland: you
 ## Pages
 
 - [Klar - restaurant websites, bookings and ordering](https://klarsystems.com/): What Klar provides, a calculator comparing what the platforms cost you against Klar pricing, the full plan pricing, and the founding partner program.
+- [What Klar provides](https://klarsystems.com/what-we-provide/): Your website, bookings, ordering and your own guest list from one partner, what else is included, and the move off Quandoo before it closes on 30 September 2026.
+- [Cost calculator](https://klarsystems.com/calculator/): Enter your monthly delivery orders, booked guests and share of regulars, and see what the platforms take today against what the same month costs on Klar.
+- [Pricing](https://klarsystems.com/pricing/): Klar Complete from EUR 249/month with the Klar 300, 750 and 1500 usage bands, Klar Single plans, what decides the EUR 1,900-2,600 setup fee, and answers on commission, Wolt and who owns your data.
+- [Contact](https://klarsystems.com/contact/): How to reach Klar, the free 30-minute visit to your restaurant in the Helsinki region, and how invoicing works when you start.
+- [Founding partners](https://klarsystems.com/founding/): The founding partner program for the first 10 restaurants taking the full system: EUR 200/month + VAT locked whatever the volume, and 40% off the setup fee.
 - [Privacy](https://klarsystems.com/privacy/): What Klar collects on klarsystems.com, why it is used, how long it is kept, and your rights under the GDPR.
 - [Terms of use](https://klarsystems.com/terms/): The terms covering use of this website, the cost calculator, and the indicative pricing shown on it.
 

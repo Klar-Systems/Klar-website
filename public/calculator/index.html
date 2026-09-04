@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cost calculator | What the platforms take from you</title>
+<meta name="description" content="Put in your own monthly orders and covers, and see what delivery apps and booking platforms cost you today against what the same month costs on Klar.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Klar">
+<meta property="og:title" content="Cost calculator | What the platforms take from you">
+<meta property="og:description" content="Put in your own monthly orders and covers, and see what delivery apps and booking platforms cost you today against what the same month costs on Klar.">
+<meta property="og:url" content="https://klarsystems.com/calculator/">
+<meta property="og:image" content="https://klarsystems.com/media/hero-poster.jpg">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cost calculator | What the platforms take from you">
+<meta name="twitter:description" content="Put in your own monthly orders and covers, and see what delivery apps and booking platforms cost you today against what the same month costs on Klar.">
+<meta name="twitter:image" content="https://klarsystems.com/media/hero-poster.jpg">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="canonical" href="https://klarsystems.com/calculator/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://klarsystems.com/#klar",
+      "name": "Klar",
+      "url": "https://klarsystems.com/",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Helsinki",
+        "addressCountry": "FI"
+      },
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://klarsystems.com/logos/klar-logo.png",
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://klarsystems.com/#website",
+      "url": "https://klarsystems.com/",
+      "name": "Klar",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://klarsystems.com/#klar"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://klarsystems.com/calculator/#webpage",
+      "url": "https://klarsystems.com/calculator/",
+      "name": "Cost calculator | What the platforms take from you",
+      "description": "Put in your own monthly orders and covers, and see what delivery apps and booking platforms cost you today against what the same month costs on Klar.",
+      "isPartOf": {
+        "@id": "https://klarsystems.com/#website"
+      },
+      "about": {
+        "@id": "https://klarsystems.com/#klar"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://klarsystems.com/calculator/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://klarsystems.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cost calculator",
+          "item": "https://klarsystems.com/calculator/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-left" aria-label="Klar, home">
+    <img src="/logos/klar-logo-black.svg" alt="Klar" class="nav-logo-img" width="556" height="175">
+  </a>
+  <div class="nav-right" id="navRight">
+    <a href="/what-we-provide/" class="nav-link">What we provide</a>
+    <a href="/calculator/" class="nav-link active">Cost calculator</a>
+    <a href="/pricing/" class="nav-link">Pricing</a>
+    <a href="/founding/" class="nav-link">Founding partners</a>
+    <a href="/contact/" class="nav-link">Contact</a>
+    <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="nav-cta">Book a free call</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navRight">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section class="calc-section" id="calculator">
+  <div class="container">
+    <span class="label">The Numbers</span>
+    <h1>What are the platforms taking from you?</h1>
+    <p class="calc-lead">Put your own numbers in. We will show you what you are paying now, what you would pay us, and which plan you land on.</p>
+
+    <div class="calc-grid">
+
+      <div class="calc-panel">
+        <h3>Two questions about your month</h3>
+        <div class="calc-panel-sub">Rough numbers are fine.</div>
+
+        <div class="calc-q">
+          <label for="cOrders">Orders a month through Wolt or Foodora</label>
+          <div class="calc-q-val" id="cOrdersVal">200 orders</div>
+          <input type="range" id="cOrders" min="0" max="800" step="10" value="200">
+        </div>
+
+        <div class="calc-q">
+          <label for="cCovers">Guests a month who book a table</label>
+          <div class="calc-q-val" id="cCoversVal">250 guests</div>
+          <input type="range" id="cCovers" min="0" max="1200" step="10" value="250">
+          <div class="calc-field-note">Set to zero if you take no bookings.</div>
+        </div>
+
+        <div class="calc-q" style="margin-bottom:0">
+          <label for="cShare">Out of every 10 delivery orders, how many are regulars?</label>
+          <div class="calc-q-val" id="cShareVal">3 out of 10</div>
+          <input type="range" id="cShare" min="0" max="10" step="1" value="3">
+          <div class="calc-field-note">Keep Wolt for new customers. This is about your regulars.</div>
+        </div>
+
+        <div class="calc-detail">
+          <div class="calc-detail-title"><strong>Change these to match your restaurant.</strong></div>
+          <div class="calc-detail-grid">
+            <div class="calc-detail-item">
+              <label class="calc-detail-label" for="cAov">Average order</label>
+              <div class="calc-detail-input">
+                <span class="sym">&euro;</span>
+                <input type="number" id="cAov" value="30" min="5" max="200" step="1" inputmode="decimal">
+              </div>
+            </div>
+            <div class="calc-detail-item">
+              <label class="calc-detail-label" for="cComm">Commission you pay</label>
+              <div class="calc-detail-input">
+                <input type="number" id="cComm" value="30" min="0" max="40" step="1" inputmode="decimal">
+                <span class="sym">%</span>
+              </div>
+            </div>
+            <div class="calc-detail-item">
+              <label class="calc-detail-label" for="cPerCover">Fee per booked guest</label>
+              <div class="calc-detail-input">
+                <span class="sym">&euro;</span>
+                <input type="number" id="cPerCover" value="3" min="0" max="10" step="0.5" inputmode="decimal">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-panel">
+        <h3>What you pay the platforms now</h3>
+        
+
+        <div class="calc-line">
+          <span class="calc-line-label" id="oCommLabel">Wolt / Foodora commission</span>
+          <span class="calc-line-val" id="oComm">&euro;1,800</span>
+        </div>
+        <div class="calc-line">
+          <span class="calc-line-label" id="oCoverLabel">Booking service fees</span>
+          <span class="calc-line-val" id="oCover">&euro;750</span>
+        </div>
+        <div class="calc-line is-total">
+          <span class="calc-line-label">Every month</span>
+          <span class="calc-line-val" id="oTotal">&euro;2,550</span>
+        </div>
+        <div class="calc-sub-year" id="oYear">&euro;30,600 a year</div>
+
+        <h3 style="margin-top:2.25rem">What changes if you move to Klar</h3>
+        
+
+        <div class="calc-line">
+          <span class="calc-line-label">Booking fees stop <em>completely</em></span>
+          <span class="calc-line-val is-plus" id="oBookRecov">+ &euro;750</span>
+        </div>
+        <div class="calc-line">
+          <span class="calc-line-label" id="oRecovLabel">Commission on the orders that now come to you direct</span>
+          <span class="calc-line-val is-plus" id="oRecov">+ &euro;540</span>
+        </div>
+        <div class="calc-line">
+          <span class="calc-line-label" id="oKlarLabel">What Klar costs you, Klar 750</span>
+          <span class="calc-line-val is-minus" id="oKlar">&minus; &euro;399</span>
+        </div>
+        <div class="calc-tier-note" id="oTierNote">60 direct orders + 250 booked guests = 310 a month, which is the Klar 750 plan.</div>
+        <div class="calc-line is-total is-good">
+          <span class="calc-line-label">You are better off by</span>
+          <span class="calc-line-val" id="oNet">&euro;891</span>
+        </div>
+        <div class="calc-sub-year" id="oNetYear">&euro;10,692 a year</div>
+      </div>
+    </div>
+
+    <div class="plan-verdict" id="planVerdict">
+      <div class="plan-verdict-label">Based on your numbers, you are on</div>
+      <div class="plan-verdict-name" id="planName">Klar 750</div>
+      <div class="plan-verdict-price" id="planPrice">&euro;399 a month + VAT</div>
+      <div class="plan-verdict-why" id="planWhy">310 orders and booked guests a month</div>
+    </div>
+
+    <div class="calc-verdict">
+      <div class="calc-verdict-big" id="vBig">Your whole setup costs less than 27 days of what the platforms take from you.</div>
+      <div class="calc-verdict-sub" id="vSub">Website, online ordering, booking system, guest CRM, Google setup and the ongoing work, all inside one setup fee of &euro;1,900&ndash;&euro;2,600. Then &euro;399 a month on Klar 750 plus VAT, and 0% of your sales for as long as you're with us.</div>
+
+      <div class="calc-verdict-row">
+        <div class="calc-vstat">
+          <span class="calc-vstat-num" id="vPayback">2.5 months</span>
+          <span class="calc-vstat-label">until the setup fee has paid for itself</span>
+        </div>
+        <div class="calc-vstat">
+          <span class="calc-vstat-num" id="vOrders">45 orders</span>
+          <span class="calc-vstat-label">a month through your own site covers the entire subscription</span>
+        </div>
+        <div class="calc-vstat">
+          <span class="calc-vstat-num" id="vMultiple">&euro;3.23</span>
+          <span class="calc-vstat-label">kept for every &euro;1 you pay Klar</span>
+        </div>
+      </div>
+
+      <p class="calc-founding"><strong>If you are one of the first 10:</strong> founding partners pay <strong>&euro;200 a month + VAT</strong> whatever their volume, and <strong>40% off the setup fee</strong>. That is for the full package, website and ordering and bookings together. Everything above is the standard price.</p>
+
+      <div class="calc-cta">
+        <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-dark">Book a free call, we'll run this on your real invoices</a>
+      </div>
+    </div>
+
+    <p class="calc-disclaimer">Figures are calculated live from the numbers you entered, and the defaults are only a starting point. We don't publish claims about what any platform charges you, because that's in your contract, not ours. Setup is quoted between &euro;1,900 and &euro;2,600 depending on scope; this uses the &euro;2,250 midpoint. Klar Complete starts at &euro;249 a month. Every price here is shown without VAT.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="/logos/klar-logo-black.svg" alt="Klar" class="footer-logo" width="556" height="175">
+        <div class="footer-company">
+          Klar &middot; Helsinki, Finland<br>
+          <a href="mailto:guidance@klarsystems.com">guidance@klarsystems.com</a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <a href="/what-we-provide/">What we provide</a>
+        <a href="/calculator/">Cost calculator</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/founding/">Founding partners</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <span class="footer-copy">&copy; 2026 Klar</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script defer src="/site.js"></script>
+
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
