@@ -413,7 +413,7 @@ nav + section:not(.hero) { padding-top: 120px; }
   margin-bottom: 14px;
   letter-spacing: -0.03em;
 }
-.step h4 {
+.step h4, .step h3 {
   font-size: 1rem;
   margin-bottom: 8px;
 }
@@ -642,7 +642,7 @@ footer {
   border-radius: 12px;
   padding: clamp(1.25rem, 3vw, 1.75rem);
 }
-.calc-panel h3 { color: #faf8f4; font-size: 1.05rem; margin-bottom: 0.35rem; }
+.calc-panel h3, .calc-panel h2 { color: #faf8f4; font-size: 1.05rem; margin-bottom: 0.35rem; font-weight: 600; letter-spacing: -0.02em; }
 .calc-panel-sub { font-size: 0.98rem; color: var(--dark-muted); margin-bottom: 1.5rem; }
 
 .calc-field label { font-size: 1rem; color: #d2cec4; }
@@ -1129,7 +1129,7 @@ nav { padding: 0.85rem var(--gutter); }
   width: auto;
   height: auto;
 }
-.step h4 { font-size: 1.2rem; margin-bottom: 0.35rem; }
+.step h4, .step h3 { font-size: 1.2rem; margin-bottom: 0.35rem; }
 .step p { font-size: 1.02rem; line-height: 1.6; color: var(--body); }
 
 /* ── COME AND MEET ── */
