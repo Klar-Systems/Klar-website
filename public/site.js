@@ -228,12 +228,31 @@
 })();
 
 // ── EMAIL CAPTURE ──
+// The three strings this form speaks are the only copy in this file that a
+// visitor reads, so they follow <html lang> rather than being English on a
+// Finnish page. Anything that is not 'fi' gets English.
 (function () {
   const form = document.getElementById('captureForm');
   const input = document.getElementById('captureEmail');
   const button = document.getElementById('captureSubmit');
   const message = document.getElementById('captureMessage');
   if (!form || !input || !button || !message) return;
+
+  const COPY = {
+    en: {
+      invalid: 'Please enter a valid email address.',
+      sending: 'Sending…',
+      thanks: "Thanks! We'll be in touch within 24 hours.",
+      failed: 'Something went wrong. Email us at guidance@klarsystems.com instead.',
+    },
+    fi: {
+      invalid: 'Tarkista sähköpostiosoite.',
+      sending: 'Lähetetään…',
+      thanks: 'Kiitos! Olemme yhteydessä 24 tunnin sisällä.',
+      failed: 'Jokin meni pieleen. Lähetä sähköpostia osoitteeseen guidance@klarsystems.com.',
+    },
+  };
+  const t = COPY[(document.documentElement.lang || 'en').slice(0, 2)] || COPY.en;
 
   function showMessage(text, kind) {
     message.textContent = text;
@@ -249,13 +268,13 @@
     e.preventDefault();
     const email = input.value.trim();
     if (!isValidEmail(email)) {
-      showMessage('Please enter a valid email address.', 'error');
+      showMessage(t.invalid, 'error');
       input.focus();
       return;
     }
     button.disabled = true;
     const originalLabel = button.textContent;
-    button.textContent = 'Sending…';
+    button.textContent = t.sending;
     showMessage('', null);
 
     try {
@@ -266,9 +285,9 @@
       });
       if (!res.ok) throw new Error('Request failed');
       form.reset();
-      showMessage("Thanks! We'll be in touch within 24 hours.", 'success');
+      showMessage(t.thanks, 'success');
     } catch (err) {
-      showMessage('Something went wrong. Email us at guidance@klarsystems.com instead.', 'error');
+      showMessage(t.failed, 'error');
     } finally {
       button.disabled = false;
       button.textContent = originalLabel;
