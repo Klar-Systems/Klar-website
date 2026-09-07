@@ -13,6 +13,14 @@ Klar builds and runs the digital side of independent restaurants in Finland: you
 - [Privacy](https://klarsystems.com/privacy/): What Klar collects on klarsystems.com, why it is used, how long it is kept, and your rights under the GDPR.
 - [Terms of use](https://klarsystems.com/terms/): The terms covering use of this website, the cost calculator, and the indicative pricing shown on it.
 
+## Pages in Finnish
+
+The same offer in Finnish. These are translations of the English pages above, not a different product or a different price.
+
+- [Klar - ravintolan verkkosivut, varaukset ja tilaukset](https://klarsystems.com/fi/): Finnish version of the home page.
+- [Hinnat](https://klarsystems.com/hinnat/): Finnish version of the pricing page. Klar Complete alkaen 249 EUR/kk with the Klar 300, 750 and 1500 usage bands, Klar Single, the 1 900-2 600 EUR setup fee, and Klar Enterprise which is contact-sales rather than a price. Every figure is alv 0 %.
+- [Yhteystiedot](https://klarsystems.com/yhteystiedot/): Finnish version of the contact page.
+
 ## Contact
 
 Email: guidance@klarsystems.com
