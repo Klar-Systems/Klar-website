@@ -1144,14 +1144,39 @@ nav { padding: 0.85rem var(--gutter); }
 .meet-fact-k { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
 .meet-fact-v { font-size: 1.05rem; line-height: 1.55; color: var(--heading); }
 
-/* ── HERO FOOD MOTES ── */
-.hero-mote {
+/* ── HERO MESH ──
+   The texture layer that replaced the drifting food emoji. Six soft colour
+   points blurred into each other over whatever is behind — the hero video when
+   it plays, the gradient fallback when it does not — so it reads as texture and
+   never as a wall. Sits above .hero-media (-2) and below the copy. A
+   pseudo-element, so no page markup carries it. */
+.hero::before {
+  content: "";
   position: absolute;
+  inset: -12%;
   z-index: -1;
   pointer-events: none;
-  user-select: none;
-  will-change: transform, opacity;
-  filter: saturate(0.85);
+  opacity: 0.78;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(40% 44% at 12% 16%, rgba(200,255,0,0.52), transparent 70%),
+    radial-gradient(36% 40% at 80% 10%, rgba(120,190,255,0.42), transparent 68%),
+    radial-gradient(44% 48% at 90% 62%, rgba(200,255,0,0.34), transparent 72%),
+    radial-gradient(38% 42% at 26% 84%, rgba(90,160,230,0.38), transparent 70%),
+    radial-gradient(32% 36% at 54% 46%, rgba(235,255,170,0.26), transparent 66%),
+    radial-gradient(48% 52% at 4% 68%, rgba(60,110,180,0.34), transparent 74%);
+  background-repeat: no-repeat;
+  filter: blur(44px) saturate(1.15);
+  will-change: transform;
+  animation: heroMesh 34s ease-in-out infinite alternate;
+}
+@keyframes heroMesh {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(1.5%, -1.2%, 0) scale(1.05); }
+  100% { transform: translate3d(-1.8%, 1.4%, 0) scale(1.03); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero::before { animation: none; }
 }
 
 .faq-block { margin-top: 2.5rem; }
