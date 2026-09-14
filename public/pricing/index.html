@@ -158,12 +158,12 @@
           <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.15rem;color:var(--heading)">Klar Complete</div>
           <div style="font-size:0.9rem;color:var(--muted);margin-top:2px">Website &middot; Ordering &middot; Bookings &middot; Guest CRM &middot; SEO</div>
         </div>
-        <div class="pricing-price">From &euro;249<span>/month + VAT</span></div>
+        <div class="pricing-price"><span class="pricing-price-lead" data-klar-price="complete.head.lead">From &euro;249</span><span>/month + VAT</span></div>
       </div>
 
       <div class="pricing-row">
         <span class="pricing-row-label">One-time setup, <strong>your website is inside this</strong></span>
-        <span class="pricing-row-val">&euro;1,900 &ndash; &euro;2,600 + VAT</span>
+        <span class="pricing-row-val" data-klar-price="setup.band.spaced">&euro;1,900 &ndash; &euro;2,600 + VAT</span>
       </div>
       <div class="pricing-row">
         <span class="pricing-row-label">Commission on your sales</span>
@@ -171,22 +171,22 @@
       </div>
       <div class="pricing-row">
         <span class="pricing-row-label">Fee per order, per cover, per booking</span>
-        <span class="pricing-row-val">&euro;0</span>
+        <span class="pricing-row-val" data-klar-price="fee.per.transaction">&euro;0</span>
       </div>
       <div class="pricing-row">
         <span class="pricing-row-label"><strong>Klar 300</strong>, up to 300 orders and booked guests a month</span>
-        <span class="pricing-row-val">&euro;249/month + VAT</span>
+        <span class="pricing-row-val" data-klar-price="plan.klar-300.monthly">&euro;249/month + VAT</span>
       </div>
       <div class="pricing-row">
         <span class="pricing-row-label"><strong>Klar 750</strong>, 301 to 750 a month</span>
-        <span class="pricing-row-val">&euro;399/month + VAT</span>
+        <span class="pricing-row-val" data-klar-price="plan.klar-750.monthly">&euro;399/month + VAT</span>
       </div>
       <div class="pricing-row">
         <span class="pricing-row-label"><strong>Klar 1500</strong>, 751 to 1,500 a month</span>
-        <span class="pricing-row-val">&euro;699/month + VAT</span>
+        <span class="pricing-row-val" data-klar-price="plan.klar-1500.monthly">&euro;699/month + VAT</span>
       </div>
       <div class="pricing-row">
-        <span class="pricing-row-label"><strong>Founding partners</strong>, the first 10 on the full package pay &euro;200 a month + VAT whatever their volume, and 40% off the setup</span>
+        <span class="pricing-row-label"><strong>Founding partners</strong>, the first 10 on the full package pay <span data-klar-price="founding.monthly.cap">&euro;200 a month + VAT</span> whatever their volume, and <span data-klar-price="founding.discount.pct">40%</span> off the setup</span>
         <span class="pricing-row-val"><a href="/founding/">10 places</a></span>
       </div>
       <div class="pricing-row">
@@ -203,6 +203,11 @@
       </div>
 
       <p class="pricing-note">Your price follows how busy you actually are: the orders that come through your own site, plus the guests who turn up on a Klar booking. Cancellations and no-shows do not count. If you outgrow your plan we tell you, and you move up from the following month, never backdated. We will never switch off your ordering or your bookings because you had a good month, and you will never get a bill you were not expecting. All prices on this page are shown without VAT, which is added to your invoice.</p>
+
+      <div class="pricing-cta">
+        <a href="https://booking.klarsystems.com/signup?plan=klar-300" class="btn-primary">Start setting up Klar Complete</a>
+        <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-secondary">Book a free call</a>
+      </div>
     </div>
 
     <div class="pricing-card">
@@ -211,32 +216,39 @@
           <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.15rem;color:var(--heading)">Klar Single</div>
           <div style="font-size:0.9rem;color:var(--muted);margin-top:2px">One piece of Klar on its own, if that's all you need &middot; Still 0% commission</div>
         </div>
-        <div class="pricing-price">&euro;49<span>/month + VAT</span></div>
+        <div class="pricing-price"><span class="pricing-price-lead" data-klar-price="single.head.lead">&euro;49</span><span>/month + VAT</span></div>
       </div>
 
       <div class="pricing-row">
         <span class="pricing-row-label"><strong>Website &amp; SEO/GEO</strong><br>Your website, hosted, managed and kept findable on Google and in AI search</span>
-        <span class="pricing-row-val">&euro;49/month + VAT<br><span class="pricing-row-setup">&euro;1,490 setup + VAT</span></span>
+        <span class="pricing-row-val"><span data-klar-price="plan.klar-website-only.monthly">&euro;49/month + VAT</span><br><span class="pricing-row-setup" data-klar-price="website_only.setup">&euro;1,490 setup + VAT</span></span>
       </div>
       <div class="pricing-row">
         <span class="pricing-row-label"><strong>Bookings</strong><br>The booking system, and your website is included</span>
-        <span class="pricing-row-val">&euro;149/month + VAT<br><span class="pricing-row-setup">&euro;1,900&ndash;&euro;2,600 setup + VAT</span></span>
+        <span class="pricing-row-val"><span data-klar-price="plan.klar-bookings.monthly">&euro;149/month + VAT</span><br><span class="pricing-row-setup" data-klar-price="setup.band.tight">&euro;1,900&ndash;&euro;2,600 setup + VAT</span></span>
       </div>
       <div class="pricing-row">
         <span class="pricing-row-label"><strong>Ordering</strong><br>Online ordering, and your website is included</span>
-        <span class="pricing-row-val">&euro;199/month + VAT<br><span class="pricing-row-setup">&euro;1,900&ndash;&euro;2,600 setup + VAT</span></span>
+        <span class="pricing-row-val"><span data-klar-price="plan.klar-ordering.monthly">&euro;199/month + VAT</span><br><span class="pricing-row-setup" data-klar-price="setup.band.tight">&euro;1,900&ndash;&euro;2,600 setup + VAT</span></span>
       </div>
 
-      <p class="pricing-note">Every Klar Single plan is built on your own website, so you are never left with a booking link and nowhere to put it. Take the website on its own and the setup is &euro;1,490. Take bookings or ordering and the website is built into the &euro;1,900&ndash;&euro;2,600 setup, alongside the system itself. Either way we keep working on it until you are happy with it. Want ordering and bookings together? That is Klar Complete above, and it is the only thing that qualifies for the founding partner program.</p>
+      <p class="pricing-note">Every Klar Single plan is built on your own website, so you are never left with a booking link and nowhere to put it. Take the website on its own and the setup is <span data-klar-price="website_only.setup.vat">&euro;1,490 + VAT</span>. Take bookings or ordering and the website is built into the <span data-klar-price="setup.band.tight">&euro;1,900&ndash;&euro;2,600 setup + VAT</span>, alongside the system itself. Either way we keep working on it until you are happy with it. Want ordering and bookings together? That is Klar Complete above, and it is the only thing that qualifies for the founding partner program.</p>
+
+      <div class="pricing-cta">
+        <a href="https://booking.klarsystems.com/signup?plan=klar-website-only" class="btn-primary">Start with Website &amp; SEO/GEO</a>
+        <a href="https://booking.klarsystems.com/signup?plan=klar-bookings" class="btn-primary">Start with Bookings</a>
+        <a href="https://booking.klarsystems.com/signup?plan=klar-ordering" class="btn-primary">Start with Ordering</a>
+        <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-secondary">Book a free call</a>
+      </div>
     </div>
 
     <div class="pricing-card">
       <div class="pricing-head">
         <div>
           <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.15rem;color:var(--heading)">What decides your setup fee</div>
-          <div style="font-size:0.9rem;color:var(--muted);margin-top:2px">Why one restaurant is quoted &euro;1,900 and another &euro;2,600</div>
+          <div style="font-size:0.9rem;color:var(--muted);margin-top:2px">Why one restaurant is quoted <span data-klar-price="setup.min.vat">&euro;1,900 + VAT</span> and another <span data-klar-price="setup.max.vat">&euro;2,600 + VAT</span></div>
         </div>
-        <div class="pricing-price">&euro;1,900<span>&ndash;&euro;2,600 + VAT</span></div>
+        <div class="pricing-price"><span class="pricing-price-lead" data-klar-price="setup.head.lead">&euro;1,900</span><span data-klar-price="setup.head.rest">&ndash;&euro;2,600 + VAT</span></div>
       </div>
 
       <div class="pricing-row">
@@ -256,7 +268,7 @@
         <span class="pricing-row-val">Moving you over</span>
       </div>
 
-      <p class="pricing-note">We go through those four with you on the free call, then you get one number in writing with what it covers next to it. That is what you pay. It only moves if you ask for something new, and we price that before we build it, not on the invoice. <strong>Founding partners take 40% off it</strong>: quoted &euro;2,250 + VAT, you pay &euro;1,350 + VAT.</p>
+      <p class="pricing-note">We go through those four with you on the free call, then you get one number in writing with what it covers next to it. That is what you pay. It only moves if you ask for something new, and we price that before we build it, not on the invoice. <strong>Founding partners take <span data-klar-price="founding.discount.pct">40%</span> off it</strong>: quoted <span data-klar-price="founding.setup.pair">&euro;2,250 + VAT, you pay &euro;1,350 + VAT</span>.</p>
     </div>
 
     <div class="faq-block">

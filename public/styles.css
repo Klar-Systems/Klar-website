@@ -788,6 +788,12 @@ footer {
 .pricing-row-setup { display: inline-block; margin-top: 0.15rem; font-size: 0.85rem; color: var(--muted); white-space: normal; }
 .pricing-row-val a { color: var(--heading); text-decoration: underline; text-underline-offset: 3px; }
 .pricing-row-val a:hover { color: var(--text-on-accent); }
+/* The headline figure is written by scripts/render-prices.mjs, so it sits in a
+ * marker span. `.pricing-price span` shrinks and mutes every span inside the
+ * head — right for the "/month + VAT" tail, wrong for the number itself — so the
+ * lead marker inherits its container instead. */
+.pricing-price span.pricing-price-lead { font-size: inherit; font-weight: inherit; color: inherit; font-family: inherit; letter-spacing: inherit; }
+.pricing-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
 
 /* ── FOUNDING POPUP ── */
 .fpop-backdrop {
@@ -1189,6 +1195,12 @@ nav { padding: 0.85rem var(--gutter); }
   width: 9px; height: 9px; border-radius: 50%; background: var(--accent);
 }
 .founding-after { margin-bottom: 1.5rem; }
+/* Two calls to action on the dark strip: the signup wizard first, the call
+ * second. .btn-secondary is drawn for a light card, so it is re-coloured here
+ * the same way .hero .btn-secondary is. */
+.founding-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+.founding-strip .btn-secondary { color: var(--card-bg); border-color: rgba(255,255,255,0.45); }
+.founding-strip .btn-secondary:hover { border-color: #ffffff; background: rgba(255,255,255,0.07); }
 
 /* ── FINAL LAYOUT POLISH ── */
 .founding-list { margin-inline: auto; }
