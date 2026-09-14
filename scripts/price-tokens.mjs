@@ -272,6 +272,25 @@ export const PUBLISHABLE_PLAN_IDS = new Set(
   contract.plans.catalogue.filter((p) => !p.trial_key).map((p) => p.id)
 );
 
+/** The plans the signup wizard will actually accept in `?plan=`.
+ *
+ * Publishable is NOT the same thing, and on 2026-09-14 that difference shipped a
+ * broken CTA: the pricing page linked `?plan=klar-website-only`, which is a
+ * perfectly publishable price and which the route refuses — the wizard always
+ * turns bookings or ordering on, and `rules_that_do_not_bend` forbids Klar
+ * Website Only beside either. The customer would have landed, with no error, on a
+ * platform plan they did not choose.
+ *
+ * This mirrors `SIGNUP_PLANS` in apps/booking/src/lib/setup-tiers.ts, and derives
+ * from the same field it does — the setup ladder's own `leads_to_plan` — so the
+ * two cannot drift apart by anyone editing a list. The usage bands (klar-750,
+ * klar-1500) are absent for the same reason they are absent there: they follow
+ * measured covers, not a choice made before service.
+ */
+export const WIZARD_PLAN_IDS = new Set(
+  contract.setup.tiers.map((t) => t.leads_to_plan).filter((id) => PUBLISHABLE_PLAN_IDS.has(id))
+);
+
 /** Marker elements. A marker may not contain another `<span>`, so its content
  *  can be read back without parsing HTML — the guard asserts that. */
 export const MARKER_RE = /<span\b[^>]*\bdata-klar-price="([^"]+)"[^>]*>([\s\S]*?)<\/span>/g;

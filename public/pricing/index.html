@@ -235,7 +235,11 @@
       <p class="pricing-note">Every Klar Single plan is built on your own website, so you are never left with a booking link and nowhere to put it. Take the website on its own and the setup is <span data-klar-price="website_only.setup.vat">&euro;1,490 + VAT</span>. Take bookings or ordering and the website is built into the <span data-klar-price="setup.band.tight">&euro;1,900&ndash;&euro;2,600 setup + VAT</span>, alongside the system itself. Either way we keep working on it until you are happy with it. Want ordering and bookings together? That is Klar Complete above, and it is the only thing that qualifies for the founding partner program.</p>
 
       <div class="pricing-cta">
-        <a href="https://booking.klarsystems.com/signup?plan=klar-website-only" class="btn-primary">Start with Website &amp; SEO/GEO</a>
+        <!-- Website &amp; SEO/GEO is deliberately NOT a signup-wizard link. The wizard always
+             turns bookings or ordering on, and `rules_that_do_not_bend` forbids Klar Website
+             Only beside either, so the route refuses `?plan=klar-website-only` and the
+             customer would land silently on a platform plan. It stays a conversation. -->
+        <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-primary">Talk about Website &amp; SEO/GEO</a>
         <a href="https://booking.klarsystems.com/signup?plan=klar-bookings" class="btn-primary">Start with Bookings</a>
         <a href="https://booking.klarsystems.com/signup?plan=klar-ordering" class="btn-primary">Start with Ordering</a>
         <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-secondary">Book a free call</a>

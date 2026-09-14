@@ -16,9 +16,11 @@
  *      reaches no marker is a figure that quietly stopped being published.
  *   3. Every metadata and JSON-LD phrase that quotes a price says the contract's
  *      figure, and is still present at all.
- *   4. Every signup CTA names a plan id that is in the catalogue AND is
- *      publishable — `klar-ordering-149` is ruled unpublished and must never
- *      appear on this site.
+ *   4. Every signup CTA names a plan id that is in the catalogue, IS publishable
+ *      (`klar-ordering-149` is ruled unpublished and must never appear on this
+ *      site) AND is one the signup wizard will actually accept. The last of
+ *      those is not the same as the second, and the difference shipped a broken
+ *      CTA on 2026-09-14 — see WIZARD_PLAN_IDS in price-tokens.mjs.
  *   5. No bare euro figure is left outside a marker on those pages. This is the
  *      one that matters: it is what stops a new price being hand-typed back in
  *      beside the generated ones.
@@ -42,6 +44,7 @@ import {
   PAGES,
   SIGNUP_BASE,
   PUBLISHABLE_PLAN_IDS,
+  WIZARD_PLAN_IDS,
   MARKER_RE,
 } from "./price-tokens.mjs";
 
@@ -124,13 +127,24 @@ for (const page of PAGES) {
   if (ctaIds.length === 0) {
     failures.push(`${page} — no signup CTA. Every plan card links to the wizard; this page links to none.`);
   } else {
-    const bad = ctaIds.filter((id) => !PUBLISHABLE_PLAN_IDS.has(id));
-    if (bad.length > 0) {
+    const unpublishable = ctaIds.filter((id) => !PUBLISHABLE_PLAN_IDS.has(id));
+    /* Publishable is not enough: the wizard refuses a plan its setup ladder does
+     * not lead to, and refuses it SILENTLY — the customer lands on a derived plan
+     * instead of the one they pressed. So a CTA must name a plan the route will
+     * actually take. See WIZARD_PLAN_IDS. */
+    const notOfferable = ctaIds.filter((id) => PUBLISHABLE_PLAN_IDS.has(id) && !WIZARD_PLAN_IDS.has(id));
+    if (unpublishable.length > 0) {
       failures.push(
-        `${page} — signup CTA names a plan that must not be published here: ${[...new Set(bad)].join(", ")}`
+        `${page} — signup CTA names a plan that must not be published here: ${[...new Set(unpublishable)].join(", ")}`
+      );
+    } else if (notOfferable.length > 0) {
+      failures.push(
+        `${page} — signup CTA names a plan the wizard refuses, and refuses silently: ` +
+          `${[...new Set(notOfferable)].join(", ")}. ` +
+          `The wizard accepts ${[...WIZARD_PLAN_IDS].join(", ")}. Link Calendly for the rest.`
       );
     } else {
-      passes.push(`${page} — ${ctaIds.length} signup CTA(s), every plan id in the catalogue`);
+      passes.push(`${page} — ${ctaIds.length} signup CTA(s), every plan id one the wizard accepts`);
     }
   }
 
