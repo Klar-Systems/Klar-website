@@ -786,6 +786,13 @@ footer {
 .pricing-row-label { color: var(--body); }
 .pricing-row-val { font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--heading); text-align: right; white-space: nowrap; }
 .pricing-row-setup { display: inline-block; margin-top: 0.15rem; font-size: 0.85rem; color: var(--muted); white-space: normal; }
+/* The three usage bands are LIST prices, not what a partner is billed (ruling
+   2026-09-18). They stay on the page because they are what the partner price
+   is a discount from — muted so they read as the reference they are, rather
+   than as three numbers the reader has to work out which of applies to them. */
+.pricing-row-list { font-size: 0.95rem; }
+.pricing-row-list .pricing-row-label,
+.pricing-row-list .pricing-row-val { color: var(--muted); }
 .pricing-row-val a { color: var(--heading); text-decoration: underline; text-underline-offset: 3px; }
 .pricing-row-val a:hover { color: var(--text-on-accent); }
 
