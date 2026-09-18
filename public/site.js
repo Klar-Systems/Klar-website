@@ -243,7 +243,7 @@
   });
 })();
 
-// ── FOUNDING POPUP ──
+// ── PARTNERSHIP POPUP ──
 // Opens once per browser session, after 15 seconds or once a third of the page
 // has been read, whichever comes first. Closing it does not throw the offer
 // away: it shrinks to a tab in the corner that reopens the same card. Focus is
