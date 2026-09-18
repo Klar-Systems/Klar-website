@@ -44,9 +44,14 @@
 .client{border:1px solid var(--hair);border-radius:var(--r);overflow:hidden}
 .client .pic{aspect-ratio:16/10;overflow:hidden;background:var(--soft)}
 .client .pic img{width:100%;height:100%;object-fit:cover}
-.client .bar{display:flex;align-items:center;gap:16px;padding:20px 22px}
+.client{transition:box-shadow .16s,transform .16s}
+.client:hover{box-shadow:0 14px 34px rgba(26,26,26,.12)}
+.client .pic{display:block}
+.client .bar{display:flex;align-items:center;gap:16px;padding:20px 22px;text-decoration:none}
 .client .bar img{height:34px;width:auto;object-fit:contain}
-.client .bar span{font-size:15px;color:var(--mute);font-weight:500}
+.client .bar .who{display:flex;flex-direction:column;gap:3px;line-height:1.18;text-align:left}
+.client .bar .who b{font-size:17.5px;font-weight:800;letter-spacing:-.025em;color:var(--ink)}
+.client .bar .who em{font-style:normal;font-size:15px;font-weight:600;color:var(--body)}
 @media(max-width:860px){.addons,.clients{grid-template-columns:1fr}.addon:not(:nth-child(3n+1)){border-left:0;padding-left:0}}
 
 .figrow .k{margin-bottom:12px}
@@ -165,12 +170,18 @@
   <h2>Näillä paikoilla Klar on jo käytössä.</h2>
   <div class="clients">
     <div class="client">
-      <div class="pic"><img src="img/lasagna.jpg" alt="La Lasagna, Helsinki"></div>
-      <div class="bar"><img src="img/logo-lalasagna.png" alt="La Lasagna"><span>Helsinki</span></div>
+      <a class="pic" href="https://lalasagnahelsinki.com" target="_blank" rel="noopener"><img src="img/lasagna.jpg" alt="La Lasagna, Helsinki"></a>
+      <a class="bar" href="https://lalasagnahelsinki.com" target="_blank" rel="noopener">
+        <img src="img/logo-lalasagna.png" alt="La Lasagna">
+        <span class="who"><b>La Lasagna</b><em>Helsinki</em></span>
+      </a>
     </div>
     <div class="client">
-      <div class="pic"><img src="img/ani-buffet.jpg" alt="Ravintola Ani, Helsinki"></div>
-      <div class="bar"><img src="img/logo-ani.png" alt="Ravintola Ani"><span>Tilauspilotti</span></div>
+      <a class="pic" href="https://ani.fi" target="_blank" rel="noopener"><img src="img/ani-buffet.jpg" alt="Ravintola Ani, Helsinki"></a>
+      <a class="bar" href="https://ani.fi" target="_blank" rel="noopener">
+        <img src="img/logo-ani.png" alt="Ravintola Ani">
+        <span class="who"><b>Ravintola Ani</b><em>Helsinki · tilauspilotti</em></span>
+      </a>
     </div>
   </div>
 </div></section>
