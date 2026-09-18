@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Klar | More guests, more orders — with no middleman</title>
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=1789757969">
+<style>
+.hero .wrap{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(30px,5vw,68px);align-items:center;padding-top:clamp(40px,6vw,76px);padding-bottom:clamp(40px,6vw,76px)}
+.hero h1{font-size:clamp(38px,5.6vw,80px);line-height:.99;margin-top:16px;max-width:13ch}
+.hero .sub{margin-top:22px;max-width:38ch;font-size:clamp(17px,1.7vw,22px);font-weight:500;color:var(--body);line-height:1.32}
+.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,28px);margin-top:clamp(40px,5vw,68px)}
+.oc .shot{border-radius:var(--r);overflow:hidden;background:var(--soft);aspect-ratio:4/3;position:relative}
+.oc .shot img{width:100%;height:100%;object-fit:cover}
+.needs-photo:after{content:"photo missing";position:absolute;inset:0;display:grid;place-items:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.svclist{display:grid;grid-template-columns:repeat(2,1fr);margin-top:clamp(36px,4.6vw,60px);border-top:1px solid var(--hair)}
+.svclist .li{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:baseline;padding:24px 28px 24px 0;border-bottom:1px solid var(--hair)}
+.svclist .li:nth-child(2n){border-left:1px solid var(--hair);padding-left:28px}
+.svclist .num{font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--mute)}
+.svclist h3{font-size:clamp(20px,2.2vw,26px)}
+.svclist p{margin:6px 0 0;grid-column:2;font-size:15.5px;font-weight:500}
+@media(max-width:760px){.svclist{grid-template-columns:1fr}.svclist .li:nth-child(2n){border-left:0;padding-left:0}}
+.oc h3{font-size:clamp(22px,2.4vw,30px);margin-top:20px}
+.oc p{margin:6px 0 0;font-size:16.5px;font-weight:500}
+@media(max-width:1000px){.hero .wrap,.outcomes{grid-template-columns:1fr}}
+
+.hero .wrap{display:block!important}
+.hero .wrap>div{max-width:none}
+.hero h1{max-width:15ch}
+.hero .sub{max-width:46ch}
+@media(max-width:760px){.hero .wrap>div{max-width:none}}
+
+.addons{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(36px,5vw,60px);border-top:1px solid var(--hair)}
+.addon{padding:28px 28px 28px 0;border-bottom:1px solid var(--hair)}
+.addon:not(:nth-child(3n+1)){border-left:1px solid var(--hair);padding-left:28px}
+.addon .ic{width:40px;height:40px;border-radius:var(--pill);background:var(--lime);display:grid;place-items:center;font-weight:900;font-size:15px;color:var(--ink)}
+.addon h3{font-size:21px;margin-top:16px}
+.addon p{margin:6px 0 0;font-size:15.5px;font-weight:500}
+.clients{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2.4vw,26px);margin-top:clamp(36px,5vw,58px)}
+.client{border:1px solid var(--hair);border-radius:var(--r);overflow:hidden}
+.client .pic{aspect-ratio:16/10;overflow:hidden;background:var(--soft)}
+.client .pic img{width:100%;height:100%;object-fit:cover}
+.client .bar{display:flex;align-items:center;gap:16px;padding:20px 22px}
+.client .bar img{height:34px;width:auto;object-fit:contain}
+.client .bar span{font-size:15px;color:var(--mute);font-weight:500}
+@media(max-width:860px){.addons,.clients{grid-template-columns:1fr}.addon:not(:nth-child(3n+1)){border-left:0;padding-left:0}}
+
+.figrow .k{margin-bottom:12px}
+.figrow .n+p{margin-top:10px}
+</style>
+</head>
+<body>
+
+<div class="ribbon"><div class="wrap">
+  <span>The season model — <b>7 months with no monthly fee</b></span>
+  <em>40% off setup</em>
+</div></div>
+
+<nav><div class="wrap">
+  <a class="brand" href="en-index.html" aria-label="Klar home"><img src="img/klar-logo-black.svg" alt="Klar"></a>
+  <span class="navlinks">
+    <a href="en-services.html">Services</a>
+    <a href="en-pricing.html">Pricing</a>
+    <a href="en-about.html">About</a>
+    <a href="en-contact.html">Contact</a>
+    <a href="index.html">Suomeksi</a>
+    <a class="btn btn-lime" href="https://booking.klarsystems.com/signup">Get your pricing</a>
+  </span>
+</div></nav>
+
+<div class="hero">
+  <video class="herobg" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.jpg" aria-hidden="true" tabindex="-1">
+    <source src="img/hero.webm" type="video/webm">
+    <source src="img/hero.mp4" type="video/mp4">
+  </video>
+  <div class="scrim"></div>
+  <div class="wrap">
+  <div>
+    <h1>You are not buying software. You are hiring people who answer for the result.</h1>
+    <p class="sub">More visibility, more bookings, more orders. The system is merely how we do it.</p>
+    <div class="cta-row big">
+      <a class="btn btn-lime btn-xl" href="https://booking.klarsystems.com/signup">Get your pricing</a>
+      <div class="cta-pair">
+        <a class="btn btn-ink" href="#" data-modal>Or have us visit</a>
+        <a class="btn btn-white" href="en-services.html">See what we do</a>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<div class="wrap"><div class="rowgrid">
+  <div class="cell"><div class="n">Full tables</div><p>the goal, not a feature</p></div>
+  <div class="cell"><div class="n">0 %</div><p>commission on your sales</p></div>
+  <div class="cell"><div class="n">7 days</div><p>to launch</p></div>
+  <div class="cell"><div class="n">100 %</div><p>of guests stay yours</p></div>
+</div></div>
+
+<section><div class="wrap">
+  <span class="eyebrow">What we deliver</span>
+  <h2>Three outcomes. The rest is machinery.</h2>
+  <div class="outcomes">
+    <div class="oc">
+      <div class="shot"><img src="img/lasagna.jpg" alt="Annos tarjoiltuna ravintolassa"></div>
+      <h3>You get found</h3>
+      <p>Under your own name, not a platform listing.</p>
+    </div>
+    <div class="oc">
+      <div class="shot"><img src="img/flambe.jpg" alt="Annos liekitetään keittiössä"></div>
+      <h3>Guests book a table</h3>
+      <p>Straight with you. No per-guest fees.</p>
+    </div>
+    <div class="oc">
+      <div class="shot"><img src="img/dining.jpg" alt="A restaurant dining room laid for service"></div>
+      <h3>Orders with no middleman</h3>
+      <p>The whole amount stays in the house.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="tight"><div class="wrap">
+  <span class="eyebrow">The machinery</span>
+  <h2>All of it included. One invoice.</h2>
+  <p class="subtitle">These are not products. They are the parts the outcome is made of.</p>
+
+  <div class="svclist">
+    <div class="li"><span class="num">01</span><h3>Website</h3><p>Under your own name</p></div>
+    <div class="li"><span class="num">02</span><h3>Table bookings</h3><p>Straight to you</p></div>
+    <div class="li"><span class="num">03</span><h3>Orders</h3><p>Pickup and delivery</p></div>
+    <div class="li"><span class="num">04</span><h3>Delivery</h3><p>On your own terms</p></div>
+    <div class="li"><span class="num">05</span><h3>Google visibility</h3><p>First in search</p></div>
+    <div class="li"><span class="num">06</span><h3>Guest database</h3><p>The names stay yours</p></div>
+    <div class="li"><span class="num">07</span><h3>Payments</h3><p>Money straight to your account</p></div>
+    <div class="li"><span class="num">08</span><h3>Reports</h3><p>In plain language, every month</p></div>
+  </div>
+</div></section>
+
+<section class="tight"><div class="wrap">
+  <span class="eyebrow">How it goes</span>
+  <h2>One week. Then you are live.</h2>
+  <div class="rowgrid" style="margin-top:clamp(36px,4.5vw,60px)">
+    <div class="cell"><div class="k">Day 1</div><h3 style="margin-top:12px">We come to you</h3></div>
+    <div class="cell"><div class="k">Days 2–6</div><h3 style="margin-top:12px">We build all of it</h3></div>
+    <div class="cell"><div class="k">Day 7</div><h3 style="margin-top:12px">You are live</h3></div>
+    <div class="cell"><div class="k">After that</div><h3 style="margin-top:12px">We stay</h3></div>
+  </div>
+</div></section>
+
+<section class="tight" data-mesh="still"><div class="wrap">
+  <span class="eyebrow">Safety</span>
+  <h2>The risk is ours. Not yours.</h2>
+  <div class="rowgrid" style="margin-top:clamp(36px,4.5vw,60px)">
+    <div class="cell"><h3>7 days</h3><p>Live within a week of signing.</p></div>
+    <div class="cell"><h3>0% commission</h3><p>No cut of your sales, ever.</p></div>
+    <div class="cell"><h3>Your data is yours</h3><p>Site, domain, guests.</p></div>
+    <div class="cell"><h3>A human answers</h3><p>The same people who built it.</p></div>
+  </div>
+</div></section>
+
+<section class="tight"><div class="wrap">
+  <span class="eyebrow">Our customers</span>
+  <h2>Places already running on Klar.</h2>
+  <div class="clients">
+    <div class="client">
+      <div class="pic"><img src="img/lasagna.jpg" alt="La Lasagna, Helsinki"></div>
+      <div class="bar"><img src="img/logo-lalasagna.png" alt="La Lasagna"><span>Helsinki</span></div>
+    </div>
+    <div class="client">
+      <div class="pic"><img src="img/ani-buffet.jpg" alt="Ravintola Ani, Helsinki"></div>
+      <div class="bar"><img src="img/logo-ani.png" alt="Ravintola Ani"><span>Ordering pilot</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="tarjous" class="meshband" data-mesh="still"><div class="wrap">
+  <span class="eyebrow">The season model</span>
+  <h2>Sign now. The monthly fee does not start until May.</h2>
+  <div class="rowgrid figrow" style="margin-top:clamp(36px,4.5vw,60px)">
+    <div class="cell"><div class="k">Off-season · 1 Oct – 30 Apr</div><div class="n">0 €/kk</div>
+      <p>Seven months with no monthly fee. The whole machinery is live.</p></div>
+    <div class="cell"><div class="k">Summer · 1 May – 30 Sep</div><div class="n">249–799 €/kk</div>
+      <p>Five instalments a year. Your tier is set by locations, orders and booked covers.</p></div>
+    <div class="cell"><div class="k">Setup · 40% off</div><div class="n">1 440–1 560 €</div>
+      <p>Paid at signature, either 50% + 50% or across 1–3 monthly instalments.</p></div>
+    <div class="cell"><div class="k">Agreement</div><div class="n">2 years</div>
+      <p>An annual agreement billed across the summer. Not a free run that stops in May.</p></div>
+  </div>
+  <div class="cta-row big">
+    <a class="btn btn-ink btn-xl" href="https://booking.klarsystems.com/signup">Get your pricing</a>
+    <a class="btn btn-line" href="en-pricing.html">See all pricing</a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="wrap foot-top">
+    <h2>0% commission. Ever.</h2>
+    <div class="side">
+      <a class="btn btn-lime btn-xl" href="#" data-modal>Book a free visit</a>
+      <span class="cta-note">30 minutes. October–April is €0/month.</span>
+    </div>
+  </div>
+  <div class="wrap foot-cols">
+    <div>
+      <div class="brand-foot"><img src="img/klar-logo-black.svg" alt="Klar"></div>
+      <p class="lede">A restaurant’s own system: site, bookings, orders and visibility — one invoice, no commission.</p>
+    </div>
+    <div>
+      <h4>Product</h4>
+      <a href="en-index.html">Home</a><a href="en-services.html">Services</a><a href="en-pricing.html">Pricing</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="en-about.html">About</a><a href="en-about.html">Work with us</a><a href="en-contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="mailto:guidance@klarsystems.com">guidance@klarsystems.com</a>
+      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review">Book a call</a>
+      <a href="#" data-modal>Free Google cards</a>
+    </div>
+  </div>
+  <div class="wrap foot-bar">
+    <span>© 2026 Klar · Helsinki, Finland</span>
+    <span class="legal"><span style="opacity:.7">Photo: George Ho / CC BY-SA 4.0</span><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="kuvat.html">Photo credits</a></span>
+  </div>
+</footer>
+
+<script src="site.js?v=1789757969"></script>
+<script src="mesh.js?v=1789757969"></script>
+</body></html>

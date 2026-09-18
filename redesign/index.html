@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Klar | Enemmän vieraita, enemmän tilauksia — ilman välikäsiä</title>
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=1789757969">
+<style>
+.hero .wrap{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(30px,5vw,68px);align-items:center;padding-top:clamp(40px,6vw,76px);padding-bottom:clamp(40px,6vw,76px)}
+.hero h1{font-size:clamp(38px,5.6vw,80px);line-height:.99;margin-top:16px;max-width:13ch}
+.hero .sub{margin-top:22px;max-width:38ch;font-size:clamp(17px,1.7vw,22px);font-weight:500;color:var(--body);line-height:1.32}
+.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,28px);margin-top:clamp(40px,5vw,68px)}
+.oc .shot{border-radius:var(--r);overflow:hidden;background:var(--soft);aspect-ratio:4/3;position:relative}
+.oc .shot img{width:100%;height:100%;object-fit:cover}
+.needs-photo:after{content:"kuva puuttuu";position:absolute;inset:0;display:grid;place-items:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.svclist{display:grid;grid-template-columns:repeat(2,1fr);margin-top:clamp(36px,4.6vw,60px);border-top:1px solid var(--hair)}
+.svclist .li{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:baseline;padding:24px 28px 24px 0;border-bottom:1px solid var(--hair)}
+.svclist .li:nth-child(2n){border-left:1px solid var(--hair);padding-left:28px}
+.svclist .num{font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--mute)}
+.svclist h3{font-size:clamp(20px,2.2vw,26px)}
+.svclist p{margin:6px 0 0;grid-column:2;font-size:15.5px;font-weight:500}
+@media(max-width:760px){.svclist{grid-template-columns:1fr}.svclist .li:nth-child(2n){border-left:0;padding-left:0}}
+.oc h3{font-size:clamp(22px,2.4vw,30px);margin-top:20px}
+.oc p{margin:6px 0 0;font-size:16.5px;font-weight:500}
+@media(max-width:1000px){.hero .wrap,.outcomes{grid-template-columns:1fr}}
+
+.hero .wrap{display:block!important}
+.hero .wrap>div{max-width:none}
+.hero h1{max-width:15ch}
+.hero .sub{max-width:46ch}
+@media(max-width:760px){.hero .wrap>div{max-width:none}}
+
+.addons{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(36px,5vw,60px);border-top:1px solid var(--hair)}
+.addon{padding:28px 28px 28px 0;border-bottom:1px solid var(--hair)}
+.addon:not(:nth-child(3n+1)){border-left:1px solid var(--hair);padding-left:28px}
+.addon .ic{width:40px;height:40px;border-radius:var(--pill);background:var(--lime);display:grid;place-items:center;font-weight:900;font-size:15px;color:var(--ink)}
+.addon h3{font-size:21px;margin-top:16px}
+.addon p{margin:6px 0 0;font-size:15.5px;font-weight:500}
+.clients{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2.4vw,26px);margin-top:clamp(36px,5vw,58px)}
+.client{border:1px solid var(--hair);border-radius:var(--r);overflow:hidden}
+.client .pic{aspect-ratio:16/10;overflow:hidden;background:var(--soft)}
+.client .pic img{width:100%;height:100%;object-fit:cover}
+.client .bar{display:flex;align-items:center;gap:16px;padding:20px 22px}
+.client .bar img{height:34px;width:auto;object-fit:contain}
+.client .bar span{font-size:15px;color:var(--mute);font-weight:500}
+@media(max-width:860px){.addons,.clients{grid-template-columns:1fr}.addon:not(:nth-child(3n+1)){border-left:0;padding-left:0}}
+
+.figrow .k{margin-bottom:12px}
+.figrow .n+p{margin-top:10px}
+</style>
+</head>
+<body>
+
+<div class="ribbon"><div class="wrap">
+  <span>Allekirjoita lokakuussa — <b>7 kuukautta ilman kuukausimaksua</b></span>
+  <em>kuukausimaksu vain touko–syyskuussa</em>
+</div></div>
+
+<nav><div class="wrap">
+  <a class="brand" href="index.html" aria-label="Klar etusivu"><img src="img/klar-logo-black.svg" alt="Klar"></a>
+  <span class="navlinks">
+    <a href="palvelut.html">Palvelut</a>
+    <a href="hinnat.html">Hinnat</a>
+    <a href="about.html">Meistä</a>
+    <a href="yhteystiedot.html">Yhteystiedot</a>
+    <a href="en-index.html">In English</a>
+    <a class="btn btn-lime" href="https://booking.klarsystems.com/signup">Katso hintasi</a>
+  </span>
+</div></nav>
+
+<div class="hero">
+  <video class="herobg" autoplay muted loop playsinline preload="metadata" poster="img/hero-poster.jpg" aria-hidden="true" tabindex="-1">
+    <source src="img/hero.webm" type="video/webm">
+    <source src="img/hero.mp4" type="video/mp4">
+  </video>
+  <div class="scrim"></div>
+  <div class="wrap">
+  <div>
+    <h1>Et osta järjestelmää. Palkkaat porukan, joka vastaa tuloksesta.</h1>
+    <p class="sub">Lisää näkyvyyttä, lisää varauksia, lisää tilauksia. Järjestelmä on vain se, millä me sen teemme.</p>
+    <div class="cta-row big">
+      <a class="btn btn-lime btn-xl" href="https://booking.klarsystems.com/signup">Katso oma hintasi</a>
+      <div class="cta-pair">
+        <a class="btn btn-ink" href="#" data-modal>Tai pyydä meidät käymään</a>
+        <a class="btn btn-white" href="palvelut.html">Katso mitä teemme</a>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<div class="wrap"><div class="rowgrid">
+  <div class="cell"><div class="n">Täydet pöydät</div><p>tavoite, ei ominaisuus</p></div>
+  <div class="cell"><div class="n">0 %</div><p>provisiota myynnistäsi</p></div>
+  <div class="cell"><div class="n">7 päivää</div><p>julkaisuun</p></div>
+  <div class="cell"><div class="n">100 %</div><p>asiakkaista sinun</p></div>
+</div></div>
+
+<section><div class="wrap">
+  <span class="eyebrow">Mitä tuotamme</span>
+  <h2>Kolme lopputulosta. Loput on koneistoa.</h2>
+  <div class="outcomes">
+    <div class="oc">
+      <div class="shot"><img src="img/lasagna.jpg" alt="Annos tarjoiltuna ravintolassa"></div>
+      <h3>Sinut löydetään</h3>
+      <p>Omalla nimelläsi, ei alustan listauksesta.</p>
+    </div>
+    <div class="oc">
+      <div class="shot"><img src="img/flambe.jpg" alt="Annos liekitetään keittiössä"></div>
+      <h3>Vieras varaa pöydän</h3>
+      <p>Suoraan sinulle. Ei vierasmaksuja.</p>
+    </div>
+    <div class="oc">
+      <div class="shot"><img src="img/dining.jpg" alt="Ravintolasali katettuna"></div>
+      <h3>Tilaus ilman välikättä</h3>
+      <p>Koko summa jää taloon.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="tight"><div class="wrap">
+  <span class="eyebrow">Koneisto</span>
+  <h2>Kaikki tämä sisältyy. Yhdellä laskulla.</h2>
+  <p class="subtitle">Ne eivät ole tuotteita. Ne ovat osia, joilla lopputulos syntyy.</p>
+
+  <div class="svclist">
+    <div class="li"><span class="num">01</span><h3>Verkkosivut</h3><p>Omalla nimelläsi</p></div>
+    <div class="li"><span class="num">02</span><h3>Pöytävaraukset</h3><p>Suoraan sinulle</p></div>
+    <div class="li"><span class="num">03</span><h3>Tilaukset</h3><p>Nouto ja kuljetus</p></div>
+    <div class="li"><span class="num">04</span><h3>Kotiinkuljetus</h3><p>Omilla ehdoillasi</p></div>
+    <div class="li"><span class="num">05</span><h3>Google-näkyvyys</h3><p>Ykkösenä haussa</p></div>
+    <div class="li"><span class="num">06</span><h3>Asiakasrekisteri</h3><p>Nimet jäävät sinulle</p></div>
+    <div class="li"><span class="num">07</span><h3>Maksut</h3><p>Rahat suoraan tilillesi</p></div>
+    <div class="li"><span class="num">08</span><h3>Raportit</h3><p>Selkokielellä, joka kuukausi</p></div>
+  </div>
+</div></section>
+
+<section class="tight"><div class="wrap">
+  <span class="eyebrow">Näin se sujuu</span>
+  <h2>Viikko. Sitten olet pystyssä.</h2>
+  <div class="rowgrid" style="margin-top:clamp(36px,4.5vw,60px)">
+    <div class="cell"><div class="k">Päivä 1</div><h3 style="margin-top:12px">Tulemme luoksesi</h3></div>
+    <div class="cell"><div class="k">Päivät 2–6</div><h3 style="margin-top:12px">Rakennamme kaiken</h3></div>
+    <div class="cell"><div class="k">Päivä 7</div><h3 style="margin-top:12px">Olet julkaistu</h3></div>
+    <div class="cell"><div class="k">Sen jälkeen</div><h3 style="margin-top:12px">Me jäämme</h3></div>
+  </div>
+</div></section>
+
+<section class="tight" data-mesh="still"><div class="wrap">
+  <span class="eyebrow">Turva</span>
+  <h2>Riski on meidän. Ei sinun.</h2>
+  <div class="rowgrid" style="margin-top:clamp(36px,4.5vw,60px)">
+    <div class="cell"><h3>7 päivää</h3><p>Julkaistu viikossa allekirjoituksesta.</p></div>
+    <div class="cell"><h3>0 % provisiota</h3><p>Ei osuutta myynnistä, koskaan.</p></div>
+    <div class="cell"><h3>Tiedot ovat sinun</h3><p>Sivut, verkkotunnus, asiakkaat.</p></div>
+    <div class="cell"><h3>Ihminen vastaa</h3><p>Sama porukka joka rakensi sen.</p></div>
+  </div>
+</div></section>
+
+<section class="tight"><div class="wrap">
+  <span class="eyebrow">Asiakkaitamme</span>
+  <h2>Näillä paikoilla Klar on jo käytössä.</h2>
+  <div class="clients">
+    <div class="client">
+      <div class="pic"><img src="img/lasagna.jpg" alt="La Lasagna, Helsinki"></div>
+      <div class="bar"><img src="img/logo-lalasagna.png" alt="La Lasagna"><span>Helsinki</span></div>
+    </div>
+    <div class="client">
+      <div class="pic"><img src="img/ani-buffet.jpg" alt="Ravintola Ani, Helsinki"></div>
+      <div class="bar"><img src="img/logo-ani.png" alt="Ravintola Ani"><span>Tilauspilotti</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="tarjous" class="meshband" data-mesh="still"><div class="wrap">
+  <span class="eyebrow">Kausimalli</span>
+  <h2>Allekirjoita nyt. Kuukausimaksu alkaa vasta toukokuussa.</h2>
+  <div class="rowgrid figrow" style="margin-top:clamp(36px,4.5vw,60px)">
+    <div class="cell"><div class="k">Hiljainen kausi · 1.10.–30.4.</div><div class="n">0 €/kk</div>
+      <p>Seitsemän kuukautta ilman kuukausimaksua. Koko koneisto käytössä.</p></div>
+    <div class="cell"><div class="k">Kesäkausi · 1.5.–30.9.</div><div class="n">249–799 €/kk</div>
+      <p>Viisi erää vuodessa. Taso määräytyy toimipisteistä, tilauksista ja varatuista asiakkaista.</p></div>
+    <div class="cell"><div class="k">Käyttöönotto · 40 % pois</div><div class="n">1 440–1 560 €</div>
+      <p>Maksat allekirjoituksella, joko 50 % + 50 % tai 1–3 kuukausierässä.</p></div>
+    <div class="cell"><div class="k">Sopimus</div><div class="n">2 vuotta</div>
+      <p>Vuosisopimus, jonka laskutus osuu kesään. Ei maksuton jakso, joka katkeaa toukokuussa.</p></div>
+  </div>
+  <div class="cta-row big">
+    <a class="btn btn-ink btn-xl" href="https://booking.klarsystems.com/signup">Katso oma hintasi</a>
+    <a class="btn btn-line" href="hinnat.html">Katso kaikki hinnat</a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="wrap foot-top">
+    <h2>0 % provisiota. Ei koskaan.</h2>
+    <div class="side">
+      <a class="btn btn-lime btn-xl" href="#" data-modal>Varaa veloitukseton käynti</a>
+      <span class="cta-note">30 minuuttia. Loka–huhtikuu 0 €/kk.</span>
+    </div>
+  </div>
+  <div class="wrap foot-cols">
+    <div>
+      <div class="brand-foot"><img src="img/klar-logo-black.svg" alt="Klar"></div>
+      <p class="lede">Ravintolan oma järjestelmä: sivut, varaukset, tilaukset ja näkyvyys — yhdellä laskulla, ilman provisiota.</p>
+    </div>
+    <div>
+      <h4>Palvelu</h4>
+      <a href="index.html">Etusivu</a><a href="palvelut.html">Palvelut</a><a href="hinnat.html">Hinnat</a>
+    </div>
+    <div>
+      <h4>Yritys</h4>
+      <a href="about.html">Meistä</a><a href="about.html">Töihin meille</a><a href="yhteystiedot.html">Yhteystiedot</a>
+    </div>
+    <div>
+      <h4>Ota yhteyttä</h4>
+      <a href="mailto:guidance@klarsystems.com">guidance@klarsystems.com</a>
+      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review">Varaa puhelu</a>
+      <a href="#" data-modal>Ilmaiset Google-kortit</a>
+    </div>
+  </div>
+  <div class="wrap foot-bar">
+    <span>© 2026 Klar · Helsinki, Suomi</span>
+    <span class="legal"><span style="opacity:.7">Kuva: George Ho / CC BY-SA 4.0</span><a href="/privacy/">Tietosuoja</a><a href="/terms/">Ehdot</a><a href="kuvat.html">Kuvat</a></span>
+  </div>
+</footer>
+
+<script src="site.js?v=1789757969"></script>
+<script src="mesh.js?v=1789757969"></script>
+</body></html>

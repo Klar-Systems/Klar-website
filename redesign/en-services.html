@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services | Klar — the machinery the outcome is made of</title>
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=1789757969">
+<style>
+.svc{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(26px,5vw,72px);align-items:center;padding:clamp(40px,5vw,72px) 0;border-top:1px solid var(--hair)}
+.svc:nth-child(even) .frame{order:2}
+.svc .frame{border-radius:var(--r);background:var(--soft);aspect-ratio:4/3;overflow:hidden;position:relative}
+.svc .frame img{width:100%;height:100%;object-fit:cover}
+.needs-photo:after{content:"photo missing";position:absolute;inset:0;display:grid;place-items:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.svc h2{font-size:clamp(28px,3.6vw,46px);margin-top:14px;max-width:16ch}
+.svc p{margin-top:14px;font-size:clamp(16.5px,1.6vw,19px);font-weight:500;max-width:36ch}
+@media(max-width:860px){.svc{grid-template-columns:1fr}.svc:nth-child(even) .frame{order:0}}
+
+.addons{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(36px,5vw,60px);border-top:1px solid var(--hair)}
+.addon{padding:28px 28px 28px 0;border-bottom:1px solid var(--hair)}
+.addon:not(:nth-child(3n+1)){border-left:1px solid var(--hair);padding-left:28px}
+.addon .ic{width:40px;height:40px;border-radius:var(--pill);background:var(--lime);display:grid;place-items:center;font-weight:900;font-size:15px;color:var(--ink)}
+.addon h3{font-size:21px;margin-top:16px}
+.addon p{margin:6px 0 0;font-size:15.5px;font-weight:500}
+.clients{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2.4vw,26px);margin-top:clamp(36px,5vw,58px)}
+.client{border:1px solid var(--hair);border-radius:var(--r);overflow:hidden}
+.client .pic{aspect-ratio:16/10;overflow:hidden;background:var(--soft)}
+.client .pic img{width:100%;height:100%;object-fit:cover}
+.client .bar{display:flex;align-items:center;gap:16px;padding:20px 22px}
+.client .bar img{height:34px;width:auto;object-fit:contain}
+.client .bar span{font-size:15px;color:var(--mute);font-weight:500}
+@media(max-width:860px){.addons,.clients{grid-template-columns:1fr}.addon:not(:nth-child(3n+1)){border-left:0;padding-left:0}}
+</style>
+</head>
+<body>
+
+<div class="ribbon"><div class="wrap">
+  <span>The season model — <b>7 months with no monthly fee</b></span>
+  <em>40% off setup</em>
+</div></div>
+
+<nav><div class="wrap">
+  <a class="brand" href="en-index.html" aria-label="Klar home"><img src="img/klar-logo-black.svg" alt="Klar"></a>
+  <span class="navlinks">
+    <a href="en-services.html">Services</a>
+    <a href="en-pricing.html">Pricing</a>
+    <a href="en-about.html">About</a>
+    <a href="en-contact.html">Contact</a>
+    <a href="palvelut.html">Suomeksi</a>
+    <a class="btn btn-lime" href="https://booking.klarsystems.com/signup">Get your pricing</a>
+  </span>
+</div></nav>
+
+<div class="wrap" style="padding-top:26px;padding-bottom:6px"><p class="subtitle" style="margin:0;max-width:62ch">Off-season 1 Oct – 30 Apr: <b>€0/month</b>. Summer 1 May – 30 Sep: <b>€249–799/month</b>, five instalments a year. Setup at signature, 40% off. Two-year agreement.</p></div>
+
+<div class="pagehead" data-mesh="live"><div class="wrap">
+  <span class="eyebrow">Services</span>
+  <h1>The machinery, jolla lopputulos syntyy.</h1>
+  <p class="sub">None of these is a product. They are the parts that fill your tables.</p>
+</div></div>
+
+<div class="wrap">
+
+  <div class="svc">
+    <div class="frame shot"><img src="img/lasagna.jpg" alt="Annos tarjoiltuna ravintolassa"></div>
+    <div>
+      <span class="eyebrow">01 — Website</span>
+      <h2>A site that gets found under your own name.</h2>
+      <p>Menu, opening hours and photos kept current — you send the change, we publish it the same day.</p>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="frame shot"><img src="img/flambe.jpg" alt="Annos liekitetään keittiössä"></div>
+    <div>
+      <span class="eyebrow">02 — Table bookings</span>
+      <h2>Guests book a table suoraan sinulta.</h2>
+      <p>The whole evening on one screen. Staff learn it in two minutes. No per-guest fees.</p>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="frame shot"><img src="img/order-bags.jpg" alt="An order ready for pickup"></div>
+    <div>
+      <span class="eyebrow">03 — Orders</span>
+      <h2>Pickup and delivery with no middleman.</h2>
+      <p>Your prices, your guest, and the whole amount stays in the house.</p>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="frame shot"><img src="img/plate-sushi.jpg" alt="A dish ready for delivery"></div>
+    <div>
+      <span class="eyebrow">04 — Delivery</span>
+      <h2>Delivery on your own terms.</h2>
+      <p>Your area, your prices, your hours. No 30% cut of every order.</p>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="frame shot"><img src="img/table-lights.jpg" alt="A dining room in the evening"></div>
+    <div>
+      <span class="eyebrow">05 — Google visibility</span>
+      <h2>First in line when someone looks for you.</h2>
+      <p>Google profile, reviews and search results handled — and review cards on your tables.</p>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="frame shot"><img src="img/tables-wood.jpg" alt="Tables laid for service"></div>
+    <div>
+      <span class="eyebrow">06 — Guest database</span>
+      <h2>Names and numbers stay with you.</h2>
+      <p>Invite your regulars back whenever you like — and pay no one for it.</p>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="frame shot"><img src="img/counter-bar.jpg" alt="The bar counter and till"></div>
+    <div>
+      <span class="eyebrow">07 — Payments</span>
+      <h2>Money straight to your account.</h2>
+      <p>Card, MobilePay and invoice. No delay, no platform wallet in between.</p>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="frame shot"><img src="img/desk-report.jpg" alt="A restaurant dining room"></div>
+    <div>
+      <span class="eyebrow">08 — Reports</span>
+      <h2>A plain-language report every month.</h2>
+      <p>Where guests came from, what sold, what to do next.</p>
+    </div>
+  </div>
+
+</div>
+
+<section class="tight"><div class="wrap">
+  <span class="eyebrow">Add-ons</span>
+  <h2>Everything a restaurant sells — including what you do not sell yet.</h2>
+  <p class="subtitle">These belong to the same agreement. No separate invoice for each.</p>
+  <div class="addons">
+    <div class="addon"><div class="ic">01</div><h3>Discount codes</h3><p>Your own campaign codes, validity and limits. You decide who gets them and for how long.</p></div>
+    <div class="addon"><div class="ic">02</div><h3>Gift cards</h3><p>Sell gift cards from your own site. The money arrives up front, redemption runs through the system.</p></div>
+    <div class="addon"><div class="ic">03</div><h3>Google review cards</h3><p>Printed cards for your tables. The guest scans, the review lands on your profile.</p></div>
+    <div class="addon"><div class="ic">04</div><h3>Your own ordering</h3><p>Pickup and delivery at your prices. No commission, no platform wallet in between.</p></div>
+    <div class="addon"><div class="ic">05</div><h3>Search visibility</h3><p>Google profile, search results and structured data handled for you.</p></div>
+    <div class="addon"><div class="ic">06</div><h3>Visibility monitoring</h3><p>We track continuously which searches find you and what your competitors are doing.</p></div>
+  </div>
+</div></section>
+
+<section class="meshband" data-mesh="still"><div class="wrap narrow">
+  <span class="eyebrow">All together</span>
+  <h2>One partner. One invoice. 0% commission.</h2>
+  <div class="cta-row">
+    <a class="btn btn-ink btn-xl" href="#" data-modal>Book a free visit</a>
+    <a class="btn btn-line" href="en-pricing.html" style="border-color:rgba(26,26,26,.28)">See pricing</a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="wrap foot-top">
+    <h2>0% commission. Ever.</h2>
+    <div class="side">
+      <a class="btn btn-lime btn-xl" href="#" data-modal>Book a free visit</a>
+      <span class="cta-note">30 minutes. October–April is €0/month.</span>
+    </div>
+  </div>
+  <div class="wrap foot-cols">
+    <div>
+      <div class="brand-foot"><img src="img/klar-logo-black.svg" alt="Klar"></div>
+      <p class="lede">A restaurant’s own system: site, bookings, orders and visibility — one invoice, no commission.</p>
+    </div>
+    <div>
+      <h4>Product</h4>
+      <a href="en-index.html">Home</a><a href="en-services.html">Services</a><a href="en-pricing.html">Pricing</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="en-about.html">About</a><a href="en-about.html">Work with us</a><a href="en-contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="mailto:guidance@klarsystems.com">guidance@klarsystems.com</a>
+      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review">Book a call</a>
+      <a href="#" data-modal>Free Google cards</a>
+    </div>
+  </div>
+  <div class="wrap foot-bar">
+    <span>© 2026 Klar · Helsinki, Finland</span>
+    <span class="legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="kuvat.html">Photo credits</a></span>
+  </div>
+</footer>
+
+<script src="site.js?v=1789757969"></script>
+<script src="mesh.js?v=1789757969"></script>
+</body></html>

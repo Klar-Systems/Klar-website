@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kuvat | Klar</title>
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=1789757969">
+<style>
+.price{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--hair);margin-top:clamp(36px,5vw,60px)}
+.price .big{padding:clamp(28px,3.4vw,44px) clamp(28px,3.4vw,44px) clamp(28px,3.4vw,44px) 0}
+.price .big+.big{border-left:1px solid var(--hair);padding-left:clamp(28px,3.4vw,44px)}
+.price .k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--mute)}
+.price .v{font-size:clamp(30px,4.2vw,52px);font-weight:900;letter-spacing:-.045em;line-height:1.04;margin-top:14px;white-space:nowrap}
+.price .v small{white-space:nowrap;font-size:.34em;font-weight:700;letter-spacing:-.01em;color:var(--mute);margin-left:6px}
+.price p{margin:12px 0 0;font-size:16px;font-weight:500}
+.incl{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hair);margin-top:clamp(36px,5vw,56px)}
+.incl div{padding:22px 22px 22px 0;font-size:16.5px;font-weight:600}
+.incl div+div{border-left:1px solid var(--hair);padding-left:22px}
+.faq{border-top:1px solid var(--hair);margin-top:clamp(36px,5vw,56px)}
+.qa{padding:26px 0;border-bottom:1px solid var(--hair);display:grid;grid-template-columns:1fr 1.3fr;gap:28px}
+.qa h3{font-size:clamp(19px,2vw,24px)}
+.qa p{margin:0;font-size:16px;font-weight:500}
+@media(max-width:900px){.price,.incl,.qa{grid-template-columns:1fr}.price .big+.big,.incl div+div{border-left:0;padding-left:0;border-top:1px solid var(--hair)}}
+
+.deal{border-top:1px solid var(--hair);margin-top:clamp(36px,5vw,60px)}
+.leg{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--hair);align-items:baseline}
+.leg .when{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--mute)}
+.leg .amt{font-size:clamp(26px,3.4vw,42px);font-weight:900;letter-spacing:-.04em;line-height:1}
+.leg p{margin:8px 0 0;font-size:16px;font-weight:500}
+.seasons{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--hair);margin-top:clamp(30px,4vw,48px)}
+.season{padding:26px 26px 26px 0}
+.season+.season{border-left:1px solid var(--hair);padding-left:26px}
+.season .k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--mute)}
+.season .v{font-size:clamp(22px,2.6vw,32px);font-weight:900;letter-spacing:-.035em;margin-top:10px}
+.season.now .v{color:var(--lime-deep)}
+.season p{margin:8px 0 0;font-size:15.5px;font-weight:500}
+@media(max-width:820px){.leg{grid-template-columns:1fr}.seasons{grid-template-columns:1fr}.season+.season{border-left:0;padding-left:0;border-top:1px solid var(--hair)}}
+
+.scale{border-top:1px solid var(--hair);margin-top:clamp(30px,4vw,48px)}
+.sl{display:grid;grid-template-columns:200px 1fr 120px;gap:18px;padding:16px 0;border-bottom:1px solid var(--hair);align-items:center}
+.sl .m{font-weight:600;font-size:17px}
+.sl .bar{height:10px;border-radius:var(--pill);background:#eee;overflow:hidden}
+.sl .bar i{display:block;height:100%;background:var(--lime)}
+.sl .n{text-align:right;font-weight:900;font-size:20px;letter-spacing:-.03em}
+.sl.zero .n{color:var(--mute)}
+@media(max-width:820px){.sl{grid-template-columns:1fr 80px;gap:10px}.sl .bar{grid-column:1/-1;order:3}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="index.html" aria-label="Klar"><img src="img/klar-logo-black.svg" alt="Klar"></a>
+  <span class="navlinks">
+    <a href="index.html">Etusivu</a><a href="palvelut.html">Palvelut</a><a href="hinnat.html">Hinnat</a>
+    <a class="btn btn-lime" href="https://booking.klarsystems.com/signup">Aloita — 7 kk 0 €/kk</a>
+  </span>
+</div></nav>
+
+<div class="pagehead"><div class="wrap">
+  <span class="eyebrow">Kuvat</span>
+  <h1>Kuvien tekijät ja lisenssit.</h1>
+  <p class="sub">Sivuston valokuvat ovat Wikimedia Commonsista. Alkuperäiset tekijät ja lisenssit on lueteltu alla.</p>
+</div></div>
+
+<section class="tight"><div class="wrap"><div class="faq"><div class="qa"><h3>room-candle.jpg</h3><p>Restaurant Tangaro.JPG<br><span style="opacity:.6">CC BY-SA 3.0 · Wikitan2012</span></p></div><div class="qa"><h3>table-lights.jpg</h3><p>DZ6 2629 A cozy table for two - soft lights a single orchid and the promise of a perfect evening.jpg<br><span style="opacity:.6">CC BY-SA 4.0 · PattayaPatrol</span></p></div><div class="qa"><h3>tables-wood.jpg</h3><p>Bistro Nas restaurant one dining table of four.jpg<br><span style="opacity:.6">CC BY-SA 4.0 · George Ho</span></p></div><div class="qa"><h3>plate-sushi.jpg</h3><p>Sushi Plate in Organic Sushi Prague 4.jpg<br><span style="opacity:.6">CC0 · Mojmir Churavy</span></p></div><div class="qa"><h3>plate-dessert.jpg</h3><p>Dessert Fruit Tart (14920013901).jpg<br><span style="opacity:.6">CC BY 2.0 · Prayitno / Thank you for (12 millions +)</span></p></div><div class="qa"><h3>order-bags.jpg</h3><p>A man carrying takeaway delivery packages.jpg<br><span style="opacity:.6">CC BY 2.0 · Meanwell Packaging</span></p></div><div class="qa"><h3>desk-report.jpg</h3><p>Take a break.jpg<br><span style="opacity:.6">CC0 · 27707</span></p></div><div class="qa"><h3>dining.jpg</h3><p>Bistro Nas restaurant interior dining room<br><span style="opacity:.6">CC BY-SA 4.0 · George Ho</span></p></div><div class="qa"><h3>lasagna.jpg</h3><p>Asiakkaan oma valokuva (La Lasagna)<br><span style="opacity:.6">lupa pyydettävä · La Lasagna</span></p></div><div class="qa"><h3>flambe.jpg</h3><p>Asiakkaan oma valokuva (La Lasagna)<br><span style="opacity:.6">lupa pyydettävä · La Lasagna</span></p></div><div class="qa"><h3>ani-buffet.jpg</h3><p>Asiakkaan oma valokuva (Ravintola Ani)<br><span style="opacity:.6">lupa pyydettava · Ravintola Ani</span></p></div></div></div></section>
+
+<footer>
+  <div class="wrap foot-top">
+    <h2>0 % provisiota. Ei koskaan.</h2>
+    <div class="side">
+      <a class="btn btn-lime btn-xl" href="#" data-modal>Varaa veloitukseton käynti</a>
+      <span class="cta-note">30 minuuttia. Loka–huhtikuu 0 €/kk.</span>
+    </div>
+  </div>
+  <div class="wrap foot-cols">
+    <div>
+      <div class="brand-foot"><img src="img/klar-logo-black.svg" alt="Klar"></div>
+      <p class="lede">Ravintolan oma järjestelmä: sivut, varaukset, tilaukset ja näkyvyys — yhdellä laskulla, ilman provisiota.</p>
+    </div>
+    <div>
+      <h4>Palvelu</h4>
+      <a href="index.html">Etusivu</a><a href="palvelut.html">Palvelut</a><a href="hinnat.html">Hinnat</a>
+    </div>
+    <div>
+      <h4>Yritys</h4>
+      <a href="about.html">Meistä</a><a href="about.html">Töihin meille</a><a href="yhteystiedot.html">Yhteystiedot</a>
+    </div>
+    <div>
+      <h4>Ota yhteyttä</h4>
+      <a href="mailto:guidance@klarsystems.com">guidance@klarsystems.com</a>
+      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review">Varaa puhelu</a>
+      <a href="#" data-modal>Ilmaiset Google-kortit</a>
+    </div>
+  </div>
+  <div class="wrap foot-bar">
+    <span>© 2026 Klar · Helsinki, Suomi</span>
+    <span class="legal"><a href="/privacy/">Tietosuoja</a><a href="/terms/">Ehdot</a></span>
+  </div>
+</footer>
+
+<script src="site.js?v=1789757969"></script>
+<script src="mesh.js?v=1789757969"></script>
+</body></html>
