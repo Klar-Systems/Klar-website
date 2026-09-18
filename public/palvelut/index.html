@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palvelut | Klar — koneisto, jolla lopputulos syntyy</title>
+<link rel="icon" href="/r/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/r/site.css?v=1789759789">
+<style>
+.svc{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(26px,5vw,72px);align-items:center;padding:clamp(40px,5vw,72px) 0;border-top:1px solid var(--hair)}
+.svc:nth-child(even) .frame{order:2}
+.svc .frame{border-radius:var(--r);background:var(--soft);aspect-ratio:4/3;overflow:hidden;position:relative}
+.svc .frame img{width:100%;height:100%;object-fit:cover}
+.needs-photo:after{content:"kuva puuttuu";position:absolute;inset:0;display:grid;place-items:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.svc h2{font-size:clamp(28px,3.6vw,46px);margin-top:14px;max-width:16ch}
+.svc p{margin-top:14px;font-size:clamp(16.5px,1.6vw,19px);font-weight:500;max-width:36ch}
+@media(max-width:860px){.svc{grid-template-columns:1fr}.svc:nth-child(even) .frame{order:0}}
+
+.addons{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(36px,5vw,60px);border-top:1px solid var(--hair)}
+.addon{padding:28px 28px 28px 0;border-bottom:1px solid var(--hair)}
+.addon:not(:nth-child(3n+1)){border-left:1px solid var(--hair);padding-left:28px}
+.addon .ic{width:40px;height:40px;border-radius:var(--pill);background:var(--lime);display:grid;place-items:center;font-weight:900;font-size:15px;color:var(--ink)}
+.addon h3{font-size:21px;margin-top:16px}
+.addon p{margin:6px 0 0;font-size:15.5px;font-weight:500}
+.clients{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2.4vw,26px);margin-top:clamp(36px,5vw,58px)}
+.client{border:1px solid var(--hair);border-radius:var(--r);overflow:hidden}
+.client .pic{aspect-ratio:16/10;overflow:hidden;background:var(--soft)}
+.client .pic img{width:100%;height:100%;object-fit:cover}
+.client .bar{display:flex;align-items:center;gap:16px;padding:20px 22px}
+.client .bar img{height:34px;width:auto;object-fit:contain}
+.client .bar span{font-size:15px;color:var(--mute);font-weight:500}
+@media(max-width:860px){.addons,.clients{grid-template-columns:1fr}.addon:not(:nth-child(3n+1)){border-left:0;padding-left:0}}
+</style>
+</head>
+<body>
+
+<div class="ribbon"><div class="wrap">
+  <span>Allekirjoita lokakuussa — <b>7 kuukautta ilman kuukausimaksua</b></span>
+  <em>kuukausimaksu vain touko–syyskuussa</em>
+</div></div>
+
+<nav><div class="wrap">
+  <a class="brand" href="/fi/" aria-label="Klar etusivu"><img src="/r/img/klar-logo-black.svg" alt="Klar"></a>
+  <span class="navlinks">
+    <a href="/palvelut/">Palvelut</a>
+    <a href="/hinnat/">Hinnat</a>
+    <a href="/meista/">Meistä</a>
+    <a href="/yhteystiedot/">Yhteystiedot</a>
+    <a href="/what-we-provide/">In English</a>
+    <a class="btn btn-lime" href="https://booking.klarsystems.com/signup">Katso hintasi</a>
+  </span>
+</div></nav>
+
+<div class="wrap" style="padding-top:26px;padding-bottom:6px"><p class="subtitle" style="margin:0;max-width:62ch">Hiljainen kausi 1.10.–30.4.: <b>0 €/kk</b>. Kesäkausi 1.5.–30.9.: <b>249–799 €/kk</b>, viisi erää vuodessa. Käyttöönotto allekirjoituksella, 40 % pois. Kahden vuoden sopimus.</p></div>
+
+<div class="pagehead" data-mesh="live"><div class="wrap">
+  <span class="eyebrow">Palvelut</span>
+  <h1>Koneisto, jolla lopputulos syntyy.</h1>
+  <p class="sub">Yksikään näistä ei ole tuote. Ne ovat osia, joilla pöydät täyttyvät.</p>
+</div></div>
+
+<div class="wrap">
+
+  <div class="svc">
+    <div class="frame shot"><img src="/r/img/lasagna.jpg" alt="Annos tarjoiltuna ravintolassa"></div>
+    <div>
+      <span class="eyebrow">01 — Verkkosivut</span>
+      <h2>Sivut, jotka löytyvät omalla nimelläsi.</h2>
+      <p>Ruokalista, aukioloajat ja kuvat ajan tasalla — lähetät muutoksen, me päivitämme sen samana päivänä.</p>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="frame shot"><img src="/r/img/flambe.jpg" alt="Annos liekitetään keittiössä"></div>
+    <div>
+      <span class="eyebrow">02 — Pöytävaraukset</span>
+      <h2>Vieras varaa pöydän suoraan sinulta.</h2>
+      <p>Illan kulku yhdellä näytöllä. Henkilökunta oppii sen kahdessa minuutissa. Ei vierasmaksuja.</p>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="frame shot"><img src="/r/img/order-bags.jpg" alt="Tilaus valmiina noudettavaksi"></div>
+    <div>
+      <span class="eyebrow">03 — Tilaukset</span>
+      <h2>Nouto ja kuljetus ilman välikättä.</h2>
+      <p>Hinnat ovat sinun, asiakas on sinun, ja koko summa jää taloon.</p>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="frame shot"><img src="/r/img/plate-sushi.jpg" alt="Annos valmiina kuljetukseen"></div>
+    <div>
+      <span class="eyebrow">04 — Kotiinkuljetus</span>
+      <h2>Kuljetus omilla ehdoillasi.</h2>
+      <p>Oma alue, omat hinnat, omat ajat. Ei 30 % osuutta jokaisesta tilauksesta.</p>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="frame shot"><img src="/r/img/table-lights.jpg" alt="Ravintolan sali illalla"></div>
+    <div>
+      <span class="eyebrow">05 — Google-näkyvyys</span>
+      <h2>Ykkösenä silloin kun sinua etsitään.</h2>
+      <p>Google-profiili, arvostelut ja hakutulokset hoidettuna — ja arvostelukortit pöytiin.</p>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="frame shot"><img src="/r/img/tables-wood.jpg" alt="Katetut pöydät"></div>
+    <div>
+      <span class="eyebrow">06 — Asiakasrekisteri</span>
+      <h2>Nimet ja numerot jäävät sinulle.</h2>
+      <p>Kutsut vakioasiakkaasi takaisin milloin haluat — etkä maksa siitä kenellekään.</p>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="frame shot"><img src="/r/img/counter-bar.jpg" alt="Ravintolan baaritiski ja kassa"></div>
+    <div>
+      <span class="eyebrow">07 — Maksut</span>
+      <h2>Rahat suoraan tilillesi.</h2>
+      <p>Kortti, MobilePay ja lasku. Ei viivettä, ei alustan kassaa välissä.</p>
+    </div>
+  </div>
+
+  <div class="svc">
+    <div class="frame shot"><img src="/r/img/desk-report.jpg" alt="Ravintolasali"></div>
+    <div>
+      <span class="eyebrow">08 — Raportit</span>
+      <h2>Selkokielinen raportti joka kuukausi.</h2>
+      <p>Mistä vieraat tulivat, mikä myi, mitä kannattaa tehdä seuraavaksi.</p>
+    </div>
+  </div>
+
+</div>
+
+<section class="tight"><div class="wrap">
+  <span class="eyebrow">Lisäosat</span>
+  <h2>Kaikki mitä ravintola myy — myös se, mitä et vielä myy.</h2>
+  <p class="subtitle">Nämä kuuluvat samaan sopimukseen. Ei erillistä laskua jokaisesta.</p>
+  <div class="addons">
+    <div class="addon"><div class="ic">01</div><h3>Alennuskoodit</h3><p>Omat kampanjakoodit, voimassaoloajat ja rajat. Sinä päätät, kuka saa ja kuinka kauan.</p></div>
+    <div class="addon"><div class="ic">02</div><h3>Lahjakortit</h3><p>Myy lahjakortteja omalta sivultasi. Raha tulee etukäteen, lunastus kulkee järjestelmässä.</p></div>
+    <div class="addon"><div class="ic">03</div><h3>Google-arvostelukortit</h3><p>Painetut kortit pöytiin. Vieras skannaa, arvostelu menee suoraan profiiliisi.</p></div>
+    <div class="addon"><div class="ic">04</div><h3>Oma tilauskanava</h3><p>Nouto ja kuljetus omilla hinnoilla. Ei provisiota, ei alustan kassaa välissä.</p></div>
+    <div class="addon"><div class="ic">05</div><h3>Hakukonenäkyvyys</h3><p>Google-profiili, hakutulokset ja rakenteinen data hoidettuna puolestasi.</p></div>
+    <div class="addon"><div class="ic">06</div><h3>Löydettävyyden valvonta</h3><p>Seuraamme jatkuvasti, millä hauilla sinut löydetään ja mitä kilpailijasi tekevät.</p></div>
+  </div>
+</div></section>
+
+<section class="meshband" data-mesh="still"><div class="wrap narrow">
+  <span class="eyebrow">Kaikki yhdessä</span>
+  <h2>Yksi kumppani. Yksi lasku. 0 % provisiota.</h2>
+  <div class="cta-row">
+    <a class="btn btn-ink btn-xl" href="#" data-modal>Varaa veloitukseton käynti</a>
+    <a class="btn btn-line" href="/hinnat/" style="border-color:rgba(26,26,26,.28)">Katso hinnat</a>
+  </div>
+</div></section>
+
+<footer>
+  <div class="wrap foot-top">
+    <h2>0 % provisiota. Ei koskaan.</h2>
+    <div class="side">
+      <a class="btn btn-lime btn-xl" href="#" data-modal>Varaa veloitukseton käynti</a>
+      <span class="cta-note">30 minuuttia. Loka–huhtikuu 0 €/kk.</span>
+    </div>
+  </div>
+  <div class="wrap foot-cols">
+    <div>
+      <div class="brand-foot"><img src="/r/img/klar-logo-black.svg" alt="Klar"></div>
+      <p class="lede">Ravintolan oma järjestelmä: sivut, varaukset, tilaukset ja näkyvyys — yhdellä laskulla, ilman provisiota.</p>
+    </div>
+    <div>
+      <h4>Palvelu</h4>
+      <a href="/fi/">Etusivu</a><a href="/palvelut/">Palvelut</a><a href="/hinnat/">Hinnat</a>
+    </div>
+    <div>
+      <h4>Yritys</h4>
+      <a href="/meista/">Meistä</a><a href="/meista/">Töihin meille</a><a href="/yhteystiedot/">Yhteystiedot</a>
+    </div>
+    <div>
+      <h4>Ota yhteyttä</h4>
+      <a href="mailto:guidance@klarsystems.com">guidance@klarsystems.com</a>
+      <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review">Varaa puhelu</a>
+      <a href="#" data-modal>Ilmaiset Google-kortit</a>
+    </div>
+  </div>
+  <div class="wrap foot-bar">
+    <span>© 2026 Klar · Helsinki, Suomi</span>
+    <span class="legal"><a href="/privacy/">Tietosuoja</a><a href="/terms/">Ehdot</a><a href="/kuvat/">Kuvat</a></span>
+  </div>
+</footer>
+
+<script src="/r/site.js?v=1789759789"></script>
+<script src="/r/mesh.js?v=1789759789"></script>
+</body></html>
