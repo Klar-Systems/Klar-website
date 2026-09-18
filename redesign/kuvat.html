@@ -10,44 +10,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css?v=1789757969">
 <style>
-.price{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--hair);margin-top:clamp(36px,5vw,60px)}
-.price .big{padding:clamp(28px,3.4vw,44px) clamp(28px,3.4vw,44px) clamp(28px,3.4vw,44px) 0}
-.price .big+.big{border-left:1px solid var(--hair);padding-left:clamp(28px,3.4vw,44px)}
-.price .k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--mute)}
-.price .v{font-size:clamp(30px,4.2vw,52px);font-weight:900;letter-spacing:-.045em;line-height:1.04;margin-top:14px;white-space:nowrap}
-.price .v small{white-space:nowrap;font-size:.34em;font-weight:700;letter-spacing:-.01em;color:var(--mute);margin-left:6px}
-.price p{margin:12px 0 0;font-size:16px;font-weight:500}
-.incl{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hair);margin-top:clamp(36px,5vw,56px)}
-.incl div{padding:22px 22px 22px 0;font-size:16.5px;font-weight:600}
-.incl div+div{border-left:1px solid var(--hair);padding-left:22px}
-.faq{border-top:1px solid var(--hair);margin-top:clamp(36px,5vw,56px)}
-.qa{padding:26px 0;border-bottom:1px solid var(--hair);display:grid;grid-template-columns:1fr 1.3fr;gap:28px}
-.qa h3{font-size:clamp(19px,2vw,24px)}
-.qa p{margin:0;font-size:16px;font-weight:500}
-@media(max-width:900px){.price,.incl,.qa{grid-template-columns:1fr}.price .big+.big,.incl div+div{border-left:0;padding-left:0;border-top:1px solid var(--hair)}}
-
-.deal{border-top:1px solid var(--hair);margin-top:clamp(36px,5vw,60px)}
-.leg{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--hair);align-items:baseline}
-.leg .when{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--mute)}
-.leg .amt{font-size:clamp(26px,3.4vw,42px);font-weight:900;letter-spacing:-.04em;line-height:1}
-.leg p{margin:8px 0 0;font-size:16px;font-weight:500}
-.seasons{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--hair);margin-top:clamp(30px,4vw,48px)}
-.season{padding:26px 26px 26px 0}
-.season+.season{border-left:1px solid var(--hair);padding-left:26px}
-.season .k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--mute)}
-.season .v{font-size:clamp(22px,2.6vw,32px);font-weight:900;letter-spacing:-.035em;margin-top:10px}
-.season.now .v{color:var(--lime-deep)}
-.season p{margin:8px 0 0;font-size:15.5px;font-weight:500}
-@media(max-width:820px){.leg{grid-template-columns:1fr}.seasons{grid-template-columns:1fr}.season+.season{border-left:0;padding-left:0;border-top:1px solid var(--hair)}}
-
-.scale{border-top:1px solid var(--hair);margin-top:clamp(30px,4vw,48px)}
-.sl{display:grid;grid-template-columns:200px 1fr 120px;gap:18px;padding:16px 0;border-bottom:1px solid var(--hair);align-items:center}
-.sl .m{font-weight:600;font-size:17px}
-.sl .bar{height:10px;border-radius:var(--pill);background:#eee;overflow:hidden}
-.sl .bar i{display:block;height:100%;background:var(--lime)}
-.sl .n{text-align:right;font-weight:900;font-size:20px;letter-spacing:-.03em}
-.sl.zero .n{color:var(--mute)}
-@media(max-width:820px){.sl{grid-template-columns:1fr 80px;gap:10px}.sl .bar{grid-column:1/-1;order:3}}
+/* This page is a licence obligation, not a feature: CC BY and CC BY-SA oblige
+   us to name the author and the licence somewhere reachable, and that is the
+   whole job. It used to render as eleven full-width FAQ rows under a hero
+   heading, borrowing /hinnat/'s .price/.incl/.faq/.qa/.deal/.seasons/.scale
+   block wholesale — none of which this page uses any more. */
+.pagehead h1{font-size:clamp(22px,2.6vw,30px);letter-spacing:-.03em}
+.credits{font-size:14.5px;font-weight:500;max-width:640px;margin:0}
+.credits a{text-decoration:underline}
+.credits-list{list-style:none;margin:16px 0 0;padding:0;font-size:13px;line-height:1.75;color:var(--mute);font-weight:500}
+.credits-list b{font-weight:600;color:inherit}
 </style>
 </head>
 <body>
@@ -61,12 +33,24 @@
 </div></nav>
 
 <div class="pagehead"><div class="wrap">
-  <span class="eyebrow">Kuvat</span>
-  <h1>Kuvien tekijät ja lisenssit.</h1>
-  <p class="sub">Sivuston valokuvat ovat Wikimedia Commonsista. Alkuperäiset tekijät ja lisenssit on lueteltu alla.</p>
+  <h1>Kuvien lähteet</h1>
 </div></div>
 
-<section class="tight"><div class="wrap"><div class="faq"><div class="qa"><h3>room-candle.jpg</h3><p>Restaurant Tangaro.JPG<br><span style="opacity:.6">CC BY-SA 3.0 · Wikitan2012</span></p></div><div class="qa"><h3>table-lights.jpg</h3><p>DZ6 2629 A cozy table for two - soft lights a single orchid and the promise of a perfect evening.jpg<br><span style="opacity:.6">CC BY-SA 4.0 · PattayaPatrol</span></p></div><div class="qa"><h3>tables-wood.jpg</h3><p>Bistro Nas restaurant one dining table of four.jpg<br><span style="opacity:.6">CC BY-SA 4.0 · George Ho</span></p></div><div class="qa"><h3>plate-sushi.jpg</h3><p>Sushi Plate in Organic Sushi Prague 4.jpg<br><span style="opacity:.6">CC0 · Mojmir Churavy</span></p></div><div class="qa"><h3>plate-dessert.jpg</h3><p>Dessert Fruit Tart (14920013901).jpg<br><span style="opacity:.6">CC BY 2.0 · Prayitno / Thank you for (12 millions +)</span></p></div><div class="qa"><h3>order-bags.jpg</h3><p>A man carrying takeaway delivery packages.jpg<br><span style="opacity:.6">CC BY 2.0 · Meanwell Packaging</span></p></div><div class="qa"><h3>desk-report.jpg</h3><p>Take a break.jpg<br><span style="opacity:.6">CC0 · 27707</span></p></div><div class="qa"><h3>dining.jpg</h3><p>Bistro Nas restaurant interior dining room<br><span style="opacity:.6">CC BY-SA 4.0 · George Ho</span></p></div><div class="qa"><h3>lasagna.jpg</h3><p>Asiakkaan oma valokuva (La Lasagna)<br><span style="opacity:.6">lupa pyydettävä · La Lasagna</span></p></div><div class="qa"><h3>flambe.jpg</h3><p>Asiakkaan oma valokuva (La Lasagna)<br><span style="opacity:.6">lupa pyydettävä · La Lasagna</span></p></div><div class="qa"><h3>ani-buffet.jpg</h3><p>Asiakkaan oma valokuva (Ravintola Ani)<br><span style="opacity:.6">lupa pyydettava · Ravintola Ani</span></p></div></div></div></section>
+<section class="tight"><div class="wrap">
+  <p class="credits">Sivuston valokuvat ovat <a href="https://commons.wikimedia.org/">Wikimedia Commonsista</a>, lukuun ottamatta asiakkaidemme omia kuvia.</p>
+  <ul class="credits-list">
+    <li><b>room-candle.jpg</b> — Wikitan2012, CC BY-SA 3.0</li>
+    <li><b>table-lights.jpg</b> — PattayaPatrol, CC BY-SA 4.0</li>
+    <li><b>tables-wood.jpg</b> — George Ho, CC BY-SA 4.0</li>
+    <li><b>dining.jpg</b> — George Ho, CC BY-SA 4.0</li>
+    <li><b>plate-sushi.jpg</b> — Mojmir Churavy, CC0</li>
+    <li><b>plate-dessert.jpg</b> — Prayitno, CC BY 2.0</li>
+    <li><b>order-bags.jpg</b> — Meanwell Packaging, CC BY 2.0</li>
+    <li><b>desk-report.jpg</b> — 27707, CC0</li>
+    <li><b>lasagna.jpg</b>, <b>flambe.jpg</b> — La Lasagna, asiakkaan oma kuva</li>
+    <li><b>ani-buffet.jpg</b> — Ravintola Ani, asiakkaan oma kuva</li>
+  </ul>
+</div></section>
 
 <footer>
   <div class="wrap foot-top">
