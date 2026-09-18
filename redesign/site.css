@@ -248,7 +248,7 @@ section>.wrap>.cta-row{justify-content:center}
   background:linear-gradient(180deg,rgba(8,8,8,.74) 0%,rgba(8,8,8,.5) 44%,rgba(8,8,8,.84) 100%)}
 .hero>.wrap{position:relative;z-index:2}
 .hero h1{color:#fff}
-.hero .sub{color:rgba(255,255,255,.88)}
+.hero p.sub{color:rgba(255,255,255,.9)}
 .hero .btn-line{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}
 .hero .btn-line:hover{background:rgba(255,255,255,.14)}
 
@@ -264,8 +264,11 @@ footer{margin-top:0}
 .meshband+footer{border-top:0}
 
 /* the season/setup figures run flat, four across, like every other row here */
+.figrow .cell{display:flex;flex-direction:column;align-items:center}
+.figrow .k{min-height:3em;display:flex;align-items:center;justify-content:center;text-align:center}
 .figrow .n{white-space:nowrap;font-size:clamp(22px,2.6vw,34px)}
 .figrow .cell p{max-width:30ch}
+@media(max-width:860px){.figrow .k{min-height:0}}
 .figrow.two-up{grid-template-columns:repeat(2,1fr)}
 .figrow.two-up .n{font-size:clamp(26px,3.2vw,42px)}
 .figrow.two-up .cell p{max-width:34ch}
