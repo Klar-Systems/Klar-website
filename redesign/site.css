@@ -26,11 +26,26 @@ p{color:var(--body)}
 .btn-line:hover{background:var(--soft)}
 .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--mute)}
 
-/* ribbon + nav */
+/* ribbon + nav
+
+   The black band reads as a clipped video edge unless it is unmistakably a
+   BANNER, so it is taller than a ribbon and it carries more than one message.
+   The messages are stacked in one grid cell and cross-faded: 20s a cycle, 10s
+   each, which is slow enough to be read twice before it moves. Adding a third
+   message is one more .msg and one more nth-child delay. */
 .ribbon{background:var(--ink);color:#fff;font-size:14.5px;font-weight:600}
-.ribbon .wrap{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:11px var(--gutter);text-align:center}
+.ribbon .wrap{display:grid;padding:16px var(--gutter);text-align:center}
+.ribbon .msg{grid-area:1/1;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
+  opacity:0;animation:ribbonCycle 20s linear infinite}
+.ribbon .msg:nth-child(2){animation-delay:10s}
 .ribbon em{font-style:normal;color:rgba(255,255,255,.6);font-weight:500}
 .ribbon b{color:var(--lime);font-weight:700}
+@keyframes ribbonCycle{0%{opacity:0}2%{opacity:1}46%{opacity:1}50%{opacity:0}100%{opacity:0}}
+/* Someone who has asked the OS to stop animation gets the first message, held. */
+@media(prefers-reduced-motion:reduce){
+  .ribbon .msg{animation:none;opacity:1}
+  .ribbon .msg:nth-child(n+2){display:none}
+}
 nav{background:var(--canvas);border-bottom:1px solid var(--hair);position:sticky;top:0;z-index:50}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
 .brand img{height:26px;width:auto}
@@ -39,6 +54,33 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:7
 .navlinks a{text-decoration:none;color:var(--body)}
 .navlinks a:hover{color:var(--ink)}
 .navlinks a.btn{color:var(--ink)}
+
+/* Language: an icon, not two words. "Suomeksi" / "In English" was already the
+   widest thing in the nav at two languages and would not survive a third.
+   <details> rather than a hover menu, because hover does not exist on a phone
+   and this way the whole control needs no JavaScript. */
+.lang{position:relative}
+.lang summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:var(--pill);color:var(--body);transition:.16s}
+.lang summary::-webkit-details-marker{display:none}
+.lang summary:hover,.lang[open] summary{color:var(--ink);background:var(--soft)}
+.lang summary svg{width:19px;height:19px;display:block}
+.lang .langmenu{position:absolute;right:0;top:calc(100% + 10px);background:var(--canvas);
+  border:1px solid var(--hair);border-radius:12px;padding:6px;min-width:154px;
+  display:flex;flex-direction:column;gap:2px;box-shadow:0 14px 34px rgba(26,26,26,.14);z-index:60}
+.lang .langmenu a{padding:9px 12px;border-radius:8px;font-size:15px;white-space:nowrap;color:var(--body)}
+.lang .langmenu a:hover{background:var(--soft);color:var(--ink)}
+.lang .langmenu a.on{font-weight:700;color:var(--ink)}
+/* Inside the collapsed nav panel there is no room for a popup, so the icon
+   grows its label back and the two languages become two more rows. */
+@media(max-width:1000px){
+  .lang{width:100%}
+  .lang summary{width:auto;justify-content:flex-start;gap:10px;padding:15px 2px;border-radius:0;
+    border-bottom:1px solid var(--hair);font-size:17px}
+  .lang summary::after{content:attr(data-label)}
+  .lang .langmenu{position:static;border:0;box-shadow:none;background:transparent;padding:0 0 0 29px}
+  .lang .langmenu a{border-bottom:1px solid var(--hair);border-radius:0;padding:13px 2px;font-size:16px}
+}
 
 /* page head */
 .pagehead{padding:clamp(48px,7vw,96px) 0 clamp(28px,4vw,48px)}
@@ -273,7 +315,10 @@ body .pagehead{padding-top:clamp(112px,10vw,150px)}
 
 /* ---- hero: the film fills it, the words sit on top ---- */
 .hero{position:relative;overflow:hidden;background:#0e0e0e;min-height:clamp(560px,76vh,840px);display:grid;align-items:center}
-.hero .herobg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}
+/* object-fit:cover centres what it crops, so a tall viewport cut the top off the
+   film and left a black band that looked like a broken element. Anchor it to the
+   top: the crop now comes off the bottom, where there is nothing to lose. */
+.hero .herobg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;z-index:0;pointer-events:none}
 .hero .scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(8,8,8,.74) 0%,rgba(8,8,8,.5) 44%,rgba(8,8,8,.84) 100%)}
 .hero>.wrap{position:relative;z-index:2}
@@ -282,11 +327,27 @@ body .pagehead{padding-top:clamp(112px,10vw,150px)}
 .hero .btn-line{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}
 .hero .btn-line:hover{background:rgba(255,255,255,.14)}
 
-/* the two secondary calls sit beside each other under the primary */
+/* the two secondary calls sit beside each other under the primary.
+
+   A column, not a wrapping row: as a row the pair only LOOKED centred while the
+   primary happened to be wider than it, and went off-axis from the headline the
+   moment it was not. */
+.cta-row.big{flex-direction:column;align-items:center}
 .cta-pair{display:flex;gap:12px;align-items:stretch;justify-content:center;width:min(520px,100%)}
 .cta-pair .btn{flex:1 1 0;min-width:0;width:auto;padding-left:20px;padding-right:20px;text-align:center;white-space:normal;line-height:1.2}
 .btn-white{background:#fff;color:var(--ink)}
 .btn-white:hover{background:var(--soft)}
+
+/* Three buttons on one dark film need three different edges, or they read as
+   one object broken into pieces. The two secondaries get a hairline in the
+   opposite colour to their fill. The primary gets a thick ring set IN from the
+   edge, so a band of lime shows outside it — a ring at the edge would just look
+   like a border, and this is meant to look like a different class of thing. */
+.btn-ink{box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.9)}
+.btn-white{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn-lime.btn-xl{position:relative}
+.btn-lime.btn-xl::after{content:"";position:absolute;inset:5px;border:3px solid var(--ink);
+  border-radius:23px;pointer-events:none}
 @media(max-width:860px){.cta-row.big .cta-pair .btn{width:auto}.cta-pair{gap:10px}}
 
 /* one hairline between the last band and the footer, and no gap across it */
