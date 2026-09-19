@@ -16,6 +16,7 @@ serving customers. The redesign's own assets go to /r/ precisely so that
   python3 tools/publish.py --apply
 """
 
+import json
 import os
 import re
 import shutil
@@ -84,18 +85,61 @@ def referenced_images(pages: list[str]) -> set[str]:
     return used
 
 
+SITE = "https://klarsystems.com"
+
+
+def seo_errors(page: str, html: str) -> list[str]:
+    """The head this site is found by. A rewrite of these pages once replaced
+    every one of them with a bare <title>, and it went live and stayed live:
+    no description, no canonical, no Open Graph, no structured data, on every
+    page except the two the rewrite never touched. Publishing is the last
+    moment that is catchable, so it is caught here rather than remembered."""
+    out = []
+    url = SITE + url_of(page)
+    if not re.search(r"<title>\s*\S.*?</title>", html, re.S):
+        out.append("no <title>")
+    if not re.search(r'<meta name="description" content="[^"]{20,}"', html):
+        out.append("no meta description (or shorter than 20 characters)")
+    canonical = re.search(r'<link rel="canonical" href="([^"]+)"', html)
+    if not canonical:
+        out.append("no canonical link")
+    elif canonical.group(1) != url:
+        out.append(f"canonical is {canonical.group(1)}, but this page publishes at {url}")
+    for prop in ("og:title", "og:description", "og:url", "og:image"):
+        if f'property="{prop}"' not in html:
+            out.append(f"no {prop}")
+    blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
+    if not blocks:
+        out.append("no schema.org JSON-LD")
+    for block in blocks:
+        try:
+            json.loads(block)
+        except ValueError as exc:
+            out.append(f"JSON-LD does not parse: {exc}")
+    return out
+
+
 def main() -> None:
     written: list[str] = []
     rendered: dict[str, str] = {}
+    seo_failures: list[str] = []
 
     for page, path in PAGES:
         src = os.path.join(SRC, page)
         if not os.path.exists(src):
             raise SystemExit(f"missing source page: {page}")
         html = rewrite(open(src, encoding="utf-8").read())
+        seo_failures += [f"{page}: {problem}" for problem in seo_errors(page, html)]
         target = os.path.join(DST, path, "index.html") if path else os.path.join(DST, "index.html")
         rendered[target] = html
         written.append(target)
+
+    if seo_failures:
+        raise SystemExit(
+            "REFUSED: the head these pages are found by is incomplete.\n  "
+            + "\n  ".join(seo_failures)
+            + "\n\nFix the source page in redesign/ and publish again. Nothing was written."
+        )
 
     images = referenced_images(list(rendered.values()))
     for rel in sorted(images):
