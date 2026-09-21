@@ -128,6 +128,9 @@ h4 { font-weight: 600; letter-spacing: -0.02em; }
 }
 .btn-dark:hover { filter: brightness(1.3); transform: translateY(-1px); }
 
+/* anchor jumps must clear the fixed nav, or the section label lands underneath it */
+section[id] { scroll-margin-top: 84px; }
+
 /* ── NAV ── */
 nav {
   position: fixed;
@@ -181,7 +184,7 @@ nav.scrolled {
 
 /* ── SECTIONS ── */
 .section {
-  padding: 96px 0;
+  padding: 72px 0;
 }
 .section h2 {
   font-size: clamp(1.6rem, 3.5vw, 2.4rem);
@@ -201,7 +204,7 @@ nav.scrolled {
 .hero {
   position: relative;
   isolation: isolate;
-  padding: 190px 0 120px;
+  padding: 132px 0 76px;
   text-align: center;
   background: #101010;
   overflow: hidden;
@@ -311,7 +314,7 @@ nav.scrolled {
 /* ── DARK SECTION (pain) ── */
 .dark-section {
   background: var(--dark-bg);
-  padding: 96px 0;
+  padding: 72px 0;
 }
 .dark-section .label {
   background: var(--dark-card);
@@ -426,7 +429,7 @@ nav.scrolled {
 /* ── GUARANTEE (dark, stacked cards) ── */
 .guarantee {
   background: var(--dark-bg);
-  padding: 96px 0;
+  padding: 72px 0;
   text-align: center;
 }
 .guarantee .label {
@@ -467,7 +470,7 @@ nav.scrolled {
 
 /* ── EMAIL CAPTURE ── */
 .capture-section {
-  padding: 96px 0;
+  padding: 72px 0;
 }
 .capture-card {
   background: var(--card-bg);
@@ -623,26 +626,27 @@ footer {
   .capture-card { padding: 32px 24px; }
   .capture-form button { width: 100%; }
 
-  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-inner { flex-direction: column; align-items: center; }
 }
 
 /* ── CALCULATOR ── */
-.calc-section { background: var(--dark-bg); color: #d8d5cc; padding: clamp(3.5rem, 8vw, 6rem) 0; }
-.calc-section h2 { color: #faf8f4; }
+.calc-section { background: var(--dark-bg); color: #d8d5cc; padding: clamp(1.25rem, 2.5vw, 1.75rem) 0; }
+.calc-section h2 { color: #faf8f4; margin-bottom: 8px; font-size: clamp(1.3rem, 2.2vw, 1.6rem); }
+.calc-section .label { margin-bottom: 10px; }
 .calc-section .label { background: rgba(200,255,0,0.14); color: var(--accent); }
-.calc-lead { color: #b8b4aa; max-width: 62ch; margin-bottom: 2.5rem; }
+.calc-lead { color: #b8b4aa; max-width: 92ch; margin-bottom: 0.7rem; font-size: 0.93rem; }
 
-.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; align-items: start; }
 @media (max-width: 860px) { .calc-grid { grid-template-columns: 1fr; } }
 
 .calc-panel {
   background: var(--dark-card);
   border: 1px solid var(--dark-border);
   border-radius: 12px;
-  padding: clamp(1.25rem, 3vw, 1.75rem);
+  padding: 1rem 1.15rem;
 }
-.calc-panel h3 { color: #faf8f4; font-size: 1.05rem; margin-bottom: 0.35rem; }
-.calc-panel-sub { font-size: 0.98rem; color: var(--dark-muted); margin-bottom: 1.5rem; }
+.calc-panel h3 { color: #faf8f4; font-size: 1rem; margin-bottom: 0.3rem; }
+.calc-panel-sub { font-size: 0.92rem; color: var(--dark-muted); margin-bottom: 1rem; }
 
 .calc-field label { font-size: 1rem; color: #d2cec4; }
 .calc-panel input[type=range] {
@@ -659,50 +663,62 @@ footer {
   width: 20px; height: 20px; border-radius: 50%;
   background: var(--accent); cursor: pointer; border: none;
 }
-.calc-field-note { font-size: 0.95rem; color: var(--dark-muted); margin-top: 0.5rem; line-height: 1.55; }
+.calc-field-note { font-size: 0.82rem; color: var(--dark-muted); margin-top: 0.25rem; line-height: 1.45; }
 
-.calc-q { margin-bottom: 2.25rem; }
+.calc-q { display: grid; grid-template-columns: 1fr auto; align-items: baseline; column-gap: 1rem; margin-bottom: 0.6rem; }
+.calc-q > input[type=range], .calc-q > .calc-field-note { grid-column: 1 / -1; }
 .calc-q > label {
   display: block;
-  font-size: 1.05rem;
-  line-height: 1.45;
+  font-size: 0.95rem;
+  line-height: 1.4;
   color: #e4e1d8;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 .calc-q-val {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
-  font-size: 1.75rem;
+  font-size: 1.2rem;
   letter-spacing: -0.02em;
   color: var(--accent);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.3rem;
+  text-align: right;
+  white-space: nowrap;
 }
 .calc-detail {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
+  margin-top: 0.9rem;
+  padding-top: 0.8rem;
   border-top: 1px solid var(--dark-border);
 }
-.calc-detail-title { font-size: 1rem; color: var(--dark-muted); margin-bottom: 0.9rem; line-height: 1.55; }
+.calc-detail-title { font-size: 0.92rem; color: var(--dark-muted); margin-bottom: 0.6rem; line-height: 1.5; }
 .calc-detail-title strong { color: #d2cec4; font-weight: 500; }
-.calc-detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 0.7rem; }
+.calc-detail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.45rem; }
+/* three across needs room; on a narrow phone they stack as label-left, value-right rows */
+.calc-detail-item { min-width: 0; }
+@media (max-width: 380px) {
+  .calc-detail-grid { grid-template-columns: 1fr; }
+  .calc-detail-grid .calc-detail-item { flex-direction: row; align-items: baseline; justify-content: space-between; gap: 0.6rem; }
+  .calc-q { grid-template-columns: 1fr; }
+  .calc-q-val { text-align: left; }
+}
 .calc-detail-item {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0.1rem;
   background: var(--dark-bg);
   border: 1px solid var(--dark-border);
   border-radius: 8px;
-  padding: 0.7rem 0.85rem;
+  padding: 0.4rem 0.65rem;
   transition: border-color 0.15s;
 }
 .calc-detail-item:focus-within { border-color: var(--accent); }
 .calc-detail-label {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.72rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--dark-muted);
-  margin-bottom: 0.3rem;
-  line-height: 1.35;
+  margin-bottom: 0;
+  line-height: 1.3;
 }
-.calc-detail-input { display: flex; align-items: baseline; gap: 0.15rem; }
+.calc-detail-input { display: flex; align-items: baseline; gap: 0.15rem; flex: 0 0 auto; }
 .calc-detail-input .sym {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 600;
@@ -711,7 +727,7 @@ footer {
   opacity: 0.75;
 }
 .calc-detail-input input {
-  width: 100%;
+  width: 3.6rem;
   min-width: 0;
   background: transparent;
   border: none;
@@ -719,7 +735,7 @@ footer {
   color: var(--accent);
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 600;
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   letter-spacing: -0.02em;
 }
 .calc-detail-input input:focus { outline: none; }
@@ -732,41 +748,41 @@ footer {
 .calc-line-val.is-minus { color: #b8b4aa; }
 .calc-line-label em { font-style: normal; text-decoration: underline; text-underline-offset: 3px; }
 
-.calc-line { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--dark-border); font-size: 1.02rem; }
+.calc-line { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.28rem 0; border-bottom: 1px solid var(--dark-border); font-size: 0.92rem; }
 .calc-line:last-of-type { border-bottom: none; }
 .calc-line-label { color: #b8b4aa; }
 .calc-line-val { font-family: 'JetBrains Mono', monospace; color: #e4e1d8; white-space: nowrap; }
-.calc-line.is-total { border-top: 1px solid var(--dark-border); border-bottom: none; margin-top: 0.4rem; padding-top: 1rem; }
+.calc-line.is-total { border-top: 1px solid var(--dark-border); border-bottom: none; margin-top: 0.3rem; padding-top: 0.7rem; }
 .calc-line.is-total .calc-line-label { color: #faf8f4; font-weight: 500; }
-.calc-line.is-total .calc-line-val { color: #ff8a7a; font-size: 1.5rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+.calc-line.is-total .calc-line-val { color: #ff8a7a; font-size: 1.25rem; font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
 .calc-line.is-total.is-good .calc-line-val { color: var(--accent); }
-.calc-sub-year { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--dark-muted); margin-top: 0.3rem; }
+.calc-sub-year { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--dark-muted); margin-top: 0.1rem; }
 
 .calc-verdict {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   background: var(--accent);
   color: var(--heading);
   border-radius: 12px;
-  padding: clamp(1.5rem, 4vw, 2.25rem);
+  padding: clamp(1.25rem, 3vw, 1.6rem);
 }
 .calc-verdict-big {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
-  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
   letter-spacing: -0.03em;
-  line-height: 1.15;
+  line-height: 1.2;
   color: var(--heading);
 }
-.calc-verdict-sub { margin-top: 0.6rem; font-size: 1rem; color: #2e4a00; max-width: 60ch; }
-.calc-verdict-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.75rem; }
+.calc-verdict-sub { margin-top: 0.5rem; font-size: 0.95rem; color: #2e4a00; max-width: 78ch; }
+.calc-verdict-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.1rem; }
 @media (max-width: 700px) { .calc-verdict-row { grid-template-columns: 1fr; gap: 0.85rem; } }
 .calc-vstat { border-top: 2px solid rgba(0,0,0,0.18); padding-top: 0.75rem; }
-.calc-vstat-num { display: block; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em; color: var(--heading); }
-.calc-vstat-label { display: block; font-size: 0.95rem; color: #2e4a00; margin-top: 0.15rem; line-height: 1.45; }
-.calc-founding { margin-top: 1.5rem; border-top: 2px solid rgba(0,0,0,0.18); padding-top: 0.9rem; font-size: 1rem; color: #2e4a00; line-height: 1.6; max-width: 60ch; }
+.calc-vstat-num { display: block; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.3rem; letter-spacing: -0.02em; color: var(--heading); }
+.calc-vstat-label { display: block; font-size: 0.88rem; color: #2e4a00; margin-top: 0.15rem; line-height: 1.45; }
+.calc-founding { margin-top: 1rem; border-top: 2px solid rgba(0,0,0,0.18); padding-top: 0.7rem; font-size: 0.92rem; color: #2e4a00; line-height: 1.55; max-width: 72ch; }
 .calc-founding strong { color: var(--heading); }
-.calc-cta { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
-.calc-disclaimer { margin-top: 1.5rem; font-size: 0.92rem; color: var(--dark-muted); line-height: 1.6; max-width: 70ch; }
+.calc-cta { margin-top: 1.1rem; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.calc-disclaimer { margin-top: 1rem; font-size: 0.84rem; color: var(--dark-muted); line-height: 1.6; max-width: 70ch; }
 .calc-disclaimer a { color: #b8b4aa; text-decoration: underline; }
 
 /* ── PRICING ── */
@@ -787,6 +803,53 @@ footer {
 .pricing-row-setup { display: inline-block; margin-top: 0.15rem; font-size: 0.85rem; color: var(--muted); white-space: normal; }
 .pricing-row-val a { color: var(--heading); text-decoration: underline; text-underline-offset: 3px; }
 .pricing-row-val a:hover { color: var(--text-on-accent); }
+
+/* everything on one screen: the three cards sit side by side, not stacked */
+#pricing { padding: 60px 0 68px; }
+#pricing h2 { font-size: clamp(1.25rem, 2.1vw, 1.65rem); max-width: 40ch; margin-bottom: 8px; }
+#pricing .section-lead { font-size: 1rem; margin-bottom: 0; max-width: 68ch; }
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  margin-top: 1.75rem;
+}
+.pricing-card-wide { grid-column: 1 / -1; }
+.pricing-cols { display: grid; grid-template-columns: 1fr; column-gap: 2rem; }
+.pricing-card-wide .pricing-cols { grid-template-columns: 1fr 1fr; }
+.pricing-cols .pricing-row { border-bottom: none; border-top: 1px solid var(--border); }
+.pricing-grid .pricing-card { margin-top: 0; padding: 1.5rem 1.6rem; }
+.pricing-grid .pricing-head { padding-bottom: 0.85rem; gap: 0.75rem; }
+.pricing-grid .pricing-price { font-size: clamp(1.4rem, 2.6vw, 1.9rem); }
+.pricing-grid .pricing-price span { font-size: 0.85rem; }
+.pricing-grid .pricing-row { padding: 0.5rem 0; gap: 0.9rem; font-size: 0.95rem; line-height: 1.5; }
+.pricing-grid .pricing-row-val { font-size: 0.9rem; }
+.pricing-grid .pricing-row-setup { font-size: 0.78rem; }
+
+.pricing-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.05rem; color: var(--heading); }
+.pricing-sub { font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-top: 2px; }
+
+/* the founding line is the offer, so it shouldn't read like another table row */
+.pricing-row-hi { background: var(--accent-muted); border-radius: 6px; padding-left: 0.8rem; padding-right: 0.8rem; border-bottom: none; margin-top: 0.85rem; }
+.pricing-colhead {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--muted); padding-bottom: 0.3rem;
+}
+
+.pricing-vat { margin-top: 1.1rem; font-size: 0.88rem; color: var(--muted); line-height: 1.6; max-width: 78ch; }
+#pricing .faq-block { margin-top: 1.75rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 1.75rem; }
+#pricing .faq-item { border-top: 1px solid var(--border); border-bottom: none; padding: 0.8rem 0 0.4rem; }
+#pricing .faq-q { font-size: 0.95rem; margin-bottom: 0.25rem; }
+#pricing .faq-a { font-size: 0.87rem; line-height: 1.55; color: var(--muted); }
+
+@media (max-width: 900px) {
+  .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-cols, .pricing-card-wide .pricing-cols { grid-template-columns: 1fr; }
+  .pricing-colhead { margin-top: 0.5rem; }
+  #pricing .faq-block { grid-template-columns: 1fr; gap: 0; }
+}
 
 /* ── FOUNDING POPUP ── */
 .fpop-backdrop {
@@ -876,10 +939,10 @@ footer {
 .faq-a { font-size: 1.05rem; color: var(--body); }
 
 .calc-tier-note {
-  font-size: 0.92rem;
+  font-size: 0.82rem;
   color: var(--dark-muted);
-  line-height: 1.55;
-  padding: 0.15rem 0 0.5rem;
+  line-height: 1.45;
+  padding: 0.1rem 0 0.35rem;
 }
 
 /* ── PROBLEM KICKER ── */
@@ -1006,10 +1069,12 @@ nav { padding: 0.85rem var(--gutter); }
 }
 
 /* ── FOOTER ── */
-.footer-left { display: flex; align-items: flex-start; gap: 14px; }
-.footer-logo { height: 22px; width: auto; margin-top: 2px; }
+/* footer stacks into a centred pyramid: logo, address, then the links */
+.footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 18px; }
+.footer-left { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.footer-logo { height: 26px; width: auto; margin-top: 0; }
 .footer-company { line-height: 1.6; }
-.footer-right { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
+.footer-right { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 22px; }
 .footer-right a { transition: color 0.2s; }
 .footer-right a:hover { color: var(--heading); text-decoration: underline; }
 .footer-copy { color: var(--subtle); }
@@ -1081,33 +1146,35 @@ nav { padding: 0.85rem var(--gutter); }
 
 /* ── PLAN VERDICT ── */
 .plan-verdict {
-  margin-top: 1.75rem;
+  margin-top: 0.75rem;
   background: var(--dark-card);
   border: 1px solid var(--dark-border);
   border-left: 4px solid var(--accent);
   border-radius: 12px;
-  padding: clamp(1.4rem, 3.5vw, 1.9rem);
+  padding: 0.65rem 1.1rem;
   display: grid;
-  grid-template-columns: auto auto 1fr;
+  grid-template-columns: auto auto auto 1fr;
   align-items: baseline;
-  gap: 0.6rem 1.5rem;
+  gap: 0.3rem 1rem;
 }
-@media (max-width: 720px) { .plan-verdict { grid-template-columns: 1fr; gap: 0.3rem; } }
-.plan-verdict-label { grid-column: 1 / -1; font-size: 1rem; color: var(--dark-muted); }
+@media (max-width: 860px) { .plan-verdict { grid-template-columns: 1fr; gap: 0.2rem; } }
+.plan-verdict-label { font-size: 0.85rem; color: var(--dark-muted); }
 .plan-verdict-name {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
-  font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+  font-size: 1.35rem;
   letter-spacing: -0.03em;
   color: var(--accent);
-  line-height: 1.1;
+  line-height: 1.15;
 }
-.plan-verdict-price { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.4rem; color: #faf8f4; }
-.plan-verdict-why { font-size: 1rem; color: var(--dark-muted); }
+.plan-verdict-price { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.15rem; color: #faf8f4; }
+.plan-verdict-why { font-size: 0.9rem; color: var(--dark-muted); }
 
 /* ── STEPS, alive ── */
-.step { position: relative; }
-.step-icon { font-size: 2.2rem; line-height: 1; margin-bottom: 0.75rem; }
+/* left-aligned so step 1 lines up with the heading above it, and the four
+   yellow day-chips sit on one straight line instead of stepping about */
+.step { position: relative; text-align: left; padding: 0; }
+.step-icon { font-size: 1.9rem; line-height: 1; height: 2.1rem; margin-bottom: 0.6rem; }
 .step-num {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.9rem;
@@ -1122,11 +1189,12 @@ nav { padding: 0.85rem var(--gutter); }
   width: auto;
   height: auto;
 }
-.step h4 { font-size: 1.2rem; margin-bottom: 0.35rem; }
-.step p { font-size: 1.02rem; line-height: 1.6; color: var(--body); }
+.step h4 { font-size: 1.15rem; margin-bottom: 0.3rem; }
+.step p { font-size: 1rem; line-height: 1.6; color: var(--body); }
+.steps { margin-top: 28px; }
 
 /* ── COME AND MEET ── */
-.meet-section { background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 88px 0; }
+.meet-section { background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 72px 0; }
 .meet-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
 @media (max-width: 860px) { .meet-inner { grid-template-columns: 1fr; } }
 .meet-copy h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); line-height: 1.15; margin-bottom: 16px; }
@@ -1162,6 +1230,10 @@ nav { padding: 0.85rem var(--gutter); }
 .founding-list { margin-inline: auto; }
 .founding-strip h2 { max-width: 100%; }
 .founding-strip .founding-list li { color: #d2cec4; }
+/* founding block reads as one centred pyramid, so the bullets sit centred too */
+.founding-strip .founding-list { max-width: 660px; text-align: center; gap: 0.9rem; }
+.founding-strip .founding-list li { padding-left: 0; }
+.founding-strip .founding-list li::before { display: none; }
 
 /* steps: the icon and label want breathing room, and 4-up is too tight on a tablet */
 @media (max-width: 980px) and (min-width: 601px) {
@@ -1221,7 +1293,7 @@ nav { padding: 0.85rem var(--gutter); }
       <a href="#calculator" class="btn-primary">See what the platforms cost you &#8595;</a>
       <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-secondary">Book a free call</a>
     </div>
-    <div class="hero-proof">Live in 7 days &middot; Website &euro;49 a month, the full system from &euro;249 &middot; + VAT &middot; No commission</div>
+    <div class="hero-proof">Live in 7 days &middot; Website &euro;49 a month, the full system from &euro;249 &middot; No commission</div>
   </div>
 </section>
 
@@ -1401,7 +1473,7 @@ nav { padding: 0.85rem var(--gutter); }
         </div>
         <div class="calc-sub-year" id="oYear">&euro;30,600 a year</div>
 
-        <h3 style="margin-top:2.25rem">What changes if you move to Klar</h3>
+        <h3 style="margin-top:0.7rem">What changes if you move to Klar</h3>
         
 
         <div class="calc-line">
@@ -1428,13 +1500,13 @@ nav { padding: 0.85rem var(--gutter); }
     <div class="plan-verdict" id="planVerdict">
       <div class="plan-verdict-label">Based on your numbers, you are on</div>
       <div class="plan-verdict-name" id="planName">Klar 750</div>
-      <div class="plan-verdict-price" id="planPrice">&euro;399 a month + VAT</div>
+      <div class="plan-verdict-price" id="planPrice">&euro;399 a month</div>
       <div class="plan-verdict-why" id="planWhy">310 orders and booked guests a month</div>
     </div>
 
     <div class="calc-verdict">
       <div class="calc-verdict-big" id="vBig">Your whole setup costs less than 27 days of what the platforms take from you.</div>
-      <div class="calc-verdict-sub" id="vSub">Website, online ordering, booking system, guest CRM, Google setup and the ongoing work, all inside one setup fee of &euro;1,900&ndash;&euro;2,600. Then &euro;399 a month on Klar 750 plus VAT, and 0% of your sales for as long as you're with us.</div>
+      <div class="calc-verdict-sub" id="vSub">Website, online ordering, booking system, guest CRM, Google setup and the ongoing work, all inside one setup fee of &euro;1,900&ndash;&euro;2,600. Then &euro;399 a month on Klar 750, and 0% of your sales for as long as you're with us.</div>
 
       <div class="calc-verdict-row">
         <div class="calc-vstat">
@@ -1451,7 +1523,7 @@ nav { padding: 0.85rem var(--gutter); }
         </div>
       </div>
 
-      <p class="calc-founding"><strong>If you are one of the first 10:</strong> founding partners pay <strong>&euro;200 a month + VAT</strong> whatever their volume, and <strong>40% off the setup fee</strong>. That is for the full package, website and ordering and bookings together. Everything above is the standard price.</p>
+      <p class="calc-founding"><strong>If you are one of the first 10:</strong> founding partners pay <strong>&euro;200 a month</strong> whatever their volume, and <strong>40% off the setup fee</strong>. That is for the full package, website and ordering and bookings together. Everything above is the standard price.</p>
 
       <div class="calc-cta">
         <a href="https://calendly.com/lomberg-klarsystems/klar-bookings-free-cost-review" class="btn-dark">Book a free call, we'll run this on your real invoices</a>
@@ -1469,93 +1541,102 @@ nav { padding: 0.85rem var(--gutter); }
     <h2>One setup fee. One monthly price. Never a cut of your sales.</h2>
     <p class="section-lead">You should be able to see what this costs before you talk to anyone. So here it is.</p>
 
-    <div class="pricing-card">
+    <div class="pricing-grid">
+
+    <div class="pricing-card pricing-card-wide">
       <div class="pricing-head">
         <div>
-          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.15rem;color:var(--heading)">Klar Complete</div>
-          <div style="font-size:0.9rem;color:var(--muted);margin-top:2px">Website &middot; Ordering &middot; Bookings &middot; Guest CRM &middot; SEO</div>
+          <div class="pricing-name">Klar Complete</div>
+          <div class="pricing-sub">Website &middot; Ordering &middot; Bookings &middot; Guest CRM &middot; SEO</div>
         </div>
-        <div class="pricing-price">From &euro;249<span>/month + VAT</span></div>
+        <div class="pricing-price">From &euro;249<span>/month</span></div>
       </div>
 
-      <div class="pricing-row">
-        <span class="pricing-row-label">One-time setup, <strong>your website is inside this</strong></span>
-        <span class="pricing-row-val">&euro;1,900 &ndash; &euro;2,600 + VAT</span>
+      <div class="pricing-cols">
+        <div>
+          <div class="pricing-colhead">What you pay</div>
+          <div class="pricing-row">
+            <span class="pricing-row-label">One-time setup, <strong>your website is inside this</strong></span>
+            <span class="pricing-row-val">&euro;1,900 &ndash; &euro;2,600</span>
+          </div>
+          <div class="pricing-row">
+            <span class="pricing-row-label"><strong>Klar 300</strong>, up to 300 orders and booked guests a month</span>
+            <span class="pricing-row-val">&euro;249/month</span>
+          </div>
+          <div class="pricing-row">
+            <span class="pricing-row-label"><strong>Klar 750</strong>, 301 to 750 a month</span>
+            <span class="pricing-row-val">&euro;399/month</span>
+          </div>
+          <div class="pricing-row">
+            <span class="pricing-row-label"><strong>Klar 1500</strong>, 751 to 1,500 a month</span>
+            <span class="pricing-row-val">&euro;599/month</span>
+          </div>
+          <div class="pricing-row">
+            <span class="pricing-row-label"><strong>Franchise</strong>, priced across the group rather than per restaurant</span>
+            <span class="pricing-row-val"><a href="#contact">Contact us</a></span>
+          </div>
+        </div>
+
+        <div>
+          <div class="pricing-colhead">What you never pay, and what stays yours</div>
+          <div class="pricing-row">
+            <span class="pricing-row-label">Commission on your sales</span>
+            <span class="pricing-row-val">0%</span>
+          </div>
+          <div class="pricing-row">
+            <span class="pricing-row-label">Fee per order, per cover, per booking</span>
+            <span class="pricing-row-val">&euro;0</span>
+          </div>
+          <div class="pricing-row">
+            <span class="pricing-row-label">If you ever leave, we hand over the website, the domain and your data</span>
+            <span class="pricing-row-val">Yours to keep</span>
+          </div>
+          <div class="pricing-row">
+            <span class="pricing-row-label">Priced separately: Google and Meta ad management, ad spend, custom integrations</span>
+            <span class="pricing-row-val">Quoted</span>
+          </div>
+        </div>
       </div>
-      <div class="pricing-row">
-        <span class="pricing-row-label">Commission on your sales</span>
-        <span class="pricing-row-val">0%</span>
-      </div>
-      <div class="pricing-row">
-        <span class="pricing-row-label">Fee per order, per cover, per booking</span>
-        <span class="pricing-row-val">&euro;0</span>
-      </div>
-      <div class="pricing-row">
-        <span class="pricing-row-label"><strong>Klar 300</strong>, up to 300 orders and booked guests a month</span>
-        <span class="pricing-row-val">&euro;249/month + VAT</span>
-      </div>
-      <div class="pricing-row">
-        <span class="pricing-row-label"><strong>Klar 750</strong>, 301 to 750 a month</span>
-        <span class="pricing-row-val">&euro;399/month + VAT</span>
-      </div>
-      <div class="pricing-row">
-        <span class="pricing-row-label"><strong>Klar 1500</strong>, 751 to 1,500 a month</span>
-        <span class="pricing-row-val">&euro;599/month + VAT</span>
-      </div>
-      <div class="pricing-row">
+
+      <div class="pricing-row pricing-row-hi">
         <span class="pricing-row-label"><strong>Founding partners</strong>, the first 10 on the full package pay &euro;200 a month whatever their volume, and 40% off the setup</span>
         <span class="pricing-row-val"><a href="#founding">10 places</a></span>
       </div>
-      <div class="pricing-row">
-        <span class="pricing-row-label">Priced separately: Google and Meta ad management, ad spend, custom integrations</span>
-        <span class="pricing-row-val">Quoted</span>
-      </div>
-      <div class="pricing-row">
-        <span class="pricing-row-label">If you ever leave, we hand over the website, the domain and your data</span>
-        <span class="pricing-row-val">Yours to keep</span>
-      </div>
-      <div class="pricing-row">
-        <span class="pricing-row-label"><strong>Franchise</strong>, priced across the group rather than per restaurant</span>
-        <span class="pricing-row-val"><a href="#contact">Contact us</a></span>
-      </div>
-
-      <p class="pricing-note">Your price follows how busy you actually are: the orders that come through your own site, plus the guests who turn up on a Klar booking. Cancellations and no-shows do not count. If you outgrow your plan we tell you, and you move up from the following month, never backdated. We will never switch off your ordering or your bookings because you had a good month, and you will never get a bill you were not expecting. All prices on this page are shown without VAT, which is added to your invoice.</p>
     </div>
 
     <div class="pricing-card">
       <div class="pricing-head">
         <div>
-          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.15rem;color:var(--heading)">Klar Single</div>
-          <div style="font-size:0.9rem;color:var(--muted);margin-top:2px">One piece of Klar on its own, if that's all you need &middot; Still 0% commission</div>
+          <div class="pricing-name">Klar Single</div>
+          <div class="pricing-sub">One piece of Klar on its own, if that's all you need &middot; Still 0% commission</div>
         </div>
-        <div class="pricing-price">From &euro;49<span>/month + VAT</span></div>
+        <div class="pricing-price">From &euro;49<span>/month</span></div>
       </div>
 
       <div class="pricing-row">
         <span class="pricing-row-label"><strong>Website &amp; SEO/GEO</strong><br>Your website, hosted, managed and kept findable on Google and in AI search</span>
-        <span class="pricing-row-val">&euro;49/month + VAT<br><span class="pricing-row-setup">&euro;1,490 setup + VAT</span></span>
+        <span class="pricing-row-val">&euro;49/month<br><span class="pricing-row-setup">&euro;1,490 setup</span></span>
       </div>
       <div class="pricing-row">
         <span class="pricing-row-label"><strong>Bookings</strong><br>The booking system, and your website is included</span>
-        <span class="pricing-row-val">&euro;149/month + VAT<br><span class="pricing-row-setup">&euro;1,900&ndash;&euro;2,600 setup + VAT</span></span>
+        <span class="pricing-row-val">&euro;149/month<br><span class="pricing-row-setup">&euro;1,900&ndash;&euro;2,600 setup</span></span>
       </div>
       <div class="pricing-row">
         <span class="pricing-row-label"><strong>Ordering</strong><br>Online ordering, and your website is included</span>
-        <span class="pricing-row-val">&euro;199/month + VAT<br><span class="pricing-row-setup">&euro;1,900&ndash;&euro;2,600 setup + VAT</span></span>
+        <span class="pricing-row-val">&euro;199/month<br><span class="pricing-row-setup">&euro;1,900&ndash;&euro;2,600 setup</span></span>
       </div>
-
-      <p class="pricing-note">Every Klar Single plan is built on your own website, so you are never left with a booking link and nowhere to put it. Take the website on its own and the setup is &euro;1,490. Take bookings or ordering and the website is built into the &euro;1,900&ndash;&euro;2,600 setup, alongside the system itself. Either way we keep working on it until you are happy with it. Want ordering and bookings together? That is Klar Complete above, and it is the only thing that qualifies for the founding partner program.</p>
     </div>
 
     <div class="pricing-card">
       <div class="pricing-head">
         <div>
-          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.15rem;color:var(--heading)">What decides your setup fee</div>
-          <div style="font-size:0.9rem;color:var(--muted);margin-top:2px">Why one restaurant is quoted &euro;1,900 and another &euro;2,600</div>
+          <div class="pricing-name">What decides your setup fee</div>
+          <div class="pricing-sub">Why one restaurant is quoted &euro;1,900 and another &euro;2,600</div>
         </div>
-        <div class="pricing-price">&euro;1,900<span>&ndash;&euro;2,600 + VAT</span></div>
+        <div class="pricing-price">&euro;1,900<span>&ndash;&euro;2,600</span></div>
       </div>
 
+      <div class="pricing-cols">
       <div class="pricing-row">
         <span class="pricing-row-label">How many pages, and how much of the writing and photography we make rather than reuse</span>
         <span class="pricing-row-val">The site</span>
@@ -1572,9 +1653,12 @@ nav { padding: 0.85rem var(--gutter); }
         <span class="pricing-row-label">What we carry across: your old site, your domain, your POS, the booking system you are leaving</span>
         <span class="pricing-row-val">Moving you over</span>
       </div>
-
-      <p class="pricing-note">We go through those four with you on the free call, then you get one number in writing with what it covers next to it. That is what you pay. It only moves if you ask for something new, and we price that before we build it, not on the invoice. <strong>Founding partners take 40% off it</strong>: quoted &euro;2,250, you pay &euro;1,350.</p>
+      </div><!-- /.pricing-cols -->
     </div>
+
+    </div><!-- /.pricing-grid -->
+
+    <p class="pricing-vat">Prices are shown without VAT, the normal way of quoting one business to another. VAT is added on your invoice at the Finnish rate, and if you are VAT-registered you claim it back.</p>
 
     <div class="faq-block">
       <div class="faq-item">
@@ -1588,6 +1672,18 @@ nav { padding: 0.85rem var(--gutter); }
       <div class="faq-item">
         <div class="faq-q">Who owns my customer data?</div>
         <div class="faq-a">You do. Guests, order history, contact details, it's yours, it's exportable, and if you ever leave you take it with you. The website is yours as well, not rented from us: if you leave, we hand the whole thing over, site, domain and data, and you carry on with it somewhere else.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How is my monthly plan counted?</div>
+        <div class="faq-a">By how busy you actually are: the orders that come through your own site, plus the guests who turn up on a Klar booking. Cancellations and no-shows do not count. If you outgrow your plan we tell you, and you move up from the following month, never backdated. We will never switch off your ordering or your bookings because you had a good month, and you will never get a bill you were not expecting.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What does the setup fee cover, and how do you decide it?</div>
+        <div class="faq-a">Four things: the site, your menu, how you serve, and moving you over. We go through them with you on the free call, then you get one number in writing with what it covers next to it. That is what you pay. It only moves if you ask for something new, and we price that before we build it, not on the invoice. Founding partners take 40% off: quoted &euro;2,250, you pay &euro;1,350.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I take just the website, or just bookings?</div>
+        <div class="faq-a">Yes, that is Klar Single, and every Single plan is built on your own website, so you are never left with a booking link and nowhere to put it. The website on its own is a &euro;1,490 setup. Take bookings or ordering and the website is built into the &euro;1,900&ndash;&euro;2,600 setup alongside the system itself. Ordering and bookings together is Klar Complete, and that is the only thing that qualifies for the founding partner program.</div>
       </div>
     </div>
   </div>
@@ -1704,7 +1800,7 @@ nav { padding: 0.85rem var(--gutter); }
       <h2>Now accepting founding partners.</h2>
       <p>We are building this alongside the first 10 restaurants that take the whole system.</p>
       <ul class="founding-list">
-        <li><strong>&euro;200 a month + VAT, locked.</strong> Klar 300, Klar 750 or Klar 1500 &mdash; it does not matter. You pay &euro;200. It does not rise when you grow, and it does not rise when our prices do.</li>
+        <li><strong>&euro;200 a month, locked.</strong> Klar 300, Klar 750 or Klar 1500 &mdash; it does not matter. You pay &euro;200. It does not rise when you grow, and it does not rise when our prices do.</li>
         <li><strong>40% off your setup fee.</strong> The whole build and launch, at 60% of what it costs everyone after you.</li>
         <li><strong>The full package, or it is not a founding place.</strong> Website, online ordering and the booking system together. Take one part on its own and it is the standard price for that part.</li>
         <li>We set every part of it up with you, in person.</li>
@@ -1726,7 +1822,7 @@ nav { padding: 0.85rem var(--gutter); }
     <h2 id="fpopTitle">Take the founding deal.</h2>
     <p class="fpop-lead">We are building Klar alongside the first 10 restaurants that take the whole system. Places are still open.</p>
     <ul class="fpop-deal">
-      <li><strong>&euro;200 a month + VAT, locked.</strong> Whatever your volume, and it never rises.</li>
+      <li><strong>&euro;200 a month, locked.</strong> Whatever your volume, and it never rises.</li>
       <li><strong>40% off your setup fee.</strong> Quoted &euro;2,250, you pay &euro;1,350.</li>
       <li><strong>The full package.</strong> Website, ordering and bookings together.</li>
     </ul>
@@ -1864,7 +1960,7 @@ nav { padding: 0.85rem var(--gutter); }
 
   const SETUP_MID = 2250;
   const verdictSub = tier => 'Website, online ordering, booking system, guest CRM, Google setup and the ongoing work, all inside one setup fee of €1,900–€2,600. Then €' +
-    tier.price + ' a month on ' + tier.name + ' plus VAT, and 0% of your sales for as long as you\'re with us.';
+    tier.price + ' a month on ' + tier.name + ', and 0% of your sales for as long as you\'re with us.';
 
   const ids = ['cOrders', 'cCovers', 'cShare', 'cAov', 'cComm', 'cPerCover'];
   const el = {};
@@ -1932,7 +2028,7 @@ nav { padding: 0.85rem var(--gutter); }
         ' a month, which is the ' + tier.name + ' plan.';
     out('oKlar').textContent       = isCustom ? 'Quoted' : '− ' + eur(KLAR_MONTHLY);
     out('planName').textContent    = tier.name;
-    out('planPrice').textContent   = isCustom ? 'Quoted for you' : eur(KLAR_MONTHLY) + ' a month + VAT';
+    out('planPrice').textContent   = isCustom ? 'Quoted for you' : eur(KLAR_MONTHLY) + ' a month';
     out('planWhy').textContent     = units + ' orders and booked guests a month';
     out('oNet').textContent        = isCustom ? ',' : (net < 0 ? '− ' : '') + eur(Math.abs(net));
     out('oNetYear').textContent    = isCustom
