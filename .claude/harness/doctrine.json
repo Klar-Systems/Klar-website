@@ -1,0 +1,5 @@
+{
+  "_comment": "Read by klar-console's .claude/harness/bin/land.sh when landing this repo. Without commands.test every land was NO-GO ('THE TESTS DID NOT RUN') and each trunk push needed the operator's G12 override. The test proves every script under public/ (the only served tree) parses and every local link resolves; the build proves the deploy config (vercel.json, .vercelignore) cannot break the deploy.",
+  "project": { "remote": "origin", "default_branch": "main" },
+  "commands": { "test": "node scripts/check-site.mjs", "build": "node scripts/check-site.mjs --deploy" }
+}

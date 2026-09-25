@@ -1,0 +1,8 @@
+{
+  "name": "klar-website",
+  "private": true,
+  "description": "Static site. No dependencies; this file exists so klar-console's land.sh can run `npm ci` and then the site check.",
+  "scripts": {
+    "test": "node scripts/check-site.mjs"
+  }
+}
