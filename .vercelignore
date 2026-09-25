@@ -1,0 +1,8 @@
+# Repo tooling, not the site: the land doctrine and its check script.
+# (The site is public/; these sit outside it and are already not served. This
+# keeps them out of the upload too, and keeps package.json from turning the
+# deploy into an npm install + build.)
+.claude/
+scripts/
+package.json
+package-lock.json
